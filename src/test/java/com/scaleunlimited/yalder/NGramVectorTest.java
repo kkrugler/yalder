@@ -1,8 +1,10 @@
-package com.scaleunlimited.yald;
+package com.scaleunlimited.yalder;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import com.scaleunlimited.yalder.NGramVector;
 
 public class NGramVectorTest {
 

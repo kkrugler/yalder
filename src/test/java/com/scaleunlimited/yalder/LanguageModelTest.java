@@ -1,4 +1,4 @@
-package com.scaleunlimited.yald;
+package com.scaleunlimited.yalder;
 
 import static org.junit.Assert.*;
 
@@ -8,6 +8,9 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.Test;
+
+import com.scaleunlimited.yalder.DetectionResult;
+import com.scaleunlimited.yalder.LanguageModel;
 
 public class LanguageModelTest {
 
@@ -22,9 +25,17 @@ public class LanguageModelTest {
         Collection<LanguageModel> models = EuroParlUtils.buildModels(lines);
         
         for (LanguageModel model : models) {
+            if (model.isPairwise()) {
+                continue;
+            }
+            
             String language = model.getLanguage();
             List<DetectionResult> results = new ArrayList<DetectionResult>();
             for (LanguageModel otherModel: models) {
+                if (otherModel.isPairwise()) {
+                    continue;
+                }
+
                 double score = model.compare(otherModel);
                 results.add(new DetectionResult(otherModel.getLanguage(), score));
             }

@@ -1,4 +1,4 @@
-package com.scaleunlimited.yald;
+package com.scaleunlimited.yalder;
 
 public abstract class BaseTokenizer {
     private final CharSequence _buffer;
