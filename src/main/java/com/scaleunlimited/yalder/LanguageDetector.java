@@ -1,4 +1,4 @@
-package com.scaleunlimited.yald;
+package com.scaleunlimited.yalder;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,37 +8,30 @@ import java.util.List;
 public class LanguageDetector {
 
     private Collection<LanguageModel> _models;
-    private NGramVector _targetNGrams;
+    private MasterNGramVector _targetNGrams;
     
     public LanguageDetector(Collection<LanguageModel> models) {
         _models = models;
         
-        _targetNGrams = LanguageModel.createComboVector(_models);
+        _targetNGrams = new MasterNGramVector(LanguageModel.createComboVector(_models));
     }
     
     public Collection<DetectionResult> detect(CharSequence text) {
-        NGramVector target = new NGramVector();
+        _targetNGrams.reset();
         
         // TODO stop processing text when the ratio of new ngrams to old ngrams drops too low.
         int totalNGrams = 0;
-        int goodNGrams = 0;
-        int dupNGrams = 0;
         HashTokenizer tokenizer = new HashTokenizer(text, ModelBuilder.MIN_NGRAM_LENGTH, ModelBuilder.MAX_NGRAM_LENGTH);
         while (tokenizer.hasNext()) {
             totalNGrams += 1;
             
             int hash = tokenizer.next();
-            
-            // TODO use new exists call to decide if target contains the ngram.
-            if (_targetNGrams.get(hash) != 0.0) {
-                goodNGrams += 1;
-                if (target.set(hash)) {
-                    dupNGrams += 1;
-                }
-            }
+            _targetNGrams.mark(hash);
         }
         
         // System.out.println(String.format("%d total ngrams, %d good ngrams, %d dup ngrams", totalNGrams, goodNGrams, dupNGrams));
+        
+        NGramVector target = _targetNGrams.makeVector();
         
         // We now have <target> that we can compare to our set of models.
         List<DetectionResult> result = new ArrayList<DetectionResult>(_models.size());

@@ -1,4 +1,4 @@
-package com.scaleunlimited.yald;
+package com.scaleunlimited.yalder;
 
 public class NGramStats {
     

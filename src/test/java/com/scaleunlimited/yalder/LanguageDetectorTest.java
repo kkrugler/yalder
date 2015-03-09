@@ -1,4 +1,4 @@
-package com.scaleunlimited.yald;
+package com.scaleunlimited.yalder;
 
 import static org.junit.Assert.*;
 
@@ -19,6 +19,12 @@ import java.util.Set;
 import org.apache.commons.io.IOUtils;
 import org.apache.mahout.math.Vector;
 import org.junit.Test;
+
+import com.scaleunlimited.yalder.DetectionResult;
+import com.scaleunlimited.yalder.IntCounter;
+import com.scaleunlimited.yalder.LanguageDetector;
+import com.scaleunlimited.yalder.LanguageModel;
+import com.scaleunlimited.yalder.ModelBuilder;
 
 public class LanguageDetectorTest {
 

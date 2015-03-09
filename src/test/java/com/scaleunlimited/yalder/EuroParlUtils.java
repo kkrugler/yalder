@@ -1,4 +1,4 @@
-package com.scaleunlimited.yald;
+package com.scaleunlimited.yalder;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,6 +6,9 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
+
+import com.scaleunlimited.yalder.LanguageModel;
+import com.scaleunlimited.yalder.ModelBuilder;
 
 public class EuroParlUtils {
 

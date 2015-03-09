@@ -1,4 +1,4 @@
-package com.scaleunlimited.yald;
+package com.scaleunlimited.yalder;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Test;
+
+import com.scaleunlimited.yalder.NGramTokenizer;
 
 public class NGramTokenizerTest {
 

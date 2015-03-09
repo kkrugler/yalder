@@ -1,4 +1,4 @@
-package com.scaleunlimited.yald;
+package com.scaleunlimited.yalder;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -31,10 +31,10 @@ public class ModelBuilder {
     // Minimum LLR values for various ngram lengths
     private static final double MIN_LLR[] = {
         0.0,    // no ngrams of length 0
-        20.0,   // length 1
-        15.0,   // length 2
-        5.0,    // length 3
-        2.5     // length 4
+        40.0,   // length 1
+        20.0,   // length 2
+        10.0,    // length 3
+        5.0    // length 4
     };
     
     private static final double NGRAM_SCALARS[] = {
