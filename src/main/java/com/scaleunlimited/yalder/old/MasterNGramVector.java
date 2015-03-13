@@ -1,4 +1,4 @@
-package com.scaleunlimited.yalder;
+package com.scaleunlimited.yalder.old;
 
 import java.util.Arrays;
 
@@ -14,7 +14,7 @@ public class MasterNGramVector {
         _numMarked = 0;
     }
     
-    public void reset() {
+    public void clearMarks() {
         Arrays.fill(_marked, false);
         _numMarked = 0;
     }

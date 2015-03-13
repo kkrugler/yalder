@@ -1,4 +1,4 @@
-package com.scaleunlimited.yalder;
+package com.scaleunlimited.yalder.old;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -17,6 +17,11 @@ import org.apache.log4j.Logger;
 import org.apache.mahout.math.RandomAccessSparseVector;
 import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.stats.LogLikelihood;
+
+import com.scaleunlimited.yalder.BaseNGramVector;
+import com.scaleunlimited.yalder.CharUtils;
+import com.scaleunlimited.yalder.DetectionResult;
+import com.scaleunlimited.yalder.NGramStats;
 
 public class ModelBuilder {
     private static final Logger LOGGER = Logger.getLogger(ModelBuilder.class);
@@ -204,7 +209,7 @@ public class ModelBuilder {
                 }
                 
                 // Add this ngram to our vector.
-                int hash = NGramVector.calcHash(ngram);
+                int hash = BaseNGramVector.calcHash(ngram);
                 if (vector.get(hash) != 0.0) {
                     LOGGER.info(String.format("Hash collision for '%s'", ngram));
                 }

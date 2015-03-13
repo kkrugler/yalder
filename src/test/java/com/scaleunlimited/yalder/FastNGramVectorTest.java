@@ -4,18 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.scaleunlimited.yalder.old.NGramVector;
+import com.scaleunlimited.yalder.cur.NGramVector;
 
-public class NGramVectorTest {
+public class FastNGramVectorTest {
 
-    @Test
-    public void testHashCalculation() {
-        String ngram = "abcd";
-        
-        int hash = NGramVector.calcHash(ngram);
-        assertEquals(4, NGramVector.getLength(hash));
-    }
-    
     @Test
     public void testInserts() {
         NGramVector vector = new NGramVector();

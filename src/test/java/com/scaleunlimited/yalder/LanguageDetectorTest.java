@@ -22,9 +22,9 @@ import org.junit.Test;
 
 import com.scaleunlimited.yalder.DetectionResult;
 import com.scaleunlimited.yalder.IntCounter;
-import com.scaleunlimited.yalder.LanguageDetector;
-import com.scaleunlimited.yalder.LanguageModel;
-import com.scaleunlimited.yalder.ModelBuilder;
+import com.scaleunlimited.yalder.old.LanguageDetector;
+import com.scaleunlimited.yalder.old.LanguageModel;
+import com.scaleunlimited.yalder.old.ModelBuilder;
 
 public class LanguageDetectorTest {
 
@@ -101,10 +101,41 @@ public class LanguageDetectorTest {
     }
 
     @Test
-    public void testPerformance() throws Exception {
+    public void testOneEnglishEntry() throws Exception {
+        List<String> lines = EuroParlUtils.readLines();
+
+        ModelBuilder builder = new ModelBuilder();
+
+        for (String line : lines) {
+            
+            // Format is <language code><tab>text
+            String[] pieces = line.split("\t", 2);
+            String language = pieces[0];
+            String text = pieces[1];
+
+            builder.addTrainingDoc(language, text);
+        }
+
+        Collection<LanguageModel> models = builder.makeModels();
         
-        FileInputStream fis = new FileInputStream("src/test/resources/europarl.test");
-        List<String> lines = IOUtils.readLines(fis, "UTF-8");
+        // Now try classifying the held-out text using the models.
+        LanguageDetector detector = new LanguageDetector(models);
+        
+        for (String line : lines) {
+            String[] pieces = line.split("\t", 2);
+            String language = pieces[0];
+            String text = pieces[1];
+
+            if (language.equals("en")) {
+                detector.detect(text);
+                break;
+            }
+        }
+    }
+
+    @Test
+    public void testPerformance() throws Exception {
+        List<String> lines = EuroParlUtils.readLines();
 
         ModelBuilder builder = new ModelBuilder();
 

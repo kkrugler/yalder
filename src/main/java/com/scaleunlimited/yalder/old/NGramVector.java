@@ -1,13 +1,13 @@
-package com.scaleunlimited.yalder;
+package com.scaleunlimited.yalder.old;
+
+import it.unimi.dsi.fastutil.ints.IntIterator;
 
 import java.util.Arrays;
 
-public class NGramVector {
+import com.scaleunlimited.yalder.BaseNGramVector;
 
-    // This constant depends on how many terms we typically create for a language model,
-    // and thus depends on values used by ModelBuilder.
-    private static final int EXPECTED_NGRAM_COUNT = 5000;
-    
+public class NGramVector extends BaseNGramVector {
+
     // TODO support serialization using efficient format.
 
     // We use a more efficient format here of sorted array of hash codes, where high 3 bits
@@ -35,6 +35,7 @@ public class NGramVector {
         _lengthSquared = source._lengthSquared;
     }
     
+    @Override
     public int get(int hash) {
         // 
         int index = getIndex(hash);
@@ -46,25 +47,17 @@ public class NGramVector {
         }
     }
     
-    protected static int calcHash(CharSequence ngram) {
-        int length = ngram.length();
-        if ((length == 0) || (length > 7)) {
-            throw new IllegalArgumentException("Length of ngram must be >= 1 and <= 7, got " + ngram);
-        }
-        
-        return (length << 29) | CharUtils.joaat_hash(ngram);
-    }
-
+    @Override
     public boolean set(int hash) {
         int index = getIndex(hash);
         if (index >= 0) {
-            return true;
+            return false;
         } else {
             insert(hash, -index - 1);
             int length = getLength(hash);
             // TODO use mapping table to convert length to weight
             _lengthSquared += (length * length);
-            return false;
+            return true;
         }
     }
     
@@ -106,24 +99,15 @@ public class NGramVector {
     }
 
     /**
-     * Length of ngram is stored in high three bits.
-     * 
-     * @param hash
-     * @return length of the ngram
-     */
-    protected static int getLength(int hash) {
-        return (hash >> 29) & 0x07;
-    }
-    
-    
-    /**
      * Return the dot product of this vector with <o>, where we need to normalize
      * the length of each vector to be one.
      * 
      * @param o
      * @return
      */
-    public double score(NGramVector o) {
+    @Override
+    public double score(BaseNGramVector vector) {
+        NGramVector o = (NGramVector)vector;
         
         // Iterate over the two vectors, multiplying any value that
         // exists in in both
@@ -171,20 +155,25 @@ public class NGramVector {
      * 
      * @param termVector
      */
-    public void merge(NGramVector vector) {
+    @Override
+    public void merge(BaseNGramVector o) {
+        NGramVector vector = (NGramVector)o;
         for (int i = 0; i < vector._numTerms; i++) {
             set(vector._terms[i]);
         }
     }
 
+    @Override
     public int getLengthSquared() {
         return _lengthSquared;
     }
 
+    @Override
     public int size() {
         return _numTerms;
     }
 
+    @Override
     public boolean contains(int hash) {
         return getIndex(hash) >= 0;
     }
@@ -192,4 +181,17 @@ public class NGramVector {
     protected int getIndex(int hash) {
         return Arrays.binarySearch(_terms, 0, _numTerms, hash);
     }
+    
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder(String.format("Vector of size %d:\n", _numTerms));
+        for (int i = 0; i < _numTerms; i++) {
+            result.append('\t');
+            result.append(_terms[i]);
+            result.append('\n');
+        }
+        
+        return result.toString();
+    }
+
 }

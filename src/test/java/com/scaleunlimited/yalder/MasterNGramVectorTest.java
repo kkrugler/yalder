@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.scaleunlimited.yalder.MasterNGramVector;
-import com.scaleunlimited.yalder.NGramVector;
+import com.scaleunlimited.yalder.old.MasterNGramVector;
+import com.scaleunlimited.yalder.old.NGramVector;
 
 public class MasterNGramVectorTest {
 
