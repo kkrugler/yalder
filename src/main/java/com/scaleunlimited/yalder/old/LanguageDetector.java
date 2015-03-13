@@ -1,37 +1,46 @@
-package com.scaleunlimited.yalder;
+package com.scaleunlimited.yalder.old;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import com.scaleunlimited.yalder.DetectionResult;
+import com.scaleunlimited.yalder.HashTokenizer;
+
 public class LanguageDetector {
 
     private Collection<LanguageModel> _models;
-    private MasterNGramVector _targetNGrams;
+    private MasterNGramVector _modelNGrams;
     
     public LanguageDetector(Collection<LanguageModel> models) {
         _models = models;
         
-        _targetNGrams = new MasterNGramVector(LanguageModel.createComboVector(_models));
+        _modelNGrams = new MasterNGramVector(LanguageModel.createComboVector(_models));
+        
+        // System.out.println(_modelNGrams);
     }
     
     public Collection<DetectionResult> detect(CharSequence text) {
-        _targetNGrams.reset();
+        _modelNGrams.clearMarks();
         
         // TODO stop processing text when the ratio of new ngrams to old ngrams drops too low.
         int totalNGrams = 0;
+        int goodNGrams = 0;
         HashTokenizer tokenizer = new HashTokenizer(text, ModelBuilder.MIN_NGRAM_LENGTH, ModelBuilder.MAX_NGRAM_LENGTH);
         while (tokenizer.hasNext()) {
             totalNGrams += 1;
             
             int hash = tokenizer.next();
-            _targetNGrams.mark(hash);
+            if (_modelNGrams.mark(hash)) {
+                goodNGrams += 1;
+            }
         }
         
-        // System.out.println(String.format("%d total ngrams, %d good ngrams, %d dup ngrams", totalNGrams, goodNGrams, dupNGrams));
+        System.out.println(String.format("%d total ngrams, %d good ngrams", totalNGrams, goodNGrams));
         
-        NGramVector target = _targetNGrams.makeVector();
+        NGramVector target = _modelNGrams.makeVector();
+        // System.out.println(target);
         
         // We now have <target> that we can compare to our set of models.
         List<DetectionResult> result = new ArrayList<DetectionResult>(_models.size());

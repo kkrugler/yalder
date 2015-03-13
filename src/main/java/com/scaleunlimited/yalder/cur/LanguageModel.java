@@ -1,4 +1,4 @@
-package com.scaleunlimited.yalder;
+package com.scaleunlimited.yalder.cur;
 
 import java.util.Collection;
 

@@ -41,6 +41,12 @@
             <version>1.2.14</version>
         </dependency>
         
+        <dependency>
+            <groupId>it.unimi.dsi</groupId>
+            <artifactId>fastutil</artifactId>
+            <version>6.6.3</version>
+        </dependency>
+        
         <!-- Provided -->
         
 		<dependency>
@@ -52,6 +58,13 @@
 
         <!-- Test -->
         
+        <dependency>
+			<groupId>com.optimaize.languagedetector</groupId>
+    		<artifactId>language-detector</artifactId>
+    		<version>0.4</version>
+            <scope>test</scope>
+		</dependency>
+		
 		<dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
