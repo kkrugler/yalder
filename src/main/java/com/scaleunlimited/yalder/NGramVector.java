@@ -1,6 +1,4 @@
-package com.scaleunlimited.yalder.cur;
-
-import com.scaleunlimited.yalder.BaseNGramVector;
+package com.scaleunlimited.yalder;
 
 import it.unimi.dsi.fastutil.ints.IntIterator;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
@@ -93,6 +91,7 @@ public class NGramVector extends BaseNGramVector {
 
     public void clear() {
         _set.clear();
+        _lengthSquared = 0;
     }
     
     @Override

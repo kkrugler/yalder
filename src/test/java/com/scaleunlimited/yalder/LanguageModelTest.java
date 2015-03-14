@@ -10,7 +10,6 @@ import java.util.List;
 import org.junit.Test;
 
 import com.scaleunlimited.yalder.DetectionResult;
-import com.scaleunlimited.yalder.cur.LanguageModel;
 
 public class LanguageModelTest {
 
