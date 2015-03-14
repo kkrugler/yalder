@@ -1,12 +1,9 @@
-package com.scaleunlimited.yalder.old;
+package com.scaleunlimited.yalder;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-
-import com.scaleunlimited.yalder.DetectionResult;
-import com.scaleunlimited.yalder.HashTokenizer;
 
 public class LanguageDetector {
 
@@ -37,7 +34,7 @@ public class LanguageDetector {
             }
         }
         
-        System.out.println(String.format("%d total ngrams, %d good ngrams", totalNGrams, goodNGrams));
+        // System.out.println(String.format("%d total ngrams, %d good ngrams", totalNGrams, goodNGrams));
         
         NGramVector target = _modelNGrams.makeVector();
         // System.out.println(target);
@@ -82,7 +79,7 @@ public class LanguageDetector {
                 double nextRescored = getSpecificModel(nextLanguage, topLanguage).compare(target);
                 
                 if (nextRescored > topRescored) {
-                    System.out.println(String.format("Order changed using pairwise scoring for '%s' = %f and '%s' = %f", topLanguage, topRescored, nextLanguage, nextRescored));
+                    // System.out.println(String.format("Order changed using pairwise scoring for '%s' = %f and '%s' = %f", topLanguage, topRescored, nextLanguage, nextRescored));
                     // TODO  adjust the scores using something better than just swapping them. Then we'll need to recalc topConfidence,
                     // or do it in the loop below.
                     topResult.setScore(nextScore);

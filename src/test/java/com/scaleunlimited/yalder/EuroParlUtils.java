@@ -7,9 +7,6 @@ import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 
-import com.scaleunlimited.yalder.cur.LanguageModel;
-import com.scaleunlimited.yalder.cur.ModelBuilder;
-
 public class EuroParlUtils {
 
     public static List<String> readLines() throws IOException {

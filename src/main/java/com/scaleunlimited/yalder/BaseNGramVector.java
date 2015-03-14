@@ -1,5 +1,7 @@
 package com.scaleunlimited.yalder;
 
+import java.util.Iterator;
+
 
 public abstract class BaseNGramVector {
 
@@ -18,12 +20,16 @@ public abstract class BaseNGramVector {
      */
     public abstract void merge(BaseNGramVector vector);
 
+    public abstract void clear();
+    
     public abstract int getLengthSquared();
 
     public abstract boolean contains(int hash);
 
     public abstract double score(BaseNGramVector o);
 
+    public abstract Iterator<Integer> getIterator();
+    
     // Static helper routines.
     
     public static int calcHash(CharSequence ngram) {
