@@ -1,8 +1,9 @@
-package com.scaleunlimited.yalder.old;
+package com.scaleunlimited.yalder;
 
-import it.unimi.dsi.fastutil.ints.IntIterator;
-
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 import com.scaleunlimited.yalder.BaseNGramVector;
 
@@ -192,6 +193,22 @@ public class NGramVector extends BaseNGramVector {
         }
         
         return result.toString();
+    }
+
+    @Override
+    public Iterator<Integer> getIterator() {
+        List<Integer> result = new ArrayList<Integer>(_numTerms);
+        for (int i = 0; i < _numTerms; i++) {
+            result.add(_terms[i]);
+        }
+        
+        return result.iterator();
+    }
+
+    @Override
+    public void clear() {
+        _numTerms = 0;
+        _lengthSquared = 0;
     }
 
 }

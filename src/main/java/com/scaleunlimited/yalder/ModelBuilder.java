@@ -1,4 +1,4 @@
-package com.scaleunlimited.yalder.old;
+package com.scaleunlimited.yalder;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -17,11 +17,6 @@ import org.apache.log4j.Logger;
 import org.apache.mahout.math.RandomAccessSparseVector;
 import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.stats.LogLikelihood;
-
-import com.scaleunlimited.yalder.BaseNGramVector;
-import com.scaleunlimited.yalder.CharUtils;
-import com.scaleunlimited.yalder.DetectionResult;
-import com.scaleunlimited.yalder.NGramStats;
 
 public class ModelBuilder {
     private static final Logger LOGGER = Logger.getLogger(ModelBuilder.class);

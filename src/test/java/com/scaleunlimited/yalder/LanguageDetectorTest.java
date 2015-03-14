@@ -1,30 +1,13 @@
 package com.scaleunlimited.yalder;
 
-import static org.junit.Assert.*;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-import org.apache.commons.io.IOUtils;
-import org.apache.mahout.math.Vector;
 import org.junit.Test;
-
-import com.scaleunlimited.yalder.DetectionResult;
-import com.scaleunlimited.yalder.IntCounter;
-import com.scaleunlimited.yalder.old.LanguageDetector;
-import com.scaleunlimited.yalder.old.LanguageModel;
-import com.scaleunlimited.yalder.old.ModelBuilder;
 
 public class LanguageDetectorTest {
 
@@ -98,39 +81,6 @@ public class LanguageDetectorTest {
         }
 
         System.out.println(String.format("Total miss ratio = %.2f%%", 100.0 * (double)totalMisses/(double)testLines.size()));
-    }
-
-    @Test
-    public void testOneEnglishEntry() throws Exception {
-        List<String> lines = EuroParlUtils.readLines();
-
-        ModelBuilder builder = new ModelBuilder();
-
-        for (String line : lines) {
-            
-            // Format is <language code><tab>text
-            String[] pieces = line.split("\t", 2);
-            String language = pieces[0];
-            String text = pieces[1];
-
-            builder.addTrainingDoc(language, text);
-        }
-
-        Collection<LanguageModel> models = builder.makeModels();
-        
-        // Now try classifying the held-out text using the models.
-        LanguageDetector detector = new LanguageDetector(models);
-        
-        for (String line : lines) {
-            String[] pieces = line.split("\t", 2);
-            String language = pieces[0];
-            String text = pieces[1];
-
-            if (language.equals("en")) {
-                detector.detect(text);
-                break;
-            }
-        }
     }
 
     @Test
