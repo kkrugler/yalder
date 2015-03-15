@@ -231,12 +231,11 @@ Copyright (c) 2015 Ken Krugler
 			</settings>
 			<project name="${ant.project.name}" />
 			<classpath>
-				<container path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6" />
+				<container path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7" />
 
 				<source path="${main.src.dir}"
 				        output="${build.dir.main-classes-eclipse}" />
 				
-				<!-- TODO use build.properties (with more consistent names) for these paths -->
 				<source path="${basedir}/src/main/resources"
 				        output="${build.dir.main-classes-eclipse}" />
 				<source path="${basedir}/src/test/java"
