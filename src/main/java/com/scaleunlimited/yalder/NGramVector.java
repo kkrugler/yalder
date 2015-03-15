@@ -2,6 +2,7 @@ package com.scaleunlimited.yalder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.BitSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,6 +12,10 @@ public class NGramVector extends BaseNGramVector {
 
     // TODO support serialization using efficient format.
 
+    private static final int CONTAINS_BITSET_SIZE = 64 * 1024;
+
+    private static final long CONTAINS_BITSET_MASK = 0x00FFFFL;
+    
     // We use a more efficient format here of sorted array of hash codes, where high 3 bits
     // are for the length of the ngram. The length of 5 is what we use for a collapsed
     // character one-gram, to distinguish it from a regular single character.
@@ -18,6 +23,7 @@ public class NGramVector extends BaseNGramVector {
     protected int[] _terms;
     protected int _numTerms;
     protected int _lengthSquared;
+    private BitSet _contains;
     
     public NGramVector() {
         this(EXPECTED_NGRAM_COUNT);
@@ -27,6 +33,8 @@ public class NGramVector extends BaseNGramVector {
         _terms = new int[ngramCount];
         _numTerms = 0;
         _lengthSquared = 0;
+        
+        _contains = new BitSet(CONTAINS_BITSET_SIZE);
     }
     
     public NGramVector(NGramVector source) {
@@ -34,6 +42,9 @@ public class NGramVector extends BaseNGramVector {
         _terms = new int[_numTerms];
         System.arraycopy(source._terms, 0, _terms, 0, _numTerms);
         _lengthSquared = source._lengthSquared;
+        
+        _contains = new BitSet(CONTAINS_BITSET_SIZE);
+        _contains.or(source._contains);
     }
     
     @Override
@@ -55,27 +66,8 @@ public class NGramVector extends BaseNGramVector {
             return false;
         } else {
             insert(hash, -index - 1);
-            int length = getLength(hash);
-            // TODO use mapping table to convert length to weight
-            _lengthSquared += (length * length);
             return true;
         }
-    }
-    
-    /**
-     * Special version that is used when the caller knows the position
-     * to insert <hash>.
-     * 
-     * @param index
-     * @param hash
-     */
-    protected void set(int index, int hash) {
-        _terms[index] = hash;
-        _numTerms = Math.max(_numTerms, index + 1);
-        
-        int length = getLength(hash);
-        // TODO use mapping table to convert length to weight
-        _lengthSquared += (length * length);
     }
     
     /**
@@ -97,6 +89,12 @@ public class NGramVector extends BaseNGramVector {
         System.arraycopy(_terms, index, _terms, index + 1, _numTerms - index);
         _terms[index] = hash;
         _numTerms += 1;
+        
+        int length = getLength(hash);
+        // TODO use mapping table to convert length to weight
+        _lengthSquared += (length * length);
+        
+        _contains.set((int)(hash & CONTAINS_BITSET_MASK));
     }
 
     /**
@@ -176,7 +174,12 @@ public class NGramVector extends BaseNGramVector {
 
     @Override
     public boolean contains(int hash) {
-        return getIndex(hash) >= 0;
+        if (_contains.get((int)(hash & CONTAINS_BITSET_MASK))) {
+            return getIndex(hash) >= 0;
+        } else {
+            return false;
+        }
+
     }
 
     protected int getIndex(int hash) {
