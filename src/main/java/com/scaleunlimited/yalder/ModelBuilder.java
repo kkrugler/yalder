@@ -21,20 +21,20 @@ import org.apache.mahout.math.stats.LogLikelihood;
 public class ModelBuilder {
     private static final Logger LOGGER = Logger.getLogger(ModelBuilder.class);
 
-    public static final int MIN_NGRAM_LENGTH = 1;
+    public static final int MIN_NGRAM_LENGTH = 4;
     public static final int MAX_NGRAM_LENGTH = 4;
     
     // Percentage of documents that must contain the ngram
     // private static final double MIN_DF = 0.01;
-    private static final double MIN_DF = 0.05;
+    private static final double MIN_DF = 0.02;
 
     // Minimum LLR values for various ngram lengths
     private static final double MIN_LLR[] = {
         0.0,    // no ngrams of length 0
         40.0,   // length 1
-        20.0,   // length 2
+        2.0,   // length 2
         10.0,    // length 3
-        5.0    // length 4
+        10.0    // length 4
     };
     
     private static final double NGRAM_SCALARS[] = {
