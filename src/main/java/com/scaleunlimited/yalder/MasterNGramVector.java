@@ -28,11 +28,17 @@ public class MasterNGramVector {
      */
     public boolean mark(int hash) {
         if (_master.contains(hash)) {
-            _marked.set(hash);
+            // We set the weight to 1, as we treat the target as an unweighted
+            // vector of boolean term existence flags.
+            _marked.set(hash, 1);
             return true;
         } else {
             return false;
         }
+    }
+    
+    public boolean mark(CharSequence ngram) {
+        return mark(CharUtils.joaat_hash(ngram));
     }
     
     public NGramVector makeVector() {

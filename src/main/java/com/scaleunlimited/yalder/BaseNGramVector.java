@@ -9,10 +9,30 @@ public abstract class BaseNGramVector {
     // and thus depends on values used by ModelBuilder.
     public static final int EXPECTED_NGRAM_COUNT = 5000;
     
+    // Return the weight of the ngram, given its hash
     public abstract int get(int hash);
-    public abstract boolean set(int hash);
+    
+    // Set the ngram with weight, given its hash.
+    // Return true if the vector didn't already contain the
+    // ngram.
+    public abstract boolean set(int hash, int weight);
+    
+    public abstract boolean contains(int hash);
+
     public abstract int size();
 
+    public int get(CharSequence ngram) {
+        return get(CharUtils.joaat_hash(ngram));
+    }
+    
+    public boolean set(CharSequence ngram, int weight) {
+        return set(CharUtils.joaat_hash(ngram), weight);
+    }
+    
+    public boolean contains(CharSequence ngram) {
+        return contains(CharUtils.joaat_hash(ngram));
+    }
+    
     /**
      * Merge all values from <termVector> into this vector.
      * 
@@ -24,34 +44,9 @@ public abstract class BaseNGramVector {
     
     public abstract int getLengthSquared();
 
-    public abstract boolean contains(int hash);
 
     public abstract double score(BaseNGramVector o);
 
     public abstract Iterator<Integer> getIterator();
-    
-    // Static helper routines.
-    
-    public static int calcHash(CharSequence ngram) {
-        int length = ngram.length();
-        if ((length == 0) || (length > 7)) {
-            throw new IllegalArgumentException("Length of ngram must be >= 1 and <= 7, got " + ngram);
-        }
-        
-        return (length << 29) | CharUtils.joaat_hash(ngram);
-    }
-
-    
-    /**
-     * Length of ngram is stored in high three bits.
-     * 
-     * @param hash
-     * @return length of the ngram
-     */
-    public static int getLength(int hash) {
-        return (hash >> 29) & 0x07;
-    }
-    
-    
 
 }
