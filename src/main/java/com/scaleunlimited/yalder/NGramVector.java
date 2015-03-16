@@ -14,11 +14,13 @@ public class NGramVector extends BaseNGramVector {
 
     private static final int CONTAINS_BITSET_SIZE = 64 * 1024;
 
-    private static final long CONTAINS_BITSET_MASK = 0x00FFFFL;
+    private static final int CONTAINS_BITSET_MASK = 0x00FFFF;
     
-    // We use a more efficient format here of sorted array of hash codes, where high 3 bits
-    // are for the length of the ngram. The length of 5 is what we use for a collapsed
-    // character one-gram, to distinguish it from a regular single character.
+    // We use a more efficient format here of sorted array of hash codes, where low 3 bits
+    // are for the weight of the ngram. So to convert a hash + a weight into a term value
+    // in the vector, we knock out the low 3 bits of the hash and insert the weight bits.
+    // Which means we have to be careful with the "contains" bitset, as we need to shift
+    // right before taking the number of bits we want.
     
     protected int[] _terms;
     protected int _numTerms;
@@ -47,37 +49,69 @@ public class NGramVector extends BaseNGramVector {
         _contains.or(source._contains);
     }
     
-    @Override
-    public int get(int hash) {
-        // 
-        int index = getIndex(hash);
-        if (index < 0) {
-            return 0;
-        } else {
-            // TODO use mapping table to convert length to weight
-            return getLength(_terms[index]);
-        }
-    }
-    
-    @Override
-    public boolean set(int hash) {
-        int index = getIndex(hash);
-        if (index >= 0) {
-            return false;
-        } else {
-            insert(hash, -index - 1);
-            return true;
-        }
+    private int getTerm(int hash, int weight) {
+        return hash | weight;
     }
     
     /**
-     * Insert hash at position index, expanding the vector
+     * Return the hash without the weight.
+     * 
+     * @param term
+     * @return
+     */
+    private int getHash(int term) {
+        return (term & ~0x07);
+    }
+    
+    private int getWeight(int term) {
+        // TODO use table to map from 1..7 "raw weight" to true weight
+        return term & 0x07;
+    }
+    
+    @Override
+    public int get(int hash) {
+        int index = getIndex(hash);
+        if (index < _numTerms) {
+            int term = _terms[index];
+            if (getHash(term) == hash) {
+                return getWeight(term);
+            } else {
+                return 0;
+            }
+        } else {
+            return 0;
+        }
+    }
+    
+    @Override
+    public boolean set(int hash, int weight) {
+        if ((weight < 1) || (weight > 7)) {
+            throw new IllegalArgumentException("Weight must be 1..7, got " + weight);
+        }
+
+        int index = getIndex(hash);
+        if (index < _numTerms) {
+            // TODO you can set the same hash with a different weight, which is bad.
+            // We'd have to see what's at the -index - 1 position and see if the hash
+            // matches, and if so complain.
+            if (getHash(_terms[index]) == hash) {
+                return false;
+            }
+        }
+
+        int term = getTerm(hash, weight);
+        insert(term, index);
+        return true;
+    }
+    
+    /**
+     * Insert term at position index, expanding the vector
      * as needed.
      * 
      * @param hash
      * @param index
      */
-    private void insert(int hash, int index) {
+    private void insert(int term, int index) {
         // See if we need to expand the vector.
         if (_terms.length == _numTerms) {
             int[] newVector = new int[(_numTerms * 3) / 2];
@@ -87,14 +121,13 @@ public class NGramVector extends BaseNGramVector {
         
         // Make room, and do the insert.
         System.arraycopy(_terms, index, _terms, index + 1, _numTerms - index);
-        _terms[index] = hash;
+        _terms[index] = term;
         _numTerms += 1;
         
-        int length = getLength(hash);
-        // TODO use mapping table to convert length to weight
-        _lengthSquared += (length * length);
+        int weight = getWeight(term);
+        _lengthSquared += (weight * weight);
         
-        _contains.set((int)(hash & CONTAINS_BITSET_MASK));
+        _contains.set(getContainsHash(term));
     }
 
     /**
@@ -131,18 +164,21 @@ public class NGramVector extends BaseNGramVector {
         
         int dotProduct = 0;
         while (thisIndex < thisLimit) {
-            int thisHash = thisVector[thisIndex++];
+            int thisTerm = thisVector[thisIndex++];
+            int thisHash = getHash(thisTerm);
             
-            while ((thatIndex < thatLimit) && (thatVector[thatIndex] < thisHash)) {
+            while ((thatIndex < thatLimit) && (getHash(thatVector[thatIndex]) < thisHash)) {
                 thatIndex ++;
             }
             
             if (thatIndex == thatLimit) {
                 break;
-            } else if (thisHash == thatVector[thatIndex]) {
-                int length = getLength(thisHash);
-                // TODO use mapping table to convert length to weight
-                dotProduct += (length * length);
+            } else if (thisHash == getHash(thatVector[thatIndex])) {
+                int thisWeight = getWeight(thisTerm);
+                int thatWeight = getWeight(thatVector[thatIndex]);
+                
+                // TODO use mapping table to convert raw to scaled weights
+                dotProduct += (thisWeight * thatWeight);
             }
         }
         
@@ -158,7 +194,8 @@ public class NGramVector extends BaseNGramVector {
     public void merge(BaseNGramVector o) {
         NGramVector vector = (NGramVector)o;
         for (int i = 0; i < vector._numTerms; i++) {
-            set(vector._terms[i]);
+            int term = vector._terms[i];
+            set(getHash(term), getWeight(term));
         }
     }
 
@@ -172,17 +209,31 @@ public class NGramVector extends BaseNGramVector {
         return _numTerms;
     }
 
+    private int getContainsHash(int hash) {
+        return (hash >> 3) & CONTAINS_BITSET_MASK;
+    }
+    
     @Override
     public boolean contains(int hash) {
-        if (_contains.get((int)(hash & CONTAINS_BITSET_MASK))) {
-            return getIndex(hash) >= 0;
+        if (_contains.get(getContainsHash(hash))) {
+            int index = getIndex(hash);
+            if (index < _numTerms) {
+                return getHash(_terms[index]) == hash;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
     }
 
     protected int getIndex(int hash) {
-        return Arrays.binarySearch(_terms, 0, _numTerms, hash);
+        int result = Arrays.binarySearch(_terms, 0, _numTerms, hash);
+        if (result >= 0) {
+            throw new IllegalStateException("Found term with 0 weight for hash " + hash);
+        }
+        
+        return -result - 1;
     }
     
     @Override
@@ -190,7 +241,9 @@ public class NGramVector extends BaseNGramVector {
         StringBuilder result = new StringBuilder(String.format("Vector of size %d:\n", _numTerms));
         for (int i = 0; i < _numTerms; i++) {
             result.append('\t');
-            result.append(_terms[i]);
+            result.append(getHash(_terms[i]));
+            result.append(", ");
+            result.append(getWeight(_terms[i]));
             result.append('\n');
         }
         
@@ -211,6 +264,7 @@ public class NGramVector extends BaseNGramVector {
     public void clear() {
         _numTerms = 0;
         _lengthSquared = 0;
+        _contains.clear();
     }
 
 }

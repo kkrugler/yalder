@@ -6,7 +6,7 @@ import java.util.Map;
 public class CharUtils {
 
     /**
-     * Return hash value for <key> that has high three bits cleared.
+     * Return hash value for <key> that has low three bits cleared.
      * 
      * @param key
      * @return
@@ -25,7 +25,7 @@ public class CharUtils {
         hash ^= (hash >>> 11);
         hash += (hash << 15);
         
-        return hash & 0x1FFFFFFF;
+        return hash & ~0x07;
     }
 
     public static int joaat_hash(char[] text, int offset, int length) {
@@ -42,7 +42,7 @@ public class CharUtils {
         hash ^= (hash >>> 11);
         hash += (hash << 15);
         
-        return hash & 0x1FFFFFFF;
+        return hash & ~0x07;
     }
 
     public static Map<CharSequence, NGramStats> calcNGramStats(CharSequence text, int minNGramLength, int maxNGramLength) {

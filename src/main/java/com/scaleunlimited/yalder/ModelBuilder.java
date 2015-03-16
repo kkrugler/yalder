@@ -26,8 +26,9 @@ public class ModelBuilder {
     public static final int MIN_NGRAM_LENGTH = 4;
     public static final int MAX_NGRAM_LENGTH = 4;
 
-    private static final int TARGET_NGRAMS = 1000;
-    private static final double TARGET_SCORE = 50.0;
+    private static final int TARGET_NGRAMS = 2000;          // 1000
+    private static final double TARGET_SCORE = 50.0;        // 40.0
+    private static final double MAX_OTHERDF = 0.01;
     
     // Map from language to ngram to stats for that ngram
     private Map<String, Map<CharSequence, NGramStats>> _langStats;
@@ -75,6 +76,8 @@ public class ModelBuilder {
         
         Map<String, NGramVector> langVectors = new HashMap<String, NGramVector>();
 
+        int totalVectorTerms = 0;
+        
         for (String language : languages) {
             double docsForThisLanguage = _docsPerLanguage.get(language);
             Map<CharSequence, NGramStats> languageStats = _langStats.get(language);
@@ -99,37 +102,57 @@ public class ModelBuilder {
                     }
                 }
                 
+                // The otherDF is the document frequency for this ngram for all of the other languages.
+                // We'd love it if this value was 0, as that means it never occurs in any other language.
                 double otherDF = docsForOtherLanguages / totalDocsForOtherLanguages;
+                
+                // Our score is essentially the probability that this ngram will be in a document for our
+                // target language, and not in a document for any other language.
                 double ngramScore = df * (1.0 - otherDF);
-                bestNGrams.add(new NGramScore(ngram, ngramScore));
+                
+                // TODO remove me
+                // Try out limiting otherDF to max value.
+                if (otherDF > MAX_OTHERDF) {
+                    ngramScore = 0.0;
+                }
+                
+                bestNGrams.add(new NGramScore(ngram, ngramScore, otherDF));
             }
             
             // Pick the best ngrams
             Collections.sort(bestNGrams);
             int maxIndex = Math.min(TARGET_NGRAMS, bestNGrams.size()) - 1;
             
-            // Figure out stats so we know weights to use.
-            SummaryStatistics stats = new SummaryStatistics();
-            for (NGramScore ngs : bestNGrams) {
-                stats.addValue(ngs.getScore());
-            }
-            
-            double mean = stats.getMean();
-            double stdDeviation = stats.getStandardDeviation();
-            
             NGramVector vector = new NGramVector(TARGET_NGRAMS);
             double totalLanguageScore = 0.0;
             for (int i = 0; (i <= maxIndex) && (totalLanguageScore < TARGET_SCORE); i++) {
                 double score = bestNGrams.get(i).getScore();
-                double stdDeviations = (score - mean) / stdDeviation;
-                System.out.println(String.format("NGram '%s' has score %f and std deviations %f", bestNGrams.get(i).getNGram(), score, stdDeviations));
-                vector.set(BaseNGramVector.calcHash(bestNGrams.get(i).getNGram()));
+                double otherDF = bestNGrams.get(i).getOtherDF();
+                // System.out.println(String.format("NGram '%s' has score %f and other DF %f", bestNGrams.get(i).getNGram(), score, otherDF));
+                
+                // The weight is the probability that this term isn't for another language, which
+                // means 1.0 - otherDF. But we need to quantize this to 1...7, whereas it's going
+                // to be in the range of 1.0 - [0.0 ... MAX_OTHERDF]. We want 1.0 to be 7, and 
+                // 1.0 - MAX_OTHERDF to be 1.
+                double percent = 1.0 - (otherDF / MAX_OTHERDF);
+                
+                int maxWeight = 7;
+                int minWeight = 1;
+                double range = maxWeight - minWeight;
+                
+                // int weight = (int)Math.round(minWeight + (range * percent));
+                int weight = 1;
+                
+                vector.set(bestNGrams.get(i).getNGram(), weight);
                 totalLanguageScore += bestNGrams.get(i).getScore();
             }
             
+            totalVectorTerms += vector.size();
             System.out.println(String.format("Language '%s' size = %d", language, vector.size()));
             langVectors.put(language, vector);
         }
+        
+        System.out.println(String.format("Total vector terms = %d", totalVectorTerms));
         
         return langVectors;
     }
@@ -157,10 +180,12 @@ public class ModelBuilder {
     private static class NGramScore implements Comparable<NGramScore> {
         private CharSequence _ngram;
         private double _score;
+        private double _otherDF;
         
-        public NGramScore(CharSequence ngram, double score) {
+        public NGramScore(CharSequence ngram, double score, double otherDF) {
             _ngram = ngram;
             _score = score;
+            _otherDF = otherDF;
         }
 
         public CharSequence getNGram() {
@@ -169,6 +194,10 @@ public class ModelBuilder {
 
         public double getScore() {
             return _score;
+        }
+        
+        public double getOtherDF() {
+            return _otherDF;
         }
 
         @Override

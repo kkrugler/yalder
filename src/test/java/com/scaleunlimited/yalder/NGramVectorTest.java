@@ -9,50 +9,49 @@ import org.junit.Test;
 public class NGramVectorTest {
 
     @Test
-    public void testHashCalculation() {
-        String ngram = "abcd";
-        
-        int hash = NGramVector.calcHash(ngram);
-        assertEquals(4, NGramVector.getLength(hash));
-    }
-    
-    @Test
     public void testInserts() {
         NGramVector vector = new NGramVector();
         
-        assertTrue(vector.set(NGramVector.calcHash("a")));
+        assertTrue(vector.set("a", 1));
         assertEquals(1, vector.getLengthSquared());
-        assertTrue(vector.set(NGramVector.calcHash("ab")));
+        assertTrue(vector.set("ab", 2));
         assertEquals(5, vector.getLengthSquared());
-        assertTrue(vector.set(NGramVector.calcHash("abc")));
+        assertTrue(vector.set("abc", 3));
         assertEquals(14, vector.getLengthSquared());
-        assertTrue(vector.set(NGramVector.calcHash("abcd")));
+        assertTrue(vector.set("abcd", 4));
         assertEquals(30, vector.getLengthSquared());
         assertEquals(4, vector.size());
         
-        assertFalse(vector.set(NGramVector.calcHash("a")));
-        assertFalse(vector.set(NGramVector.calcHash("ab")));
-        assertFalse(vector.set(NGramVector.calcHash("abc")));
-        assertFalse(vector.set(NGramVector.calcHash("abcd")));
+        assertFalse(vector.set("a", 1));
+        assertTrue(vector.contains("a"));
+        
+        assertFalse(vector.set("ab", 2));
+        assertTrue(vector.contains("ab"));
+
+        assertFalse(vector.set("abc", 3));
+        assertTrue(vector.contains("abc"));
+
+        assertFalse(vector.set("abcd", 4));
+        assertTrue(vector.contains("abcd"));
     }
     
     @Test
     public void testDotProduct() {
         NGramVector vector1 = new NGramVector();
-        assertTrue(vector1.set(NGramVector.calcHash("a")));
+        assertTrue(vector1.set("a", 1));
         
         NGramVector vector2 = new NGramVector();
-        assertTrue(vector2.set(NGramVector.calcHash("a")));
+        assertTrue(vector2.set("a", 1));
         
         assertEquals(1.0, vector1.score(vector2), 0.0001);
         
-        assertTrue(vector2.set(NGramVector.calcHash("b")));
+        assertTrue(vector2.set("b", 1));
         assertEquals(2, vector2.getLengthSquared());
         
         double score = 1.0 / Math.sqrt(2);
         assertEquals(score, vector1.score(vector2), 0.0001);
 
-        assertTrue(vector1.set(NGramVector.calcHash("b")));
+        assertTrue(vector1.set("b", 1));
         assertEquals(1.0, vector1.score(vector2), 0.0001);
     }
 
@@ -60,15 +59,18 @@ public class NGramVectorTest {
     public void testBigDotProduct() {
         NGramVector vector1 = new NGramVector();
         for (int i = 0; i < 1000; i++) {
-            assertTrue(vector1.set(NGramVector.calcHash("a" + i)));
+            String ngram = "a" + i;
+            assertTrue(vector1.set(ngram, ngram.length()));
         }
         
         NGramVector vector2 = new NGramVector();
         for (int i = 0; i < 500; i++) {
-            assertTrue(vector2.set(NGramVector.calcHash("a" + i)));
+            String ngram = "a" + i;
+            assertTrue(vector2.set(ngram, ngram.length()));
         }
         for (int i = 500; i < 1000; i++) {
-            assertTrue(vector2.set(NGramVector.calcHash("b" + i)));
+            String ngram = "b" + i;
+            assertTrue(vector2.set(ngram, ngram.length()));
         }
 
         // We have 10 entries with length 2, 90 entries with length 3, and 900 entries with length 4
