@@ -14,6 +14,7 @@ import java.util.Set;
 
 import javax.management.RuntimeErrorException;
 
+import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.apache.log4j.Logger;
 import org.apache.mahout.math.RandomAccessSparseVector;
 import org.apache.mahout.math.Vector;
@@ -25,7 +26,8 @@ public class ModelBuilder {
     public static final int MIN_NGRAM_LENGTH = 4;
     public static final int MAX_NGRAM_LENGTH = 4;
 
-    private static final int TARGET_NGRAMS = 500;
+    private static final int TARGET_NGRAMS = 1000;
+    private static final double TARGET_SCORE = 50.0;
     
     // Map from language to ngram to stats for that ngram
     private Map<String, Map<CharSequence, NGramStats>> _langStats;
@@ -36,7 +38,6 @@ public class ModelBuilder {
     public ModelBuilder() {
         _langStats = new HashMap<String, Map<CharSequence, NGramStats>>();
         _docsPerLanguage = new IntCounter();
-
     }
     
     public void addTrainingDoc(String language, CharSequence text) {
@@ -72,91 +73,61 @@ public class ModelBuilder {
         // score, where the score is composed of the ngram's doc frequency for this language (higher is better)
         // the the doc frequencies for all other languages (lower is better).
         
-        // We do this one ngram at a time, because as we add ngrams that are good for disambiguating this language
-        // from language X, we want to emphasize ngrams that are good for disambiguating against the other languages.
-        // So we keep a running tally of per-language summed scores, and do pro-rata weighting of the remaining
-        // ngrams.
-
         Map<String, NGramVector> langVectors = new HashMap<String, NGramVector>();
 
         for (String language : languages) {
             double docsForThisLanguage = _docsPerLanguage.get(language);
             Map<CharSequence, NGramStats> languageStats = _langStats.get(language);
             
-            // Keep track of per-language score, and total score
-            DoubleCounter scoresForOtherLanguages = new DoubleCounter();
-            double totalScoresForOtherLanugages = 0.0;
-            
             List<NGramScore> bestNGrams = new ArrayList<ModelBuilder.NGramScore>(languageStats.size());
-            while ((bestNGrams.size() < TARGET_NGRAMS) && (languageStats.size() > 0)) {
-                // Find the next best n-gram
+            for (CharSequence ngram : languageStats.keySet()) {
+                NGramStats stats = languageStats.get(ngram);
+                double df = stats.getDocCount() / docsForThisLanguage;
                 
-                CharSequence bestNGram = null;
-                double bestScore = Double.NEGATIVE_INFINITY;
-                
-                for (CharSequence ngram : languageStats.keySet()) {
-                    NGramStats stats = languageStats.get(ngram);
-                    double df = stats.getDocCount() / docsForThisLanguage;
-                    
-                    double totalOtherNDF = 1.0;
-                    for (String otherLanguage : languages) {
-                        if (otherLanguage.equals(language)) {
-                            continue;
-                        }
-                        
-                        // Weight this language based on its pro-rata share of the total
-                        // scores.
-                        double weight = totalScoresForOtherLanugages == 0.0 ? 1.0 : 1.0 - (scoresForOtherLanguages.get(otherLanguage) / totalScoresForOtherLanugages);
-                        
-                        double otherDF = 0.0;
-                        double docsForOtherLanguage = _docsPerLanguage.get(otherLanguage);
-                        NGramStats otherStats = _langStats.get(otherLanguage).get(ngram);
-                        if (otherStats != null) {
-                            otherDF = otherStats.getDocCount() / docsForOtherLanguage;
-                        }
-                        
-                        totalOtherNDF *= (weight * (1.0 - otherDF));
-                    }
-                    
-                    double ngramScore = df * totalOtherNDF;
-                    if (ngramScore > bestScore) {
-                        bestScore = ngramScore;
-                        bestNGram = ngram;
-                    }
-                }
-                
-                // Move the best n-gram from our current language stats (so we don't pick it
-                // again) into our list.
-                bestNGrams.add(new NGramScore(bestNGram, bestScore));
-                languageStats.remove(bestNGram);
-                
-                // Update the per-language scores for this ngram (and the total overall) so we
-                // know how to properly weight the negative doc frequencies for other candidate
-                // ngrams.
+                double totalDocsForOtherLanguages = 0.0;
+                double docsForOtherLanguages = 0.0;
                 for (String otherLanguage : languages) {
                     if (otherLanguage.equals(language)) {
                         continue;
                     }
-                    
-                    double otherDF = 0.0;
-                    double docsForOtherLanguage = _docsPerLanguage.get(otherLanguage);
-                    NGramStats otherStats = _langStats.get(otherLanguage).get(bestNGram);
-                    if (otherStats != null) {
-                        otherDF = otherStats.getDocCount() / docsForOtherLanguage;
-                    }
-                    
-                    double otherNDF = (1.0 - otherDF);
-                    scoresForOtherLanguages.increment(otherLanguage, otherNDF);
-                    totalScoresForOtherLanugages += otherNDF;
-                }
 
+                    totalDocsForOtherLanguages += _docsPerLanguage.get(otherLanguage);
+
+                    NGramStats otherStats = _langStats.get(otherLanguage).get(ngram);
+                    if (otherStats != null) {
+                        docsForOtherLanguages += otherStats.getDocCount();
+                    }
+                }
+                
+                double otherDF = docsForOtherLanguages / totalDocsForOtherLanguages;
+                double ngramScore = df * (1.0 - otherDF);
+                bestNGrams.add(new NGramScore(ngram, ngramScore));
             }
+            
+            // Pick the best ngrams
+            Collections.sort(bestNGrams);
+            int maxIndex = Math.min(TARGET_NGRAMS, bestNGrams.size()) - 1;
+            
+            // Figure out stats so we know weights to use.
+            SummaryStatistics stats = new SummaryStatistics();
+            for (NGramScore ngs : bestNGrams) {
+                stats.addValue(ngs.getScore());
+            }
+            
+            double mean = stats.getMean();
+            double stdDeviation = stats.getStandardDeviation();
             
             NGramVector vector = new NGramVector(TARGET_NGRAMS);
-            for (NGramScore ngramScore : bestNGrams) {
-                vector.set(BaseNGramVector.calcHash(ngramScore.getNGram()));
+            double totalLanguageScore = 0.0;
+            for (int i = 0; (i <= maxIndex) && (totalLanguageScore < TARGET_SCORE); i++) {
+                double score = bestNGrams.get(i).getScore();
+                double stdDeviations = (score - mean) / stdDeviation;
+                System.out.println(String.format("NGram '%s' has score %f and std deviations %f", bestNGrams.get(i).getNGram(), score, stdDeviations));
+                vector.set(BaseNGramVector.calcHash(bestNGrams.get(i).getNGram()));
+                totalLanguageScore += bestNGrams.get(i).getScore();
             }
             
+            System.out.println(String.format("Language '%s' size = %d", language, vector.size()));
             langVectors.put(language, vector);
         }
         
