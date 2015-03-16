@@ -62,12 +62,12 @@ public class LanguageDetectorTest {
                 missesPerLanguage.increment(language);
                 totalMisses += 1;
 
-                System.out.println(String.format("Best result for %d chars in '%s' was '%s' with score %f and confidence %f", text.length(), language, bestLanguage, bestResult.getScore(), bestResult.getConfidence()));
+                // System.out.println(String.format("Best result for %d chars in '%s' was '%s' with score %f and confidence %f", text.length(), language, bestLanguage, bestResult.getScore(), bestResult.getConfidence()));
                 DetectionResult nextBestResult = sortedResults.get(1);
                 if (nextBestResult.getLanguage().equals(language)) {
-                    System.out.println(String.format("Second best result was a match with score %f", nextBestResult.getScore()));
+                    // System.out.println(String.format("Second best result was a match with score %f", nextBestResult.getScore()));
                 } else {
-                    System.out.println(String.format("Second best result was '%s' with score %f", nextBestResult.getLanguage(), nextBestResult.getScore()));
+                    // System.out.println(String.format("Second best result was '%s' with score %f", nextBestResult.getLanguage(), nextBestResult.getScore()));
                 }
             }
         }
