@@ -2,6 +2,7 @@ package com.scaleunlimited.yalder;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -23,36 +24,18 @@ public class ModelBuilder {
 
     public static final int MIN_NGRAM_LENGTH = 4;
     public static final int MAX_NGRAM_LENGTH = 4;
-    
-    // Percentage of documents that must contain the ngram
-    // private static final double MIN_DF = 0.01;
-    private static final double MIN_DF = 0.02;
 
-    // Minimum LLR values for various ngram lengths
-    private static final double MIN_LLR[] = {
-        0.0,    // no ngrams of length 0
-        40.0,   // length 1
-        2.0,   // length 2
-        10.0,    // length 3
-        10.0    // length 4
-    };
+    private static final int TARGET_NGRAMS = 500;
     
-    private static final double NGRAM_SCALARS[] = {
-        0.0,    // no ngrams of length 0
-        1.0,
-        2.0,
-        3.0,
-        4.0
-    };
-    
-    // TODO everything here needs to be based on HashTokenizer????
-    // Otherwise we need to keep NGramTokenizer in sync (which includes normalization)
+    // Map from language to ngram to stats for that ngram
     private Map<String, Map<CharSequence, NGramStats>> _langStats;
-    private Map<String, Integer> _docsPerLanguage;
+    
+    // Map from language to number of documents
+    private IntCounter _docsPerLanguage;
     
     public ModelBuilder() {
         _langStats = new HashMap<String, Map<CharSequence, NGramStats>>();
-        _docsPerLanguage = new HashMap<String, Integer>();
+        _docsPerLanguage = new IntCounter();
 
     }
     
@@ -60,12 +43,7 @@ public class ModelBuilder {
         Map<CharSequence, NGramStats> docStats = CharUtils.calcNGramStats(text, MIN_NGRAM_LENGTH, MAX_NGRAM_LENGTH);
         mergeStats(language, docStats);
 
-        Integer curDocsForLanguage = _docsPerLanguage.get(language);
-        if (curDocsForLanguage == null) {
-            _docsPerLanguage.put(language, 1);
-        } else {
-            _docsPerLanguage.put(language, curDocsForLanguage + 1);
-        }
+        _docsPerLanguage.increment(language);
     }
     
     public Collection<LanguageModel> makeModels() {
@@ -76,153 +54,110 @@ public class ModelBuilder {
         }
     }
     
-    public Collection<LanguageModel> makeModels(OutputStreamWriter osw) throws IOException {
+    public Collection<LanguageModel> makeModels(PrintWriter pw) throws IOException {
         
         // First build the language vectors for all languages we've got.
-        Map<String, NGramVector> langVectors = makeVectors(_langStats.keySet(), osw);
+        Map<String, NGramVector> langVectors = makeVectors(_langStats.keySet(), pw);
         
         List<LanguageModel> models = new ArrayList<LanguageModel>(langVectors.size());
         for (String language : langVectors.keySet()) {
             models.add(new LanguageModel(language, null, langVectors.get(language)));
         }
         
-        // For languages that wind up with vectors which are "close" to each other, create special
-        // training data that can be used to disambiguate. So then if our top 2 languages are very close
-        // (low confidence) and we have specific models for those two against each other, do a "tie breaker"
-        // E.g. top two results are es and pt, but they're close so we have low confidence. If we have
-        // an es/pt model and a pt/es model (should always be a pair) then re-calc scores using those two
-        // models and see if the order (and confidence) changes.
-        Set<String> pairWiseLanguages = new HashSet<String>();
-        
-        for (LanguageModel model : models) {
-            String language = model.getLanguage();
-            List<DetectionResult> results = new ArrayList<DetectionResult>();
-            for (LanguageModel otherModel: models) {
-                double score = model.compare(otherModel);
-                results.add(new DetectionResult(otherModel.getLanguage(), score));
-            }
-            
-            Collections.sort(results);
-            
-            for (DetectionResult result : results) {
-                double score = result.getScore();
-                String otherLanguage = result.getLanguage();
-                if (!language.equals(otherLanguage) && (score >= 0.30)) {
-                    // Order these so that the "smaller" language (sort order) is first in our key.
-                    String pairWiseKey = null;
-                    if (language.compareTo(otherLanguage) < 0) {
-                        pairWiseKey = language + "\t" + otherLanguage;
-                    } else {
-                        pairWiseKey = otherLanguage + "\t" + language;
-                    }
-                    pairWiseLanguages.add(pairWiseKey);
-                }
-            }
-        }
-
-        // Now we have a set of pair-wise languages to process
-        for (String pairWiseKey : pairWiseLanguages) {
-            String[] languages = pairWiseKey.split("\t");
-            Set<String> languageSet = new HashSet<String>();
-            languageSet.add(languages[0]);
-            languageSet.add(languages[1]);
-            Map<String, NGramVector> pairwiseVectors = makeVectors(languageSet, 0.3, osw);
-            models.add(new LanguageModel(languages[0], languages[1], pairwiseVectors.get(languages[0])));
-            models.add(new LanguageModel(languages[1], languages[0], pairwiseVectors.get(languages[1])));
-        }
-
         return models;
     }
     
-    private Map<String, NGramVector> makeVectors(Set<String> languages, OutputStreamWriter osw) throws IOException {
-        return makeVectors(languages, 1.0, osw);
-    }
-    
-    private Map<String, NGramVector> makeVectors(Set<String> languages, double thresholdScalar, OutputStreamWriter osw) throws IOException {
-        // For each language, we now know the count for each ngram, and the doc count.
-        // We want to calculate the LLR score. We need to combine all of the ngram counts
-        // across languages so we know the global count for an ngram (and the total global
-        // count for all ngrams), and we need to know how many ngrams we've got for each
-        // language as well.
+    private Map<String, NGramVector> makeVectors(Set<String> languages, PrintWriter pw) throws IOException {
+        // For each language, we want to pick the N best ngrams. The best ngram is the one with the highest
+        // score, where the score is composed of the ngram's doc frequency for this language (higher is better)
+        // the the doc frequencies for all other languages (lower is better).
+        
+        // We do this one ngram at a time, because as we add ngrams that are good for disambiguating this language
+        // from language X, we want to emphasize ngrams that are good for disambiguating against the other languages.
+        // So we keep a running tally of per-language summed scores, and do pro-rata weighting of the remaining
+        // ngrams.
 
-        int totalNGrams = 0;
-        Map<String, Integer> ngramsPerLanguage = new HashMap<String, Integer>();
-        Map<CharSequence, Integer> ngramsGlobally = new HashMap<CharSequence, Integer>();
-        for (String language : languages) {
-            int ngramsForCurLanguage = 0;
-            Map<CharSequence, NGramStats> stats = _langStats.get(language);
-            for (CharSequence ngram : stats.keySet()) {
-                int ngramCount = stats.get(ngram).getNGramCount();
-                totalNGrams += ngramCount;
-                ngramsForCurLanguage += ngramCount;
-
-                Integer globalNGramCount = ngramsGlobally.get(ngram);
-                if (globalNGramCount == null) {
-                    ngramsGlobally.put(ngram, ngramCount);
-                } else {
-                    ngramsGlobally.put(ngram, globalNGramCount + ngramCount);
-                }
-            }
-
-            ngramsPerLanguage.put(language, ngramsForCurLanguage);
-        }
-
-        // Now for each language/ngram we can calculate both the doc frequency
-        // and the LLR score.
         Map<String, NGramVector> langVectors = new HashMap<String, NGramVector>();
-        
-        Set<CharSequence> ngrams = new HashSet<CharSequence>();
-        
+
         for (String language : languages) {
-            NGramVector vector = new NGramVector();
+            double docsForThisLanguage = _docsPerLanguage.get(language);
+            Map<CharSequence, NGramStats> languageStats = _langStats.get(language);
             
-            int ngramsForThisLanguage = ngramsPerLanguage.get(language);
-            int docsForThisLanguage = _docsPerLanguage.get(language);
-
-            Map<CharSequence, NGramStats> stats = _langStats.get(language);
-            for (CharSequence ngram : stats.keySet()) {
-                // k11 is the count of this ngram for this language
-                int k11 = stats.get(ngram).getNGramCount();
-
-                // k12 is the count of this ngram for all other languages.
-                int k12 = ngramsGlobally.get(ngram) - k11;
-
-                // k21 is the count of other ngrams for this language
-                int k21 = ngramsForThisLanguage - k11;
-
-                // k22 is the count of other ngrams for other languages
-                int k22 = totalNGrams - ngramsForThisLanguage;
-
-                double llrScore = LogLikelihood.rootLogLikelihoodRatio(k11, k12, k21, k22);
-
-                int docsWithThisNGram = stats.get(ngram).getDocCount();
-                double df = (double)docsWithThisNGram / (double)docsForThisLanguage;
-
-                // Now only output the result if DF and LLR are "interesting.
-                if ((df < MIN_DF * thresholdScalar) || (llrScore < MIN_LLR[ngram.length()] * thresholdScalar)) {
-                    continue;
+            // Keep track of per-language score, and total score
+            DoubleCounter scoresForOtherLanguages = new DoubleCounter();
+            double totalScoresForOtherLanugages = 0.0;
+            
+            List<NGramScore> bestNGrams = new ArrayList<ModelBuilder.NGramScore>(languageStats.size());
+            while ((bestNGrams.size() < TARGET_NGRAMS) && (languageStats.size() > 0)) {
+                // Find the next best n-gram
+                
+                CharSequence bestNGram = null;
+                double bestScore = Double.NEGATIVE_INFINITY;
+                
+                for (CharSequence ngram : languageStats.keySet()) {
+                    NGramStats stats = languageStats.get(ngram);
+                    double df = stats.getDocCount() / docsForThisLanguage;
+                    
+                    double totalOtherNDF = 1.0;
+                    for (String otherLanguage : languages) {
+                        if (otherLanguage.equals(language)) {
+                            continue;
+                        }
+                        
+                        // Weight this language based on its pro-rata share of the total
+                        // scores.
+                        double weight = totalScoresForOtherLanugages == 0.0 ? 1.0 : 1.0 - (scoresForOtherLanguages.get(otherLanguage) / totalScoresForOtherLanugages);
+                        
+                        double otherDF = 0.0;
+                        double docsForOtherLanguage = _docsPerLanguage.get(otherLanguage);
+                        NGramStats otherStats = _langStats.get(otherLanguage).get(ngram);
+                        if (otherStats != null) {
+                            otherDF = otherStats.getDocCount() / docsForOtherLanguage;
+                        }
+                        
+                        totalOtherNDF *= (weight * (1.0 - otherDF));
+                    }
+                    
+                    double ngramScore = df * totalOtherNDF;
+                    if (ngramScore > bestScore) {
+                        bestScore = ngramScore;
+                        bestNGram = ngram;
+                    }
                 }
                 
-                // Add this ngram to our vector.
-                int hash = BaseNGramVector.calcHash(ngram);
-                if (vector.get(hash) != 0.0) {
-                    LOGGER.info(String.format("Hash collision for '%s'", ngram));
+                // Move the best n-gram from our current language stats (so we don't pick it
+                // again) into our list.
+                bestNGrams.add(new NGramScore(bestNGram, bestScore));
+                languageStats.remove(bestNGram);
+                
+                // Update the per-language scores for this ngram (and the total overall) so we
+                // know how to properly weight the negative doc frequencies for other candidate
+                // ngrams.
+                for (String otherLanguage : languages) {
+                    if (otherLanguage.equals(language)) {
+                        continue;
+                    }
+                    
+                    double otherDF = 0.0;
+                    double docsForOtherLanguage = _docsPerLanguage.get(otherLanguage);
+                    NGramStats otherStats = _langStats.get(otherLanguage).get(bestNGram);
+                    if (otherStats != null) {
+                        otherDF = otherStats.getDocCount() / docsForOtherLanguage;
+                    }
+                    
+                    double otherNDF = (1.0 - otherDF);
+                    scoresForOtherLanguages.increment(otherLanguage, otherNDF);
+                    totalScoresForOtherLanugages += otherNDF;
                 }
-                
-                vector.set(hash);
-                
-                // Update the set of ngrams of interest.
-                ngrams.add(ngram);
-                
-                // Output language, ngram, count, doc frequency and LLR score
-                if (osw != null) {
-                    osw.write(String.format("%s\t'%s'\t%d\t%f\t%f\t%d\t%d\t%d\t%d\n", language, ngram, k11, df, llrScore, k11, k12, k21, k22));
-                }
+
             }
             
-            // Save off the vector we created.
+            NGramVector vector = new NGramVector(TARGET_NGRAMS);
+            for (NGramScore ngramScore : bestNGrams) {
+                vector.set(BaseNGramVector.calcHash(ngramScore.getNGram()));
+            }
+            
             langVectors.put(language, vector);
-            LOGGER.info(String.format("Vector for '%s' has %d elements", language, vector.size()));
         }
         
         return langVectors;
@@ -246,6 +181,37 @@ public class ModelBuilder {
             curNGramStats.incDocCount();
             curNGramStats.incNGramCount(docStats.get(ngram).getNGramCount());
         }
+    }
+    
+    private static class NGramScore implements Comparable<NGramScore> {
+        private CharSequence _ngram;
+        private double _score;
+        
+        public NGramScore(CharSequence ngram, double score) {
+            _ngram = ngram;
+            _score = score;
+        }
+
+        public CharSequence getNGram() {
+            return _ngram;
+        }
+
+        public double getScore() {
+            return _score;
+        }
+
+        @Override
+        public int compareTo(NGramScore o) {
+            if (_score > o._score) {
+                return -1;
+            } else if (_score < o._score) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+        
+        
     }
 
 }

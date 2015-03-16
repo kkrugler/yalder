@@ -179,7 +179,6 @@ public class NGramVector extends BaseNGramVector {
         } else {
             return false;
         }
-
     }
 
     protected int getIndex(int hash) {
