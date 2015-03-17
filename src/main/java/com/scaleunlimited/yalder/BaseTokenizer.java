@@ -1,5 +1,7 @@
 package com.scaleunlimited.yalder;
 
+import java.util.BitSet;
+
 public abstract class BaseTokenizer {
     private final CharSequence _buffer;
     private int _bufferPos; // Position we're at in _buffer for getting raw
@@ -15,6 +17,33 @@ public abstract class BaseTokenizer {
                                     // generating ngrams
 
     protected int _curNGramSize;
+
+    private static final BitSet PUNCT_CHARS = new BitSet(65536);
+    
+    static {
+        PUNCT_CHARS.set((int)'»');
+        PUNCT_CHARS.set((int)'«');
+        PUNCT_CHARS.set((int)'º');
+        PUNCT_CHARS.set((int)'°');
+        PUNCT_CHARS.set((int)'–');
+        PUNCT_CHARS.set((int)'―');
+        PUNCT_CHARS.set((int)'”');
+        PUNCT_CHARS.set((int)'“');
+        
+        PUNCT_CHARS.set((int)'’');
+        PUNCT_CHARS.set((int)'‘');
+        
+        PUNCT_CHARS.set((int)'‚');
+        PUNCT_CHARS.set((int)'‛');
+        
+        PUNCT_CHARS.set((int)'„');
+        PUNCT_CHARS.set((int)'‟');
+        
+        PUNCT_CHARS.set((int)'½');
+        PUNCT_CHARS.set((int)'…');
+        
+        PUNCT_CHARS.set(0x00AD);    // SOFT HYPHEN
+    }
 
     public BaseTokenizer(CharSequence buffer, int minLength, int maxLength) {
         _buffer = buffer;
@@ -48,6 +77,9 @@ public abstract class BaseTokenizer {
                     charIsWhitespace = true;
                 }
             } else if (Character.isWhitespace(curChar)) {
+                curChar = ' ';
+                charIsWhitespace = true;
+            } else if (PUNCT_CHARS.get((int)curChar)) {
                 curChar = ' ';
                 charIsWhitespace = true;
             }
