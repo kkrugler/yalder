@@ -25,8 +25,11 @@ public abstract class BaseTokenizer {
         PUNCT_CHARS.set((int)'«');
         PUNCT_CHARS.set((int)'º');
         PUNCT_CHARS.set((int)'°');
+        
         PUNCT_CHARS.set((int)'–');
         PUNCT_CHARS.set((int)'―');
+        PUNCT_CHARS.set((int)'—');
+        
         PUNCT_CHARS.set((int)'”');
         PUNCT_CHARS.set((int)'“');
         
