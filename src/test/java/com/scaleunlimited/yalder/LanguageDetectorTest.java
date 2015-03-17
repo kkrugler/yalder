@@ -2,8 +2,13 @@ package com.scaleunlimited.yalder;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
 
@@ -41,14 +46,21 @@ public class LanguageDetectorTest {
         LanguageDetector detector = new LanguageDetector(models);
         
         int totalMisses = 0;
-        IntCounter missesPerLanguage = new IntCounter();
         IntCounter hitsPerLanguage = new IntCounter();
 
+        Map<String, IntCounter> missesPerLanguage = new HashMap<String, IntCounter>();
+        
         for (String line : testLines) {
             String[] pieces = line.split("\t", 2);
             String language = pieces[0];
             String text = pieces[1];
 
+            IntCounter missCounter = missesPerLanguage.get(language);
+            if (missCounter == null) {
+                missCounter = new IntCounter();
+                missesPerLanguage.put(language, missCounter);
+            }
+            
             List<DetectionResult> sortedResults = new ArrayList<DetectionResult>(detector.detect(text));
             DetectionResult bestResult = sortedResults.get(0);
             String bestLanguage = bestResult.getLanguage();
@@ -59,7 +71,7 @@ public class LanguageDetectorTest {
                     System.out.println(String.format("We would do extra ", text.length(), language, bestLanguage, bestResult.getScore(), bestResult.getConfidence()));
                 }
             } else {
-                missesPerLanguage.increment(language);
+                missCounter.increment(bestLanguage);
                 totalMisses += 1;
 
                 // System.out.println(String.format("Best result for %d chars in '%s' was '%s' with score %f and confidence %f", text.length(), language, bestLanguage, bestResult.getScore(), bestResult.getConfidence()));
@@ -74,10 +86,32 @@ public class LanguageDetectorTest {
         
         for (LanguageModel model : models) {
             String language = model.getLanguage();
-            int misses = missesPerLanguage.get(language);
+            IntCounter missCounter = missesPerLanguage.get(language);
+            int misses = missCounter.sum();
             int hits = hitsPerLanguage.get(language);
             
-            System.out.println(String.format("Miss ratio for '%s' = %.2f%%", language, 100.0 * (double)misses/(double)(misses + hits)));
+            System.out.print(String.format("'%s'\t%.2f%%", language, 100.0 * (double)misses/(double)(misses + hits)));
+            
+            List<Entry<String, Integer>> counts = new ArrayList<Entry<String, Integer>>(missCounter.entrySet());
+            Collections.sort(counts, new Comparator<Entry<String, Integer>>() {
+
+                @Override
+                public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
+                    if (o1.getValue() > o2.getValue()) {
+                        return -1;
+                    } else if (o1.getValue() < o2.getValue()) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }
+            });
+            
+            for (Entry<String, Integer> count : counts) {
+                System.out.print(String.format("\t'%s'=% 2d%%", count.getKey(), Math.round(100.0 * (double)count.getValue()/(double)(misses))));
+            }
+            
+            System.out.println();
         }
 
         System.out.println(String.format("Total miss ratio = %.2f%%", 100.0 * (double)totalMisses/(double)testLines.size()));
