@@ -2,6 +2,8 @@ package com.scaleunlimited.yalder;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class IntCounter {
 
@@ -29,6 +31,19 @@ public class IntCounter {
     public int get(String key) {
         Integer curValue = _counters.get(key);
         return (curValue == null ? 0 : curValue);
+    }
+
+    public int sum() {
+        int total = 0;
+        for (Integer value : _counters.values()) {
+            total += value;
+        }
+        
+        return total;
+    }
+
+    public Set<Entry<String, Integer>> entrySet() {
+        return _counters.entrySet();
     }
 
 }
