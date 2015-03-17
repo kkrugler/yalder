@@ -86,5 +86,35 @@ public class NGramVectorTest {
         assertEquals(expectedScore, vector1.score(vector2), 0.0001);
     }
     
+    @Test
+    public void testContains() {
+        NGramVector vector = new NGramVector();
+        for (int i = 0; i < 1000; i++) {
+            String ngram = "a" + i;
+            assertTrue(vector.set(ngram, 1));
+        }
+
+        for (int i = 0; i < 1000; i++) {
+            String ngram = "a" + i;
+            assertTrue(vector.contains(ngram));
+        }
+        
+        vector.clear();
+        for (int i = 0; i < 1000; i++) {
+            String ngram = "a" + i;
+            assertFalse(vector.contains(ngram));
+        }
+        
+        for (int i = 0; i < 1000; i++) {
+            String ngram = "a" + i;
+            assertTrue(vector.set(ngram, 1));
+        }
+
+        for (int i = 0; i < 1000; i++) {
+            String ngram = "a" + i;
+            assertTrue(vector.contains(ngram));
+        }
+    }
+    
 
 }
