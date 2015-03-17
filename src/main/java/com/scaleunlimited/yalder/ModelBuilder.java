@@ -23,12 +23,12 @@ import org.apache.mahout.math.stats.LogLikelihood;
 public class ModelBuilder {
     private static final Logger LOGGER = Logger.getLogger(ModelBuilder.class);
 
-    public static final int MIN_NGRAM_LENGTH = 4;
-    public static final int MAX_NGRAM_LENGTH = 4;
+    public static final int MIN_NGRAM_LENGTH = 2;
+    public static final int MAX_NGRAM_LENGTH = 2;
 
-    private static final int TARGET_NGRAMS = 2000;          // 1000
-    private static final double TARGET_SCORE = 50.0;        // 40.0
-    private static final double MAX_OTHERDF = 0.01;
+    private static final int TARGET_NGRAMS = 200;          // 1000
+    private static final double TARGET_SCORE = 25.0;        // 40.0
+    private static final double MAX_OTHERDF = 0.10;         // 0.01
     
     // Map from language to ngram to stats for that ngram
     private Map<String, Map<CharSequence, NGramStats>> _langStats;
@@ -127,8 +127,12 @@ public class ModelBuilder {
             double totalLanguageScore = 0.0;
             for (int i = 0; (i <= maxIndex) && (totalLanguageScore < TARGET_SCORE); i++) {
                 double score = bestNGrams.get(i).getScore();
+                if (score == 0.0) {
+                    break;
+                }
+                
                 double otherDF = bestNGrams.get(i).getOtherDF();
-                // System.out.println(String.format("NGram '%s' has score %f and other DF %f", bestNGrams.get(i).getNGram(), score, otherDF));
+                System.out.println(String.format("NGram '%s' has score %f and other DF %f", bestNGrams.get(i).getNGram(), score, otherDF));
                 
                 // The weight is the probability that this term isn't for another language, which
                 // means 1.0 - otherDF. But we need to quantize this to 1...7, whereas it's going
@@ -140,15 +144,15 @@ public class ModelBuilder {
                 int minWeight = 1;
                 double range = maxWeight - minWeight;
                 
-                // int weight = (int)Math.round(minWeight + (range * percent));
-                int weight = 1;
+                int weight = (int)Math.round(minWeight + (range * percent));
+                // int weight = 1;
                 
                 vector.set(bestNGrams.get(i).getNGram(), weight);
                 totalLanguageScore += bestNGrams.get(i).getScore();
             }
             
             totalVectorTerms += vector.size();
-            System.out.println(String.format("Language '%s' size = %d", language, vector.size()));
+            System.out.println(String.format("Language '%s' size = %d, total score = %f", language, vector.size(), totalLanguageScore));
             langVectors.put(language, vector);
         }
         
