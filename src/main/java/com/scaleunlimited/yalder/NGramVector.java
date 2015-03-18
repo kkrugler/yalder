@@ -59,11 +59,11 @@ public class NGramVector extends BaseNGramVector {
      * @param term
      * @return
      */
-    private int getHash(int term) {
+    public static int getHash(int term) {
         return (term & ~0x07);
     }
     
-    private int getWeight(int term) {
+    public static int getWeight(int term) {
         // TODO use table to map from 1..7 "raw weight" to true weight
         return term & 0x07;
     }

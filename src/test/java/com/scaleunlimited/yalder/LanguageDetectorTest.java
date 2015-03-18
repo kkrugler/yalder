@@ -12,35 +12,48 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
 
+import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.junit.Test;
 
 public class LanguageDetectorTest {
 
     @Test
-    public void testEuroParl() throws Exception {
-        List<String> lines = EuroParlUtils.readLines();
-
-        ModelBuilder builder = new ModelBuilder();
-
+    public void testEuroParlManySamples() throws Exception {
         List<String> testLines = new ArrayList<String>();
-        Random rand = new Random(1L);
         
-        for (String line : lines) {
-            // See if we want to hold it out.
-            if (rand.nextInt(10) < 5) {
-                testLines.add(line);
-                continue;
+        SummaryStatistics stats = new SummaryStatistics();
+        
+        for (int i = 0; i < 100; i++) {
+            Collection<LanguageModel> models = makeModelsAndTestData(testLines, new Random());
+            LanguageDetector detector = new LanguageDetector(models);
+
+            int totalMisses = 0;
+            for (String line : testLines) {
+                String[] pieces = line.split("\t", 2);
+                String language = pieces[0];
+                String text = pieces[1];
+
+                List<DetectionResult> sortedResults = new ArrayList<DetectionResult>(detector.detect(text));
+                DetectionResult bestResult = sortedResults.get(0);
+                String bestLanguage = bestResult.getLanguage();
+                if (!bestLanguage.equals(language)) {
+                    totalMisses += 1;
+                }
             }
             
-            // Format is <language code><tab>text
-            String[] pieces = line.split("\t", 2);
-            String language = pieces[0];
-            String text = pieces[1];
-
-            builder.addTrainingDoc(language, text);
+            double missPercentage = 100.0 * (double)totalMisses/(double)testLines.size();
+            stats.addValue(missPercentage);
+            System.out.println(String.format("Total miss ratio = %.2f%%", missPercentage));
         }
-
-        Collection<LanguageModel> models = builder.makeModels();
+        
+        System.out.println(String.format("Min = %.2f%%,  max =  %.2f%%, mean =  %.2f%%, std deviation = %f",
+                                        stats.getMin(), stats.getMax(), stats.getMean(), stats.getStandardDeviation()));
+    }
+    
+    @Test
+    public void testEuroParl() throws Exception {
+        List<String> testLines = new ArrayList<String>();
+        Collection<LanguageModel> models = makeModelsAndTestData(testLines, new Random(1L));
         
         // Now try classifying the held-out text using the models.
         LanguageDetector detector = new LanguageDetector(models);
@@ -168,6 +181,31 @@ public class LanguageDetectorTest {
         }
         
         System.out.println(String.format("Best duration = %dms", bestDuration));
+    }
+
+    private Collection<LanguageModel> makeModelsAndTestData(List<String> testLines, Random rand) throws Exception {
+        testLines.clear();
+        
+        List<String> lines = EuroParlUtils.readLines();
+
+        ModelBuilder builder = new ModelBuilder();
+
+        for (String line : lines) {
+            // See if we want to hold it out.
+            if (rand.nextInt(10) < 2) {
+                testLines.add(line);
+                continue;
+            }
+            
+            // Format is <language code><tab>text
+            String[] pieces = line.split("\t", 2);
+            String language = pieces[0];
+            String text = pieces[1];
+
+            builder.addTrainingDoc(language, text);
+        }
+
+        return builder.makeModels();
     }
 
 }
