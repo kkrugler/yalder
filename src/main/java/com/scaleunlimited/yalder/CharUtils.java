@@ -21,11 +21,7 @@ public class CharUtils {
             hash ^= (hash >>> 6);
         }
         
-        hash += (hash << 3);
-        hash ^= (hash >>> 11);
-        hash += (hash << 15);
-        
-        return hash & ~0x07;
+        return conditionHash(hash);
     }
 
     public static int joaat_hash(char[] text, int offset, int length) {
@@ -38,6 +34,10 @@ public class CharUtils {
             hash ^= (hash >>> 6);
         }
         
+        return conditionHash(hash);
+    }
+
+    private static int conditionHash(int hash) {
         hash += (hash << 3);
         hash ^= (hash >>> 11);
         hash += (hash << 15);

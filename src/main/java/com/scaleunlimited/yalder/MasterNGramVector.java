@@ -3,6 +3,12 @@ package com.scaleunlimited.yalder;
 
 public class MasterNGramVector {
 
+    public enum MarkResult {
+        MISSING,
+        EXISTING,
+        NEW
+    }
+    
     private NGramVector _master;
     private NGramVector _marked;
     
@@ -19,25 +25,25 @@ public class MasterNGramVector {
      * If the <hash> entry exists, set the corresponding
      * flag to true (mark it) so we know it exists.
      * 
-     * TODO really we want three results - doesn't exist so not set,
-     * exists but wasn't flagged so set flag to true, exists and
-     * was flagged so did nothing.
-     * 
      * @param hash
-     * @return true if this entry exists, so we marked it.
+     * @return result of marking this entry.
      */
-    public boolean mark(int hash) {
+    public MarkResult mark(int hash) {
         if (_master.contains(hash)) {
+            
             // We set the weight to 1, as we treat the target as an unweighted
             // vector of boolean term existence flags.
-            _marked.set(hash, 1);
-            return true;
+            if (_marked.set(hash, 1)) {
+                return MarkResult.NEW;
+            } else {
+                return MarkResult.EXISTING;
+            }
         } else {
-            return false;
+            return MarkResult.MISSING;
         }
     }
     
-    public boolean mark(CharSequence ngram) {
+    public MarkResult mark(CharSequence ngram) {
         return mark(CharUtils.joaat_hash(ngram));
     }
     

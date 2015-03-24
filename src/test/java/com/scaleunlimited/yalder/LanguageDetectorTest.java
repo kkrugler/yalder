@@ -31,6 +31,13 @@ public class LanguageDetectorTest {
             for (String line : testLines) {
                 String[] pieces = line.split("\t", 2);
                 String language = pieces[0];
+                
+                if (language.equals("cs") || language.equals("sk")) {
+                    language = "cs+sk";
+                } else if (language.equals("da") || language.equals("de") || language.equals("sv")) {
+                    language = "da+de+sv";
+                }
+
                 String text = pieces[1];
 
                 List<DetectionResult> sortedResults = new ArrayList<DetectionResult>(detector.detect(text));
@@ -51,21 +58,54 @@ public class LanguageDetectorTest {
     }
     
     @Test
-    public void testEuroParl() throws Exception {
+    public void testDAandDEandSV() throws Exception {
+        Set<String> targetLanguages = new HashSet<String>();
+        targetLanguages.add("da");
+        targetLanguages.add("de");
+        targetLanguages.add("sv");
+        
+        testLanguages(targetLanguages);
+    }
+    
+    @Test
+    public void testCSandSK() throws Exception {
+        Set<String> targetLanguages = new HashSet<String>();
+        targetLanguages.add("cs");
+        targetLanguages.add("sk");
+        testLanguages(targetLanguages);
+    }
+    
+    @Test
+    public void testAllLanguages() throws Exception {
+        testLanguages(null);
+    }
+    
+    private void testLanguages(Set<String> targetLanguages) throws Exception {
         List<String> testLines = new ArrayList<String>();
-        Collection<LanguageModel> models = makeModelsAndTestData(testLines, new Random(1L));
+        Collection<LanguageModel> models = makeModelsAndTestData(testLines, new Random(1L), targetLanguages);
         
         // Now try classifying the held-out text using the models.
+        // Note that the testLines will only have text for the target languages.
+        
         LanguageDetector detector = new LanguageDetector(models);
         
         int totalMisses = 0;
         IntCounter hitsPerLanguage = new IntCounter();
 
         Map<String, IntCounter> missesPerLanguage = new HashMap<String, IntCounter>();
-        
         for (String line : testLines) {
             String[] pieces = line.split("\t", 2);
             String language = pieces[0];
+            
+            // If we're testing all languages, then we want to do the collapsing
+            if (targetLanguages == null) {
+                if (language.equals("cs") || language.equals("sk")) {
+                    language = "cs+sk";
+                } else if (language.equals("da") || language.equals("de") || language.equals("sv")) {
+                    language = "da+de+sv";
+                }
+            }
+            
             String text = pieces[1];
 
             IntCounter missCounter = missesPerLanguage.get(language);
@@ -74,32 +114,26 @@ public class LanguageDetectorTest {
                 missesPerLanguage.put(language, missCounter);
             }
             
-            List<DetectionResult> sortedResults = new ArrayList<DetectionResult>(detector.detect(text));
+            List<DetectionResult> sortedResults = new ArrayList<DetectionResult>(detector.detect(text, targetLanguages != null));
             DetectionResult bestResult = sortedResults.get(0);
             String bestLanguage = bestResult.getLanguage();
             if (bestLanguage.equals(language)) {
                 hitsPerLanguage.increment(language);
-                // TODO what am I trying to record here???
-                if ((bestResult.getConfidence() >= 0.4) && detector.hasSpecificModel(language, bestLanguage)) {
-                    System.out.println(String.format("We would do extra ", text.length(), language, bestLanguage, bestResult.getScore(), bestResult.getConfidence()));
-                }
             } else {
                 missCounter.increment(bestLanguage);
                 totalMisses += 1;
 
                 // System.out.println(String.format("Best result for %d chars in '%s' was '%s' with score %f and confidence %f", text.length(), language, bestLanguage, bestResult.getScore(), bestResult.getConfidence()));
-                DetectionResult nextBestResult = sortedResults.get(1);
-                if (nextBestResult.getLanguage().equals(language)) {
-                    // System.out.println(String.format("Second best result was a match with score %f", nextBestResult.getScore()));
-                } else {
-                    // System.out.println(String.format("Second best result was '%s' with score %f", nextBestResult.getLanguage(), nextBestResult.getScore()));
-                }
             }
         }
         
         for (LanguageModel model : models) {
             String language = model.getLanguage();
             IntCounter missCounter = missesPerLanguage.get(language);
+            if (missCounter == null) {
+                missCounter = new IntCounter();
+            }
+            
             int misses = missCounter.sum();
             int hits = hitsPerLanguage.get(language);
             
@@ -184,6 +218,10 @@ public class LanguageDetectorTest {
     }
 
     private Collection<LanguageModel> makeModelsAndTestData(List<String> testLines, Random rand) throws Exception {
+        return makeModelsAndTestData(testLines, rand, null);
+    }
+    
+    private Collection<LanguageModel> makeModelsAndTestData(List<String> testLines, Random rand, Set<String> targetLanguages) throws Exception {
         testLines.clear();
         
         List<String> lines = EuroParlUtils.readLines();
@@ -191,15 +229,20 @@ public class LanguageDetectorTest {
         ModelBuilder builder = new ModelBuilder();
 
         for (String line : lines) {
+            // Format is <language code><tab>text
+            String[] pieces = line.split("\t", 2);
+            String language = pieces[0];
+            
+            if ((targetLanguages != null) && !targetLanguages.contains(language)) {
+                continue;
+            }
+            
             // See if we want to hold it out.
             if (rand.nextInt(10) < 2) {
                 testLines.add(line);
                 continue;
             }
             
-            // Format is <language code><tab>text
-            String[] pieces = line.split("\t", 2);
-            String language = pieces[0];
             String text = pieces[1];
 
             builder.addTrainingDoc(language, text);

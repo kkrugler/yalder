@@ -16,6 +16,10 @@ public class DetectionResult implements Comparable<DetectionResult> {
         return _language;
     }
 
+    public void setLanguage(String language) {
+        _language = language;
+    }
+    
     public double getScore() {
         return _score;
     }
