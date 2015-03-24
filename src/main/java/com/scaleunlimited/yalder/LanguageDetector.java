@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import com.scaleunlimited.yalder.MasterNGramVector.MarkResult;
+
 public class LanguageDetector {
 
     private Collection<LanguageModel> _models;
@@ -13,31 +15,52 @@ public class LanguageDetector {
     public LanguageDetector(Collection<LanguageModel> models) {
         _models = models;
         
+        // TODO is it better to have a single master vector for all models, or should
+        // we re-tokenize when we get one of our combo-results?
         _modelNGrams = new MasterNGramVector(LanguageModel.createComboVector(_models));
         
         // System.out.println(_modelNGrams);
     }
     
     public Collection<DetectionResult> detect(CharSequence text) {
+        return detect(text, true);
+    }
+    
+    public Collection<DetectionResult> detect(CharSequence text, boolean rescoreGroups) {
         _modelNGrams.clearMarks();
         
-        // TODO stop processing text when the ratio of new ngrams to old ngrams drops too low.
-        int totalNGrams = 0;
+        // Stop processing text when the ratio of new ngrams to old ngrams drops too low.
+        // I.e. every time we get N good ngrams, if less than M of those were new, stop.
+        
+        // FUTURE for some odd cases (e.g. text in language we don't support) we won't get
+        // many good ngrams, so we could have a separate check for that case, as otherwise
+        // we'll grind through the entire document collecting only a handful of not-very-
+        // useful ngrams.
         int goodNGrams = 0;
+        int newNGrams = 0;
         HashTokenizer tokenizer = new HashTokenizer(text, ModelBuilder.MIN_NGRAM_LENGTH, ModelBuilder.MAX_NGRAM_LENGTH);
         while (tokenizer.hasNext()) {
-            totalNGrams += 1;
             
             int hash = tokenizer.next();
-            if (_modelNGrams.mark(hash)) {
+            MarkResult result = _modelNGrams.mark(hash);
+            if (result != MarkResult.MISSING) {
                 goodNGrams += 1;
+                if (result == MarkResult.NEW) {
+                    newNGrams += 1;
+                }
+                
+                if ((goodNGrams % 20) == 0) {
+                    if (newNGrams < 5) {
+                        break;
+                    }
+                    
+                    goodNGrams = 0;
+                    newNGrams = 0;
+                }
             }
         }
         
-        // System.out.println(String.format("%d total ngrams, %d good ngrams", totalNGrams, goodNGrams));
-        
         NGramVector target = _modelNGrams.makeVector();
-        // System.out.println(target);
         
         // We now have <target> that we can compare to our set of models.
         List<DetectionResult> result = new ArrayList<DetectionResult>(_models.size());
@@ -48,47 +71,61 @@ public class LanguageDetector {
                 continue;
             }
             
-            double score = model.compare(target);
+            double score = model.getVector().score(target);
             result.add(new DetectionResult(model.getLanguage(), score));
         }
         
         // Sort the results from high to low score.
         Collections.sort(result);
         
+        // If our top result is a combo, rescore it.
+        // TODO make it so
+        DetectionResult topResult = result.get(0);
+        if (rescoreGroups) {
+            if (topResult.getLanguage().equals("cs+sk")) {
+                double csScore = getModel("cs").getVector().score(target);
+                double skScore = getModel("sk").getVector().score(target);
+                if (csScore > skScore) {
+                    topResult.setLanguage("cs");
+                    topResult.setScore(csScore);
+                } else {
+                    topResult.setLanguage("sk");
+                    topResult.setScore(skScore);
+                }
+            } else if (topResult.getLanguage().equals("da+de+sv")) {
+                double daScore = getModel("da").getVector().score(target);
+                double deScore = getModel("de").getVector().score(target);
+                double svScore = getModel("sv").getVector().score(target);
+                if (daScore > deScore) {
+                    if (daScore > svScore) {
+                        topResult.setLanguage("da");
+                        topResult.setScore(daScore);
+                    } else {
+                        topResult.setLanguage("sv");
+                        topResult.setScore(svScore);
+                    }
+                } else if (deScore > svScore) {
+                    topResult.setLanguage("de");
+                    topResult.setScore(deScore);
+                } else {
+                    topResult.setLanguage("sv");
+                    topResult.setScore(svScore);
+                }
+            }
+        }
+        
+        // FUTURE support option to rescore any combo results, not just top one - more
+        // time, but higher accuracy.
+        
         // Calculate confidence based on absolute score and delta from next closest.
         // TODO use absolute score here as a factor?
-        DetectionResult topResult = result.get(0);
         double topScore = topResult.getScore();
-        DetectionResult nextResult = result.get(1);
-        double nextScore = nextResult.getScore();
+        double nextScore = result.size() > 1 ? result.get(1).getScore() : 0.0;
         double delta = topScore - nextScore;
         
         // Confidence is 1.0 if top score is more than 2x the next score, or 0.0 if they
         // are the same.
         double topConfidence = Math.min(1.0, delta/nextScore);
-        
-        // If top two entries are too close (topConfidence is too low), see if we have a 
-        // more specific model that can be used to compare.
-        // TODO reenable this? Was 0.10 level
-        if (topConfidence <= 0.00) {
-            String topLanguage = topResult.getLanguage();
-            String nextLanguage = nextResult.getLanguage();
-            if (hasSpecificModel(topLanguage, nextLanguage)) {
-                // Apply more specific scoring
-                double topRescored = getSpecificModel(topLanguage, nextLanguage).compare(target);
-                double nextRescored = getSpecificModel(nextLanguage, topLanguage).compare(target);
-                
-                if (nextRescored > topRescored) {
-                    // System.out.println(String.format("Order changed using pairwise scoring for '%s' = %f and '%s' = %f", topLanguage, topRescored, nextLanguage, nextRescored));
-                    // TODO  adjust the scores using something better than just swapping them. Then we'll need to recalc topConfidence,
-                    // or do it in the loop below.
-                    topResult.setScore(nextScore);
-                    nextResult.setScore(topScore);
-                    result.set(0, nextResult);
-                    result.set(1, topResult);
-                }
-            }
-        }
         
         for (int i = 0; i < result.size(); i++) {
             DetectionResult dr = result.get(i);
@@ -101,6 +138,17 @@ public class LanguageDetector {
         }
         
         return result;
+    }
+
+    private LanguageModel getModel(String language) {
+        for (LanguageModel model : _models) {
+            
+            if (model.getLanguage().equals(language)) {
+                return model;
+            }
+        }
+        
+        throw new IllegalArgumentException("Unknown language: " + language);
     }
 
     public LanguageModel getSpecificModel(String language, String pairwiseLanguage) {

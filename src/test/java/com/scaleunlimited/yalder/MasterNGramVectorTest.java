@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import com.scaleunlimited.yalder.MasterNGramVector.MarkResult;
+
 public class MasterNGramVectorTest {
 
     @Test
@@ -20,7 +22,7 @@ public class MasterNGramVectorTest {
         
         for (int i = 0; i < 1000; i++) {
             String ngram = "a" + i;
-            assertTrue(masterVector.mark(ngram));
+            assertEquals(MarkResult.NEW, masterVector.mark(ngram));
         }
 
         NGramVector vector2 = masterVector.makeVector();

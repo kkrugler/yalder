@@ -14,15 +14,21 @@ public abstract class BaseNGramVector {
     
     // Set the ngram with weight, given its hash.
     // Return true if the vector didn't already contain the
-    // ngram.
+    // ngram (new entry)
     public abstract boolean set(int hash, int weight);
     
     public abstract boolean contains(int hash);
 
     public abstract int size();
 
+    public abstract int quantizeWeight(double weight);
+    
     public int get(CharSequence ngram) {
         return get(CharUtils.joaat_hash(ngram));
+    }
+    
+    public boolean set(CharSequence ngram, double weight) {
+        return set(ngram, quantizeWeight(weight));
     }
     
     public boolean set(CharSequence ngram, int weight) {

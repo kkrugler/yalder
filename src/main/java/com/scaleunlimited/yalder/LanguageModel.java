@@ -89,5 +89,10 @@ public class LanguageModel {
     public boolean isPairwise() {
         return _pairwiseLanguage != null;
     }
+    
+    @Override
+    public String toString() {
+        return String.format("'%s' vs '%s': %d terms", _modelLanguage, _pairwiseLanguage == null ? "all" : _pairwiseLanguage, _vector.size());
+    }
 
 }

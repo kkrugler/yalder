@@ -1,25 +1,15 @@
 package com.scaleunlimited.yalder;
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.management.RuntimeErrorException;
-
-import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.apache.log4j.Logger;
-import org.apache.mahout.math.RandomAccessSparseVector;
-import org.apache.mahout.math.Vector;
-import org.apache.mahout.math.stats.LogLikelihood;
 
 public class ModelBuilder {
     private static final Logger LOGGER = Logger.getLogger(ModelBuilder.class);
@@ -27,213 +17,185 @@ public class ModelBuilder {
     public static final int MIN_NGRAM_LENGTH = 4;
     public static final int MAX_NGRAM_LENGTH = 4;
 
-    private static final int TARGET_NGRAMS = 2000;          // 1000
-    private static final double TARGET_SCORE = 40.0;        // 40.0
-
-    private static final double MIN_NGRAMFREQUENCY = 0.20;
-    
-    // Map from language to ngram to stats for that ngram
-    private Map<String, Map<CharSequence, NGramStats>> _langStats;
-    
-    // Map from language to number of documents
-    private IntCounter _docsPerLanguage;
+    private SubModelBuilder _mainBuilder;
+    private SubModelBuilder _csSkBuilder;
+    private SubModelBuilder _daDeSvBuilder;
     
     public ModelBuilder() {
-        _langStats = new HashMap<String, Map<CharSequence, NGramStats>>();
-        _docsPerLanguage = new IntCounter();
+        _mainBuilder = new SubModelBuilder();
+        _csSkBuilder = new SubModelBuilder();
+        _daDeSvBuilder = new SubModelBuilder();
     }
     
     public void addTrainingDoc(String language, CharSequence text) {
-        Map<CharSequence, NGramStats> docStats = CharUtils.calcNGramStats(text, MIN_NGRAM_LENGTH, MAX_NGRAM_LENGTH);
-        mergeStats(language, docStats);
+        if (language.equals("cs") || language.equals("sk")) {
+            _csSkBuilder.addTrainingDoc(language, text);
+            language = "cs+sk";
+        } else if (language.equals("da") || language.equals("de") || language.equals("sv")) {
+            _daDeSvBuilder.addTrainingDoc(language, text);
+            language = "da+de+sv";
+        }
 
-        _docsPerLanguage.increment(language);
+        _mainBuilder.addTrainingDoc(language, text);
     }
     
     public Collection<LanguageModel> makeModels() {
-        try {
-            return makeModels(null);
-        } catch (IOException e) {
-            throw new RuntimeException("Impossible exception", e);
-        }
-    }
-    
-    public Collection<LanguageModel> makeModels(PrintWriter pw) throws IOException {
         
         // First build the language vectors for all languages we've got.
-        Map<String, NGramVector> langVectors = makeVectors(_langStats.keySet(), pw);
+        Map<String, NGramVector> mainVectors = _mainBuilder.makeVectors();
         
-        List<LanguageModel> models = new ArrayList<LanguageModel>(langVectors.size());
-        for (String language : langVectors.keySet()) {
-            models.add(new LanguageModel(language, null, langVectors.get(language)));
+        // Now build the pair-wise language vectors for specific cases.
+        Map<String, NGramVector> csSkVectors = _csSkBuilder.makeVectors();
+        Map<String, NGramVector> daDeSvVectors = _daDeSvBuilder.makeVectors();
+
+        List<LanguageModel> models = new ArrayList<LanguageModel>();
+        for (String language : mainVectors.keySet()) {
+            models.add(new LanguageModel(language, null, mainVectors.get(language)));
+        }
+        
+        for (String language : csSkVectors.keySet()) {
+            models.add(new LanguageModel(language, "cs+sk", csSkVectors.get(language)));
+        }
+        
+        for (String language : daDeSvVectors.keySet()) {
+            models.add(new LanguageModel(language, "da+de+sv", daDeSvVectors.get(language)));
         }
         
         return models;
     }
     
-    private Map<String, NGramVector> makeVectors(Set<String> languages, PrintWriter pw) throws IOException {
-        // For each language, we want to pick the N best ngrams. The best ngram is the one with the highest
-        // score, where the score is composed of the ngram's doc frequency for this language (higher is better)
-        // the the doc frequencies for all other languages (lower is better).
-        
-        Map<String, NGramVector> langVectors = new HashMap<String, NGramVector>();
+    private static class SubModelBuilder {
+        private static final int TARGET_NGRAMS = 1000;          // 1000
+        private static final double TARGET_SCORE = 30.0;        // 40.0
 
-        int totalVectorTerms = 0;
+        private static final double MIN_NGRAMFREQUENCY = 0.20;  // 0.20
         
-        for (String language : languages) {
-            NGramVector vector = makeVector(language, languages);
-            totalVectorTerms += vector.size();
-            langVectors.put(language, vector);
+        // Map from language to ngram to stats for that ngram
+        private Map<String, Map<CharSequence, NGramStats>> _langStats;
+        
+        // Map from language to number of documents
+        private IntCounter _docsPerLanguage;
+        
+        public SubModelBuilder() {
+            _langStats = new HashMap<String, Map<CharSequence, NGramStats>>();
+            _docsPerLanguage = new IntCounter();
         }
         
-        System.out.println(String.format("Total vector terms = %d", totalVectorTerms));
+        public void addTrainingDoc(String language, CharSequence text) {
+            Map<CharSequence, NGramStats> docStats = CharUtils.calcNGramStats(text, MIN_NGRAM_LENGTH, MAX_NGRAM_LENGTH);
+            mergeStats(language, docStats);
+
+            _docsPerLanguage.increment(language);
+        }
         
-        /*
-        // Now let's see if we can add another N terms to help disambiguate specific cases.
-        NGramVector cs_sk_vector = makeVector("cs", Collections.singleton("sk"));
-        NGramVector cs_vector = langVectors.get("cs");
-        
-        int numAdded = 0;
-        Iterator<Integer> iter = cs_sk_vector.getIterator();
-        while (iter.hasNext()) {
-            int term = iter.next();
-            int weight = NGramVector.getWeight(term);
-            int hash = NGramVector.getHash(term);
-            
-            if ((weight > 4) && !cs_vector.contains(hash)) {
-                // cs_vector.set(hash, 1);
-                numAdded += 1;
+        public Map<String, NGramVector> makeVectors() {
+            Set<String> languages = _langStats.keySet();
+            Map<String, NGramVector> langVectors = new HashMap<String, NGramVector>();
+
+            NGramVector mergedVector = new NGramVector();
+
+            for (String language : languages) {
+                NGramVector vector = makeVector(language, languages);
+                mergedVector.merge(vector);
+                langVectors.put(language, vector);
             }
+
+            System.out.println(String.format("Total vector terms = %d", mergedVector.size()));
+
+            return langVectors;
         }
-        System.out.println(String.format("Added %d high weight terms to 'cs' vector", numAdded));
 
-        NGramVector sk_cs_vector = makeVector("sk", Collections.singleton("cs"));
-        NGramVector sk_vector = langVectors.get("sk");
-        
-        numAdded = 0;
-        iter = cs_sk_vector.getIterator();
-        while (iter.hasNext()) {
-            int term = iter.next();
-            int weight = NGramVector.getWeight(term);
-            int hash = NGramVector.getHash(term);
-            
-            if ((weight > 4) && !sk_vector.contains(hash)) {
-                // sk_vector.set(hash, 1);
-                numAdded += 1;
-            }
-        }
-        System.out.println(String.format("Added %d high weight terms to 'sk' vector", numAdded));
-        */
-        
-        return langVectors;
-    }
+        private NGramVector makeVector(String targetLanguage, Set<String> otherLanguages) {
+            double docsForThisLanguage = _docsPerLanguage.get(targetLanguage);
+            Map<CharSequence, NGramStats> languageStats = _langStats.get(targetLanguage);
 
-    private NGramVector makeVector(String targetLanguage, Set<String> otherLanguages) throws IOException {
-        double docsForThisLanguage = _docsPerLanguage.get(targetLanguage);
-        Map<CharSequence, NGramStats> languageStats = _langStats.get(targetLanguage);
+            // For each language, we want to pick the N best ngrams. The best ngram is the one with the highest
+            // score, where the score is composed of the ngram's doc frequency for this language (higher is better)
+            // the the frequency of the ngram in this language compared to the ngram in all languages (higher is
+            // also better).
 
-        List<NGramScore> bestNGrams = new ArrayList<ModelBuilder.NGramScore>(languageStats.size());
-        for (CharSequence ngram : languageStats.keySet()) {
-            NGramStats stats = languageStats.get(ngram);
-            double df = stats.getDocCount() / docsForThisLanguage;
+            List<NGramScore> bestNGrams = new ArrayList<ModelBuilder.NGramScore>(languageStats.size());
+            for (CharSequence ngram : languageStats.keySet()) {
+                NGramStats stats = languageStats.get(ngram);
+                double df = stats.getDocCount() / docsForThisLanguage;
 
-            double totalDocsForOtherLanguages = 0.0;
-            double docsForOtherLanguages = 0.0;
-            int ngramsInOtherLanguages = 0;
-            for (String otherLanguage : otherLanguages) {
-                if (otherLanguage.equals(targetLanguage)) {
-                    continue;
+                int ngramsInOtherLanguages = 0;
+                for (String otherLanguage : otherLanguages) {
+                    if (otherLanguage.equals(targetLanguage)) {
+                        continue;
+                    }
+
+                    NGramStats otherStats = _langStats.get(otherLanguage).get(ngram);
+                    if (otherStats != null) {
+                        ngramsInOtherLanguages += otherStats.getNGramCount();
+                    }
                 }
 
-                totalDocsForOtherLanguages += _docsPerLanguage.get(otherLanguage);
+                int ngramCountInThisLanguage = stats.getNGramCount();
+                double ngramFrequency = (double)ngramCountInThisLanguage / (double)(ngramCountInThisLanguage + ngramsInOtherLanguages);
 
-                NGramStats otherStats = _langStats.get(otherLanguage).get(ngram);
-                if (otherStats != null) {
-                    docsForOtherLanguages += otherStats.getDocCount();
-                    ngramsInOtherLanguages += otherStats.getNGramCount();
+                // Our score is essentially the probability that this ngram will be in a document for our
+                // target language, and that if exists it will be for our target language.
+                double ngramScore = df * ngramFrequency;
+
+                // TODO remove me
+                // Try out limiting otherDF to max value.
+                if (ngramFrequency >= MIN_NGRAMFREQUENCY) {
+                    bestNGrams.add(new NGramScore(ngram, ngramScore, ngramFrequency));
                 }
             }
 
-            // The otherDF is the document frequency for this ngram for all of the other languages.
-            // We'd love it if this value was 0, as that means it never occurs in any other language.
-            double otherDF = docsForOtherLanguages / totalDocsForOtherLanguages;
+            // Pick the best ngrams
+            Collections.sort(bestNGrams);
+            int maxIndex = Math.min(TARGET_NGRAMS, bestNGrams.size()) - 1;
 
-            int ngramCountInThisLanguage = stats.getNGramCount();
-            double ngramFrequency = (double)ngramCountInThisLanguage / (double)(ngramCountInThisLanguage + ngramsInOtherLanguages);
+            NGramVector vector = new NGramVector(TARGET_NGRAMS);
+            double totalLanguageScore = 0.0;
+            for (int i = 0; (i <= maxIndex) && (totalLanguageScore < TARGET_SCORE); i++) {
+                NGramScore ngramScore = bestNGrams.get(i);
 
-            // Our score is essentially the probability that this ngram will be in a document for our
-            // target language, and not in a document for any other language.
-            // double ngramScore = df * (1.0 - otherDF);
-            double ngramScore = df * ngramFrequency;
+                // The weight is the frequency of this ngram in this language, versus all languages
+                // So it's the probability that it's this language, if we see this ngram.
+                double frequency = ngramScore.getFrequency();
+                // System.out.println(String.format("NGram '%s' has score %f and frequency %f", ngramScore.getNGram(), score, frequency));
 
-            // TODO remove me
-            // Try out limiting otherDF to max value.
-            if (ngramFrequency >= MIN_NGRAMFREQUENCY) {
-                bestNGrams.add(new NGramScore(ngram, ngramScore, otherDF, ngramFrequency));
+                vector.set(ngramScore.getNGram(), frequency);
+                totalLanguageScore += ngramScore.getScore();
             }
+
+            System.out.println(String.format("Language '%s' size = %d, total score = %f", targetLanguage, vector.size(), totalLanguageScore));
+            return vector;
         }
 
-        // Pick the best ngrams
-        Collections.sort(bestNGrams);
-        int maxIndex = Math.min(TARGET_NGRAMS, bestNGrams.size()) - 1;
-
-        NGramVector vector = new NGramVector(TARGET_NGRAMS);
-        double totalLanguageScore = 0.0;
-        for (int i = 0; (i <= maxIndex) && (totalLanguageScore < TARGET_SCORE); i++) {
-            NGramScore ngramScore = bestNGrams.get(i);
-
-            // The weight is the frequency of this ngram in this language, versus all languages
-            // So it's the probability that it's this language, if we see this ngram.
-            double frequency = ngramScore.getFrequency();
-            // System.out.println(String.format("NGram '%s' has score %f and frequency %f", ngramScore.getNGram(), score, frequency));
-
-            // We need to quantize this to 1...7, where 1.0 => 7, and 0.0 => 1
-
-            int maxWeight = 7;
-            int minWeight = 1;
-            double range = maxWeight - minWeight;
-
-            int weight = (int)Math.round(minWeight + (range * frequency));
-            // int weight = 1;
-
-            vector.set(ngramScore.getNGram(), weight);
-            totalLanguageScore += ngramScore.getScore();
-        }
-
-        System.out.println(String.format("Language '%s' size = %d, total score = %f", targetLanguage, vector.size(), totalLanguageScore));
-        return vector;
-    }
-
-    private void mergeStats(String language, Map<CharSequence, NGramStats> docStats) {
-        Map<CharSequence, NGramStats> curLangStats = _langStats.get(language);
-        if (curLangStats == null) {
-            curLangStats = new HashMap<CharSequence, NGramStats>();
-            _langStats.put(language, curLangStats);
-        }
-        
-        // merge docStats into curLangStats.
-        for (CharSequence ngram : docStats.keySet()) {
-            NGramStats curNGramStats = curLangStats.get(ngram);
-            if (curNGramStats == null) {
-                curNGramStats = new NGramStats();
-                curLangStats.put(ngram, curNGramStats);
+        private void mergeStats(String language, Map<CharSequence, NGramStats> docStats) {
+            Map<CharSequence, NGramStats> curLangStats = _langStats.get(language);
+            if (curLangStats == null) {
+                curLangStats = new HashMap<CharSequence, NGramStats>();
+                _langStats.put(language, curLangStats);
             }
-            
-            curNGramStats.incDocCount();
-            curNGramStats.incNGramCount(docStats.get(ngram).getNGramCount());
+
+            // merge docStats into curLangStats.
+            for (CharSequence ngram : docStats.keySet()) {
+                NGramStats curNGramStats = curLangStats.get(ngram);
+                if (curNGramStats == null) {
+                    curNGramStats = new NGramStats();
+                    curLangStats.put(ngram, curNGramStats);
+                }
+
+                curNGramStats.incDocCount();
+                curNGramStats.incNGramCount(docStats.get(ngram).getNGramCount());
+            }
         }
     }
     
     private static class NGramScore implements Comparable<NGramScore> {
         private CharSequence _ngram;
         private double _score;
-        private double _otherDF;
         private double _frequency;
         
-        public NGramScore(CharSequence ngram, double score, double otherDF, double frequency) {
+        public NGramScore(CharSequence ngram, double score, double frequency) {
             _ngram = ngram;
             _score = score;
-            _otherDF = otherDF;
             _frequency = frequency;
         }
 
@@ -245,10 +207,6 @@ public class ModelBuilder {
             return _score;
         }
         
-        public double getOtherDF() {
-            return _otherDF;
-        }
-
         public double getFrequency() {
             return _frequency;
         }

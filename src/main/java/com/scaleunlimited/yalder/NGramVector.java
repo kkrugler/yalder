@@ -10,6 +10,10 @@ import com.scaleunlimited.yalder.BaseNGramVector;
 
 public class NGramVector extends BaseNGramVector {
 
+    private static final int MIN_WEIGHT = 1;
+    private static final int MAX_WEIGHT = 7;
+    private static final double WEIGHT_RANGE = MAX_WEIGHT - MAX_WEIGHT;
+
     // TODO support serialization using efficient format.
 
     private static final int CONTAINS_BITSET_SIZE = 64 * 1024;
@@ -26,7 +30,7 @@ public class NGramVector extends BaseNGramVector {
     protected int _numTerms;
     protected int _lengthSquared;
     private BitSet _contains;
-    
+
     public NGramVector() {
         this(EXPECTED_NGRAM_COUNT);
     }
@@ -49,7 +53,7 @@ public class NGramVector extends BaseNGramVector {
         _contains.or(source._contains);
     }
     
-    private int getTerm(int hash, int weight) {
+    private static int makeTerm(int hash, int weight) {
         return hash | weight;
     }
     
@@ -59,11 +63,11 @@ public class NGramVector extends BaseNGramVector {
      * @param term
      * @return
      */
-    public static int getHash(int term) {
+    public static int makeHash(int term) {
         return (term & ~0x07);
     }
     
-    public static int getWeight(int term) {
+    public static int makeWeight(int term) {
         // TODO use table to map from 1..7 "raw weight" to true weight
         return term & 0x07;
     }
@@ -73,8 +77,8 @@ public class NGramVector extends BaseNGramVector {
         int index = getIndex(hash);
         if (index < _numTerms) {
             int term = _terms[index];
-            if (getHash(term) == hash) {
-                return getWeight(term);
+            if (makeHash(term) == hash) {
+                return makeWeight(term);
             } else {
                 return 0;
             }
@@ -83,6 +87,9 @@ public class NGramVector extends BaseNGramVector {
         }
     }
     
+    /* (non-Javadoc)
+     * @see com.scaleunlimited.yalder.BaseNGramVector#set(int, int)
+     */
     @Override
     public boolean set(int hash, int weight) {
         if ((weight < 1) || (weight > 7)) {
@@ -94,12 +101,12 @@ public class NGramVector extends BaseNGramVector {
             // TODO you can set the same hash with a different weight, which is bad.
             // We'd have to see what's at the -index - 1 position and see if the hash
             // matches, and if so complain.
-            if (getHash(_terms[index]) == hash) {
+            if (makeHash(_terms[index]) == hash) {
                 return false;
             }
         }
 
-        int term = getTerm(hash, weight);
+        int term = makeTerm(hash, weight);
         insert(term, index);
         return true;
     }
@@ -124,10 +131,10 @@ public class NGramVector extends BaseNGramVector {
         _terms[index] = term;
         _numTerms += 1;
         
-        int weight = getWeight(term);
+        int weight = makeWeight(term);
         _lengthSquared += (weight * weight);
         
-        _contains.set(getContainsHash(term));
+        _contains.set(makeBitsetPos(term));
     }
 
     /**
@@ -165,17 +172,17 @@ public class NGramVector extends BaseNGramVector {
         int dotProduct = 0;
         while (thisIndex < thisLimit) {
             int thisTerm = thisVector[thisIndex++];
-            int thisHash = getHash(thisTerm);
+            int thisHash = makeHash(thisTerm);
             
-            while ((thatIndex < thatLimit) && (getHash(thatVector[thatIndex]) < thisHash)) {
+            while ((thatIndex < thatLimit) && (makeHash(thatVector[thatIndex]) < thisHash)) {
                 thatIndex ++;
             }
             
             if (thatIndex == thatLimit) {
                 break;
-            } else if (thisHash == getHash(thatVector[thatIndex])) {
-                int thisWeight = getWeight(thisTerm);
-                int thatWeight = getWeight(thatVector[thatIndex]);
+            } else if (thisHash == makeHash(thatVector[thatIndex])) {
+                int thisWeight = makeWeight(thisTerm);
+                int thatWeight = makeWeight(thatVector[thatIndex]);
                 
                 // TODO use mapping table to convert raw to scaled weights
                 dotProduct += (thisWeight * thatWeight);
@@ -195,7 +202,7 @@ public class NGramVector extends BaseNGramVector {
         NGramVector vector = (NGramVector)o;
         for (int i = 0; i < vector._numTerms; i++) {
             int term = vector._terms[i];
-            set(getHash(term), getWeight(term));
+            set(makeHash(term), makeWeight(term));
         }
     }
 
@@ -209,16 +216,16 @@ public class NGramVector extends BaseNGramVector {
         return _numTerms;
     }
 
-    private int getContainsHash(int hash) {
+    private int makeBitsetPos(int hash) {
         return (hash >> 3) & CONTAINS_BITSET_MASK;
     }
     
     @Override
     public boolean contains(int hash) {
-        if (_contains.get(getContainsHash(hash))) {
+        if (_contains.get(makeBitsetPos(hash))) {
             int index = getIndex(hash);
             if (index < _numTerms) {
-                return getHash(_terms[index]) == hash;
+                return makeHash(_terms[index]) == hash;
             } else {
                 return false;
             }
@@ -241,9 +248,9 @@ public class NGramVector extends BaseNGramVector {
         StringBuilder result = new StringBuilder(String.format("Vector of size %d:\n", _numTerms));
         for (int i = 0; i < _numTerms; i++) {
             result.append('\t');
-            result.append(getHash(_terms[i]));
+            result.append(makeHash(_terms[i]));
             result.append(", ");
-            result.append(getWeight(_terms[i]));
+            result.append(makeWeight(_terms[i]));
             result.append('\n');
         }
         
@@ -265,6 +272,22 @@ public class NGramVector extends BaseNGramVector {
         _numTerms = 0;
         _lengthSquared = 0;
         _contains.clear();
+    }
+
+    /**
+     * Convert double value 0.0 -> 1.0 into a quantized weight
+     * that is 1 -> 7
+     * 
+     * @param value
+     * @return quantized value
+     */
+    @Override
+    public int quantizeWeight(double weight) {
+        if ((weight < 0.0) || (weight > 1.0)) {
+            throw new IllegalArgumentException("Value to be quantized must be 0.0 to 1.0, got " + weight);
+        }
+        
+       return (int)Math.round(MIN_WEIGHT + (WEIGHT_RANGE * weight));
     }
 
 }
