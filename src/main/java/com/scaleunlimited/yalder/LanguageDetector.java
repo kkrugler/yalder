@@ -49,6 +49,7 @@ public class LanguageDetector {
                     newNGrams += 1;
                 }
                 
+                // TODO tune these settings - check every N, and if count < M then bail.
                 if ((goodNGrams % 20) == 0) {
                     if (newNGrams < 5) {
                         break;
@@ -60,8 +61,6 @@ public class LanguageDetector {
             }
         }
         
-        NGramVector target = _modelNGrams.makeVector();
-        
         // We now have <target> that we can compare to our set of models.
         List<DetectionResult> result = new ArrayList<DetectionResult>(_models.size());
         for (LanguageModel model : _models) {
@@ -71,7 +70,7 @@ public class LanguageDetector {
                 continue;
             }
             
-            double score = model.getVector().score(target);
+            double score = _modelNGrams.score(model.getVector());
             result.add(new DetectionResult(model.getLanguage(), score));
         }
         
@@ -83,8 +82,8 @@ public class LanguageDetector {
         DetectionResult topResult = result.get(0);
         if (rescoreGroups) {
             if (topResult.getLanguage().equals("cs+sk")) {
-                double csScore = getModel("cs").getVector().score(target);
-                double skScore = getModel("sk").getVector().score(target);
+                double csScore = _modelNGrams.score(getModel("cs").getVector());
+                double skScore = _modelNGrams.score(getModel("sk").getVector());
                 if (csScore > skScore) {
                     topResult.setLanguage("cs");
                     topResult.setScore(csScore);
@@ -93,9 +92,9 @@ public class LanguageDetector {
                     topResult.setScore(skScore);
                 }
             } else if (topResult.getLanguage().equals("da+de+sv")) {
-                double daScore = getModel("da").getVector().score(target);
-                double deScore = getModel("de").getVector().score(target);
-                double svScore = getModel("sv").getVector().score(target);
+                double daScore = _modelNGrams.score(getModel("da").getVector());
+                double deScore = _modelNGrams.score(getModel("de").getVector());
+                double svScore = _modelNGrams.score(getModel("sv").getVector());
                 if (daScore > deScore) {
                     if (daScore > svScore) {
                         topResult.setLanguage("da");

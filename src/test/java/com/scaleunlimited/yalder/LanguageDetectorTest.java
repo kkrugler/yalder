@@ -32,12 +32,14 @@ public class LanguageDetectorTest {
                 String[] pieces = line.split("\t", 2);
                 String language = pieces[0];
                 
+                /*
                 if (language.equals("cs") || language.equals("sk")) {
                     language = "cs+sk";
                 } else if (language.equals("da") || language.equals("de") || language.equals("sv")) {
                     language = "da+de+sv";
                 }
-
+                 */
+                
                 String text = pieces[1];
 
                 List<DetectionResult> sortedResults = new ArrayList<DetectionResult>(detector.detect(text));
@@ -96,16 +98,6 @@ public class LanguageDetectorTest {
         for (String line : testLines) {
             String[] pieces = line.split("\t", 2);
             String language = pieces[0];
-            
-            // If we're testing all languages, then we want to do the collapsing
-            if (targetLanguages == null) {
-                if (language.equals("cs") || language.equals("sk")) {
-                    language = "cs+sk";
-                } else if (language.equals("da") || language.equals("de") || language.equals("sv")) {
-                    language = "da+de+sv";
-                }
-            }
-            
             String text = pieces[1];
 
             IntCounter missCounter = missesPerLanguage.get(language);
@@ -114,7 +106,7 @@ public class LanguageDetectorTest {
                 missesPerLanguage.put(language, missCounter);
             }
             
-            List<DetectionResult> sortedResults = new ArrayList<DetectionResult>(detector.detect(text, targetLanguages != null));
+            List<DetectionResult> sortedResults = new ArrayList<DetectionResult>(detector.detect(text, true));
             DetectionResult bestResult = sortedResults.get(0);
             String bestLanguage = bestResult.getLanguage();
             if (bestLanguage.equals(language)) {
@@ -136,6 +128,10 @@ public class LanguageDetectorTest {
             
             int misses = missCounter.sum();
             int hits = hitsPerLanguage.get(language);
+            if (hits + misses == 0) {
+                // No data for this model.
+                continue;
+            }
             
             System.out.print(String.format("'%s'\t%.2f%%", language, 100.0 * (double)misses/(double)(misses + hits)));
             
@@ -169,14 +165,15 @@ public class LanguageDetectorTest {
         List<String> lines = EuroParlUtils.readLines();
 
         ModelBuilder builder = new ModelBuilder();
-
+        // builder.setCsSk(false);
+        
         // Skip languages that Mike McCandless didn't try because Tika didn't support them:
         // Bulgarian (bg), Czech (cs), Lithuanian (lt) and Latvian (lv)
         Set<String> skippedLanguages = new HashSet<String>();
-        skippedLanguages.add("bg");
-        skippedLanguages.add("cs");
-        skippedLanguages.add("lt");
-        skippedLanguages.add("lv");
+        // skippedLanguages.add("bg");
+        // skippedLanguages.add("cs");
+        // skippedLanguages.add("lt");
+        // skippedLanguages.add("lv");
         
         for (String line : lines) {
             // Format is <language code><tab>text
