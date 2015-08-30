@@ -11,7 +11,7 @@ import com.scaleunlimited.yalder.MasterNGramVector.MarkResult;
 public class MasterNGramVectorTest {
 
     @Test
-    public void testVectorCreation() {
+    public void testScoring() {
         NGramVector vector1 = new NGramVector();
         for (int i = 0; i < 1000; i++) {
             String ngram = "a" + i;
@@ -22,17 +22,14 @@ public class MasterNGramVectorTest {
         
         for (int i = 0; i < 1000; i++) {
             String ngram = "a" + i;
-            assertEquals(MarkResult.NEW, masterVector.mark(ngram));
+            assertEquals("Item not new: " + i, MarkResult.NEW, masterVector.mark(ngram));
         }
 
-        NGramVector vector2 = masterVector.makeVector();
-        assertEquals(1000, vector2.size());
         assertEquals(15250, vector1.getLengthSquared());
-        assertEquals(1000, vector2.getLengthSquared());
 
-        // Score will be 2 x 10 + 3 * 90 + 4 * 900 / sqrt(squared length * squared length)
-        double expected = (20 + 270 + 3600) / Math.sqrt(15250 * 1000);
-        assertEquals(expected, vector1.score(vector2), 0.0001);
+        // Score will be 2 * 10 + 3 * 90 + 4 * 900 / sqrt(squared length * squared length)
+        double expected = (20 + 270 + 3600) / Math.sqrt(15250);
+        assertEquals(expected, masterVector.score(vector1), 0.0001);
     }
 
 }

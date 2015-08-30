@@ -1,6 +1,5 @@
 package com.scaleunlimited.yalder;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -21,17 +20,31 @@ public class ModelBuilder {
     private SubModelBuilder _csSkBuilder;
     private SubModelBuilder _daDeSvBuilder;
     
+    private boolean _doCsSk = true;
+    private boolean _doDaDeSv = true;
+    
     public ModelBuilder() {
         _mainBuilder = new SubModelBuilder();
         _csSkBuilder = new SubModelBuilder();
         _daDeSvBuilder = new SubModelBuilder();
     }
     
+    public ModelBuilder setCsSk(boolean doCsSk) {
+        _doCsSk = doCsSk;
+        return this;
+    }
+    
+    public ModelBuilder setDaDeSv(boolean doDaDeSv) {
+        _doDaDeSv = doDaDeSv;
+        return this;
+    }
+    
+    
     public void addTrainingDoc(String language, CharSequence text) {
-        if (language.equals("cs") || language.equals("sk")) {
+        if (_doCsSk && (language.equals("cs") || language.equals("sk"))) {
             _csSkBuilder.addTrainingDoc(language, text);
             language = "cs+sk";
-        } else if (language.equals("da") || language.equals("de") || language.equals("sv")) {
+        } else if (_doDaDeSv && (language.equals("da") || language.equals("de") || language.equals("sv"))) {
             _daDeSvBuilder.addTrainingDoc(language, text);
             language = "da+de+sv";
         }
@@ -45,28 +58,32 @@ public class ModelBuilder {
         Map<String, NGramVector> mainVectors = _mainBuilder.makeVectors();
         
         // Now build the pair-wise language vectors for specific cases.
-        Map<String, NGramVector> csSkVectors = _csSkBuilder.makeVectors();
-        Map<String, NGramVector> daDeSvVectors = _daDeSvBuilder.makeVectors();
 
         List<LanguageModel> models = new ArrayList<LanguageModel>();
         for (String language : mainVectors.keySet()) {
             models.add(new LanguageModel(language, null, mainVectors.get(language)));
         }
         
-        for (String language : csSkVectors.keySet()) {
-            models.add(new LanguageModel(language, "cs+sk", csSkVectors.get(language)));
+        if (_doCsSk) {
+            Map<String, NGramVector> csSkVectors = _csSkBuilder.makeVectors();
+            for (String language : csSkVectors.keySet()) {
+                models.add(new LanguageModel(language, "cs+sk", csSkVectors.get(language)));
+            }
         }
         
-        for (String language : daDeSvVectors.keySet()) {
-            models.add(new LanguageModel(language, "da+de+sv", daDeSvVectors.get(language)));
+        if (_doDaDeSv) {
+            Map<String, NGramVector> daDeSvVectors = _daDeSvBuilder.makeVectors();
+            for (String language : daDeSvVectors.keySet()) {
+                models.add(new LanguageModel(language, "da+de+sv", daDeSvVectors.get(language)));
+            }
         }
         
         return models;
     }
     
     private static class SubModelBuilder {
-        private static final int TARGET_NGRAMS = 1000;          // 1000
-        private static final double TARGET_SCORE = 30.0;        // 40.0
+        private static final int TARGET_NGRAMS = 3000;          // 1000
+        private static final double TARGET_SCORE = 50.0;        // 40.0
 
         private static final double MIN_NGRAMFREQUENCY = 0.20;  // 0.20
         
