@@ -22,6 +22,10 @@ public class NGramStats {
         incNGramCount(1);
     }
     
+    public void setNGramCount(int count) {
+        _ngramCount = count;
+    }
+    
     public int getNGramCount() {
         return _ngramCount;
     }
