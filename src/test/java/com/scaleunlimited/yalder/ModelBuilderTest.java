@@ -13,13 +13,6 @@ public class ModelBuilderTest {
     public void testFasterVsRegularNGramVector() throws Exception {
         List<String> lines = EuroParlUtils.readLines();
         Collection<LanguageModel> models = EuroParlUtils.buildModels(lines);
-
-        for (LanguageModel model : models) {
-            if (!model.isPairwise() && model.getLanguage().equals("en")) {
-                BaseNGramVector vector = model.getVector();
-                System.out.println(vector.toString());
-            }
-        }
     }
 
 }
