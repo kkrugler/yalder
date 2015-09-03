@@ -14,7 +14,7 @@ public class EuroParlUtils {
         return IOUtils.readLines(fis, "UTF-8");
     }
     
-    public static Collection<LanguageModel> buildModels(List<String> lines) {
+    public static Collection<LanguageModel> buildModels(List<String> lines, int numNGrams) {
         ModelBuilder builder = new ModelBuilder();
         
         for (String line : lines) {
@@ -27,7 +27,7 @@ public class EuroParlUtils {
             builder.addTrainingDoc(language, text);
         }
 
-        return builder.makeModels();
+        return builder.makeModels(numNGrams);
     }
 
 }

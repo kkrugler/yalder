@@ -3,140 +3,134 @@ package com.scaleunlimited.yalder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-
-import com.scaleunlimited.yalder.MasterNGramVector.MarkResult;
+import java.util.Map;
+import java.util.Set;
 
 public class LanguageDetector {
 
+    private static final double ALPHA = 0.5/10000;
+
+    private static final double MIN_LANG_PROBABILITY = 0.1;
+    
     private Collection<LanguageModel> _models;
-    private MasterNGramVector _modelNGrams;
+    private Map<CharSequence, Map<String, Double>> _ngramProbabilities;
+    private Map<String, Double> _langProbabilities;
     
     public LanguageDetector(Collection<LanguageModel> models) {
         _models = models;
         
-        // TODO is it better to have a single master vector for all models, or should
-        // we re-tokenize when we get one of our combo-results?
-        _modelNGrams = new MasterNGramVector(LanguageModel.createComboVector(_models));
+        // TODO here's the approach
+        // Build a master map from ngram to per-language probabilities
+        // Each model should contain a normalized count (not probability) of the ngram
+        // so we can compute probabilities for languages being mixed-in.
         
-        // System.out.println(_modelNGrams);
+        Map<CharSequence, Map<String, Integer>> ngramCounts = new HashMap<CharSequence, Map<String, Integer>>();
+        _langProbabilities = new HashMap<String, Double>();
+        
+        for (LanguageModel model : _models) {
+            String language = model.getLanguage();
+            _langProbabilities.put(language, 0.0);
+            
+            Map<CharSequence, Integer> langCounts = model.getNGramCounts();
+            for (CharSequence ngram : langCounts.keySet()) {
+                Map<String, Integer> curCounts = ngramCounts.get(ngram);
+                if (curCounts == null) {
+                    curCounts = new HashMap<String, Integer>();
+                    ngramCounts.put(ngram, curCounts);
+                }
+                
+                int newCount = langCounts.get(ngram);
+                Integer curCount = curCounts.get(language);
+                if (curCount == null) {
+                    curCounts.put(language, newCount);
+                } else {
+                    curCounts.put(language, curCount + newCount);
+                }
+            }
+        }
+        
+        // Now we can calculate the probabilities
+        _ngramProbabilities = new HashMap<CharSequence, Map<String,Double>>();
+        for (CharSequence ngram : ngramCounts.keySet()) {
+            Map<String, Integer> counts = ngramCounts.get(ngram);
+            double totalCount = 0;
+            for (String language : counts.keySet()) {
+                totalCount += counts.get(language);
+            }
+            
+            Map<String, Double> probabilities = new HashMap<String, Double>();
+            for (String language : counts.keySet()) {
+                probabilities.put(language, counts.get(language)/totalCount);
+            }
+            
+            _ngramProbabilities.put(ngram, probabilities);
+        }
     }
     
     public Collection<DetectionResult> detect(CharSequence text) {
-        return detect(text, true);
-    }
-    
-    public Collection<DetectionResult> detect(CharSequence text, boolean rescoreGroups) {
-        _modelNGrams.clearMarks();
-        
-        // Stop processing text when the ratio of new ngrams to old ngrams drops too low.
-        // I.e. every time we get N good ngrams, if less than M of those were new, stop.
-        
-        // FUTURE for some odd cases (e.g. text in language we don't support) we won't get
-        // many good ngrams, so we could have a separate check for that case, as otherwise
-        // we'll grind through the entire document collecting only a handful of not-very-
-        // useful ngrams.
-        int goodNGrams = 0;
-        int newNGrams = 0;
-        HashTokenizer tokenizer = new HashTokenizer(text, ModelBuilder.MIN_NGRAM_LENGTH, ModelBuilder.MAX_NGRAM_LENGTH);
-        while (tokenizer.hasNext()) {
-            
-            int hash = tokenizer.next();
-            MarkResult result = _modelNGrams.mark(hash);
-            if (result != MarkResult.MISSING) {
-                goodNGrams += 1;
-                if (result == MarkResult.NEW) {
-                    newNGrams += 1;
-                }
-                
-                // TODO tune these settings - check every N, and if count < M then bail.
-                if ((goodNGrams % 20) == 0) {
-                    if (newNGrams < 5) {
-                        break;
-                    }
-                    
-                    goodNGrams = 0;
-                    newNGrams = 0;
-                }
-            }
+        double startingProb = 1.0 / _langProbabilities.size();
+        for (String language : _langProbabilities.keySet()) {
+            _langProbabilities.put(language,  startingProb);
         }
         
-        // We now have <target> that we can compare to our set of models.
-        List<DetectionResult> result = new ArrayList<DetectionResult>(_models.size());
-        for (LanguageModel model : _models) {
-            // Skip model if it's a specific lang-lang model (e.g. en versus es model)
-            // We only want to use those if the top two entries are too close.
-            if (model.isPairwise()) {
+        int numKnownNGrams = 0;
+        int numUnknownNGrams = 0;
+        NGramTokenizer tokenizer = new NGramTokenizer(text, 1, ModelBuilder.MAX_NGRAM_LENGTH);
+        while (tokenizer.hasNext()) {
+            CharSequence ngram = tokenizer.next();
+            
+            Map<String, Double> probs = _ngramProbabilities.get(ngram);
+            if (probs == null) {
+                // FUTURE track how many unknown ngrams we get, and use that
+                // to adjust probabilities.
+                numUnknownNGrams += 1;
                 continue;
             }
             
-            double score = _modelNGrams.score(model.getVector());
-            result.add(new DetectionResult(model.getLanguage(), score));
-        }
-        
-        // Sort the results from high to low score.
-        Collections.sort(result);
-        
-        // If our top result is a combo, rescore it.
-        // TODO make it so
-        DetectionResult topResult = result.get(0);
-        if (rescoreGroups) {
-            if (topResult.getLanguage().equals("cs+sk")) {
-                double csScore = _modelNGrams.score(getModel("cs").getVector());
-                double skScore = _modelNGrams.score(getModel("sk").getVector());
-                if (csScore > skScore) {
-                    topResult.setLanguage("cs");
-                    topResult.setScore(csScore);
-                } else {
-                    topResult.setLanguage("sk");
-                    topResult.setScore(skScore);
-                }
-            } else if (topResult.getLanguage().equals("da+de+sv")) {
-                double daScore = _modelNGrams.score(getModel("da").getVector());
-                double deScore = _modelNGrams.score(getModel("de").getVector());
-                double svScore = _modelNGrams.score(getModel("sv").getVector());
-                if (daScore > deScore) {
-                    if (daScore > svScore) {
-                        topResult.setLanguage("da");
-                        topResult.setScore(daScore);
-                    } else {
-                        topResult.setLanguage("sv");
-                        topResult.setScore(svScore);
-                    }
-                } else if (deScore > svScore) {
-                    topResult.setLanguage("de");
-                    topResult.setScore(deScore);
-                } else {
-                    topResult.setLanguage("sv");
-                    topResult.setScore(svScore);
-                }
+            numKnownNGrams += 1;
+            
+            for (String language : _langProbabilities.keySet()) {
+                Double probObj = probs.get(language);
+                double prob = (probObj == null ? ALPHA : probObj);
+                double curProb = _langProbabilities.get(language);
+                curProb *= prob;
+                _langProbabilities.put(language, curProb);
+            }
+            
+            if ((numKnownNGrams % 10) == 0) {
+                normalizeLangProbabilities();
             }
         }
         
-        // FUTURE support option to rescore any combo results, not just top one - more
-        // time, but higher accuracy.
-        
-        // Calculate confidence based on absolute score and delta from next closest.
-        // TODO use absolute score here as a factor?
-        double topScore = topResult.getScore();
-        double nextScore = result.size() > 1 ? result.get(1).getScore() : 0.0;
-        double delta = topScore - nextScore;
-        
-        // Confidence is 1.0 if top score is more than 2x the next score, or 0.0 if they
-        // are the same.
-        double topConfidence = Math.min(1.0, delta/nextScore);
-        
-        for (int i = 0; i < result.size(); i++) {
-            DetectionResult dr = result.get(i);
-            if (i == 0) {
-                dr.setConfidence(topConfidence);
-            } else {
-                double confidence = topConfidence * (dr.getScore() / topScore);
-                dr.setConfidence(confidence);
+        normalizeLangProbabilities();
+
+        List<DetectionResult> result = new ArrayList<DetectionResult>();
+        for (String language : _langProbabilities.keySet()) {
+            double curProb = _langProbabilities.get(language);
+            
+            if (curProb >= MIN_LANG_PROBABILITY) {
+                result.add(new DetectionResult(language, curProb));
             }
         }
-        
+
         return result;
+    }
+
+    private void normalizeLangProbabilities() {
+        double totalProb = 0.0;
+        for (String language : _langProbabilities.keySet()) {
+            totalProb += _langProbabilities.get(language);
+        }
+
+        double scalar = 1.0/totalProb;
+        
+        for (String language : _langProbabilities.keySet()) {
+            double curProb = _langProbabilities.get(language);
+            curProb *= scalar;
+            _langProbabilities.put(language, curProb);
+        }
     }
 
     private LanguageModel getModel(String language) {
@@ -150,20 +144,4 @@ public class LanguageDetector {
         throw new IllegalArgumentException("Unknown language: " + language);
     }
 
-    public LanguageModel getSpecificModel(String language, String pairwiseLanguage) {
-        for (LanguageModel model : _models) {
-            if (model.isPairwise()) {
-                if (language.equals(model.getLanguage()) && pairwiseLanguage.equals(model.getPairwiseLanguage())) {
-                    return model;
-                }
-            }
-        }
-        
-        return null;
-    }
-        
-    public boolean hasSpecificModel(String language, String pairwiseLanguage) {
-        return (getSpecificModel(language, pairwiseLanguage) != null) &&
-        (getSpecificModel(pairwiseLanguage, language) != null);
-    }
 }

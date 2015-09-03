@@ -1,5 +1,7 @@
 package com.scaleunlimited.yalder;
 
+import java.util.Map;
+
 
 /**
  * Encapsulation of model about a given language. This consists of
@@ -21,36 +23,35 @@ package com.scaleunlimited.yalder;
 
 public class LanguageModel {
 
+    // The normalized counts are relative to this count, so that we
+    // can combine languages built with different amounts of data.
+    public static final int NORMALIZED_COUNT = 1000000;
+
     private String _modelLanguage;      // ISO 639-1 code
     
-    private int[] _ngrams;
-    private float[] _probabilities;
-        
-    public LanguageModel(String modelLanguage, int[] ngrams, float[] probabilities) {
+    private Map<CharSequence, Integer> _normalizedCounts;
+    
+    public LanguageModel(String modelLanguage, Map<CharSequence, Integer> normalizedCounts) {
         _modelLanguage = modelLanguage;
-        _ngrams = ngrams;
-        _probabilities = probabilities;
-        
-        if (ngrams.length != probabilities.length) {
-            throw new IllegalArgumentException("Length of ngrams and probabilities arrays must be equal");
-        }
+        _normalizedCounts = normalizedCounts;
     }
     
     public String getLanguage() {
         return _modelLanguage;
     }
     
-    public int[] getNGrams() {
-        return _ngrams;
+    public int getNGramCount(CharSequence ngram) {
+        Integer result = _normalizedCounts.get(ngram);
+        return result == null ? 0 : result;
     }
     
-    public float[] getProbabilities() {
-        return _probabilities;
+    public Map<CharSequence, Integer> getNGramCounts() {
+        return _normalizedCounts;
     }
     
     @Override
     public String toString() {
-        return String.format("'%s': %d ngrams", _modelLanguage, _ngrams.length);
+        return String.format("'%s': %d ngrams", _modelLanguage, _normalizedCounts.size());
     }
 
 }
