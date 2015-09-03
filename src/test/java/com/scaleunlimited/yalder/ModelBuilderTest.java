@@ -10,9 +10,9 @@ import org.junit.Test;
 public class ModelBuilderTest {
 
     @Test
-    public void testFasterVsRegularNGramVector() throws Exception {
+    public void test() throws Exception {
         List<String> lines = EuroParlUtils.readLines();
-        Collection<LanguageModel> models = EuroParlUtils.buildModels(lines);
+        Collection<LanguageModel> models = EuroParlUtils.buildModels(lines, 1000);
     }
 
 }

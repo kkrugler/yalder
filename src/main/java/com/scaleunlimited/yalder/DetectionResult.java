@@ -51,6 +51,9 @@ public class DetectionResult implements Comparable<DetectionResult> {
         }
     }
 
-
+    @Override
+    public String toString() {
+        return String.format("Language '%s' with score %f and confidence %f", _language, _score, _confidence);
+    }
     
 }
