@@ -10,16 +10,23 @@ import java.util.Set;
 
 public class LanguageDetector {
 
-    private static final double ALPHA = 0.5/10000;
+    public static final double ALPHA = 0.5/10000;
 
     private static final double MIN_LANG_PROBABILITY = 0.1;
     
     private Collection<LanguageModel> _models;
     private Map<CharSequence, Map<String, Double>> _ngramProbabilities;
     private Map<String, Double> _langProbabilities;
+    private int _maxNGramLength;
     
     public LanguageDetector(Collection<LanguageModel> models) {
+        this(models, models.iterator().next().getMaxNGramLength());
+    }
+
+    // FUTURE support varying max ngram length per model.
+    public LanguageDetector(Collection<LanguageModel> models, int maxNGramLength) {
         _models = models;
+        _maxNGramLength = maxNGramLength;
         
         // TODO here's the approach
         // Build a master map from ngram to per-language probabilities
@@ -77,7 +84,7 @@ public class LanguageDetector {
         
         int numKnownNGrams = 0;
         int numUnknownNGrams = 0;
-        NGramTokenizer tokenizer = new NGramTokenizer(text, 1, ModelBuilder.MAX_NGRAM_LENGTH);
+        NGramTokenizer tokenizer = new NGramTokenizer(text, 1, _maxNGramLength);
         while (tokenizer.hasNext()) {
             CharSequence ngram = tokenizer.next();
             

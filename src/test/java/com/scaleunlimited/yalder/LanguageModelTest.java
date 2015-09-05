@@ -21,21 +21,18 @@ public class LanguageModelTest {
     @Test
     public void testClosestModels() throws Exception {
         List<String> lines = EuroParlUtils.readLines();
-        Collection<LanguageModel> models = EuroParlUtils.buildModels(lines);
+        Collection<LanguageModel> models = EuroParlUtils.buildModels(lines, 1000);
         
         for (LanguageModel model : models) {
-            if (model.isPairwise()) {
-                continue;
-            }
             
             String language = model.getLanguage();
             List<DetectionResult> results = new ArrayList<DetectionResult>();
             for (LanguageModel otherModel: models) {
-                if (otherModel.isPairwise()) {
+                if (otherModel.getLanguage().equals(language)) {
                     continue;
                 }
 
-                double score = model.compare(otherModel);
+                double score = 0.0;
                 results.add(new DetectionResult(otherModel.getLanguage(), score));
             }
             
