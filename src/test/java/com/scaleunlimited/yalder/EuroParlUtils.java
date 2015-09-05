@@ -15,7 +15,8 @@ public class EuroParlUtils {
     }
     
     public static Collection<LanguageModel> buildModels(List<String> lines, int numNGrams) {
-        ModelBuilder builder = new ModelBuilder();
+        ModelBuilder builder = new ModelBuilder()
+            .setNGramsPerLanguage(numNGrams);
         
         for (String line : lines) {
             
@@ -27,7 +28,7 @@ public class EuroParlUtils {
             builder.addTrainingDoc(language, text);
         }
 
-        return builder.makeModels(numNGrams);
+        return builder.makeModels();
     }
 
 }

@@ -29,15 +29,22 @@ public class LanguageModel {
 
     private String _modelLanguage;      // ISO 639-1 code
     
+    private int _maxNGramLength;
+    
     private Map<CharSequence, Integer> _normalizedCounts;
     
-    public LanguageModel(String modelLanguage, Map<CharSequence, Integer> normalizedCounts) {
+    public LanguageModel(String modelLanguage, int maxNGramLength, Map<CharSequence, Integer> normalizedCounts) {
         _modelLanguage = modelLanguage;
+        _maxNGramLength = maxNGramLength;
         _normalizedCounts = normalizedCounts;
     }
     
     public String getLanguage() {
         return _modelLanguage;
+    }
+    
+    public int getMaxNGramLength() {
+        return _maxNGramLength;
     }
     
     public int getNGramCount(CharSequence ngram) {
