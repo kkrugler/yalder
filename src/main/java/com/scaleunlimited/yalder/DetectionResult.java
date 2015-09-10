@@ -5,11 +5,13 @@ public class DetectionResult implements Comparable<DetectionResult> {
     private String _language;
     private double _score;
     private double _confidence;
+    private String _details;
     
     public DetectionResult(String language, double score) {
         _language = language;
         _score = score;
         _confidence = 0.0;
+        _details = "";
     }
 
     public String getLanguage() {
@@ -36,6 +38,14 @@ public class DetectionResult implements Comparable<DetectionResult> {
         _confidence = confidence;
     }
 
+    public void setDetails(String details) {
+        _details = details;
+    }
+    
+    public String getDetails() {
+        return _details;
+    }
+    
     /* Do reverse sorting.
      * (non-Javadoc)
      * @see java.lang.Comparable#compareTo(java.lang.Object)

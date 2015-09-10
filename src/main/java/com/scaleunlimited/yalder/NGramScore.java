@@ -12,6 +12,20 @@ public class NGramScore implements Comparable<NGramScore> {
         _count = count;
         _score = score;
         _probability = probability;
+        
+        if (count <= 0) {
+            throw new IllegalArgumentException("Count must be > 0");
+        }
+        
+        if ((score <= 0.0) || Double.isNaN(score) || Double.isInfinite(score)) {
+            throw new IllegalArgumentException("Score must be > 0 and < infinity");
+        }
+        
+        if ((probability <= 0.0) || Double.isNaN(probability) || Double.isInfinite(probability)) {
+            throw new IllegalArgumentException("Probability must be > 0 and < infinity");
+        }
+        
+        
     }
 
     public CharSequence getNGram() {
@@ -38,22 +52,15 @@ public class NGramScore implements Comparable<NGramScore> {
         _score = score;
     }
     
+    
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((_ngram == null) ? 0 : hashCode(_ngram));
+        long temp;
+        temp = Double.doubleToLongBits(_score);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
         return result;
-    }
-
-    private int hashCode(CharSequence ngram) {
-        int h = 0;
-        
-        for (int i = 0; i < ngram.length(); i++) {
-            h = 31 * h + ngram.charAt(i);
-        }
-
-        return h;
     }
 
     @Override
@@ -65,28 +72,8 @@ public class NGramScore implements Comparable<NGramScore> {
         if (getClass() != obj.getClass())
             return false;
         NGramScore other = (NGramScore) obj;
-        if (_ngram == null) {
-            if (other._ngram != null)
-                return false;
-        }
-        
-        return equals(_ngram, other._ngram);
-    }
-
-    
-    private boolean equals(CharSequence ngram1, CharSequence ngram2) {
-        int len1 = ngram1.length();
-        int len2 = ngram2.length();
-        if (len1 != len2) {
+        if (Double.doubleToLongBits(_score) != Double.doubleToLongBits(other._score))
             return false;
-        }
-        
-        for (int i = 0; i < len1; i++) {
-            if (ngram1.charAt(i) != ngram2.charAt(i)) {
-                return false;
-            }
-        }
-        
         return true;
     }
 

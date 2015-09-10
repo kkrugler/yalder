@@ -53,12 +53,44 @@
             <version>6.6.3</version>
         </dependency>
         
+        <!-- For Yalder tool/builder -->
+        <dependency>
+            <groupId>args4j</groupId>
+            <artifactId>args4j</artifactId>
+            <version>2.32</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>2.0.0-RC1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.ccil.cowan.tagsoup</groupId>
+            <artifactId>tagsoup</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>bixo</groupId>
+            <artifactId>bixo-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        
         <!-- Provided -->
         
 		<dependency>
             <groupId>ant-eclipse</groupId>
             <artifactId>ant-eclipse-jvm1.2</artifactId>
             <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+		<dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-core</artifactId>
+            <version>1.0.4</version>
             <scope>provided</scope>
         </dependency>
 

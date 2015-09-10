@@ -168,8 +168,8 @@ public class LanguageDetectorTest {
                     
                     double totalCount = langCount + otherLangCount;
                     
-                    double langNGramProb = langCount == 0 ? LanguageDetector.ALPHA : langCount/totalCount;
-                    double otherLangNGramProb = otherLangCount == 0 ? LanguageDetector.ALPHA : otherLangCount/totalCount;
+                    double langNGramProb = langCount == 0 ? LanguageDetector.DEFAULT_ALPHA : langCount/totalCount;
+                    double otherLangNGramProb = otherLangCount == 0 ? LanguageDetector.DEFAULT_ALPHA : otherLangCount/totalCount;
                     
                     int scaledTotalCount = (int)Math.round(totalCount / 1000);
                     for (int i = 0; i < scaledTotalCount; i++) {
