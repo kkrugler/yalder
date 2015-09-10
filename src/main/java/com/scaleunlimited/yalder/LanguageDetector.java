@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class LanguageDetector {
 
-    public static final double ALPHA = 0.5/10000;
+    public static final double DEFAULT_ALPHA = 0.0001; // 0.5/10000;
 
     private static final double MIN_LANG_PROBABILITY = 0.1;
     
@@ -18,6 +18,7 @@ public class LanguageDetector {
     private Map<CharSequence, Map<String, Double>> _ngramProbabilities;
     private Map<String, Double> _langProbabilities;
     private int _maxNGramLength;
+    private double _alpha;
     
     public LanguageDetector(Collection<LanguageModel> models) {
         this(models, models.iterator().next().getMaxNGramLength());
@@ -27,6 +28,7 @@ public class LanguageDetector {
     public LanguageDetector(Collection<LanguageModel> models, int maxNGramLength) {
         _models = models;
         _maxNGramLength = maxNGramLength;
+        _alpha = DEFAULT_ALPHA;
         
         // TODO here's the approach
         // Build a master map from ngram to per-language probabilities
@@ -76,7 +78,16 @@ public class LanguageDetector {
         }
     }
     
+    public LanguageDetector setAlpha(double alpha) {
+        _alpha = alpha;
+        return this;
+    }
+    
     public Collection<DetectionResult> detect(CharSequence text) {
+        return detect(text, false);
+    }
+    
+    public Collection<DetectionResult> detect(CharSequence text, boolean provideDetails) {
         double startingProb = 1.0 / _langProbabilities.size();
         for (String language : _langProbabilities.keySet()) {
             _langProbabilities.put(language,  startingProb);
@@ -84,6 +95,7 @@ public class LanguageDetector {
         
         int numKnownNGrams = 0;
         int numUnknownNGrams = 0;
+        StringBuilder details = provideDetails ? new StringBuilder() : null;
         NGramTokenizer tokenizer = new NGramTokenizer(text, 1, _maxNGramLength);
         while (tokenizer.hasNext()) {
             CharSequence ngram = tokenizer.next();
@@ -93,21 +105,46 @@ public class LanguageDetector {
                 // FUTURE track how many unknown ngrams we get, and use that
                 // to adjust probabilities.
                 numUnknownNGrams += 1;
+                
+                if (provideDetails) {
+                    details.append(String.format("'%s': not found\n", ngram));
+                }
+                
                 continue;
             }
             
             numKnownNGrams += 1;
+            if (provideDetails) {
+                details.append(String.format("'%s'\n", ngram));
+            }
+            
             
             for (String language : _langProbabilities.keySet()) {
                 Double probObj = probs.get(language);
-                double prob = (probObj == null ? ALPHA : probObj);
+                double prob = (probObj == null ? _alpha : probObj);
+                if (provideDetails && (probObj != null)) {
+                    details.append(String.format("\t'%s': %f\n", language, prob));
+                }
+                
                 double curProb = _langProbabilities.get(language);
                 curProb *= prob;
                 _langProbabilities.put(language, curProb);
             }
             
-            if ((numKnownNGrams % 10) == 0) {
+            if (provideDetails || (numKnownNGrams % 10) == 0) {
                 normalizeLangProbabilities();
+            }
+            
+            if (provideDetails) {
+                details.append("Probabilities: ");
+                for (String language : _langProbabilities.keySet()) {
+                    double langProb = _langProbabilities.get(language);
+                    if (langProb > 0.0000005) {
+                        details.append(String.format("'%s'=%f ", language, langProb));
+                    }
+                }
+                
+                details.append('\n');
             }
         }
         
@@ -118,7 +155,13 @@ public class LanguageDetector {
             double curProb = _langProbabilities.get(language);
             
             if (curProb >= MIN_LANG_PROBABILITY) {
-                result.add(new DetectionResult(language, curProb));
+                DetectionResult dr = new DetectionResult(language, curProb);
+                if (provideDetails) {
+                    // TODO this adds the same details for every language.
+                    dr.setDetails(details.toString());
+                }
+                
+                result.add(dr);
             }
         }
 

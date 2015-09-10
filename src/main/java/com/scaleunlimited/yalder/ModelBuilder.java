@@ -24,12 +24,14 @@ public class ModelBuilder {
 
     public static final int DEFAULT_NGRAMS_PER_LANGUAGE = 1000;
 
+    public static final int DEFAULT_MIN_NORMALIZED_COUNT = (int)Math.round(0.0001 * LanguageModel.NORMALIZED_COUNT);
     
     private Map<String, Map<CharSequence, NGramStats>> _perLangNGramCounts;
     private int _ngramsPerLanguage = DEFAULT_NGRAMS_PER_LANGUAGE;
     private int _maxNGramLength = DEFAULT_MAX_NGRAM_LENGTH;
     private double _minNGramProbability = DEFAULT_MIN_NGRAM_PROBABILITY;
     private double _probabilityScorePower = DEFAULT_PROBABILITY_SCORE_POWER;
+    private int _minNormalizedCount = DEFAULT_MIN_NORMALIZED_COUNT;
     
     public ModelBuilder() {
         _perLangNGramCounts = new HashMap<String, Map<CharSequence, NGramStats>>();
@@ -92,7 +94,6 @@ public class ModelBuilder {
 
         Map<String, Integer> perLanguageTotalNGramCount = new HashMap<String, Integer>();
         
-        int maxLanguageNGrams = 0;
         for (String language : languages) {
             int languageNGrams = 0;
             
@@ -103,19 +104,25 @@ public class ModelBuilder {
             }
             
             perLanguageTotalNGramCount.put(language,  languageNGrams);
-            if (languageNGrams > maxLanguageNGrams) {
-                maxLanguageNGrams = languageNGrams;
-            }
         }
 
         
         for (String language : languages) {
-            double datasizeNormalization = (double)maxLanguageNGrams / (double)perLanguageTotalNGramCount.get(language);
+            double datasizeNormalization = (double)LanguageModel.NORMALIZED_COUNT / (double)perLanguageTotalNGramCount.get(language);
             Map<CharSequence, NGramStats> ngramCounts = _perLangNGramCounts.get(language);
             for (CharSequence ngram : ngramCounts.keySet()) {
                 NGramStats ngramStats = ngramCounts.get(ngram);
                 int count = ngramStats.getNGramCount();
                 int adjustedCount = (int)Math.round(count * datasizeNormalization);
+                
+                // Set to ignore if we don't have enough of these to matter.
+                // TODO actually key this off alpha somehow, as if we don't have an ngram then
+                // we give it a probability of x?
+                if (adjustedCount < _minNormalizedCount) {
+                    ngramStats.setNGramCount(0);
+                    continue;
+                }
+                
                 ngramStats.setNGramCount(adjustedCount);
                 
                 NGramStats globalStats = allLangNGramCounts.get(ngram);
@@ -123,8 +130,8 @@ public class ModelBuilder {
                     globalStats = new NGramStats();
                     allLangNGramCounts.put(ngram, globalStats);
                 }
+                
                 globalStats.incNGramCount(adjustedCount);
-
             }
         }
 
@@ -157,6 +164,11 @@ public class ModelBuilder {
             
                 if (langStatsForThisNGram != null) {
                     int count = langStatsForThisNGram.getNGramCount();
+                    if (count == 0) {
+                        // Ignore ngrams that we've flagged as having too low of a count
+                        continue;
+                    }
+                    
                     double probability = count / totalCount;
                     double score = count * Math.pow(probability, _probabilityScorePower);
                     NGramScore lng = new NGramScore(ngram, count, score, probability);
@@ -260,7 +272,7 @@ public class ModelBuilder {
                 NGramScore result = langResults.get(i);
                 LOGGER.trace(String.format("\t'%s': %f (prob = %f)", result.getNGram(), result.getScore(), result.getProbability()));
                 
-                normalizedCounts.put(result.getNGram(), (int)Math.round(result.getProbability() * LanguageModel.NORMALIZED_COUNT));
+                normalizedCounts.put(result.getNGram(), result.getCount());
             }
             
             // FUTURE support varying max ngram length per model.
