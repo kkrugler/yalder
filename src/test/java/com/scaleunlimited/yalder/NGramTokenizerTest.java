@@ -15,10 +15,10 @@ public class NGramTokenizerTest {
     public void testMyNGramIteratorTrigrams() throws Exception {
         NGramTokenizer tokenizer = new NGramTokenizer("abc", 1, 3);
         
-        Set<CharSequence> ngrams = new HashSet<CharSequence>();
+        Set<String> ngrams = new HashSet<String>();
         
         while (tokenizer.hasNext()) {
-            CharSequence ngram = tokenizer.next();
+            String ngram = tokenizer.next();
             assertTrue(ngrams.add(ngram));
         }
         
@@ -31,7 +31,7 @@ public class NGramTokenizerTest {
         
         Set<String> ngrams = new HashSet<String>();
         while (tokenizer.hasNext()) {
-            CharSequence ngram = tokenizer.next();
+            String ngram = tokenizer.next();
             assertTrue(ngrams.add(ngram.toString()));
         }
         

@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNull;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -11,11 +13,16 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.Random;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -41,8 +48,7 @@ public class LanguageDetectorTest {
         
         List<String> lines = EuroParlUtils.readLines();
 
-        ModelBuilder builder = new ModelBuilder()
-            .setNGramsPerLanguage(1000);
+        ModelBuilder builder = new ModelBuilder();
         
         for (String line : lines) {
             // Format is <language code><tab>text
@@ -89,7 +95,7 @@ public class LanguageDetectorTest {
 
                 List<DetectionResult> sortedResults = new ArrayList<DetectionResult>(detector.detect(text));
                 DetectionResult bestResult = sortedResults.get(0);
-                String bestLanguage = bestResult.getLanguage();
+                LanguageLocale bestLanguage = bestResult.getLanguage();
                 if (!bestLanguage.equals(language)) {
                     totalMisses += 1;
                 }
@@ -105,25 +111,119 @@ public class LanguageDetectorTest {
     }
     
     @Test
+    public void testUniversalDeclarationOfHumanRights() throws Exception {
+        System.setProperty("logging.root.level", "INFO");
+        Logger.getRootLogger().setLevel(Level.INFO);
+
+        final int MAX_NGRAM_LENGTH = 4;
+        final int MIN_NORMALIZED_NGRAM_COUNT = 10;
+
+        // First build all models
+        ModelBuilder mb = new ModelBuilder()
+        .setMaxNGramLength(MAX_NGRAM_LENGTH)
+        .setMinNormalizedCount(MIN_NORMALIZED_NGRAM_COUNT);
+
+        // TODO add support for remapping some language names, e.g.
+        // zh-min-nan => nan (Min Nan dialect of Chinese)
+
+        // TODO put this into a WikipediaUtils class, use it everywhere
+        Set<String> excludedLanguages = new HashSet<String>();
+
+        // Simplified English looks like English
+        excludedLanguages.add("simple");
+
+        // Belarusian using classic orthography
+        excludedLanguages.add("be-x-old");
+
+        // https://en.wikipedia.org/wiki/Sranan_Tongo (looks like Dutch)
+        excludedLanguages.add("srn");
+
+        // Chavacano or Chabacano [tʃaβaˈkano] is a Spanish-based creole language spoken in the Philippines
+        excludedLanguages.add("cbk-zam");
+
+        // https://en.wikipedia.org/wiki/Asturian_language (looks like Spanish)
+        excludedLanguages.add("ast");
+
+        // https://en.wikipedia.org/wiki/Galician_language (looks like Spanish)
+        excludedLanguages.add("gl");
+
+        // Scottish looks like English
+        excludedLanguages.add("sco");
+
+        // Deprecated code for obsolete "Serbo-Croatian"
+        // http://www.personal.psu.edu/ejp10/blogs/gotunicode/2010/08/the-language-codes-of-the-form.html
+        excludedLanguages.add("sh");
+
+        FileInputStream fis = new FileInputStream("src/test/resources/wikipedia.txt");
+        List<String> lines = IOUtils.readLines(fis, "UTF-8");
+        fis.close();
+
+        for (String line : lines) {
+            String[] parts = line.split("\t", 2);
+            String language = parts[0];
+            if (excludedLanguages.contains(language)) {
+                continue;
+            }
+
+            String text = parts[1];
+            mb.addTrainingDoc(language, text);
+        }
+        
+        System.out.println("Building training models...");
+        Collection<LanguageModel> models = mb.makeModels();
+
+        LanguageDetector detector = new LanguageDetector(models, MAX_NGRAM_LENGTH);
+
+        fis = new FileInputStream("src/test/resources/udhr.txt");
+        lines = IOUtils.readLines(fis, "UTF-8");
+        fis.close();
+
+        for (String line : lines) {
+            if (line.isEmpty() || line.startsWith("#")) {
+                continue;
+            }
+
+            String[] parts = line.split("\t", 3);
+            String languageCode = parts[0];
+            if (languageCode.equals("   ") || languageCode.equals("???")) {
+                continue;
+            }
+            
+            String text = parts[2];
+
+            LanguageLocale language = LanguageLocale.fromString(languageCode);
+            if (!detector.supportsLanguage(language)) {
+                System.out.println(String.format("Skipping text from '%s', not supported", language));
+                continue;
+            }
+            
+            Collection<DetectionResult> result = detector.detect(text);
+            if (result.isEmpty()) {
+                System.out.println(String.format("Detected '%s' as nothing", language));
+            } else {
+                DetectionResult dr = result.iterator().next();
+                if (dr.getLanguage().weaklyEqual(language)) {
+                    System.out.println(String.format("Correctly detected '%s' as '%s'", language, dr.getLanguage()));
+                } else {
+                    System.out.println(String.format("Incorrectly detected '%s' as '%s'", language, dr.getLanguage()));
+                }
+            }
+        }
+    }
+    
+    @Test
     public void testAllLanguages() throws Exception {
         // System.setProperty("logging.root.level", "INFO");
         System.setProperty("logging.root.level", "DEBUG");
         Logger.getRootLogger().setLevel(Level.DEBUG);
-        testLanguages(new Random(1L), null, 1000, 0.20, 1.0);
+        testLanguages(new Random(1L), null);
     }
     
     @Test
     public void testLanguageSpread() throws Exception {
         List<String> lines = EuroParlUtils.readLines();
 
-        final int ngramsPerLanguage = 1000;
-        final double minNGramProbability = .50;
-        final double probabilityScorePower = 1.0;
-        
-        ModelBuilder builder = new ModelBuilder()
-            .setNGramsPerLanguage(ngramsPerLanguage)
-            .setMinNGramProbability(minNGramProbability)
-            .setProbabilityScorePower(probabilityScorePower);
+        ModelBuilder builder = new ModelBuilder();
 
         for (String line : lines) {
             // Format is <language code><tab>text
@@ -135,23 +235,23 @@ public class LanguageDetectorTest {
         }
 
         Collection<LanguageModel> models = builder.makeModels();
-        Map<String, LanguageModel> modelsAsMap = new HashMap<String, LanguageModel>();
+        Map<LanguageLocale, LanguageModel> modelsAsMap = new HashMap<LanguageLocale, LanguageModel>();
         for (LanguageModel model : models) {
             assertNull(modelsAsMap.put(model.getLanguage(), model));
         }
         
-        for (String language : modelsAsMap.keySet()) {
-            Map<CharSequence, Integer> langNGramCounts = modelsAsMap.get(language).getNGramCounts();
+        for (LanguageLocale language : modelsAsMap.keySet()) {
+            Map<String, Integer> langNGramCounts = modelsAsMap.get(language).getNGramCounts();
             
-            for (String otherLanguage : modelsAsMap.keySet()) {
+            for (LanguageLocale otherLanguage : modelsAsMap.keySet()) {
                 if (language.equals(otherLanguage)) {
                     continue;
                 }
                 
-                Map<CharSequence, Integer> otherLangNGramCounts = modelsAsMap.get(otherLanguage).getNGramCounts();
+                Map<String, Integer> otherLangNGramCounts = modelsAsMap.get(otherLanguage).getNGramCounts();
                 
                 // Calculate the overlap of ngrams
-                Set<CharSequence> allNGrams = new HashSet<CharSequence>(langNGramCounts.keySet());
+                Set<String> allNGrams = new HashSet<String>(langNGramCounts.keySet());
                 allNGrams.addAll(otherLangNGramCounts.keySet());
                 double totalNGramCount = allNGrams.size();
 
@@ -159,7 +259,7 @@ public class LanguageDetectorTest {
                 
                 double langProb = 0.50;
                 double otherLangProb = 0.50;
-                for (CharSequence ngram : langNGramCounts.keySet()) {
+                for (String ngram : langNGramCounts.keySet()) {
                     int langCount = langNGramCounts.get(ngram);
                     int otherLangCount = otherLangNGramCounts.containsKey(ngram) ? otherLangNGramCounts.get(ngram) : 0;
                     if (otherLangCount != 0) {
@@ -192,28 +292,6 @@ public class LanguageDetectorTest {
     }
     
     
-    @Test
-    // TODO remove this test.
-    public void optimizeBuilderSettings() throws Exception {
-        System.setProperty("logging.root.level", "INFO");
-        Logger.getRootLogger().setLevel(Level.INFO);
-        
-        final int numTrials = 1;
-        for (int ngramsPerLanguage = 1500; ngramsPerLanguage <= 5000; ngramsPerLanguage += 500) {
-            for (double minNGramProbability = 0.30; minNGramProbability <= 0.51; minNGramProbability += .02) {
-                for (double probabilityScorePower = 1.0; probabilityScorePower <= 1.05; probabilityScorePower += 0.1) {
-                    Random rand = new Random(1L);
-                    double totalMissRatio = 0.0;
-                    for (int trial = 0; trial < numTrials; trial++) {
-                        totalMissRatio += testLanguages(new Random(1L), null, ngramsPerLanguage, minNGramProbability, probabilityScorePower);
-                    }
-
-                    System.out.println(String.format("%d ngrams, min prob of %f, score power of %f == %f miss ratio", ngramsPerLanguage, minNGramProbability, probabilityScorePower, totalMissRatio / numTrials));
-                }
-            }
-        }
-    }
-    
     /**
      * @param targetLanguages Set of languages to test
      * @return the miss ratio (* 100, so it's a display percentage)
@@ -221,12 +299,12 @@ public class LanguageDetectorTest {
      */
     
     private double testLanguages(Set<String> targetLanguages) throws Exception {
-        return testLanguages(new Random(1L), targetLanguages, ModelBuilder.DEFAULT_NGRAMS_PER_LANGUAGE, ModelBuilder.DEFAULT_MIN_NGRAM_PROBABILITY, ModelBuilder.DEFAULT_PROBABILITY_SCORE_POWER);
+        return testLanguages(new Random(1L), targetLanguages);
     }
     
-    private double testLanguages(Random rand, Set<String> targetLanguages, int ngramsPerLanguage, double minNGramProbability, double probabilityScorePower) throws Exception {
+    private double testLanguages(Random rand, Set<String> targetLanguages) throws Exception {
         List<String> testLines = new ArrayList<String>();
-        Collection<LanguageModel> models = makeModelsAndTestData(testLines, rand, targetLanguages, ngramsPerLanguage, minNGramProbability, probabilityScorePower);
+        Collection<LanguageModel> models = makeModelsAndTestData(testLines, rand, targetLanguages);
         
         // Now try classifying the held-out text using the models.
         // Note that the testLines will only have text for the target languages.
@@ -236,12 +314,12 @@ public class LanguageDetectorTest {
         int totalMisses = 0;
         IntCounter hitsPerLanguage = new IntCounter();
 
-        Map<String, IntCounter> missesPerLanguage = new HashMap<String, IntCounter>();
+        Map<LanguageLocale, IntCounter> missesPerLanguage = new HashMap<LanguageLocale, IntCounter>();
         for (String line : testLines) {
             String[] pieces = line.split("\t", 2);
-            String language = pieces[0];
+            String languageAsStr = pieces[0];
             String text = pieces[1];
-
+            LanguageLocale language = LanguageLocale.fromString(languageAsStr);
             IntCounter missCounter = missesPerLanguage.get(language);
             if (missCounter == null) {
                 missCounter = new IntCounter();
@@ -249,12 +327,12 @@ public class LanguageDetectorTest {
             }
             
             List<DetectionResult> sortedResults = new ArrayList<DetectionResult>(detector.detect(text));
-            DetectionResult bestResult = sortedResults.isEmpty() ? new DetectionResult("unknown", 0.0) : sortedResults.get(0);
-            String bestLanguage = bestResult.getLanguage();
+            DetectionResult bestResult = sortedResults.isEmpty() ? new DetectionResult(LanguageLocale.fromString("zxx"), 0.0) : sortedResults.get(0);
+            LanguageLocale bestLanguage = bestResult.getLanguage();
             if (bestLanguage.equals(language)) {
-                hitsPerLanguage.increment(language);
+                hitsPerLanguage.increment(language.toString());
             } else {
-                missCounter.increment(bestLanguage);
+                missCounter.increment(bestLanguage.toString());
                 totalMisses += 1;
 
                 // System.out.println(String.format("Best result for %d chars in '%s' was '%s' with score %f and confidence %f", text.length(), language, bestLanguage, bestResult.getScore(), bestResult.getConfidence()));
@@ -263,14 +341,14 @@ public class LanguageDetectorTest {
         
         StringBuilder debugMsg = new StringBuilder('\n');
         for (LanguageModel model : models) {
-            String language = model.getLanguage();
+            LanguageLocale language = model.getLanguage();
             IntCounter missCounter = missesPerLanguage.get(language);
             if (missCounter == null) {
                 missCounter = new IntCounter();
             }
             
             int misses = missCounter.sum();
-            int hits = hitsPerLanguage.get(language);
+            int hits = hitsPerLanguage.get(language.toString());
             if (hits + misses == 0) {
                 // No data for this model.
                 continue;
@@ -367,7 +445,7 @@ public class LanguageDetectorTest {
     }
     
     private Collection<LanguageModel> makeModelsAndTestData(List<String> testLines, Random rand, Set<String> targetLanguages) throws Exception {
-        return makeModelsAndTestData(testLines, rand, targetLanguages, ModelBuilder.DEFAULT_NGRAMS_PER_LANGUAGE, ModelBuilder.DEFAULT_MIN_NGRAM_PROBABILITY, ModelBuilder.DEFAULT_PROBABILITY_SCORE_POWER);
+        return makeModelsAndTestData(testLines, rand, targetLanguages);
     }
     
     private Collection<LanguageModel> makeModelsAndTestData(List<String> testLines, Random rand, Set<String> targetLanguages, int ngramsPerLanguage, double minNGramProbability, double probabilityScorePower) throws Exception {
@@ -375,10 +453,7 @@ public class LanguageDetectorTest {
         
         List<String> lines = EuroParlUtils.readLines();
 
-        ModelBuilder builder = new ModelBuilder()
-            .setNGramsPerLanguage(ngramsPerLanguage)
-            .setMinNGramProbability(minNGramProbability)
-            .setProbabilityScorePower(probabilityScorePower);
+        ModelBuilder builder = new ModelBuilder();
 
         for (String line : lines) {
             // Format is <language code><tab>text

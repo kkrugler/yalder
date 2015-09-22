@@ -27,19 +27,20 @@ public class LanguageModel {
     // can combine languages built with different amounts of data.
     public static final int NORMALIZED_COUNT = 1000000;
 
-    private String _modelLanguage;      // ISO 639-1 code
+    private LanguageLocale _modelLanguage;
     
     private int _maxNGramLength;
     
-    private Map<CharSequence, Integer> _normalizedCounts;
+    // Map from ngram to count
+    private Map<String, Integer> _normalizedCounts;
     
-    public LanguageModel(String modelLanguage, int maxNGramLength, Map<CharSequence, Integer> normalizedCounts) {
+    public LanguageModel(LanguageLocale modelLanguage, int maxNGramLength, Map<String, Integer> normalizedCounts) {
         _modelLanguage = modelLanguage;
         _maxNGramLength = maxNGramLength;
         _normalizedCounts = normalizedCounts;
     }
     
-    public String getLanguage() {
+    public LanguageLocale getLanguage() {
         return _modelLanguage;
     }
     
@@ -47,12 +48,12 @@ public class LanguageModel {
         return _maxNGramLength;
     }
     
-    public int getNGramCount(CharSequence ngram) {
+    public int getNGramCount(String ngram) {
         Integer result = _normalizedCounts.get(ngram);
         return result == null ? 0 : result;
     }
     
-    public Map<CharSequence, Integer> getNGramCounts() {
+    public Map<String, Integer> getNGramCounts() {
         return _normalizedCounts;
     }
     

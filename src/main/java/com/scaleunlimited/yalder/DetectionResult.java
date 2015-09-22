@@ -2,23 +2,23 @@ package com.scaleunlimited.yalder;
 
 public class DetectionResult implements Comparable<DetectionResult> {
 
-    private String _language;
+    private LanguageLocale _language;
     private double _score;
     private double _confidence;
     private String _details;
     
-    public DetectionResult(String language, double score) {
+    public DetectionResult(LanguageLocale language, double score) {
         _language = language;
         _score = score;
         _confidence = 0.0;
         _details = "";
     }
 
-    public String getLanguage() {
+    public LanguageLocale getLanguage() {
         return _language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(LanguageLocale language) {
         _language = language;
     }
     

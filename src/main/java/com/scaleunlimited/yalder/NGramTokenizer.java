@@ -9,7 +9,7 @@ public class NGramTokenizer extends BaseTokenizer {
     }
 
     // Return the next ngram.
-    public CharSequence next() {
+    public String next() {
         if (!hasNext()) {
             throw new IllegalStateException("No next ngram to return");
         }
@@ -18,7 +18,7 @@ public class NGramTokenizer extends BaseTokenizer {
 
         expandNGram();
 
-        return result;
+        return result.toString();
     }
 
 }

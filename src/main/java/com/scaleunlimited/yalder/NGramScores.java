@@ -17,7 +17,7 @@ public class NGramScores {
     // the langNGramsByScore list this ngram is located...which means we can't remove it from
     // the other language list, but we can flag it somehow has being used already (e.g. score
     // set to 0, so then don't use).
-    Map<String, Set<CharSequence>> langNGramByNGram = new HashMap<String, Set<CharSequence>>();
+    Map<String, Set<String>> langNGramByNGram = new HashMap<String, Set<String>>();
 
     public NGramScores() {
         _langNGramByScore = new HashMap<String, List<NGramScore>>();
