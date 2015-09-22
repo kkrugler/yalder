@@ -12,7 +12,7 @@ public class ModelBuilderTest {
     @Test
     public void test() throws Exception {
         List<String> lines = EuroParlUtils.readLines();
-        Collection<LanguageModel> models = EuroParlUtils.buildModels(lines, 1000);
+        Collection<LanguageModel> models = EuroParlUtils.buildModels(lines);
     }
 
 }

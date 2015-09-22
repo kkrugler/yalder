@@ -1,13 +1,13 @@
 package com.scaleunlimited.yalder;
 
 public class NGramScore implements Comparable<NGramScore> {
-    private CharSequence _ngram;
+    private String _ngram;
     
     private int _count;
     private double _score;
     private double _probability;
     
-    public NGramScore(CharSequence ngram, int count, double score, double probability) {
+    public NGramScore(String ngram, int count, double score, double probability) {
         _ngram = ngram;
         _count = count;
         _score = score;
@@ -28,7 +28,7 @@ public class NGramScore implements Comparable<NGramScore> {
         
     }
 
-    public CharSequence getNGram() {
+    public String getNGram() {
         return _ngram;
     }
 

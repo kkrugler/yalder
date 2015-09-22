@@ -74,7 +74,7 @@ public abstract class BaseTokenizer {
             char curChar = _buffer.charAt(_bufferPos++);
 
             boolean charIsWhitespace = false;
-            if (curChar < 0x80) {
+            if ((curChar < 0x80) || (curChar == '\u00A0') || (curChar == '\u2022')){
                 if (!Character.isLetter(curChar)) {
                     curChar = ' ';
                     charIsWhitespace = true;

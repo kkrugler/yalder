@@ -21,11 +21,11 @@ public class LanguageModelTest {
     @Test
     public void testClosestModels() throws Exception {
         List<String> lines = EuroParlUtils.readLines();
-        Collection<LanguageModel> models = EuroParlUtils.buildModels(lines, 1000);
+        Collection<LanguageModel> models = EuroParlUtils.buildModels(lines);
         
         for (LanguageModel model : models) {
             
-            String language = model.getLanguage();
+            LanguageLocale language = model.getLanguage();
             List<DetectionResult> results = new ArrayList<DetectionResult>();
             for (LanguageModel otherModel: models) {
                 if (otherModel.getLanguage().equals(language)) {

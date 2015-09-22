@@ -45,12 +45,12 @@ public class CharUtils {
         return hash & ~0x07;
     }
 
-    public static Map<CharSequence, NGramStats> calcNGramStats(CharSequence text, int minNGramLength, int maxNGramLength) {
-        Map<CharSequence, NGramStats> result = new HashMap<CharSequence, NGramStats>();
+    public static Map<String, NGramStats> calcNGramStats(String text, int minNGramLength, int maxNGramLength) {
+        Map<String, NGramStats> result = new HashMap<String, NGramStats>();
         
         NGramTokenizer tokenizer = new NGramTokenizer(text, minNGramLength, maxNGramLength);
         while (tokenizer.hasNext()) {
-            CharSequence token = tokenizer.next();
+            String token = tokenizer.next();
             NGramStats curStats = result.get(token);
             if (curStats == null) {
                 curStats = new NGramStats();
