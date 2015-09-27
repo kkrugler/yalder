@@ -140,6 +140,14 @@ public class LanguageLocale {
         }
     }
     
+    public String getName() {
+        if (!_script.isEmpty()) {
+            return String.format("%s-%s", _language, _script);
+        } else {
+            return _language;
+        }
+    }
+    
     public final String toString() {
         String languageTag;
         if (!_script.isEmpty()) {

@@ -29,6 +29,10 @@ public class LanguageLocaleTest {
         LanguageLocale twoLetter = LanguageLocale.fromString("cy");
         assertEquals(twoLetter, threeLetter);
         assertTrue(threeLetter.weaklyEqual(twoLetter));
+        
+        threeLetter = LanguageLocale.fromString("swe");
+        twoLetter = LanguageLocale.fromString("sv");
+        assertEquals(twoLetter, threeLetter);
     }
 
     @Test

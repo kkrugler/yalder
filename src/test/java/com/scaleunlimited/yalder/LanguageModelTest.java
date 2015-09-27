@@ -1,53 +1,73 @@
 package com.scaleunlimited.yalder;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Test;
 
-import com.scaleunlimited.yalder.DetectionResult;
-
 public class LanguageModelTest {
 
-    /**
-     * Print out languages that are "close", where I've arbitrarily defined this
-     * to be a score >= 0.30. We get 5 such combinations with our current approach,
-     * specifically de/nl, sk/cs, da/sv/, it/es, and pt/es.
-     */
     @Test
-    public void testClosestModels() throws Exception {
-        List<String> lines = EuroParlUtils.readLines();
-        Collection<LanguageModel> models = EuroParlUtils.buildModels(lines);
-        
-        for (LanguageModel model : models) {
-            
-            LanguageLocale language = model.getLanguage();
-            List<DetectionResult> results = new ArrayList<DetectionResult>();
-            for (LanguageModel otherModel: models) {
-                if (otherModel.getLanguage().equals(language)) {
-                    continue;
-                }
+    public void testEquality() throws Exception {
+        LanguageLocale modelLanguage = LanguageLocale.fromString("eng");
+        final int maxNGramLength = 4;
+        Map<String, Integer> normalizedCounts1 = new HashMap<>();
+        normalizedCounts1.put("abc", 1);
+        normalizedCounts1.put("a", 6);
+        normalizedCounts1.put("ab", 2);
+        normalizedCounts1.put("ad", 2);
+        normalizedCounts1.put("abc", 1);
+        normalizedCounts1.put("abb", 1);
+        LanguageModel model1 = new LanguageModel(modelLanguage, maxNGramLength, normalizedCounts1);
 
-                double score = 0.0;
-                results.add(new DetectionResult(otherModel.getLanguage(), score));
-            }
-            
-            Collections.sort(results);
-            
-            System.out.println(String.format("Results for '%s':", language));
-            for (DetectionResult result : results) {
-                double score = result.getScore();
-                if (!language.equals(result.getLanguage()) && (score >= 0.30)) {
-                    System.out.println(String.format("\t'%s': %f", result.getLanguage(), result.getScore()));
-                }
-            }
-            
-            System.out.println();
-        }
+        Map<String, Integer> normalizedCounts2 = new HashMap<>(normalizedCounts1);
+        LanguageModel model2 = new LanguageModel(modelLanguage, maxNGramLength, normalizedCounts2);
+        assertEquals(model1, model2);
+
+        normalizedCounts2.put("abb", 2);
+        model2 = new LanguageModel(modelLanguage, maxNGramLength, normalizedCounts2);
+        assertFalse(model1.equals(model2));
+        
+        normalizedCounts2.put("abb", 1);
+        model2 = new LanguageModel(modelLanguage, maxNGramLength, normalizedCounts2);
+        assertEquals(model1, model2);
+
+        model2 = new LanguageModel(modelLanguage, maxNGramLength-1, normalizedCounts2);
+        assertFalse(model1.equals(model2));
+    }
+    
+    @Test
+    public void testSerialization() throws Exception {
+        LanguageLocale modelLanguage = LanguageLocale.fromString("eng");
+        final int maxNGramLength = 4;
+        Map<String, Integer> normalizedCounts = new HashMap<>();
+        normalizedCounts.put("abc", 1);
+        normalizedCounts.put("a", 6);
+        normalizedCounts.put("ab", 2);
+        normalizedCounts.put("ad", 2);
+        normalizedCounts.put("abc", 1);
+        normalizedCounts.put("abb", 1);
+
+        LanguageModel model1 = new LanguageModel(modelLanguage, maxNGramLength, normalizedCounts);
+        
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        OutputStreamWriter osw = new OutputStreamWriter(baos, "UTF-8");
+        model1.writeModel(osw);
+        osw.close();
+        
+        // Now create a model using that same data.
+        LanguageModel model2 = new LanguageModel();
+        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+        InputStreamReader isr = new InputStreamReader(bais, "UTF-8");
+        model2.readModel(isr);
+        assertEquals(model1, model2);
     }
 
 }

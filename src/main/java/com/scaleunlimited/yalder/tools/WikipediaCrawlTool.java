@@ -10,18 +10,22 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -33,25 +37,27 @@ import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 
+import com.scaleunlimited.yalder.LanguageLocale;
+
 import bixo.config.UserAgent;
 import bixo.exceptions.BaseFetchException;
 import bixo.fetcher.FetchedResult;
 import bixo.fetcher.SimpleHttpFetcher;
 
 public class WikipediaCrawlTool {
+    public static final Logger LOGGER = Logger.getLogger(WikipediaCrawlTool.class);
 
     private static final String XML_SUBDIR_NAME = "xml";
     private static final String TEXT_SUBDIR_NAME = "text";
     
     // Map from Wikipedia language name to ISO 639-2 language code.
+    // Use mapWikipediaLanguage() to get the mapping, as that loads the data.
     private static final Map<String, String> WIKIPEDIA_TO_ISO_LANGUAGE = new HashMap<String, String>();
-    static {
-        WIKIPEDIA_TO_ISO_LANGUAGE.put("en", "eng");
-    }
     
     private WikipediaCrawlOptions _options;
     private Document _curPage = null;
     private SimpleHttpFetcher _fetcher;
+    private Map<String, Long> _lastFetchTime;
     
     public WikipediaCrawlTool(WikipediaCrawlOptions options) {
         _options = options;
@@ -60,20 +66,20 @@ public class WikipediaCrawlTool {
         // Some pages are > 1MB is size, yikes!
         _fetcher.setDefaultMaxContentSize(10 * 1024 * 1024);
         
+        _lastFetchTime = new HashMap<>();
     }
     
     private void displayHelp() {
         System.out.println("help - print this help text");
-        System.out.println("fetch - load HTML document from file or URL");
-        System.out.println("dump - dump previously loaded HTML document");
-        System.out.println("clean - dump text extracted from previously loaded HTML document");
-        System.out.println("crawl - crawl Wikipedia pages, given a list of (English) titles");
+        System.out.println("load - load Wikipedia page from file or URL");
+        System.out.println("dump - dump previously loaded page (as XML)");
+        System.out.println("clean - dump text extracted from previously loaded page");
+        System.out.println("crawl - crawl Wikipedia pages, given a list of Q-codes");
         System.out.println("xpath - evaluate XPath expressions using previously loaded HTML document");
-        System.out.println("merge - generate one document from fetched content");
         System.out.println("quit - quit");
     }
     
-    private Document fetchPage(String docName) throws IOException, DocumentException, BaseFetchException {
+    private Document loadDocument(String docName) throws IOException, DocumentException, BaseFetchException {
         if (docName == null) {
             docName = readInputLine("Enter HTML document file path or URL: ");
         }
@@ -85,7 +91,7 @@ public class WikipediaCrawlTool {
         InputStream is;
         
         if (docName.startsWith("http://") || docName.startsWith("https://")) {
-            FetchedResult result = _fetcher.fetch(docName);
+            FetchedResult result = fetchPage(docName);
             is = new ByteArrayInputStream(result.getContent());
         } else {
             is = new FileInputStream(docName);
@@ -93,6 +99,30 @@ public class WikipediaCrawlTool {
         
         HtmlParser parser = new HtmlParser("UTF-8");
         return parser.parse(is);
+    }
+    
+    private FetchedResult fetchPage(String pageURL) throws IOException, DocumentException, BaseFetchException {
+        URL url = new URL(pageURL);
+        String domain = url.getHost();
+        Long lastFetchTime = _lastFetchTime.get(domain);
+        if (lastFetchTime == null) {
+            lastFetchTime = 0L;
+        }
+        
+        long curTime = System.currentTimeMillis();
+        long delay = (lastFetchTime + 1000L) - curTime;
+        if (delay > 0) {
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                // Ignore interrupted exception.
+            }
+        }
+        
+        FetchedResult result = _fetcher.fetch(pageURL);
+        _lastFetchTime.put(domain, System.currentTimeMillis());
+        
+        return result;
     }
     
     private void doDump() throws IOException {
@@ -127,8 +157,14 @@ public class WikipediaCrawlTool {
         }
     }
 
+    /**
+     * Given a crawl output directory (which has a text subdir), for each file we find we want
+     * to extract and clean up the resulting text.
+     * 
+     * @throws IOException
+     */
     private void mergeResults() throws IOException {
-        String dirname = readInputLine("Enter input directory path: ");
+        String dirname = readInputLine("Enter crawl directory path: ");
 
         File inputDir = new File(dirname);
         if (!inputDir.exists()) {
@@ -139,20 +175,29 @@ public class WikipediaCrawlTool {
             throw new IllegalArgumentException(String.format("'%s' is not a directory", inputDir.toString()));
         }
         
-        String outputFilename = readInputLine("Enter ouput file path: ");
+        File textDir = new File(inputDir, TEXT_SUBDIR_NAME);
+        if (!textDir.exists()) {
+            throw new IllegalArgumentException(String.format("The directory '%s' doesn't exist", inputDir.toString()));
+        }
         
+        if (!textDir.isDirectory()) {
+            throw new IllegalArgumentException(String.format("'%s' is not a directory", inputDir.toString()));
+        }
+
+        String outputFilename = readInputLine("Enter ouput file path: ");
         File outputFile = new File(outputFilename);
         outputFile.delete();
         
         OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(outputFile), "UTF-8");
         
-        System.out.println(String.format("Loading text lines from files in '%s'...", inputDir.getCanonicalPath()));
+        System.out.println(String.format("Loading text lines from files in '%s'...", textDir.getCanonicalPath()));
+        
+        Pattern filenamePattern = Pattern.compile("(.+)_(.+).txt");
 
         try {
-            for (File file : FileUtils.listFiles(inputDir, new String[]{"txt"}, true)) {
+            for (File file : FileUtils.listFiles(textDir, new String[]{"txt"}, true)) {
                 String filename = file.getName();
-                Pattern p = Pattern.compile("(.+)_(.+).txt");
-                Matcher m = p.matcher(filename);
+                Matcher m = filenamePattern.matcher(filename);
                 if (!m.matches()) {
                     throw new IllegalArgumentException(String.format("Found file '%s' without a language code", filename));
                 }
@@ -160,7 +205,14 @@ public class WikipediaCrawlTool {
                 String language = m.group(2);
                 List<String> lines = FileUtils.readLines(file, "UTF-8");
                 for (String line : lines) {
+                    // Get rid of [ <digits> ] sequence (where there may or may not be spaces), as that's a footnote ref
+                    // that is just noise.
+                    line = line.replaceAll("\\[[ ]*\\d+[ ]*\\]", " ");
+                    
+                    // We wind up with a lot of multi-space sequences, due to markup in text always getting converted to
+                    // text by inserting a space.
                     line = line.replaceAll("[ \t]+", " ");
+                    
                     line = line.trim();
                     if (line.trim().isEmpty()) {
                         continue;
@@ -177,7 +229,7 @@ public class WikipediaCrawlTool {
         }
     }
     
-    private void saveWikipediaPage(Document doc, File parentFolder, String topicName, String language) throws IOException {
+    private int saveWikipediaPage(Document doc, File parentFolder, String topicName, String language) throws IOException {
         // Write out the original content, as XML, so we could potentially re-process it
         File xmlDir = new File(parentFolder, XML_SUBDIR_NAME);
         xmlDir.mkdirs();
@@ -191,10 +243,13 @@ public class WikipediaCrawlTool {
         textDir.mkdirs();
 
         // Now save the main content
-        File textFile = new File(parentFolder, String.format("%s_%s.txt", topicName, language));
+        File textFile = new File(textDir, String.format("%s_%s.txt", topicName, language));
         osw = new OutputStreamWriter(new FileOutputStream(textFile), "UTF-8");
-        osw.write(extractContent(doc));
+        String content = extractContent(doc);
+        osw.write(content);
         osw.close();
+        
+        return content.length();
     }
     
     private String extractContent(Document doc) {
@@ -234,17 +289,36 @@ public class WikipediaCrawlTool {
     }
 
     private void doCrawl() throws IOException, DocumentException, BaseFetchException {
-        String qCodeOrCount = readInputLine("Enter Q-code, or number to randomly select from our important list");
+        String qCodeOrCount = readInputLine("Enter a specific Q-code, or number of these to randomly select, or all: ");
         if (qCodeOrCount.trim().isEmpty()) {
             return;
         }
         
+        int targetCharsPerLanguage = Integer.MAX_VALUE;
+        int maxCharsPerPage = Integer.MAX_VALUE;
+        
+        Map<String, Integer> charsPerLanguage = new HashMap<>();
+        Set<String> completedLanguages = new HashSet<>();
+        
         List<String> qCodes = new ArrayList<String>();
         if (qCodeOrCount.startsWith("Q")) {
             qCodes.add(qCodeOrCount);
+        } else if (qCodeOrCount.equals("all")) {
+            qCodes = readImportantQCodes();
+            Collections.shuffle(qCodes);
+            
+            String targetAsStr = readInputLine("Enter target number of characters per language: ");
+            targetCharsPerLanguage = Integer.parseInt(targetAsStr);
+            
+            String perPageLimitAsStr = readInputLine("Enter max number of characters per page: ");
+            if (perPageLimitAsStr.isEmpty()) {
+                maxCharsPerPage = 10*1024;
+            } else {
+                maxCharsPerPage = Integer.parseInt(perPageLimitAsStr);
+            }
         } else {
             int numToProcess = Integer.parseInt(qCodeOrCount);
-            List<String> importantQCodes = IOUtils.readLines(WikipediaCrawlTool.class.getResourceAsStream("/wikipedia-key-articles.txt"));
+            List<String> importantQCodes = readImportantQCodes();
             Collections.shuffle(importantQCodes);
             qCodes = importantQCodes.subList(0, numToProcess);
         }
@@ -259,13 +333,19 @@ public class WikipediaCrawlTool {
             System.err.println("Output directory must exist");
             return;
         }
+        
         if (!parentFolder.isDirectory()) {
             System.err.println("Output path specified isn't a directory");
             return;
         }
         
+        Pattern urlPattern = Pattern.compile("https://(.+?).wikipedia.org/.+");
+
+        // TODO bail out of this loop if we process N qCodes in a row without adding any text
+        // for a language (all that we've seen so far are complete).
         for (String qCode : qCodes) {
-            Document page = fetchPage("https://www.wikidata.org/wiki/" + qCode);
+            // Fetch the QCode page
+            Document page = loadDocument("https://www.wikidata.org/wiki/" + qCode);
             List<Node> nodes = selectNodes(page, "//span[@class=\"wikibase-title-label\"]");
             if (nodes.size() != 1) {
                 throw new IllegalArgumentException(String.format("Wikidata page %s doesn't have a title label", qCode));
@@ -276,64 +356,108 @@ public class WikipediaCrawlTool {
             List<String> pageURLs = getWikiPagesFromWikidata(page);
             
             for (String pageURL : pageURLs) {
-                // TODO extract language from URL, map it to our 639-2 code.
-                // https://af.wikipedia.org/wiki/Vincent_van_Gogh
-                Pattern urlPattern = Pattern.compile("https://(.+?).wikipedia.org/.+");
+                // extract language from URL, map it to our 639-2 code.
+                // URL format is https://<language code>.wikipedia.org/wiki/<topic name>
                 Matcher m = urlPattern.matcher(pageURL);
-                String language = WIKIPEDIA_TO_ISO_LANGUAGE.get(m.group(1));
-                Document subPage = fetchPage(pageURL);
-                saveWikipediaPage(subPage, parentFolder, topic, language);
+                if (!m.matches()) {
+                    LOGGER.error("Got page URL with invalid format:" + pageURL);
+                    continue;
+                }
+                
+                String language = mapWikipediaLanguage(m.group(1));
+                if (language == null) {
+                    LOGGER.warn("Unknown Wikipedia language: " + m.group(1));
+                } else if (language.equals("xxx")) {
+                    // Ignore, not a language we want to process.
+                } else if (completedLanguages.contains(language)) {
+                    // Ignore, we have enough text from this language.
+                } else {
+                    Document subPage = loadDocument(pageURL);
+                    int numChars = saveWikipediaPage(subPage, parentFolder, topic, language);
+                    
+                    // When tracking chars per language, limit # we get out of each page so we
+                    // don't hit our target (e.g. 100K) with a single page.
+                    numChars = Math.min(numChars, maxCharsPerPage);
+                    Integer curChars = charsPerLanguage.get(language);
+                    if (curChars == null) {
+                        curChars = numChars;
+                    } else {
+                        curChars += numChars;
+                    }
+                    
+                    charsPerLanguage.put(language, curChars);
+                    if (curChars >= targetCharsPerLanguage) {
+                        completedLanguages.add(language);
+                    }
+                }
             }
         }
         
-
-//        for (String topic : topics) {
-//            Document topicPage = fetchPage("https://en.wikipedia.org/wiki/" + topic);
-//            
-//            saveWikipediaPage(topicPage, parentFolder, topic, "eng");
-//            
-//            // Now extract links to all of the other pages, and crawl those as well
-//            List<Node> nodes = selectNodes(_curPage, "//li[contains(concat(' ', @class, ' '), ' interlanguage-link ')]");
-//            for (Node node : nodes) {
-//                Element link = (Element)node.selectSingleNode("./a");
-//                String language = link.attributeValue("lang");
-//                
-//                String isoCode = mapWikipediaLanguage(language);
-//                if (isoCode == null) {
-//                    // Not one of the languages we want
-//                    continue;
-//                }
-//                
-//                String url = link.attributeValue("href");
-//                if (url.startsWith("//")) {
-//                    url = "https:" + url;
-//                }
-//                
-//                Document subPage = fetchPage(url);
-//                saveWikipediaPage(subPage, parentFolder, topic, language);
-//            }
-//        }
+        // Print some statistics for languages...
+        for (String language : charsPerLanguage.keySet()) {
+            System.out.println(String.format("'%s': %d chars", LanguageLocale.fromString(language), charsPerLanguage.get(language)));
+        }
     }
     
+    private List<String> readImportantQCodes() {
+        List<String> result = new ArrayList<>();
+        try (InputStream is = WikipediaCrawlTool.class.getResourceAsStream("/wikipedia-key-articles.txt")) {
+            List<String> lines =  IOUtils.readLines(is);
+            for (String line : lines) {
+                line = line.trim();
+                if (line.isEmpty() || line.startsWith("#")) {
+                    continue;
+                }
+                
+                result.add(line);
+            }
+            
+            return result;
+        } catch (IOException e) {
+            throw new RuntimeException("Impossible exception!", e);
+        }
+    }
+
     private List<String> getWikiPagesFromWikidata(Document page) throws IOException, DocumentException, BaseFetchException {
         
         List<String> result = new ArrayList<String>();
         List<Node> nodes = selectNodes(page, "//div[@data-wb-sitelinks-group=\"wikipedia\"]//span[@class=\"wikibase-sitelinkview-page\"]/a");
         for (Node node : nodes) {
             Element link = (Element)node;
-            String language = link.attributeValue("hreflang");
-            if (WIKIPEDIA_TO_ISO_LANGUAGE.containsKey(language)) {
-                String url = link.attributeValue("href");
-                result.add(url);
-            }
+            result.add(link.attributeValue("href"));
         }
 
         return result;
     }
 
     private String mapWikipediaLanguage(String language) {
-        // TODO Auto-generated method stub
-        return null;
+        synchronized (WIKIPEDIA_TO_ISO_LANGUAGE) {
+            if (WIKIPEDIA_TO_ISO_LANGUAGE.isEmpty()) {
+                try (InputStream is = WikipediaCrawlTool.class.getResourceAsStream("/wikipedia-languages.txt")) {
+                    List<String> lines = IOUtils.readLines(is, "UTF-8");
+                    for (String line : lines) {
+                        line = line.trim();
+                        if (line.isEmpty() || line.startsWith("#")) {
+                            continue;
+                        }
+                        
+                        // Format is rank, language name, Wikipedia language name, ISO 639-2, optional comment
+                        // E.g.
+                        // 19   Serbo-Croatian  sh  xxx # Ignore obsolete language
+                        String[] parts = line.split("\t");
+                        if (parts.length < 4) {
+                            throw new IllegalArgumentException(String.format("Line '%s' has invalid format", line));
+                        }
+                        
+                        WIKIPEDIA_TO_ISO_LANGUAGE.put(parts[2], parts[3]);
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException("Impossible exception!", e);
+                }
+            }
+        }
+        
+        return WIKIPEDIA_TO_ISO_LANGUAGE.get(language);
     }
 
     private void doXpath() throws IOException {
@@ -470,11 +594,11 @@ public class WikipediaCrawlTool {
             
             // Now loop, getting commands
             while (true) {
-                String cmdName = readInputLine("Enter command (help, fetch, dump, clean, xpath, crawl, merge, quit): ");
+                String cmdName = readInputLine("Enter command (help, load, dump, clean, xpath, crawl, merge, quit): ");
                 if (cmdName.equalsIgnoreCase("help")) {
                     tool.displayHelp();
-                } else if (cmdName.equalsIgnoreCase("fetch")) {
-                    Document newDoc = tool.fetchPage(null);
+                } else if (cmdName.equalsIgnoreCase("load")) {
+                    Document newDoc = tool.loadDocument(null);
                     if (newDoc != null) {
                         tool.setCurPage(newDoc);
                     }
