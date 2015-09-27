@@ -17,12 +17,12 @@ public class ModelBuilder {
 
     public static final int DEFAULT_MAX_NGRAM_LENGTH = 4;
     
-    public static final int DEFAULT_MIN_NORMALIZED_COUNT = (int)Math.round(0.00001 * LanguageModel.NORMALIZED_COUNT);
+    public static final int DEFAULT_MIN_NORMALIZED_COUNT = (int)Math.round(0.00002 * LanguageModel.NORMALIZED_COUNT);
     
     // Minimum number of ngrams we want to see for a language.
     // Since we get roughly <max length> * chars number of ngrams, we're really saying we
-    // want at least 5000 characters.
-    public static final int DEFAULT_MIN_NGRAMS_FOR_LANGUAGE = 5000 * DEFAULT_MAX_NGRAM_LENGTH;
+    // want at least 4000 characters.
+    public static final int DEFAULT_MIN_NGRAMS_FOR_LANGUAGE = 4000 * DEFAULT_MAX_NGRAM_LENGTH;
     
     private Map<LanguageLocale, Map<String, NGramStats>> _perLangNGramCounts;
     private int _maxNGramLength = DEFAULT_MAX_NGRAM_LENGTH;

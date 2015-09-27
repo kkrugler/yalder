@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -30,10 +31,19 @@ public class LanguageDetector {
     private double _dampening = DEFAULT_DAMPENING;
     
     public LanguageDetector(Collection<LanguageModel> models) {
-        this(models, models.iterator().next().getMaxNGramLength());
+        this(models, getMaxNGramLengthFromModels(models));
     }
 
-    // FUTURE support varying max ngram length per model.
+    private static int getMaxNGramLengthFromModels(Collection<LanguageModel> models) {
+        int maxNGramLength = 0;
+        Iterator<LanguageModel> iter = models.iterator();
+        while (iter.hasNext()) {
+            maxNGramLength = Math.max(maxNGramLength, iter.next().getMaxNGramLength());
+        }
+        
+        return maxNGramLength;
+    }
+
     public LanguageDetector(Collection<LanguageModel> models, int maxNGramLength) {
         _models = models;
         _maxNGramLength = maxNGramLength;
@@ -44,6 +54,10 @@ public class LanguageDetector {
         // Each model should contain a normalized count (not probability) of the ngram
         // so we can compute probabilities for languages being mixed-in.
         
+        // TODO remove this code, where we check for hash collisions
+        Map<Integer, String> ngramHashes = new HashMap<>();
+        int numCollisions = 0;
+        
         Map<String, Map<LanguageLocale, Integer>> ngramCounts = new HashMap<String, Map<LanguageLocale, Integer>>();
         _langProbabilities = new HashMap<LanguageLocale, Double>();
         
@@ -53,6 +67,17 @@ public class LanguageDetector {
             
             Map<String, Integer> langCounts = model.getNGramCounts();
             for (String ngram : langCounts.keySet()) {
+                // TODO remove this code.
+                int hash = ngram.hashCode();
+                if (ngramHashes.containsKey(hash)) {
+                    if (!ngramHashes.get(hash).equals(ngram)) {
+                        numCollisions += 1;
+                        // System.out.println(String.format("Hash collision between '%s' (%s) and '%s'", ngram, language, ngramHashes.get(hash)));
+                    }
+                } else {
+                    ngramHashes.put(hash, ngram);
+                }
+                
                 Map<LanguageLocale, Integer> curCounts = ngramCounts.get(ngram);
                 if (curCounts == null) {
                     curCounts = new HashMap<LanguageLocale, Integer>();
@@ -68,6 +93,8 @@ public class LanguageDetector {
                 }
             }
         }
+        
+        System.out.println("Total hash collisions: " + numCollisions);
         
         // Now we can calculate the probabilities
         _ngramProbabilities = new HashMap<String, Map<LanguageLocale, Double>>();
@@ -265,12 +292,14 @@ public class LanguageDetector {
         }
     }
 
-    private LanguageModel getModel(String language) {
+    public LanguageModel getModel(LanguageLocale language) {
         for (LanguageModel model : _models) {
             
             if (model.getLanguage().equals(language)) {
                 return model;
             }
+            
+            // TODO if weakly equal, and no other set to weak, save it
         }
         
         throw new IllegalArgumentException("Unknown language: " + language);

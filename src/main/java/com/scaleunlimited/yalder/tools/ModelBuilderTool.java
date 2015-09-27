@@ -2,14 +2,16 @@ package com.scaleunlimited.yalder.tools;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,157 +30,119 @@ import com.scaleunlimited.yalder.LanguageLocale;
 import com.scaleunlimited.yalder.LanguageModel;
 import com.scaleunlimited.yalder.ModelBuilder;
 
-public class WikipediaProfileTool {
-    public static final Logger LOGGER = Logger.getLogger(WikipediaProfileTool.class);
+public class ModelBuilderTool {
+    public static final Logger LOGGER = Logger.getLogger(ModelBuilderTool.class);
     
-    private static final int MAX_NGRAM_LENGTH = 4;
-    
-    private static final int MIN_NORMALIZED_NGRAM_COUNT = 10;
-    
-    private WikipediaProfileOptions _options;
+    private ModelBuilderOptions _options;
+    private ModelBuilder _builder;
     private Collection<LanguageModel> _models;
     
-    public WikipediaProfileTool(WikipediaProfileOptions options) {
+    public ModelBuilderTool(ModelBuilderOptions options) {
         _options = options;
+        
+        _builder = new ModelBuilder()
+            .setMaxNGramLength(_options.getMaxNGramLength())
+            .setMinNormalizedCount(_options.getMinNGramCount());
+        
+        _models = null;
     }
     
     public void buildModels() throws IOException {
-        ModelBuilder mb = new ModelBuilder()
-            .setMaxNGramLength(MAX_NGRAM_LENGTH)
-            .setMinNormalizedCount(MIN_NORMALIZED_NGRAM_COUNT);
-        
-        // TODO add support for remapping some language names, e.g.
-        // zh-min-nan => nan (Min Nan dialect of Chinese)
-        
-        Set<String> excludedLanguages = new HashSet<String>();
-        
-        // Simplified English looks like English
-        excludedLanguages.add("simple");
-        
-        // Belarusian using classic orthography
-        excludedLanguages.add("be-x-old");
-        
-        // https://en.wikipedia.org/wiki/Sranan_Tongo (looks like Dutch)
-        excludedLanguages.add("srn");
-        
-        // Chavacano or Chabacano [tʃaβaˈkano] is a Spanish-based creole language spoken in the Philippines
-        excludedLanguages.add("cbk-zam");
-        
-        // https://en.wikipedia.org/wiki/Asturian_language (looks like Spanish)
-        excludedLanguages.add("ast");
-    
-        // https://en.wikipedia.org/wiki/Galician_language (looks like Spanish)
-        excludedLanguages.add("gl");
-
-        // Scottish looks like English
-        excludedLanguages.add("sco");
-
-        Map<LanguageLocale, Integer> charsPerLanguage = new HashMap<LanguageLocale, Integer>();
-
-        if (_options.getInputFile() != null) {
-            File inputFile = new File(_options.getInputFile());
-            
-            if (!inputFile.exists()) {
-                throw new IllegalArgumentException(String.format("The file '%s' doesn't exist", inputFile.toString()));
-            }
-
-            if (inputFile.isDirectory()) {
-                throw new IllegalArgumentException(String.format("'%s' is a directory", inputFile.toString()));
-            }
-
-            System.out.println(String.format("Loading text lines from file '%s'...", inputFile.getCanonicalPath()));
-
-            List<String> lines = FileUtils.readLines(inputFile, "UTF-8");
-            for (String line : lines) {
-                String[] parts = line.split("\t", 2);
-                String languageAsStr = parts[0];
-                if (excludedLanguages.contains(languageAsStr)) {
-                    continue;
-                }
-                
-                LanguageLocale language = LanguageLocale.fromString(languageAsStr);
-                
-                String text = parts[1];
-                mb.addTrainingDoc(language, text);
-
-                int numChars = text.length();
-                Integer curCount = charsPerLanguage.get(language);
-                if (curCount == null) {
-                    charsPerLanguage.put(language, numChars);
-                } else {
-                    charsPerLanguage.put(language, numChars + curCount);
-                }
-            }
-        }
-        
-        if (_options.getInputDir() != null) {
-            File inputDir = new File(_options.getInputDir());
-            if (!inputDir.exists()) {
-                throw new IllegalArgumentException(String.format("The directory '%s' doesn't exist", inputDir.toString()));
-            }
-
-            if (!inputDir.isDirectory()) {
-                throw new IllegalArgumentException(String.format("'%s' is not a directory", inputDir.toString()));
-            }
-
-            System.out.println(String.format("Loading text lines from files in '%s'...", inputDir.getCanonicalPath()));
-
-            for (File file : FileUtils.listFiles(inputDir, new String[]{"txt"}, true)) {
-                String filename = file.getName();
-                Pattern p = Pattern.compile("(.+)_(.+).txt");
-                Matcher m = p.matcher(filename);
-                if (!m.matches()) {
-                    LOGGER.warn(String.format("Found file '%s' without a language code", filename));
-                    continue;
-                }
-
-                String languageAsStr = m.group(2);
-                
-                if (excludedLanguages.contains(languageAsStr)) {
-                    continue;
-                }
-                
-                LanguageLocale language = LanguageLocale.fromString(languageAsStr);
-                int numChars = 0;
-                List<String> lines = FileUtils.readLines(file, "UTF-8");
-                for (String line : lines) {
-                    if (!line.trim().isEmpty()) {
-                        mb.addTrainingDoc(language, line);
-                    }
-
-                    numChars += line.length();
-                }
-
-                Integer curCount = charsPerLanguage.get(language);
-                if (curCount == null) {
-                    charsPerLanguage.put(language, numChars);
-                } else {
-                    charsPerLanguage.put(language, numChars + curCount);
-                }
-
-                // System.out.println(String.format("Added %d lines (%d chars) for language '%s'", lines.size(), numChars, language));
-            }
-        }
-        
-        if (charsPerLanguage.isEmpty()) {
-            throw new IllegalArgumentException("Data must be provided for at least one language");
-        }
-        
-        for (LanguageLocale language : charsPerLanguage.keySet()) {
-            System.out.println(String.format("Language '%s' had %d chars", language, charsPerLanguage.get(language)));
-        }
+        // TODO what happens if we haven't loaded any data yet?
         
         long startTime = System.currentTimeMillis();
         System.out.println("Building training models...");
-        _models = mb.makeModels();
+        _models = _builder.makeModels();
         long deltaTime = System.currentTimeMillis() - startTime;
         System.out.println(String.format("Built %d models in %dms", _models.size(), deltaTime));
     }
     
+    public void loadTrainingFile(String filename) throws IOException {
+        File inputFile = new File(filename);
+        
+        if (!inputFile.exists()) {
+            throw new IllegalArgumentException(String.format("The file '%s' doesn't exist", inputFile.toString()));
+        }
+
+        if (inputFile.isDirectory()) {
+            throw new IllegalArgumentException(String.format("'%s' is a directory", inputFile.toString()));
+        }
+
+        System.out.println(String.format("Loading text lines from file '%s'...", inputFile.getCanonicalPath()));
+
+        // TODO try to extract language from filename, and only require the tabbed format
+        // if the filename doesn't have it.
+
+        List<String> lines = FileUtils.readLines(inputFile, "UTF-8");
+        for (String line : lines) {
+            String[] parts = line.split("\t", 2);
+            LanguageLocale language = LanguageLocale.fromString(parts[0]);
+            String text = parts[1];
+            _builder.addTrainingDoc(language, text);
+        }
+    }
+    
+    public void loadTrainingDir(String dirname) throws IOException {
+
+        File inputDir = new File(dirname);
+        if (!inputDir.exists()) {
+            throw new IllegalArgumentException(String.format("The directory '%s' doesn't exist", inputDir.toString()));
+        }
+
+        if (!inputDir.isDirectory()) {
+            throw new IllegalArgumentException(String.format("'%s' is not a directory", inputDir.toString()));
+        }
+
+        System.out.println(String.format("Loading text lines from files in '%s'...", inputDir.getCanonicalPath()));
+
+        for (File file : FileUtils.listFiles(inputDir, new String[]{"txt"}, true)) {
+            String filename = file.getName();
+            Pattern p = Pattern.compile("(.+)_(.+).txt");
+            Matcher m = p.matcher(filename);
+            if (!m.matches()) {
+                LOGGER.warn(String.format("Found file '%s' without a language code", filename));
+                continue;
+            }
+
+            LanguageLocale language = LanguageLocale.fromString(m.group(2));
+            List<String> lines = FileUtils.readLines(file, "UTF-8");
+            for (String line : lines) {
+                if (!line.trim().isEmpty()) {
+                    _builder.addTrainingDoc(language, line);
+                }
+            }
+        }
+    }
+    
+    public void loadTrainingData() throws IOException {
+        
+        // Ask the user for the name of the file or directory to load.
+        // If it's a file, the format must be <language><tab><text>, one per line.
+        // If it's a directory, each file found must have a name of the form xxx_<language>.txt
+        
+        String dirOrFilename = readInputLine("Enter a file or directory path that contains sample text: ");
+        if (dirOrFilename.isEmpty()) {
+            return;
+        }
+        
+        File dirOrFile = new File(dirOrFilename);
+        if (dirOrFile.isFile()) {
+            loadTrainingFile(dirOrFilename);
+        } else {
+            loadTrainingDir(dirOrFilename);
+        }
+    }
+    
     public void dumpModels() throws IOException {
-        System.out.flush();
-        System.out.println("Enter comma-separated languages for models (return == all models): ");
-        String languages = readInputLine();
+        // Make sure we've got models loaded.
+        if (_models == null) {
+            System.out.println("Models must be built or loaded first");
+            return;
+        }
+
+        String languages = readInputLine("Enter comma-separated languages for models (return == all models): ");
+        
+        // TODO provide option for file to dump to
         
         Set<String> targetLanguages = new HashSet<String>();
         if (!languages.isEmpty()) {
@@ -231,69 +195,35 @@ public class WikipediaProfileTool {
         return errorRate;
     }
     
-    public void tuneParameters() throws IOException {
-        System.out.print("Enter number of trials: ");
-        String trialsAsStr = readInputLine();
-        int trials = Integer.parseInt(trialsAsStr);
-        
-        List<String> lines = EuroParlUtils.readLines();
-        Set<LanguageLocale> supportedLanguages = getLanguages(lines);
-        LanguageDetector detector = new LanguageDetector(getModels(supportedLanguages), MAX_NGRAM_LENGTH);
-        
-        // Set up default based on what we think is the current "optimal" values, but scaled up to give
-        // us some room to explore the potential space away from 0.
-        double defaultAlpha = detector.getAlpha() * 2;
-        double defaultDampening = detector.getDampening() * 2;
-        
-        Random rand = new Random(System.currentTimeMillis());
-        
-        for (int i = 0; i < trials; i++) {
-            // Set alpha and dampening to random values that vary around the current defaults
-            while (true) {
-                double nextAlpha = defaultAlpha * (1 + rand.nextGaussian());
-                if (nextAlpha < 0.0) {
-                    continue;
-                }
-                detector.setAlpha(nextAlpha);
-                
-                double nextDampening = defaultDampening * (1 + rand.nextGaussian());
-                if (nextDampening < 0.0) {
-                    continue;
-                }
-                detector.setDampening(nextDampening);
-                break;
-            }
-            
-            double errorRate = testEuro(lines, detector);
-            System.out.println(String.format("%.6f: alpha=%f, dampening=%f", errorRate, detector.getAlpha(), detector.getDampening()));
-        }
-    }
-    
     public void interactiveTest() throws IOException {
+        // Make sure we've got models loaded.
+        if (_models == null) {
+            System.out.println("Models must be built or loaded first");
+            return;
+        }
+        
         List<String> lines = EuroParlUtils.readLines();
         Set<LanguageLocale> supportedLanguages = getLanguages(lines);
         Set<LanguageModel> activeModels = getModels(supportedLanguages);
 
-        LanguageDetector detector = new LanguageDetector(activeModels, MAX_NGRAM_LENGTH);
+        LanguageDetector detector = new LanguageDetector(activeModels);
         Set<String> detailLanguages = null;
         
         while (true) {
-            System.out.print("Enter text to analyze (return to quit): ");
-            String text = readInputLine();
+            String text = readInputLine("Enter text to analyze (return to quit): ");
             if (text.isEmpty()) {
                 break;
             } else if (text.equals("damp")) {
-                System.out.print(String.format("Enter dampening to use during detection (currently %f): ", detector.getDampening()));
-                detector.setDampening(Double.parseDouble(readInputLine()));
+                String prompt = String.format("Enter dampening to use during detection (currently %f): ", detector.getDampening());
+                detector.setDampening(Double.parseDouble(readInputLine(prompt)));
             } else if (text.equals("alpha")) {
-                System.out.print(String.format("Enter alpha to use during detection (currently %f): ", detector.getAlpha()));
-                detector.setAlpha(Double.parseDouble(readInputLine()));
+                String prompt = String.format("Enter alpha to use during detection (currently %f): ", detector.getAlpha());
+                detector.setAlpha(Double.parseDouble(readInputLine(prompt)));
             } else if (text.equals("euro")) {
                 double errorRate = testEuro(lines, detector);
                 System.out.println(String.format("Error rate = %.6f: alpha=%f, dampening=%f", errorRate, detector.getAlpha(), detector.getDampening()));
             } else if (text.equals("lang")) {
-                System.out.print("Enter comma-separated languages for comparison (return == all): ");
-                String detailLanguagesAsStr = readInputLine();
+                String detailLanguagesAsStr = readInputLine("Enter comma-separated languages for comparison (return == all): ");
                 if (detailLanguagesAsStr.isEmpty()) {
                     detailLanguages = null;
                 } else {
@@ -318,9 +248,7 @@ public class WikipediaProfileTool {
     }
     
     private Set<LanguageLocale> getLanguages(List<String> euroParlLines) throws IOException {
-        System.out.flush();
-        System.out.println("Enter comma-separated languages for models (all == every language, return == only Europarl): ");
-        String languages = readInputLine();
+        String languages = readInputLine("Enter comma-separated languages for models (all == every language, return == only Europarl): ");
 
         Set<LanguageLocale> supportedLanguages = new HashSet<LanguageLocale>();
         if (languages.isEmpty()) {
@@ -355,6 +283,12 @@ public class WikipediaProfileTool {
     }
     
     public void testEuroparl() throws IOException {
+        // Make sure we've got models loaded.
+        if (_models == null) {
+            System.out.println("Models must be built or loaded first");
+            return;
+        }
+        
         List<String> lines = EuroParlUtils.readLines();
         Set<LanguageLocale> supportedLanguages = getLanguages(lines);
         
@@ -362,7 +296,8 @@ public class WikipediaProfileTool {
         Map<LanguageLocale, Integer> correctLines = new HashMap<LanguageLocale, Integer>();
         Map<LanguageLocale, Integer> incorrectLines = new HashMap<LanguageLocale, Integer>();
         
-        LanguageDetector detector = new LanguageDetector(getModels(supportedLanguages), MAX_NGRAM_LENGTH);
+        // TODO get max ngram length from models
+        LanguageDetector detector = new LanguageDetector(getModels(supportedLanguages));
         for (String line : lines) {
             // Format is <ISO 639-1 language code><tab>text
             String[] pieces = line.split("\t", 2);
@@ -407,14 +342,92 @@ public class WikipediaProfileTool {
         System.out.println(String.format("Total error rate = %.2f", (100.0 * totalIncorrect)/(totalCorrect +totalIncorrect)));
     }
     
+    public void loadModels() throws IOException {
+        String dirname = readInputLine("Enter input directory path: ");
+        if (dirname.length() == 0) {
+            return;
+        }
+        
+        File dirFile = new File(dirname);
+        if (!dirFile.exists()) {
+            System.out.println("Directory must exist");
+            return;
+        }
+        
+        if (!dirFile.isDirectory()) {
+            System.out.println(String.format("%s is not a directory", dirFile));
+            return;
+        }
+        
+        System.out.println(String.format("Loading models from files in '%s'...", dirFile.getCanonicalPath()));
+        Set<LanguageModel> newModels = new HashSet<>();
+        
+        int totalPruned = 0;
+        for (File file : FileUtils.listFiles(dirFile, new String[]{"txt"}, true)) {
+            String filename = file.getName();
+            Pattern p = Pattern.compile("yalder_model_(.+).txt");
+            Matcher m = p.matcher(filename);
+            if (!m.matches()) {
+                LOGGER.warn(String.format("Found file '%s' with invalid name", filename));
+                continue;
+            }
+
+            // Verify that language is valid
+            LanguageLocale.fromString(m.group(1));
+            
+            InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
+            LanguageModel model = new LanguageModel();
+            model.readModel(isr);
+            isr.close();
+            
+            totalPruned += model.prune(20);
+            
+            newModels.add(model);
+        }
+
+        if (newModels.isEmpty()) {
+            System.out.println("No models were loaded, keeping current models (if any)");
+            return;
+        }
+        
+        System.out.println(String.format("Pruned %d ngrams by setting min count to 20", totalPruned));
+        _models = newModels;
+    }
+    
     public void saveModels() throws IOException {
-        // TODO save the models in an output dir that user provides, as
-        // yalder_model_<language>.bin
-        // Directory must exist, and be empty
+        // Make sure we've got models loaded.
+        if (_models == null) {
+            System.out.println("Models must be built or loaded first");
+            return;
+        }
+
+        String dirname = readInputLine("Enter output directory path: ");
+        if (dirname.length() == 0) {
+            return;
+        }
+        
+        File dirFile = new File(dirname);
+        if (!dirFile.exists()) {
+            System.out.println("Directory must exist");
+            return;
+        }
+        
+        if (!dirFile.isDirectory()) {
+            System.out.println(String.format("%s is not a directory", dirFile));
+            return;
+        }
+        
+        for (LanguageModel model : _models) {
+            String modelFileName = String.format("yalder_model_%s.txt", model.getLanguage().getName());
+            File modelFile = new File(dirFile,  modelFileName);
+            OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(modelFile), "UTF-8");
+            model.writeModel(osw);
+            osw.close();
+        }
     }
     
     public static void main(String[] args) {
-        WikipediaProfileOptions options = new WikipediaProfileOptions();
+        ModelBuilderOptions options = new ModelBuilderOptions();
         CmdLineParser parser = new CmdLineParser(options);
 
         try {
@@ -424,27 +437,44 @@ public class WikipediaProfileTool {
             printUsageAndExit(parser);
         }
 
-        WikipediaProfileTool tool = new WikipediaProfileTool(options);
+        ModelBuilderTool tool = new ModelBuilderTool(options);
         
         try {
-             tool.buildModels();
-
+            // If the user provided input file(s) and/or directories, load them first.
+            // TODO handle multiple inputs for files and/or directories.
+            if (options.getInputFile() != null) {
+                tool.loadTrainingFile(options.getInputFile());
+            }
+            
+            if (options.getInputDir() != null) {
+                tool.loadTrainingDir(options.getInputDir());
+            }
+            
+            // TODO if options has an output directory, auto-build the models
+            // and save the models to the output directory, then quit.
+            
+            
             // Go into the mode where we ask the user what they want to do.
             while (true) {
                 // TODO have base tool, with readInputLine code that takes prompt text
-                System.out.flush();
-                System.out.print("Enter command (test, euro, tune, save, dump, quit): ");
-                String cmdName = readInputLine();
-                if (cmdName.equalsIgnoreCase("test")) {
-                    tool.interactiveTest();
-                } else if (cmdName.equalsIgnoreCase("euro")) {
-                    tool.testEuroparl();
-                } else if (cmdName.equalsIgnoreCase("tune")) {
-                    tool.tuneParameters();
+                // TODO support load for loading models from a directory...
+                // TODO how to set params per language for collapsing chars, setting max ngram length, etc.
+                // TODO add help command
+                String cmdName = readInputLine("Enter command (data, build, dump, load, save, test, euro, quit): ");
+                if (cmdName.equalsIgnoreCase("data")) {
+                    tool.loadTrainingData();
+                } else if (cmdName.equalsIgnoreCase("build")) {
+                    tool.buildModels();
                 } else if (cmdName.equalsIgnoreCase("dump")) {
                     tool.dumpModels();
                 } else if (cmdName.equalsIgnoreCase("save")) {
                     tool.saveModels();
+                } else if (cmdName.equalsIgnoreCase("load")) {
+                    tool.loadModels();
+                } else if (cmdName.equalsIgnoreCase("test")) {
+                    tool.interactiveTest();
+                } else if (cmdName.equalsIgnoreCase("euro")) {
+                    tool.testEuroparl();
                 } else if (cmdName.equalsIgnoreCase("quit")) {
                     break;
                 } else {
@@ -465,7 +495,8 @@ public class WikipediaProfileTool {
      * @return Text that the user entered
      * @throws IOException
      */
-    private static String readInputLine() throws IOException {
+    private static String readInputLine(String prompt) throws IOException {
+        System.out.print(prompt);
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
         return br.readLine();
@@ -476,13 +507,22 @@ public class WikipediaProfileTool {
         System.exit(-1);
     }
 
-    private static class WikipediaProfileOptions {
+    private static class ModelBuilderOptions {
         
+        private static final int DEFAULT_MAX_NGRAM_LENGTH = 4;
+        
+        private static final int DEFAULT_MIN_NORMALIZED_NGRAM_COUNT = 10;
+        
+
         private boolean _debugLogging = false;
         private boolean _traceLogging = false;
         
+        // TODO support multiple input files and directories.
         private String _inputDir = null;
         private String _inputFile = null;
+        
+        private int _maxNGramLength = DEFAULT_MAX_NGRAM_LENGTH;
+        private int _minNormalizedNGramCount = DEFAULT_MIN_NORMALIZED_NGRAM_COUNT;
         
         @Option(name = "-debug", usage = "debug logging", required = false)
         public void setDebugLogging(boolean debugLogging) {
@@ -528,6 +568,24 @@ public class WikipediaProfileTool {
 
         public String getInputFile() {
             return _inputFile;
+        }
+        
+        @Option(name = "-maxngram", usage = "max length of ngrams, in chars", required = false)
+        public void setMaxNGramLength(int maxNGramLength) {
+            _maxNGramLength = maxNGramLength;
+        }
+
+        public int getMaxNGramLength() {
+            return _maxNGramLength;
+        }
+        
+        @Option(name = "-minngramcount", usage = "minimum (normalized) count of ngrams to be included in model", required = false)
+        public void setMinNGramCount(int minNGramCount) {
+            _minNormalizedNGramCount = minNGramCount;
+        }
+
+        public int getMinNGramCount() {
+            return _minNormalizedNGramCount;
         }
     }
 }

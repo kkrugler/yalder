@@ -60,6 +60,12 @@
             <version>2.32</version>
         </dependency>
         
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.2</version>
+		</dependency>
+
         <dependency>
             <groupId>org.dom4j</groupId>
             <artifactId>dom4j</artifactId>
@@ -99,7 +105,7 @@
         <dependency>
 			<groupId>com.optimaize.languagedetector</groupId>
     		<artifactId>language-detector</artifactId>
-    		<version>0.4</version>
+    		<version>0.5</version>
             <scope>test</scope>
 		</dependency>
 		
