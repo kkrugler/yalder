@@ -18,7 +18,9 @@ public class NGramTokenizer extends BaseTokenizer {
 
         expandNGram();
 
-        return result.toString();
+        // See how accuracy suffers if we use a 4 byte hash code
+        // return result.toString();
+        return "" + result.hashCode();
     }
 
 }

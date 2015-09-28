@@ -18,8 +18,15 @@ public class LanguageDetector {
     
     private Collection<LanguageModel> _models;
     
+    // Map from language of model to index used for accessing arrays.
+    private Map<LanguageLocale, Integer> _langToIndex;
+    
+    // Map from ngram (hash) to index.
+    private IntToIndex _ngramToIndex;
+    
     // For each ngram, store the probability for each language
-    private Map<String, Map<LanguageLocale, Double>> _ngramProbabilities;
+    private double[][] _ngramProbabilities;
+    
     private Map<LanguageLocale, Double> _langProbabilities;
     private int _maxNGramLength;
     
@@ -45,75 +52,90 @@ public class LanguageDetector {
     }
 
     public LanguageDetector(Collection<LanguageModel> models, int maxNGramLength) {
-        _models = models;
+        int numLanguages = setModels(models);
         _maxNGramLength = maxNGramLength;
         _alpha = DEFAULT_ALPHA;
         
-        // TODO here's the approach
         // Build a master map from ngram to per-language probabilities
         // Each model should contain a normalized count (not probability) of the ngram
         // so we can compute probabilities for languages being mixed-in.
         
-        // TODO remove this code, where we check for hash collisions
-        Map<Integer, String> ngramHashes = new HashMap<>();
-        int numCollisions = 0;
+        // So the first step is to build a map from every ngram (hash) to an index.
+        _ngramToIndex = new IntToIndex();
+        for (LanguageModel model : _models) {
+            Map<String, Integer> langCounts = model.getNGramCounts();
+            for (String ngram : langCounts.keySet()) {
+                _ngramToIndex.add(Integer.parseInt(ngram));
+            }
+        }
         
-        Map<String, Map<LanguageLocale, Integer>> ngramCounts = new HashMap<String, Map<LanguageLocale, Integer>>();
+        int uniqueNGrams = _ngramToIndex.size();
+        int [][] ngramCounts = new int[uniqueNGrams][];
+        
         _langProbabilities = new HashMap<LanguageLocale, Double>();
+        _ngramProbabilities = new double[uniqueNGrams][];
         
         for (LanguageModel model : _models) {
             LanguageLocale language = model.getLanguage();
+            int langIndex = langToIndex(language);
+            
             _langProbabilities.put(language, 0.0);
             
             Map<String, Integer> langCounts = model.getNGramCounts();
             for (String ngram : langCounts.keySet()) {
-                // TODO remove this code.
-                int hash = ngram.hashCode();
-                if (ngramHashes.containsKey(hash)) {
-                    if (!ngramHashes.get(hash).equals(ngram)) {
-                        numCollisions += 1;
-                        // System.out.println(String.format("Hash collision between '%s' (%s) and '%s'", ngram, language, ngramHashes.get(hash)));
-                    }
-                } else {
-                    ngramHashes.put(hash, ngram);
+                int hash = Integer.parseInt(ngram);
+                int index = _ngramToIndex.getIndex(hash);
+                int[] counts = ngramCounts[index];
+                if (counts == null) {
+                    counts = new int[numLanguages];
+                    ngramCounts[index] = counts;
                 }
                 
-                Map<LanguageLocale, Integer> curCounts = ngramCounts.get(ngram);
-                if (curCounts == null) {
-                    curCounts = new HashMap<LanguageLocale, Integer>();
-                    ngramCounts.put(ngram, curCounts);
-                }
-                
-                int newCount = langCounts.get(ngram);
-                Integer curCount = curCounts.get(language);
-                if (curCount == null) {
-                    curCounts.put(language, newCount);
-                } else {
-                    curCounts.put(language, curCount + newCount);
-                }
+                counts[langIndex] = langCounts.get(ngram);
             }
         }
         
-        System.out.println("Total hash collisions: " + numCollisions);
-        
         // Now we can calculate the probabilities
-        _ngramProbabilities = new HashMap<String, Map<LanguageLocale, Double>>();
-        for (String ngram : ngramCounts.keySet()) {
-            Map<LanguageLocale, Integer> counts = ngramCounts.get(ngram);
-            double totalCount = 0;
-            for (LanguageLocale language : counts.keySet()) {
-                totalCount += counts.get(language);
+        for (int i = 0; i < uniqueNGrams; i++) {
+           double totalCount = 0;
+           int[] counts = ngramCounts[i];
+            for (int j = 0; j < counts.length; j++) {
+                totalCount += counts[j];
             }
             
-            Map<LanguageLocale, Double> probabilities = new HashMap<LanguageLocale, Double>();
-            for (LanguageLocale language : counts.keySet()) {
-                probabilities.put(language, counts.get(language)/totalCount);
+            
+            double[] probs = new double[numLanguages];
+            for (int j = 0; j < counts.length; j++) {
+                probs[j] = counts[j] / totalCount;
             }
             
-            _ngramProbabilities.put(ngram, probabilities);
+            _ngramProbabilities[i] = probs;
         }
     }
     
+    private int langToIndex(LanguageLocale language) {
+        return _langToIndex.get(language);
+    }
+    
+    private int setModels(Collection<LanguageModel> models) {
+        _models = models;
+        
+        // Build a master map from language to index (0...n-1), which we'll use to index into
+        // arrays associated with each ngram.
+        
+        _langToIndex = new HashMap<>(_models.size());
+        int curIndex = 0;
+        for (LanguageModel model : _models) {
+            if (_langToIndex.put(model.getLanguage(), curIndex) != null) {
+                throw new IllegalArgumentException("Got two models with the same language: " + model.getLanguage());
+            }
+            
+            curIndex += 1;
+        }
+        
+        return curIndex;
+    }
+
     public LanguageDetector setAlpha(double alpha) {
         _alpha = alpha;
         return this;
@@ -170,9 +192,10 @@ public class LanguageDetector {
         NGramTokenizer tokenizer = new NGramTokenizer(text, 1, _maxNGramLength);
         while (tokenizer.hasNext()) {
             String ngram = tokenizer.next();
-            
-            Map<LanguageLocale, Double> probs = _ngramProbabilities.get(ngram);
-            if (probs == null) {
+            int hash = Integer.parseInt(ngram);
+            int index = _ngramToIndex.getIndex(hash);
+                            
+            if (index == -1) {
                 // FUTURE track how many unknown ngrams we get, and use that
                 // to adjust probabilities.
                 numUnknownNGrams += 1;
@@ -191,13 +214,18 @@ public class LanguageDetector {
             }
             
             for (LanguageLocale language : _langProbabilities.keySet()) {
-                Double probObj = probs.get(language);
-                double prob = (probObj == null ? _alpha : probObj);
-                if ((details != null) && (probObj != null) && ((detailLanguages == null) || (detailLanguages.contains(language)))) {
+                int langIndex = langToIndex(language);
+                double prob = _ngramProbabilities[index][langIndex];
+                
+                if ((details != null) && (prob != 0.0) && ((detailLanguages == null) || (detailLanguages.contains(language)))) {
                     details.append(String.format("\t'%s'=%f", language, prob));
                     details.append(detailLanguages == null ? '\n' : ' ');
                 }
                 
+                // Unknown ngrams for the language get a default probability of "alpha".
+                if (prob == 0.0) {
+                    prob = _alpha;
+                }
                 // apply dampening, which increases the probability by a percentage
                 // of the delta from 1.0, and thus reduces the rapid swings caused by
                 // getting a few ngrams in a row with very low probability for an
