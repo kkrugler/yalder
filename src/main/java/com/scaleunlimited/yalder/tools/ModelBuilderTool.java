@@ -61,11 +61,13 @@ public class ModelBuilderTool {
         File inputFile = new File(filename);
         
         if (!inputFile.exists()) {
-            throw new IllegalArgumentException(String.format("The file '%s' doesn't exist", inputFile.toString()));
+            System.out.println(String.format("The file '%s' doesn't exist", inputFile.toString()));
+            return;
         }
 
         if (inputFile.isDirectory()) {
-            throw new IllegalArgumentException(String.format("'%s' is a directory", inputFile.toString()));
+            System.out.println(String.format("'%s' is a directory", inputFile.toString()));
+            return;
         }
 
         System.out.println(String.format("Loading text lines from file '%s'...", inputFile.getCanonicalPath()));
@@ -86,11 +88,13 @@ public class ModelBuilderTool {
 
         File inputDir = new File(dirname);
         if (!inputDir.exists()) {
-            throw new IllegalArgumentException(String.format("The directory '%s' doesn't exist", inputDir.toString()));
+            System.out.println(String.format("The directory '%s' doesn't exist", inputDir.toString()));
+            return;
         }
 
         if (!inputDir.isDirectory()) {
-            throw new IllegalArgumentException(String.format("'%s' is not a directory", inputDir.toString()));
+            System.out.println(String.format("'%s' is not a directory", inputDir.toString()));
+            return;
         }
 
         System.out.println(String.format("Loading text lines from files in '%s'...", inputDir.getCanonicalPath()));
@@ -343,7 +347,7 @@ public class ModelBuilderTool {
     }
     
     public void loadModels() throws IOException {
-        String dirname = readInputLine("Enter input directory path: ");
+        String dirname = readInputLine("Enter path to directory containing models: ");
         if (dirname.length() == 0) {
             return;
         }
@@ -395,7 +399,7 @@ public class ModelBuilderTool {
     }
     
     public void saveModels() throws IOException {
-        // Make sure we've got models loaded.
+        // Make sure we've got models created.
         if (_models == null) {
             System.out.println("Models must be built or loaded first");
             return;
@@ -457,7 +461,6 @@ public class ModelBuilderTool {
             // Go into the mode where we ask the user what they want to do.
             while (true) {
                 // TODO have base tool, with readInputLine code that takes prompt text
-                // TODO support load for loading models from a directory...
                 // TODO how to set params per language for collapsing chars, setting max ngram length, etc.
                 // TODO add help command
                 String cmdName = readInputLine("Enter command (data, build, dump, load, save, test, euro, quit): ");
