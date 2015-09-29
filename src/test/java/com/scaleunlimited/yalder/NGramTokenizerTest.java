@@ -7,13 +7,13 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import com.scaleunlimited.yalder.NGramTokenizer;
+import com.scaleunlimited.yalder.text.TextTokenizer;
 
 public class NGramTokenizerTest {
 
     @Test
     public void testMyNGramIteratorTrigrams() throws Exception {
-        NGramTokenizer tokenizer = new NGramTokenizer("abc", 1, 3);
+        TextTokenizer tokenizer = new TextTokenizer("abc", 1, 3);
         
         Set<String> ngrams = new HashSet<String>();
         
@@ -27,7 +27,7 @@ public class NGramTokenizerTest {
     
     @Test
     public void testNormalizationAndSpaceCollapse() throws Exception {
-        NGramTokenizer tokenizer = new NGramTokenizer("A ,!", 1, 3);
+        TextTokenizer tokenizer = new TextTokenizer("A ,!", 1, 3);
         
         Set<String> ngrams = new HashSet<String>();
         while (tokenizer.hasNext()) {

@@ -1,8 +1,10 @@
-package com.scaleunlimited.yalder;
+package com.scaleunlimited.yalder.hash;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import com.scaleunlimited.yalder.hash.IntToIndex;
 
 public class IntToIndexTest {
 

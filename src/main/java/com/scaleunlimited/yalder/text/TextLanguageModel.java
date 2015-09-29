@@ -1,4 +1,4 @@
-package com.scaleunlimited.yalder;
+package com.scaleunlimited.yalder.text;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,62 +13,44 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
 
+import com.scaleunlimited.yalder.BaseLanguageModel;
+import com.scaleunlimited.yalder.LanguageLocale;
+
 
 /**
  * Encapsulation of model about a given language. This consists of
- * a list of ngrams (stored as 4-byte ints) and probabilities (floats).
- * The probability for an ngram is for it being that language, versus
- * all of the other known languages - so this has to be adjusted such
- * that the probabilities sum to 1.0 for the set of loaded languages.
- * 
- * Each ngram int is a right-flush (towards LSB) value, representing
- * packed character codes. So we can have a single character (e.g. 'a'
- * is stored as 0x00000061), or four characters (e.g. 'abcd' is stored
- * as '0x61626364'), or a single character that requires two bytes
- * (e.g. Hiragana 'a' is stored as 0x00003040), or any mix of one and
- * two byte values that fits into four bytes.
+ * a list of ngrams, with a (normalized) count for each ngram.
  * 
  * @author Ken Krugler
  *
  */
 
-public class LanguageModel {
+public class TextLanguageModel extends BaseLanguageModel {
 
-    // Version of model, for de-serialization
-    public static final int MODEL_VERSION = 1;
-    
-    // The normalized counts are relative to this count, so that we
-    // can combine languages built with different amounts of data.
-    public static final int NORMALIZED_COUNT = 1000000;
-
+    // Constants used when writing/reading the model.
     private static final String VERSION_PREFIX = "version:";
     private static final String LANGUAGE_PREFIX = "language:";
     private static final String NGRAM_SIZE_PREFIX = "max ngram length:";
     private static final String NGRAM_DATA_PREFIX = "ngrams:";
 
-    private LanguageLocale _modelLanguage;
-    
-    private int _maxNGramLength;
-    
     // Map from ngram to count
     private Map<String, Integer> _normalizedCounts;
     
-    public LanguageModel() {
-        // No-arg construct for deserialization
+    /**
+     * No-arg construct for deserialization
+     */
+    public TextLanguageModel() {
+        super();
     }
     
-    public LanguageModel(LanguageLocale modelLanguage, int maxNGramLength, Map<String, Integer> normalizedCounts) {
-        _modelLanguage = modelLanguage;
-        _maxNGramLength = maxNGramLength;
+    public TextLanguageModel(LanguageLocale modelLanguage, int maxNGramLength, Map<String, Integer> normalizedCounts) {
+        super(modelLanguage, maxNGramLength);
+        
         _normalizedCounts = normalizedCounts;
     }
     
-    public LanguageLocale getLanguage() {
-        return _modelLanguage;
-    }
-    
-    public int getMaxNGramLength() {
-        return _maxNGramLength;
+    public int size() {
+        return _normalizedCounts.size();
     }
     
     public int getNGramCount(String ngram) {
@@ -80,6 +62,7 @@ public class LanguageModel {
         return _normalizedCounts;
     }
     
+    @Override
     public int prune(int minNormalizedCount) {
         Set<String> ngramsToPrune = new HashSet<>();
         for (String ngram : _normalizedCounts.keySet()) {
@@ -95,12 +78,11 @@ public class LanguageModel {
         return ngramsToPrune.size();
     }
     
+    
     @Override
     public int hashCode() {
         final int prime = 31;
-        int result = 1;
-        result = prime * result + _maxNGramLength;
-        result = prime * result + ((_modelLanguage == null) ? 0 : _modelLanguage.hashCode());
+        int result = super.hashCode();
         result = prime * result + ((_normalizedCounts == null) ? 0 : _normalizedCounts.hashCode());
         return result;
     }
@@ -109,18 +91,11 @@ public class LanguageModel {
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null)
+        if (!super.equals(obj))
             return false;
         if (getClass() != obj.getClass())
             return false;
-        LanguageModel other = (LanguageModel) obj;
-        if (_maxNGramLength != other._maxNGramLength)
-            return false;
-        if (_modelLanguage == null) {
-            if (other._modelLanguage != null)
-                return false;
-        } else if (!_modelLanguage.equals(other._modelLanguage))
-            return false;
+        TextLanguageModel other = (TextLanguageModel) obj;
         if (_normalizedCounts == null) {
             if (other._normalizedCounts != null)
                 return false;
@@ -129,12 +104,7 @@ public class LanguageModel {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return String.format("'%s': %d ngrams", _modelLanguage, _normalizedCounts.size());
-    }
-
-    public void writeModel(OutputStreamWriter osw) throws IOException {
+    public void writeAsText(OutputStreamWriter osw) throws IOException {
         osw.write(String.format("%s %d\n", VERSION_PREFIX, MODEL_VERSION));
         osw.write(String.format("%s %s\n", LANGUAGE_PREFIX, _modelLanguage.getName()));
         osw.write(String.format("%s %d\n", NGRAM_SIZE_PREFIX, _maxNGramLength));
@@ -145,7 +115,7 @@ public class LanguageModel {
         }
     }
     
-    public void readModel(InputStreamReader isw) throws IOException {
+    public void readAsText(InputStreamReader isw) throws IOException {
         List<String> lines = IOUtils.readLines(isw);
         if (lines.size() < 5) {
             throw new IllegalArgumentException("Model doesn't contain enough lines of text");
@@ -203,4 +173,5 @@ public class LanguageModel {
             _normalizedCounts.put(ngram, normalizedCount);
         }
     }
+
 }

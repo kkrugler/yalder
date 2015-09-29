@@ -3,6 +3,8 @@ package com.scaleunlimited.yalder;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.scaleunlimited.yalder.text.TextTokenizer;
+
 public class CharUtils {
 
     /**
@@ -48,7 +50,7 @@ public class CharUtils {
     public static Map<String, NGramStats> calcNGramStats(String text, int minNGramLength, int maxNGramLength) {
         Map<String, NGramStats> result = new HashMap<String, NGramStats>();
         
-        NGramTokenizer tokenizer = new NGramTokenizer(text, minNGramLength, maxNGramLength);
+        TextTokenizer tokenizer = new TextTokenizer(text, minNGramLength, maxNGramLength);
         while (tokenizer.hasNext()) {
             String token = tokenizer.next();
             NGramStats curStats = result.get(token);

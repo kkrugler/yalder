@@ -1,10 +1,9 @@
-package com.scaleunlimited.yalder;
+package com.scaleunlimited.yalder.hash;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,20 +12,25 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.Random;
 import java.util.Set;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.junit.Test;
+
+import com.scaleunlimited.yalder.BaseLanguageModel;
+import com.scaleunlimited.yalder.DetectionResult;
+import com.scaleunlimited.yalder.EuroParlUtils;
+import com.scaleunlimited.yalder.IntCounter;
+import com.scaleunlimited.yalder.LanguageLocale;
+import com.scaleunlimited.yalder.ModelBuilder;
+import com.scaleunlimited.yalder.hash.HashLanguageDetector;
+import com.scaleunlimited.yalder.hash.HashLanguageModel;
 
 public class LanguageDetectorTest {
     private static final Logger LOGGER = Logger.getLogger(LanguageDetectorTest.class);
@@ -48,7 +52,7 @@ public class LanguageDetectorTest {
         
         List<String> lines = EuroParlUtils.readLines();
 
-        ModelBuilder builder = new ModelBuilder();
+        ModelBuilder builder = new ModelBuilder().setBinaryMode(true);
         
         for (String line : lines) {
             // Format is <language code><tab>text
@@ -58,20 +62,23 @@ public class LanguageDetectorTest {
             builder.addTrainingDoc(language, text);
         }
         
-        LanguageDetector detector = new LanguageDetector(builder.makeModels());
+        HashLanguageDetector detector = new HashLanguageDetector(builder.makeModels());
         
-        for (String language : knownText.keySet()) {
-            Collection<DetectionResult> results = detector.detect(knownText.get(language));
-            assertTrue(results.size() > 0);
+        for (String languageTag : knownText.keySet()) {
+            Collection<DetectionResult> results = detector.detect(knownText.get(languageTag));
+            LanguageLocale targetLanguage = LanguageLocale.fromString(languageTag);
+            assertTrue("No results for language " + targetLanguage, results.size() > 0);
             DetectionResult result = results.iterator().next();
-            assertEquals(language, result.getLanguage());
-            LOGGER.debug(String.format("'%s': %s", language, result.toString()));
+            assertTrue(result.getLanguage().weaklyEqual(targetLanguage));
+            LOGGER.debug(String.format("'%s': %s", targetLanguage, result.toString()));
         }
         
-        for (String language : unknownText.keySet()) {
-            Collection<DetectionResult> results = detector.detect(unknownText.get(language));
+        // TODO verify that we have low confidence in whatever results we get back here.
+        for (String languageTag : unknownText.keySet()) {
+            Collection<DetectionResult> results = detector.detect(unknownText.get(languageTag));
+            LanguageLocale targetLanguage = LanguageLocale.fromString(languageTag);
             for (DetectionResult result : results) {
-                LOGGER.info(String.format("'%s': %s", language, result.toString()));                
+                LOGGER.info(String.format("'%s': %s", targetLanguage, result.toString()));                
             }
         }
     }
@@ -83,8 +90,8 @@ public class LanguageDetectorTest {
         SummaryStatistics stats = new SummaryStatistics();
         
         for (int i = 0; i < 100; i++) {
-            Collection<LanguageModel> models = makeModelsAndTestData(testLines, new Random());
-            LanguageDetector detector = new LanguageDetector(models);
+            Collection<BaseLanguageModel> models = makeModelsAndTestData(testLines, new Random());
+            HashLanguageDetector detector = new HashLanguageDetector(models);
 
             int totalMisses = 0;
             for (String line : testLines) {
@@ -170,9 +177,9 @@ public class LanguageDetectorTest {
         }
         
         System.out.println("Building training models...");
-        Collection<LanguageModel> models = mb.makeModels();
+        Collection<BaseLanguageModel> models = mb.makeModels();
 
-        LanguageDetector detector = new LanguageDetector(models, MAX_NGRAM_LENGTH);
+        HashLanguageDetector detector = new HashLanguageDetector(models, MAX_NGRAM_LENGTH);
 
         fis = new FileInputStream("src/test/resources/udhr.txt");
         lines = IOUtils.readLines(fis, "UTF-8");
@@ -234,24 +241,24 @@ public class LanguageDetectorTest {
             builder.addTrainingDoc(language, text);
         }
 
-        Collection<LanguageModel> models = builder.makeModels();
-        Map<LanguageLocale, LanguageModel> modelsAsMap = new HashMap<LanguageLocale, LanguageModel>();
-        for (LanguageModel model : models) {
-            assertNull(modelsAsMap.put(model.getLanguage(), model));
+        Collection<BaseLanguageModel> models = builder.makeModels();
+        Map<LanguageLocale, HashLanguageModel> modelsAsMap = new HashMap<LanguageLocale, HashLanguageModel>();
+        for (BaseLanguageModel model : models) {
+            assertNull(modelsAsMap.put(model.getLanguage(), (HashLanguageModel)model));
         }
         
         for (LanguageLocale language : modelsAsMap.keySet()) {
-            Map<String, Integer> langNGramCounts = modelsAsMap.get(language).getNGramCounts();
+            Map<Integer, Integer> langNGramCounts = modelsAsMap.get(language).getNGramCounts();
             
             for (LanguageLocale otherLanguage : modelsAsMap.keySet()) {
                 if (language.equals(otherLanguage)) {
                     continue;
                 }
                 
-                Map<String, Integer> otherLangNGramCounts = modelsAsMap.get(otherLanguage).getNGramCounts();
+                Map<Integer, Integer> otherLangNGramCounts = modelsAsMap.get(otherLanguage).getNGramCounts();
                 
                 // Calculate the overlap of ngrams
-                Set<String> allNGrams = new HashSet<String>(langNGramCounts.keySet());
+                Set<Integer> allNGrams = new HashSet<Integer>(langNGramCounts.keySet());
                 allNGrams.addAll(otherLangNGramCounts.keySet());
                 double totalNGramCount = allNGrams.size();
 
@@ -259,7 +266,7 @@ public class LanguageDetectorTest {
                 
                 double langProb = 0.50;
                 double otherLangProb = 0.50;
-                for (String ngram : langNGramCounts.keySet()) {
+                for (Integer ngram : langNGramCounts.keySet()) {
                     int langCount = langNGramCounts.get(ngram);
                     int otherLangCount = otherLangNGramCounts.containsKey(ngram) ? otherLangNGramCounts.get(ngram) : 0;
                     if (otherLangCount != 0) {
@@ -268,8 +275,8 @@ public class LanguageDetectorTest {
                     
                     double totalCount = langCount + otherLangCount;
                     
-                    double langNGramProb = langCount == 0 ? LanguageDetector.DEFAULT_ALPHA : langCount/totalCount;
-                    double otherLangNGramProb = otherLangCount == 0 ? LanguageDetector.DEFAULT_ALPHA : otherLangCount/totalCount;
+                    double langNGramProb = langCount == 0 ? HashLanguageDetector.DEFAULT_ALPHA : langCount/totalCount;
+                    double otherLangNGramProb = otherLangCount == 0 ? HashLanguageDetector.DEFAULT_ALPHA : otherLangCount/totalCount;
                     
                     int scaledTotalCount = (int)Math.round(totalCount / 1000);
                     for (int i = 0; i < scaledTotalCount; i++) {
@@ -304,12 +311,12 @@ public class LanguageDetectorTest {
     
     private double testLanguages(Random rand, Set<String> targetLanguages) throws Exception {
         List<String> testLines = new ArrayList<String>();
-        Collection<LanguageModel> models = makeModelsAndTestData(testLines, rand, targetLanguages);
+        Collection<BaseLanguageModel> models = makeModelsAndTestData(testLines, rand, targetLanguages);
         
         // Now try classifying the held-out text using the models.
         // Note that the testLines will only have text for the target languages.
         
-        LanguageDetector detector = new LanguageDetector(models);
+        HashLanguageDetector detector = new HashLanguageDetector(models);
         
         int totalMisses = 0;
         IntCounter hitsPerLanguage = new IntCounter();
@@ -340,7 +347,7 @@ public class LanguageDetectorTest {
         }
         
         StringBuilder debugMsg = new StringBuilder('\n');
-        for (LanguageModel model : models) {
+        for (BaseLanguageModel model : models) {
             LanguageLocale language = model.getLanguage();
             IntCounter missCounter = missesPerLanguage.get(language);
             if (missCounter == null) {
@@ -390,8 +397,7 @@ public class LanguageDetectorTest {
     public void testPerformance() throws Exception {
         List<String> lines = EuroParlUtils.readLines();
 
-        ModelBuilder builder = new ModelBuilder();
-        // builder.setCsSk(false);
+        ModelBuilder builder = new ModelBuilder().setBinaryMode(true);
         
         // Skip languages that Mike McCandless didn't try because Tika didn't support them:
         // Bulgarian (bg), Czech (cs), Lithuanian (lt) and Latvian (lv)
@@ -414,8 +420,8 @@ public class LanguageDetectorTest {
             builder.addTrainingDoc(language, text);
         }
 
-        Collection<LanguageModel> models = builder.makeModels();
-        LanguageDetector detector = new LanguageDetector(models, builder.getMaxNGramLength());
+        Collection<BaseLanguageModel> models = builder.makeModels();
+        HashLanguageDetector detector = new HashLanguageDetector(models, builder.getMaxNGramLength());
         
         // Do 10 runs, and take the fastest time.
         long bestDuration = Long.MAX_VALUE;
@@ -440,15 +446,15 @@ public class LanguageDetectorTest {
         System.out.println(String.format("Best duration = %dms", bestDuration));
     }
 
-    private Collection<LanguageModel> makeModelsAndTestData(List<String> testLines, Random rand) throws Exception {
+    private Collection<BaseLanguageModel> makeModelsAndTestData(List<String> testLines, Random rand) throws Exception {
         return makeModelsAndTestData(testLines, rand, null);
     }
     
-    private Collection<LanguageModel> makeModelsAndTestData(List<String> testLines, Random rand, Set<String> targetLanguages) throws Exception {
+    private Collection<BaseLanguageModel> makeModelsAndTestData(List<String> testLines, Random rand, Set<String> targetLanguages) throws Exception {
         return makeModelsAndTestData(testLines, rand, targetLanguages);
     }
     
-    private Collection<LanguageModel> makeModelsAndTestData(List<String> testLines, Random rand, Set<String> targetLanguages, int ngramsPerLanguage, double minNGramProbability, double probabilityScorePower) throws Exception {
+    private Collection<BaseLanguageModel> makeModelsAndTestData(List<String> testLines, Random rand, Set<String> targetLanguages, int ngramsPerLanguage, double minNGramProbability, double probabilityScorePower) throws Exception {
         testLines.clear();
         
         List<String> lines = EuroParlUtils.readLines();
