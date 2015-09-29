@@ -12,12 +12,14 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import com.scaleunlimited.yalder.text.TextTokenizer;
+
 public class ModelBuilder {
     private static final Logger LOGGER = Logger.getLogger(ModelBuilder.class);
 
     public static final int DEFAULT_MAX_NGRAM_LENGTH = 4;
     
-    public static final int DEFAULT_MIN_NORMALIZED_COUNT = (int)Math.round(0.00002 * LanguageModel.NORMALIZED_COUNT);
+    public static final int DEFAULT_MIN_NORMALIZED_COUNT = (int)Math.round(0.00002 * BaseLanguageModel.NORMALIZED_COUNT);
     
     // Minimum number of ngrams we want to see for a language.
     // Since we get roughly <max length> * chars number of ngrams, we're really saying we
@@ -28,6 +30,7 @@ public class ModelBuilder {
     private int _maxNGramLength = DEFAULT_MAX_NGRAM_LENGTH;
     private int _minNormalizedCount = DEFAULT_MIN_NORMALIZED_COUNT;
     private int _minNGramsForLanguage = DEFAULT_MIN_NGRAMS_FOR_LANGUAGE;
+    private boolean _binaryMode = true;
     
     public ModelBuilder() {
         _perLangNGramCounts = new HashMap<LanguageLocale, Map<String, NGramStats>>();
@@ -51,6 +54,11 @@ public class ModelBuilder {
         return _minNormalizedCount;
     }
     
+    public ModelBuilder setBinaryMode(boolean binaryMode) {
+        _binaryMode = binaryMode;
+        return this;
+    }
+    
     public void addTrainingDoc(String language, String text) {
         addTrainingDoc(LanguageLocale.fromString(language), text);
     }
@@ -63,7 +71,7 @@ public class ModelBuilder {
             _perLangNGramCounts.put(language, ngramCounts);
         }
         
-        NGramTokenizer tokenizer = new NGramTokenizer(text, 1, _maxNGramLength);
+        TextTokenizer tokenizer = new TextTokenizer(text, 1, _maxNGramLength);
         while (tokenizer.hasNext()) {
             String token = tokenizer.next();
             NGramStats curStats = ngramCounts.get(token);
@@ -78,7 +86,7 @@ public class ModelBuilder {
     
     // TODO make sure at least one document has been added.
     
-    public Collection<LanguageModel> makeModels() {
+    public Collection<BaseLanguageModel> makeModels() {
         Set<LanguageLocale> languages = new HashSet<LanguageLocale>(_perLangNGramCounts.keySet());
         
         // For each ngram, record its total count across all languages.
@@ -110,7 +118,7 @@ public class ModelBuilder {
                 continue;
             }
             
-            double datasizeNormalization = (double)LanguageModel.NORMALIZED_COUNT / (double)ngramsForLanguage;
+            double datasizeNormalization = (double)BaseLanguageModel.NORMALIZED_COUNT / (double)ngramsForLanguage;
             Map<String, NGramStats> ngramCounts = _perLangNGramCounts.get(language);
             for (String ngram : ngramCounts.keySet()) {
                 NGramStats ngramStats = ngramCounts.get(ngram);
@@ -169,12 +177,16 @@ public class ModelBuilder {
             }
         }
         
-        List<LanguageModel> models = new ArrayList<LanguageModel>();
+        List<BaseLanguageModel> models = new ArrayList<>();
         for (LanguageLocale language : languages) {
             List<NGramScore> langResults = langNGramByScore.get(language);
             Collections.sort(langResults);
             
-            Map<String, Integer> normalizedCounts = new HashMap<String, Integer>();
+            Map<String, Integer> normalizedTextCounts = new HashMap<>();
+            
+            // TODO use native int int map here.
+            Map<Integer, Integer> normalizedHashCounts = new HashMap<>();
+            
             LOGGER.trace(String.format("Language = '%s'", language));
             for (int i = 0; i < langResults.size(); i++) {
                 NGramScore result = langResults.get(i);
@@ -182,11 +194,21 @@ public class ModelBuilder {
                     LOGGER.trace(String.format("\t'%s': %f (prob = %f)", result.getNGram(), result.getScore(), result.getProbability()));
                 }
                 
-                normalizedCounts.put(result.getNGram(), result.getCount());
+                if (_binaryMode) {
+                    normalizedHashCounts.put(result.getNGram().hashCode(), result.getCount());
+                } else {
+                    normalizedTextCounts.put(result.getNGram(), result.getCount());
+                }
             }
             
             // FUTURE support varying max ngram length per model.
-            LanguageModel model = new LanguageModel(language, _maxNGramLength, normalizedCounts);
+            BaseLanguageModel model;
+            if (_binaryMode) {
+                model = new com.scaleunlimited.yalder.hash.HashLanguageModel(language, _maxNGramLength, normalizedHashCounts);
+            } else {
+                model = new com.scaleunlimited.yalder.text.TextLanguageModel(language, _maxNGramLength, normalizedTextCounts);
+            }
+            
             models.add(model);
         }
 

@@ -1,6 +1,8 @@
 package com.scaleunlimited.yalder.tools;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -23,19 +25,21 @@ import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 
+import com.scaleunlimited.yalder.BaseLanguageDetector;
+import com.scaleunlimited.yalder.BaseLanguageModel;
 import com.scaleunlimited.yalder.DetectionResult;
 import com.scaleunlimited.yalder.EuroParlUtils;
-import com.scaleunlimited.yalder.LanguageDetector;
 import com.scaleunlimited.yalder.LanguageLocale;
-import com.scaleunlimited.yalder.LanguageModel;
 import com.scaleunlimited.yalder.ModelBuilder;
+import com.scaleunlimited.yalder.hash.HashLanguageDetector;
+import com.scaleunlimited.yalder.hash.HashLanguageModel;
 
 public class ModelBuilderTool {
     public static final Logger LOGGER = Logger.getLogger(ModelBuilderTool.class);
     
     private ModelBuilderOptions _options;
     private ModelBuilder _builder;
-    private Collection<LanguageModel> _models;
+    private Collection<BaseLanguageModel> _models;
     
     public ModelBuilderTool(ModelBuilderOptions options) {
         _options = options;
@@ -137,39 +141,7 @@ public class ModelBuilderTool {
         }
     }
     
-    public void dumpModels() throws IOException {
-        // Make sure we've got models loaded.
-        if (_models == null) {
-            System.out.println("Models must be built or loaded first");
-            return;
-        }
-
-        String languages = readInputLine("Enter comma-separated languages for models (return == all models): ");
-        
-        // TODO provide option for file to dump to
-        
-        Set<String> targetLanguages = new HashSet<String>();
-        if (!languages.isEmpty()) {
-            for (String language : languages.split(",")) {
-                targetLanguages.add(language.trim());
-            }
-        }
-
-        for (LanguageModel model : _models) {
-            if (targetLanguages.isEmpty() || targetLanguages.contains(model.getLanguage())) {
-                System.out.println(String.format("Model for '%s':", model.getLanguage()));
-                
-                Map<String, Integer> ngramCounts = model.getNGramCounts();
-                for (String ngram : ngramCounts.keySet()) {
-                    System.out.println(String.format("\t'%s': %d", ngram, ngramCounts.get(ngram)));
-                }
-                
-                System.out.println(String.format("Model for '%s' has %d ngrams", model.getLanguage(), ngramCounts.size()));
-            }
-        }
-    }
-    
-    private double testEuro(List<String> lines, LanguageDetector detector) throws IOException {
+    private double testEuro(List<String> lines, BaseLanguageDetector detector) throws IOException {
         int errorCount = 0;
         int totalCount = 0;
         
@@ -206,11 +178,13 @@ public class ModelBuilderTool {
             return;
         }
         
+        // TODO verify that we have text-based models loaded
+        
         List<String> lines = EuroParlUtils.readLines();
         Set<LanguageLocale> supportedLanguages = getLanguages(lines);
-        Set<LanguageModel> activeModels = getModels(supportedLanguages);
+        Set<BaseLanguageModel> activeModels = getModels(supportedLanguages);
 
-        LanguageDetector detector = new LanguageDetector(activeModels);
+        com.scaleunlimited.yalder.text.TextLanguageDetector detector = new com.scaleunlimited.yalder.text.TextLanguageDetector(activeModels);
         Set<String> detailLanguages = null;
         
         while (true) {
@@ -263,7 +237,7 @@ public class ModelBuilderTool {
                 supportedLanguages.add(LanguageLocale.fromString(language));
             }
         } else if (languages.equals("all")) {
-            for (LanguageModel model : _models) {
+            for (BaseLanguageModel model : _models) {
                 supportedLanguages.add(model.getLanguage());
             }
         } else {
@@ -275,9 +249,9 @@ public class ModelBuilderTool {
         return supportedLanguages;
     }
     
-    private Set<LanguageModel> getModels(Set<LanguageLocale> supportedLanguages) throws IOException {
-        Set<LanguageModel> result = new HashSet<LanguageModel>();
-        for (LanguageModel model : _models) {
+    private Set<BaseLanguageModel> getModels(Set<LanguageLocale> supportedLanguages) throws IOException {
+        Set<BaseLanguageModel> result = new HashSet<>();
+        for (BaseLanguageModel model : _models) {
             if (supportedLanguages.contains(model.getLanguage())) {
                 result.add(model);
             }
@@ -301,7 +275,7 @@ public class ModelBuilderTool {
         Map<LanguageLocale, Integer> incorrectLines = new HashMap<LanguageLocale, Integer>();
         
         // TODO get max ngram length from models
-        LanguageDetector detector = new LanguageDetector(getModels(supportedLanguages));
+        HashLanguageDetector detector = new HashLanguageDetector(getModels(supportedLanguages));
         for (String line : lines) {
             // Format is <ISO 639-1 language code><tab>text
             String[] pieces = line.split("\t", 2);
@@ -363,13 +337,16 @@ public class ModelBuilderTool {
             return;
         }
         
+        String modelSuffix = readInputLine("Enter type of model (bin or txt): ");
+        boolean isBinary = modelSuffix.equals("bin");
+        
         System.out.println(String.format("Loading models from files in '%s'...", dirFile.getCanonicalPath()));
-        Set<LanguageModel> newModels = new HashSet<>();
+        Set<BaseLanguageModel> newModels = new HashSet<>();
         
         int totalPruned = 0;
         for (File file : FileUtils.listFiles(dirFile, new String[]{"txt"}, true)) {
             String filename = file.getName();
-            Pattern p = Pattern.compile("yalder_model_(.+).txt");
+            Pattern p = Pattern.compile(String.format("yalder_model_(.+).%s", modelSuffix));
             Matcher m = p.matcher(filename);
             if (!m.matches()) {
                 LOGGER.warn(String.format("Found file '%s' with invalid name", filename));
@@ -379,11 +356,24 @@ public class ModelBuilderTool {
             // Verify that language is valid
             LanguageLocale.fromString(m.group(1));
             
-            InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
-            LanguageModel model = new LanguageModel();
-            model.readModel(isr);
-            isr.close();
-            
+            // Figure out if it's binary or text
+            BaseLanguageModel model = null;
+            if (isBinary) {
+                DataInputStream dis = new DataInputStream(new FileInputStream(file));
+                com.scaleunlimited.yalder.hash.HashLanguageModel binaryModel = new com.scaleunlimited.yalder.hash.HashLanguageModel();
+                binaryModel.readAsBinary(dis);
+                dis.close();
+                
+                model = binaryModel;
+            } else {
+                InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
+                com.scaleunlimited.yalder.text.TextLanguageModel textModel = new com.scaleunlimited.yalder.text.TextLanguageModel();
+                textModel.readAsText(isr);
+                isr.close();
+
+                model = textModel;
+            }
+
             totalPruned += model.prune(20);
             
             newModels.add(model);
@@ -421,12 +411,24 @@ public class ModelBuilderTool {
             return;
         }
         
-        for (LanguageModel model : _models) {
-            String modelFileName = String.format("yalder_model_%s.txt", model.getLanguage().getName());
+        String modelSuffix = readInputLine("Enter type of model (bin or txt): ");
+        boolean isBinary = modelSuffix.equals("bin");
+
+        for (BaseLanguageModel baseModel : _models) {
+            String modelFileName = String.format("yalder_model_%s.%s", baseModel.getLanguage().getName(), modelSuffix);
             File modelFile = new File(dirFile,  modelFileName);
-            OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(modelFile), "UTF-8");
-            model.writeModel(osw);
-            osw.close();
+
+            if (isBinary) {
+                com.scaleunlimited.yalder.hash.HashLanguageModel model = (com.scaleunlimited.yalder.hash.HashLanguageModel)baseModel;
+                DataOutputStream dos = new DataOutputStream(new FileOutputStream(modelFile));
+                model.writeAsBinary(dos);
+                dos.close();
+            } else {
+                com.scaleunlimited.yalder.text.TextLanguageModel model = (com.scaleunlimited.yalder.text.TextLanguageModel)baseModel;
+                OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(modelFile), "UTF-8");
+                model.writeAsText(osw);
+                osw.close();
+            }
         }
     }
     
@@ -463,13 +465,11 @@ public class ModelBuilderTool {
                 // TODO have base tool, with readInputLine code that takes prompt text
                 // TODO how to set params per language for collapsing chars, setting max ngram length, etc.
                 // TODO add help command
-                String cmdName = readInputLine("Enter command (data, build, dump, load, save, test, euro, quit): ");
+                String cmdName = readInputLine("Enter command (data, build, load, save, test, euro, quit): ");
                 if (cmdName.equalsIgnoreCase("data")) {
                     tool.loadTrainingData();
                 } else if (cmdName.equalsIgnoreCase("build")) {
                     tool.buildModels();
-                } else if (cmdName.equalsIgnoreCase("dump")) {
-                    tool.dumpModels();
                 } else if (cmdName.equalsIgnoreCase("save")) {
                     tool.saveModels();
                 } else if (cmdName.equalsIgnoreCase("load")) {

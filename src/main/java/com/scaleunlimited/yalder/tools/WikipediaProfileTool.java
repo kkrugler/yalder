@@ -23,10 +23,10 @@ import org.kohsuke.args4j.Option;
 
 import com.scaleunlimited.yalder.DetectionResult;
 import com.scaleunlimited.yalder.EuroParlUtils;
-import com.scaleunlimited.yalder.LanguageDetector;
 import com.scaleunlimited.yalder.LanguageLocale;
-import com.scaleunlimited.yalder.LanguageModel;
 import com.scaleunlimited.yalder.ModelBuilder;
+import com.scaleunlimited.yalder.hash.HashLanguageDetector;
+import com.scaleunlimited.yalder.hash.HashLanguageModel;
 
 public class WikipediaProfileTool {
     public static final Logger LOGGER = Logger.getLogger(WikipediaProfileTool.class);
@@ -36,7 +36,7 @@ public class WikipediaProfileTool {
     private static final int MIN_NORMALIZED_NGRAM_COUNT = 10;
     
     private WikipediaProfileOptions _options;
-    private Collection<LanguageModel> _models;
+    private Collection<HashLanguageModel> _models;
     
     public WikipediaProfileTool(WikipediaProfileOptions options) {
         _options = options;
@@ -187,7 +187,7 @@ public class WikipediaProfileTool {
             }
         }
 
-        for (LanguageModel model : _models) {
+        for (HashLanguageModel model : _models) {
             if (targetLanguages.isEmpty() || targetLanguages.contains(model.getLanguage())) {
                 System.out.println(String.format("Model for '%s':", model.getLanguage()));
                 
@@ -201,7 +201,7 @@ public class WikipediaProfileTool {
         }
     }
     
-    private double testEuro(List<String> lines, LanguageDetector detector) throws IOException {
+    private double testEuro(List<String> lines, HashLanguageDetector detector) throws IOException {
         int errorCount = 0;
         int totalCount = 0;
         
@@ -238,7 +238,7 @@ public class WikipediaProfileTool {
         
         List<String> lines = EuroParlUtils.readLines();
         Set<LanguageLocale> supportedLanguages = getLanguages(lines);
-        LanguageDetector detector = new LanguageDetector(getModels(supportedLanguages), MAX_NGRAM_LENGTH);
+        HashLanguageDetector detector = new HashLanguageDetector(getModels(supportedLanguages), MAX_NGRAM_LENGTH);
         
         // Set up default based on what we think is the current "optimal" values, but scaled up to give
         // us some room to explore the potential space away from 0.
@@ -272,9 +272,9 @@ public class WikipediaProfileTool {
     public void interactiveTest() throws IOException {
         List<String> lines = EuroParlUtils.readLines();
         Set<LanguageLocale> supportedLanguages = getLanguages(lines);
-        Set<LanguageModel> activeModels = getModels(supportedLanguages);
+        Set<HashLanguageModel> activeModels = getModels(supportedLanguages);
 
-        LanguageDetector detector = new LanguageDetector(activeModels, MAX_NGRAM_LENGTH);
+        HashLanguageDetector detector = new HashLanguageDetector(activeModels, MAX_NGRAM_LENGTH);
         Set<String> detailLanguages = null;
         
         while (true) {
@@ -331,7 +331,7 @@ public class WikipediaProfileTool {
                 supportedLanguages.add(LanguageLocale.fromString(language));
             }
         } else if (languages.equals("all")) {
-            for (LanguageModel model : _models) {
+            for (HashLanguageModel model : _models) {
                 supportedLanguages.add(model.getLanguage());
             }
         } else {
@@ -343,9 +343,9 @@ public class WikipediaProfileTool {
         return supportedLanguages;
     }
     
-    private Set<LanguageModel> getModels(Set<LanguageLocale> supportedLanguages) throws IOException {
-        Set<LanguageModel> result = new HashSet<LanguageModel>();
-        for (LanguageModel model : _models) {
+    private Set<HashLanguageModel> getModels(Set<LanguageLocale> supportedLanguages) throws IOException {
+        Set<HashLanguageModel> result = new HashSet<HashLanguageModel>();
+        for (HashLanguageModel model : _models) {
             if (supportedLanguages.contains(model.getLanguage())) {
                 result.add(model);
             }
@@ -362,7 +362,7 @@ public class WikipediaProfileTool {
         Map<LanguageLocale, Integer> correctLines = new HashMap<LanguageLocale, Integer>();
         Map<LanguageLocale, Integer> incorrectLines = new HashMap<LanguageLocale, Integer>();
         
-        LanguageDetector detector = new LanguageDetector(getModels(supportedLanguages), MAX_NGRAM_LENGTH);
+        HashLanguageDetector detector = new HashLanguageDetector(getModels(supportedLanguages), MAX_NGRAM_LENGTH);
         for (String line : lines) {
             // Format is <ISO 639-1 language code><tab>text
             String[] pieces = line.split("\t", 2);

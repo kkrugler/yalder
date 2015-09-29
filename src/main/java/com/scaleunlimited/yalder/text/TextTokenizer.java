@@ -1,10 +1,12 @@
-package com.scaleunlimited.yalder;
+package com.scaleunlimited.yalder.text;
 
 import java.nio.CharBuffer;
 
-public class NGramTokenizer extends BaseTokenizer {
+import com.scaleunlimited.yalder.BaseTokenizer;
 
-    public NGramTokenizer(CharSequence buffer, int min, int max) {
+public class TextTokenizer extends BaseTokenizer {
+
+    public TextTokenizer(CharSequence buffer, int min, int max) {
         super(buffer, min, max);
     }
 
@@ -18,9 +20,7 @@ public class NGramTokenizer extends BaseTokenizer {
 
         expandNGram();
 
-        // See how accuracy suffers if we use a 4 byte hash code
-        // return result.toString();
-        return "" + result.hashCode();
+        return result.toString();
     }
 
 }

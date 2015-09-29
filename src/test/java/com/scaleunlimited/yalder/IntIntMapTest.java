@@ -34,7 +34,7 @@ public class IntIntMapTest {
     public void testManyInserts() {
         // Start off with 1000 entries.
         IntIntMap map = new IntIntMap(1000);
-        assertEquals(0, map.getSize());
+        assertEquals(0, map.size());
         
         for (int i = 0; i < 2000; i++) {
             assertEquals(0, map.getValue(i));
@@ -46,7 +46,7 @@ public class IntIntMapTest {
             assertTrue(map.contains(i));
         }
         
-        assertEquals(2000, map.getSize());
+        assertEquals(2000, map.size());
         
         for (int i = 0; i < 2000; i++) {
             int value = (i + 1) * 100;

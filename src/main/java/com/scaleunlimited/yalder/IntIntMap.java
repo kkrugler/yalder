@@ -9,7 +9,12 @@ public class IntIntMap {
     private long[] _entries;
     private int _size;
     
-    
+    /**
+     * Native int to int map that uses a single sorted array of longs to store
+     * the key (high int) and value (low int).
+     * 
+     * 
+     */
     public IntIntMap() {
         this(DEFAULT_CAPACITY);
     }
@@ -23,7 +28,7 @@ public class IntIntMap {
         _size = 0;
     }
     
-    public int getSize() {
+    public int size() {
         return _size;
     }
     

@@ -14,8 +14,8 @@ public class EuroParlUtils {
         return IOUtils.readLines(fis, "UTF-8");
     }
     
-    public static Collection<LanguageModel> buildModels(List<String> lines) {
-        ModelBuilder builder = new ModelBuilder();
+    public static Collection<BaseLanguageModel> buildModels(List<String> lines, boolean isBinary) {
+        ModelBuilder builder = new ModelBuilder().setBinaryMode(isBinary);
         
         for (String line : lines) {
             

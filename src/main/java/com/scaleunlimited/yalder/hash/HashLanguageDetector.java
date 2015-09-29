@@ -1,60 +1,48 @@
-package com.scaleunlimited.yalder;
+package com.scaleunlimited.yalder.hash;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class LanguageDetector {
+import com.scaleunlimited.yalder.BaseLanguageDetector;
+import com.scaleunlimited.yalder.BaseLanguageModel;
+import com.scaleunlimited.yalder.DetectionResult;
+import com.scaleunlimited.yalder.LanguageLocale;
+import com.scaleunlimited.yalder.text.TextTokenizer;
 
-    public static final double DEFAULT_ALPHA = 0.000002;
-    public static final double DEFAULT_DAMPENING = 0.001;
+/**
+ * Language detector that works with ngram hashes (versus text), for
+ * efficiency.
+ *
+ */
+public class HashLanguageDetector extends BaseLanguageDetector {
 
-    private static final double MIN_LANG_PROBABILITY = 0.1;
-    
-    private Collection<LanguageModel> _models;
-    
     // Map from language of model to index used for accessing arrays.
     private Map<LanguageLocale, Integer> _langToIndex;
     
     // Map from ngram (hash) to index.
     private IntToIndex _ngramToIndex;
     
-    // For each ngram, store the probability for each language
+    // For each ngram, store the probability for each language.
     private double[][] _ngramProbabilities;
     
+    // TODO switch to double[] vs. map
     private Map<LanguageLocale, Double> _langProbabilities;
-    private int _maxNGramLength;
     
-    // The probability we use for an ngram when we have no data for it for a given language.
-    private double _alpha;
-    
-    // Used to increase an ngram's probability, to reduce rapid swings in short text
-    // snippets. The probability is increased by (1 - prob) * dampening.
-    private double _dampening = DEFAULT_DAMPENING;
-    
-    public LanguageDetector(Collection<LanguageModel> models) {
+    public HashLanguageDetector(Collection<BaseLanguageModel> models) {
         this(models, getMaxNGramLengthFromModels(models));
     }
 
-    private static int getMaxNGramLengthFromModels(Collection<LanguageModel> models) {
-        int maxNGramLength = 0;
-        Iterator<LanguageModel> iter = models.iterator();
-        while (iter.hasNext()) {
-            maxNGramLength = Math.max(maxNGramLength, iter.next().getMaxNGramLength());
-        }
-        
-        return maxNGramLength;
-    }
+    public HashLanguageDetector(Collection<BaseLanguageModel> models, int maxNGramLength) {
+        super(models, maxNGramLength);
 
-    public LanguageDetector(Collection<LanguageModel> models, int maxNGramLength) {
-        int numLanguages = setModels(models);
-        _maxNGramLength = maxNGramLength;
-        _alpha = DEFAULT_ALPHA;
+        // TODO verify that each model is a binary model
+
+        int numLanguages = makeLangToIndex(models);
         
         // Build a master map from ngram to per-language probabilities
         // Each model should contain a normalized count (not probability) of the ngram
@@ -62,10 +50,11 @@ public class LanguageDetector {
         
         // So the first step is to build a map from every ngram (hash) to an index.
         _ngramToIndex = new IntToIndex();
-        for (LanguageModel model : _models) {
-            Map<String, Integer> langCounts = model.getNGramCounts();
-            for (String ngram : langCounts.keySet()) {
-                _ngramToIndex.add(Integer.parseInt(ngram));
+        for (BaseLanguageModel baseModel : _models) {
+            HashLanguageModel model = (HashLanguageModel)baseModel;
+            Map<Integer, Integer> langCounts = model.getNGramCounts();
+            for (Integer ngramHash : langCounts.keySet()) {
+                _ngramToIndex.add(ngramHash);
             }
         }
         
@@ -75,23 +64,23 @@ public class LanguageDetector {
         _langProbabilities = new HashMap<LanguageLocale, Double>();
         _ngramProbabilities = new double[uniqueNGrams][];
         
-        for (LanguageModel model : _models) {
+        for (BaseLanguageModel baseModel : _models) {
+            HashLanguageModel model = (HashLanguageModel)baseModel;
             LanguageLocale language = model.getLanguage();
             int langIndex = langToIndex(language);
             
             _langProbabilities.put(language, 0.0);
             
-            Map<String, Integer> langCounts = model.getNGramCounts();
-            for (String ngram : langCounts.keySet()) {
-                int hash = Integer.parseInt(ngram);
-                int index = _ngramToIndex.getIndex(hash);
+            Map<Integer, Integer> langCounts = model.getNGramCounts();
+            for (Integer ngramHash : langCounts.keySet()) {
+                int index = _ngramToIndex.getIndex(ngramHash);
                 int[] counts = ngramCounts[index];
                 if (counts == null) {
                     counts = new int[numLanguages];
                     ngramCounts[index] = counts;
                 }
                 
-                counts[langIndex] = langCounts.get(ngram);
+                counts[langIndex] = langCounts.get(ngramHash);
             }
         }
         
@@ -117,15 +106,13 @@ public class LanguageDetector {
         return _langToIndex.get(language);
     }
     
-    private int setModels(Collection<LanguageModel> models) {
-        _models = models;
-        
+    private int makeLangToIndex(Collection<BaseLanguageModel> models) {
         // Build a master map from language to index (0...n-1), which we'll use to index into
         // arrays associated with each ngram.
         
         _langToIndex = new HashMap<>(_models.size());
         int curIndex = 0;
-        for (LanguageModel model : _models) {
+        for (BaseLanguageModel model : _models) {
             if (_langToIndex.put(model.getLanguage(), curIndex) != null) {
                 throw new IllegalArgumentException("Got two models with the same language: " + model.getLanguage());
             }
@@ -136,52 +123,8 @@ public class LanguageDetector {
         return curIndex;
     }
 
-    public LanguageDetector setAlpha(double alpha) {
-        _alpha = alpha;
-        return this;
-    }
-    
-    public double getAlpha() {
-        return _alpha;
-    }
-    
-    public LanguageDetector setDampening(double dampening) {
-        _dampening = dampening;
-        return this;
-    }
-    
-    public double getDampening() {
-        return _dampening;
-    }
-    
-    /**
-     * Return true if at least one of the loaded models is for a language that
-     * is weakly equal to <target>. This means that (in theory) we could get a
-     * detection result that would also be weakly equal to <target>.
-     * 
-     * @param target Language of interest
-     * @return true if it's supported by the loaded set of models.
-     */
-    
-    public boolean supportsLanguage(LanguageLocale target) {
-        for (LanguageModel model : _models) {
-            if (model.getLanguage().weaklyEqual(target)) {
-                return true;
-            }
-        }
-        
-        return false;
-    }
-    
+    @Override
     public Collection<DetectionResult> detect(String text) {
-        return detect(text, null);
-    }
-    
-    public Collection<DetectionResult> detect(String text, StringBuilder details) {
-        return detect(text, details, null);
-    }
-    
-    public Collection<DetectionResult> detect(String text, StringBuilder details, Set<String> detailLanguages) {
         double startingProb = 1.0 / _langProbabilities.size();
         for (LanguageLocale language : _langProbabilities.keySet()) {
             _langProbabilities.put(language,  startingProb);
@@ -189,38 +132,24 @@ public class LanguageDetector {
         
         int numKnownNGrams = 0;
         int numUnknownNGrams = 0;
-        NGramTokenizer tokenizer = new NGramTokenizer(text, 1, _maxNGramLength);
+        TextTokenizer tokenizer = new TextTokenizer(text, 1, _maxNGramLength);
         while (tokenizer.hasNext()) {
             String ngram = tokenizer.next();
-            int hash = Integer.parseInt(ngram);
+            int hash = ngram.hashCode();
             int index = _ngramToIndex.getIndex(hash);
-                            
+            
             if (index == -1) {
                 // FUTURE track how many unknown ngrams we get, and use that
                 // to adjust probabilities.
                 numUnknownNGrams += 1;
-//                
-//                if (provideDetails) {
-//                    details.append(String.format("'%s': not found\n", ngram));
-//                }
-//                
                 continue;
             }
             
             numKnownNGrams += 1;
-            if (details != null) {
-                details.append(String.format("ngram '%s' probs:", ngram));
-                details.append(detailLanguages == null ? '\n' : ' ');
-            }
             
             for (LanguageLocale language : _langProbabilities.keySet()) {
                 int langIndex = langToIndex(language);
                 double prob = _ngramProbabilities[index][langIndex];
-                
-                if ((details != null) && (prob != 0.0) && ((detailLanguages == null) || (detailLanguages.contains(language)))) {
-                    details.append(String.format("\t'%s'=%f", language, prob));
-                    details.append(detailLanguages == null ? '\n' : ' ');
-                }
                 
                 // Unknown ngrams for the language get a default probability of "alpha".
                 if (prob == 0.0) {
@@ -235,20 +164,6 @@ public class LanguageDetector {
                 double curProb = _langProbabilities.get(language);
                 curProb *= prob;
                 _langProbabilities.put(language, curProb);
-            }
-            
-            if ((details != null) && (detailLanguages != null)) {
-                details.append('\n');
-            }
-
-            if ((details != null) || (numKnownNGrams % 10) == 0) {
-                normalizeLangProbabilities();
-            }
-            
-            if (details != null) {
-                details.append("lang probabilities: ");
-                details.append(getSortedProbabilities(_langProbabilities, detailLanguages));
-                details.append('\n');
             }
         }
         
@@ -318,19 +233,6 @@ public class LanguageDetector {
             curProb *= scalar;
             _langProbabilities.put(language, curProb);
         }
-    }
-
-    public LanguageModel getModel(LanguageLocale language) {
-        for (LanguageModel model : _models) {
-            
-            if (model.getLanguage().equals(language)) {
-                return model;
-            }
-            
-            // TODO if weakly equal, and no other set to weak, save it
-        }
-        
-        throw new IllegalArgumentException("Unknown language: " + language);
     }
 
 }
