@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class IntIntMap {
 
+    // TODO compare performance to fastutils Int2IntMap
+    
     private static final int DEFAULT_CAPACITY = 1000;
     
     private long[] _entries;
@@ -19,6 +21,12 @@ public class IntIntMap {
         this(DEFAULT_CAPACITY);
     }
     
+    public IntIntMap(IntIntMap source) {
+        _size = source._size;
+        _entries = new long[_size];
+        System.arraycopy(source._entries, 0, _entries, 0, _size);
+    }
+    
     public IntIntMap(int initialCapacity) {
         if (initialCapacity <= 0) {
             throw new IllegalArgumentException("Initial capacity must be > 0");
@@ -32,9 +40,37 @@ public class IntIntMap {
         return _size;
     }
     
+    public int sum() {
+        int result = 0;
+        for (int i = 0; i < _size; i++) {
+            result += extractValue(_entries[i]);
+        }
+        
+        return result;
+    }
+    
+    public int[] keySet() {
+        int[] result = new int[_size];
+        for (int i = 0; i < _size; i++) {
+            result[i] = extractKey(_entries[i]);
+        }
+        
+        return result;
+    }
+    
     public boolean contains(int key) {
         int index = findIndex(key);
         return ((index < _size) && (extractKey(_entries[index]) == key));
+    }
+    
+    public void put(int key, int value) {
+        if (!contains(key)) {
+            add(key, value);
+        } else {
+            // We know it exists
+            int index = findIndex(key);
+            _entries[index] = makeEntry(key, value);
+        }
     }
     
     // Put the entry (key, value) into the map. If it already exists,
@@ -95,4 +131,50 @@ public class IntIntMap {
     private int extractValue(long entry) {
         return (int)(entry & 0x0FFFFFFFF);
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + hashCode(_entries, _size);
+        result = prime * result + _size;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        IntIntMap other = (IntIntMap) obj;
+        if (_size != other._size)
+            return false;
+        if (!equals(_entries, other._entries, _size))
+            return false;
+        return true;
+    }
+    
+    private boolean equals(long[] a, long[] b, int length) {
+        for (int i = 0; i < length; i++) {
+            if (a[i] != b[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    private int hashCode(long[] a, int length) {
+        int result = 1;
+        for (int i = 0; i < length; i++) {
+            long element = a[i];
+            int elementHash = (int)(element ^ (element >>> 32));
+            result = 31 * result + elementHash;
+        }
+
+        return result;
+    }
+    
 }

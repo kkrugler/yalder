@@ -11,6 +11,7 @@ import java.util.Set;
 import com.scaleunlimited.yalder.BaseLanguageDetector;
 import com.scaleunlimited.yalder.BaseLanguageModel;
 import com.scaleunlimited.yalder.DetectionResult;
+import com.scaleunlimited.yalder.IntIntMap;
 import com.scaleunlimited.yalder.LanguageLocale;
 import com.scaleunlimited.yalder.text.TextTokenizer;
 
@@ -52,8 +53,8 @@ public class HashLanguageDetector extends BaseLanguageDetector {
         _ngramToIndex = new IntToIndex();
         for (BaseLanguageModel baseModel : _models) {
             HashLanguageModel model = (HashLanguageModel)baseModel;
-            Map<Integer, Integer> langCounts = model.getNGramCounts();
-            for (Integer ngramHash : langCounts.keySet()) {
+            IntIntMap langCounts = model.getNGramCounts();
+            for (int ngramHash : langCounts.keySet()) {
                 _ngramToIndex.add(ngramHash);
             }
         }
@@ -71,8 +72,8 @@ public class HashLanguageDetector extends BaseLanguageDetector {
             
             _langProbabilities.put(language, 0.0);
             
-            Map<Integer, Integer> langCounts = model.getNGramCounts();
-            for (Integer ngramHash : langCounts.keySet()) {
+            IntIntMap langCounts = model.getNGramCounts();
+            for (int ngramHash : langCounts.keySet()) {
                 int index = _ngramToIndex.getIndex(ngramHash);
                 int[] counts = ngramCounts[index];
                 if (counts == null) {
@@ -80,7 +81,7 @@ public class HashLanguageDetector extends BaseLanguageDetector {
                     ngramCounts[index] = counts;
                 }
                 
-                counts[langIndex] = langCounts.get(ngramHash);
+                counts[langIndex] = langCounts.getValue(ngramHash);
             }
         }
         
@@ -132,10 +133,9 @@ public class HashLanguageDetector extends BaseLanguageDetector {
         
         int numKnownNGrams = 0;
         int numUnknownNGrams = 0;
-        TextTokenizer tokenizer = new TextTokenizer(text, 1, _maxNGramLength);
+        HashTokenizer tokenizer = new HashTokenizer(text, 1, _maxNGramLength);
         while (tokenizer.hasNext()) {
-            String ngram = tokenizer.next();
-            int hash = ngram.hashCode();
+            int hash = tokenizer.next();
             int index = _ngramToIndex.getIndex(hash);
             
             if (index == -1) {
@@ -155,6 +155,7 @@ public class HashLanguageDetector extends BaseLanguageDetector {
                 if (prob == 0.0) {
                     prob = _alpha;
                 }
+                
                 // apply dampening, which increases the probability by a percentage
                 // of the delta from 1.0, and thus reduces the rapid swings caused by
                 // getting a few ngrams in a row with very low probability for an
@@ -164,6 +165,11 @@ public class HashLanguageDetector extends BaseLanguageDetector {
                 double curProb = _langProbabilities.get(language);
                 curProb *= prob;
                 _langProbabilities.put(language, curProb);
+            }
+            
+            // So we don't let probabilities become 0.0, we have to adjust
+            if ((numKnownNGrams % 10) == 0) {
+                normalizeLangProbabilities();
             }
         }
         
@@ -181,43 +187,6 @@ public class HashLanguageDetector extends BaseLanguageDetector {
 
         Collections.sort(result);
         return result;
-    }
-
-    /**
-     * Given a set of languages and each one's current probability, and an optional set of
-     * languages we actually care about, return a string with the details, where langauges
-     * are sorted by their probability (high to low), filtered to the set of ones of interest.
-     * 
-     * This is only used during debugging.
-     * 
-     * @param langProbabilities
-     * @param detailLanguages
-     * @return sorted language+probabilities
-     */
-    private String getSortedProbabilities(Map<LanguageLocale, Double> langProbabilities, Set<String> detailLanguages) {
-        Map<LanguageLocale, Double> remainingLanguages = new HashMap<LanguageLocale, Double>(langProbabilities);
-        
-        StringBuilder result = new StringBuilder();
-        while (!remainingLanguages.isEmpty()) {
-            double maxProbability = -1.0;
-            LanguageLocale maxLanguage = null;
-            for (LanguageLocale language : remainingLanguages.keySet()) {
-                double langProb = remainingLanguages.get(language);
-                if (langProb > maxProbability) {
-                    maxProbability = langProb;
-                    maxLanguage = language;
-                }
-            }
-            
-            if ((maxProbability > 0.0000005) && ((detailLanguages == null) || detailLanguages.contains(maxLanguage))) {
-                result.append(String.format("'%s'=%f ", maxLanguage, maxProbability));
-                remainingLanguages.remove(maxLanguage);
-            } else {
-                break;
-            }
-        }
-        
-        return result.toString();
     }
 
     private void normalizeLangProbabilities() {

@@ -3,12 +3,9 @@ package com.scaleunlimited.yalder.hash;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 import com.scaleunlimited.yalder.BaseLanguageModel;
+import com.scaleunlimited.yalder.IntIntMap;
 import com.scaleunlimited.yalder.LanguageLocale;
 
 
@@ -21,9 +18,8 @@ import com.scaleunlimited.yalder.LanguageLocale;
 
 public class HashLanguageModel extends BaseLanguageModel {
 
-    // Map from ngram to count
-    // TODO use native int int map
-    private Map<Integer, Integer> _normalizedCounts;
+    // Map from ngram hash to count
+    private IntIntMap _normalizedCounts;
     
     /**
      * No-arg construct for deserialization
@@ -32,7 +28,7 @@ public class HashLanguageModel extends BaseLanguageModel {
         super();
     }
     
-    public HashLanguageModel(LanguageLocale modelLanguage, int maxNGramLength, Map<Integer, Integer> normalizedCounts) {
+    public HashLanguageModel(LanguageLocale modelLanguage, int maxNGramLength, IntIntMap normalizedCounts) {
         super(modelLanguage, maxNGramLength);
         _normalizedCounts = normalizedCounts;
     }
@@ -42,29 +38,29 @@ public class HashLanguageModel extends BaseLanguageModel {
         return _normalizedCounts.size();
     }
     
-    public int getNGramCount(String ngram) {
-        Integer result = _normalizedCounts.get(ngram);
-        return result == null ? 0 : result;
+    public int getNGramCount(int ngram) {
+        return _normalizedCounts.getValue(ngram);
     }
     
-    public Map<Integer, Integer> getNGramCounts() {
+    public IntIntMap getNGramCounts() {
         return _normalizedCounts;
     }
     
     @Override
     public int prune(int minNormalizedCount) {
-        Set<Integer> ngramsToPrune = new HashSet<>();
-        for (Integer ngramHash : _normalizedCounts.keySet()) {
-            if (_normalizedCounts.get(ngramHash) < minNormalizedCount) {
-                ngramsToPrune.add(ngramHash);
+        int totalPruned = 0;
+        IntIntMap prunedCounts = new IntIntMap(_normalizedCounts.size());
+        for (int ngramHash : _normalizedCounts.keySet()) {
+            int count = _normalizedCounts.getValue(ngramHash);
+            if (count >= minNormalizedCount) {
+                prunedCounts.add(ngramHash, count);
+            } else {
+                totalPruned += 1;
             }
         }
         
-        for (Integer ngramHash : ngramsToPrune) {
-            _normalizedCounts.remove(ngramHash);
-        }
-        
-        return ngramsToPrune.size();
+        _normalizedCounts = prunedCounts;
+        return totalPruned;
     }
     
     
@@ -103,11 +99,11 @@ public class HashLanguageModel extends BaseLanguageModel {
         _maxNGramLength = in.readInt();
         
         int numNGrams = in.readInt();
-        _normalizedCounts = new HashMap<>(numNGrams);
+        _normalizedCounts = new IntIntMap(numNGrams);
         for (int i = 0; i < numNGrams; i++) {
             int hash = in.readInt();
             int count = WritableUtils.readVInt(in);
-            _normalizedCounts.put(hash, count);
+            _normalizedCounts.add(hash, count);
         }
     }
 
@@ -117,9 +113,9 @@ public class HashLanguageModel extends BaseLanguageModel {
         out.writeInt(_maxNGramLength);
         out.writeInt(_normalizedCounts.size());;
         
-        for (Integer ngramHash : _normalizedCounts.keySet()) {
+        for (int ngramHash : _normalizedCounts.keySet()) {
             out.writeInt(ngramHash);
-            WritableUtils.writeVInt(out, _normalizedCounts.get(ngramHash));
+            WritableUtils.writeVInt(out, _normalizedCounts.getValue(ngramHash));
         }
 
     }

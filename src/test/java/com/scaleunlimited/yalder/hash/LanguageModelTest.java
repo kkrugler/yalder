@@ -14,6 +14,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import com.scaleunlimited.yalder.IntIntMap;
 import com.scaleunlimited.yalder.LanguageLocale;
 import com.scaleunlimited.yalder.hash.HashLanguageModel;
 
@@ -23,7 +24,7 @@ public class LanguageModelTest {
     public void testEquality() throws Exception {
         LanguageLocale modelLanguage = LanguageLocale.fromString("eng");
         final int maxNGramLength = 4;
-        Map<Integer, Integer> normalizedCounts1 = new HashMap<>();
+        IntIntMap normalizedCounts1 = new IntIntMap();
         normalizedCounts1.put("abc".hashCode(), 1);
         normalizedCounts1.put("a".hashCode(), 6);
         normalizedCounts1.put("ab".hashCode(), 2);
@@ -32,7 +33,7 @@ public class LanguageModelTest {
         normalizedCounts1.put("abb".hashCode(), 1);
         HashLanguageModel model1 = new HashLanguageModel(modelLanguage, maxNGramLength, normalizedCounts1);
 
-        Map<Integer, Integer> normalizedCounts2 = new HashMap<>(normalizedCounts1);
+        IntIntMap normalizedCounts2 = new IntIntMap(normalizedCounts1);
         HashLanguageModel model2 = new HashLanguageModel(modelLanguage, maxNGramLength, normalizedCounts2);
         assertEquals(model1, model2);
 
@@ -52,7 +53,7 @@ public class LanguageModelTest {
     public void testSerialization() throws Exception {
         LanguageLocale modelLanguage = LanguageLocale.fromString("eng");
         final int maxNGramLength = 4;
-        Map<Integer, Integer> normalizedCounts = new HashMap<>();
+        IntIntMap normalizedCounts = new IntIntMap();
         normalizedCounts.put("abc".hashCode(), 1);
         normalizedCounts.put("a".hashCode(), 6);
         normalizedCounts.put("ab".hashCode(), 2);
