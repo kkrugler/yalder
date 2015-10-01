@@ -31,6 +31,37 @@ public class IntIntMapTest {
     }
     
     @Test
+    public void testSum() {
+        IntIntMap map = new IntIntMap(1000);
+        
+        final int numEntries = 2000;
+        for (int i = 1; i <= numEntries; i++) {
+            int value = i * 100;
+            map.add(i,  value);
+        }
+
+        // Sum of 1...2000 is (2000*2000 + 2000)/2
+        int target = 100 * ((numEntries * numEntries) + numEntries) / 2;
+        assertEquals(target, map.sum());
+    }
+    
+    @Test
+    public void testKeySet() {
+        IntIntMap map = new IntIntMap();
+        
+        final int numEntries = 100;
+        for (int i = 0; i < numEntries; i++) {
+            int value = (i + 1) * 100;
+            map.add(i,  value);
+        }
+        
+        int[] keys = map.keySet();
+        for (int i = 0; i < numEntries; i++) {
+            assertEquals(i, keys[i]);
+        }
+    }
+    
+    @Test
     public void testManyInserts() {
         // Start off with 1000 entries.
         IntIntMap map = new IntIntMap(1000);

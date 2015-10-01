@@ -1,6 +1,5 @@
 package com.scaleunlimited.yalder.hash;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -27,10 +26,9 @@ import com.scaleunlimited.yalder.BaseLanguageModel;
 import com.scaleunlimited.yalder.DetectionResult;
 import com.scaleunlimited.yalder.EuroParlUtils;
 import com.scaleunlimited.yalder.IntCounter;
+import com.scaleunlimited.yalder.IntIntMap;
 import com.scaleunlimited.yalder.LanguageLocale;
 import com.scaleunlimited.yalder.ModelBuilder;
-import com.scaleunlimited.yalder.hash.HashLanguageDetector;
-import com.scaleunlimited.yalder.hash.HashLanguageModel;
 
 public class LanguageDetectorTest {
     private static final Logger LOGGER = Logger.getLogger(LanguageDetectorTest.class);
@@ -248,27 +246,32 @@ public class LanguageDetectorTest {
         }
         
         for (LanguageLocale language : modelsAsMap.keySet()) {
-            Map<Integer, Integer> langNGramCounts = modelsAsMap.get(language).getNGramCounts();
+            IntIntMap langNGramCounts = modelsAsMap.get(language).getNGramCounts();
             
             for (LanguageLocale otherLanguage : modelsAsMap.keySet()) {
                 if (language.equals(otherLanguage)) {
                     continue;
                 }
                 
-                Map<Integer, Integer> otherLangNGramCounts = modelsAsMap.get(otherLanguage).getNGramCounts();
+                IntIntMap otherLangNGramCounts = modelsAsMap.get(otherLanguage).getNGramCounts();
                 
                 // Calculate the overlap of ngrams
-                Set<Integer> allNGrams = new HashSet<Integer>(langNGramCounts.keySet());
-                allNGrams.addAll(otherLangNGramCounts.keySet());
+                Set<Integer> allNGrams = new HashSet<Integer>();
+                for (int ngramHash : langNGramCounts.keySet()) {
+                    allNGrams.add(ngramHash);
+                }
+                for (int ngramHash : otherLangNGramCounts.keySet()) {
+                    allNGrams.add(ngramHash);
+                }
                 double totalNGramCount = allNGrams.size();
 
                 int intersectionCount = 0;
                 
                 double langProb = 0.50;
                 double otherLangProb = 0.50;
-                for (Integer ngram : langNGramCounts.keySet()) {
-                    int langCount = langNGramCounts.get(ngram);
-                    int otherLangCount = otherLangNGramCounts.containsKey(ngram) ? otherLangNGramCounts.get(ngram) : 0;
+                for (int ngram : langNGramCounts.keySet()) {
+                    int langCount = langNGramCounts.getValue(ngram);
+                    int otherLangCount = otherLangNGramCounts.contains(ngram) ? otherLangNGramCounts.getValue(ngram) : 0;
                     if (otherLangCount != 0) {
                         intersectionCount += 1;
                     }
@@ -289,7 +292,7 @@ public class LanguageDetectorTest {
                     }
                 }
                 
-                System.out.println(String.format("'%s' (%d) vs '%s' (%d) = %.2f%% overlap", language, langNGramCounts.keySet().size(), otherLanguage, otherLangNGramCounts.keySet().size(), 100.0 * intersectionCount/totalNGramCount));
+                System.out.println(String.format("'%s' (%d) vs '%s' (%d) = %.2f%% overlap", language, langNGramCounts.keySet().length, otherLanguage, otherLangNGramCounts.keySet().length, 100.0 * intersectionCount/totalNGramCount));
                 if (otherLangProb > 0.0) {
                     System.out.println(String.format("'%s' (%f) vs '%s' (%f)", language, langProb, otherLanguage, otherLangProb));
                 }

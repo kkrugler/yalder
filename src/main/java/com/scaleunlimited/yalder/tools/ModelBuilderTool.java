@@ -33,11 +33,14 @@ import com.scaleunlimited.yalder.LanguageLocale;
 import com.scaleunlimited.yalder.ModelBuilder;
 import com.scaleunlimited.yalder.hash.HashLanguageDetector;
 import com.scaleunlimited.yalder.hash.HashLanguageModel;
+import com.scaleunlimited.yalder.text.TextLanguageDetector;
+import com.scaleunlimited.yalder.text.TextLanguageModel;
 
 public class ModelBuilderTool {
     public static final Logger LOGGER = Logger.getLogger(ModelBuilderTool.class);
     
     private ModelBuilderOptions _options;
+    private boolean _binaryMode = true;
     private ModelBuilder _builder;
     private Collection<BaseLanguageModel> _models;
     
@@ -45,6 +48,7 @@ public class ModelBuilderTool {
         _options = options;
         
         _builder = new ModelBuilder()
+            .setBinaryMode(_binaryMode)
             .setMaxNGramLength(_options.getMaxNGramLength())
             .setMinNormalizedCount(_options.getMinNGramCount());
         
@@ -275,7 +279,11 @@ public class ModelBuilderTool {
         Map<LanguageLocale, Integer> incorrectLines = new HashMap<LanguageLocale, Integer>();
         
         // TODO get max ngram length from models
-        HashLanguageDetector detector = new HashLanguageDetector(getModels(supportedLanguages));
+        
+        Set<BaseLanguageModel> supportedModels = getModels(supportedLanguages);
+        BaseLanguageDetector detector = _binaryMode ? new HashLanguageDetector(supportedModels) : new TextLanguageDetector(supportedModels);
+        
+        long startTime = System.currentTimeMillis();
         for (String line : lines) {
             // Format is <ISO 639-1 language code><tab>text
             String[] pieces = line.split("\t", 2);
@@ -285,7 +293,7 @@ public class ModelBuilderTool {
             boolean correct = false;
             Collection<DetectionResult> results = detector.detect(text);
             if (results.isEmpty()) {
-                System.out.println(String.format("'%s' detected as ' ': %s", language, text));
+                System.out.println(String.format("'%s' detected as '<unknown>': %s", language, text));
             } else {
                 DetectionResult result = results.iterator().next();
                 if (language.equals(result.getLanguage())) {
@@ -299,7 +307,9 @@ public class ModelBuilderTool {
             Integer curCount = mapToIncrement.get(language);
             mapToIncrement.put(language, curCount == null ? 1 : curCount + 1);
         }
-
+        long deltaTime = System.currentTimeMillis() - startTime;
+        System.out.println(String.format("Detecting %d lines took %dms", lines.size(), deltaTime));
+        
         int totalCorrect = 0;
         int totalIncorrect = 0;
         for (LanguageLocale language : supportedLanguages) {
@@ -320,7 +330,17 @@ public class ModelBuilderTool {
         System.out.println(String.format("Total error rate = %.2f", (100.0 * totalIncorrect)/(totalCorrect +totalIncorrect)));
     }
     
-    public void loadModels() throws IOException {
+    private void changeMode() throws IOException {
+        String curMode = _binaryMode ? "binary" : "text";
+        String yesNo = readInputLine(String.format("Switch from current mode of %s (y/n)?: ", curMode));
+        if (yesNo.equalsIgnoreCase("y")) {
+            _binaryMode = !_binaryMode;
+            _builder.setBinaryMode(_binaryMode);
+            _models = null;
+        }
+    }
+
+    private void loadModels() throws IOException {
         String dirname = readInputLine("Enter path to directory containing models: ");
         if (dirname.length() == 0) {
             return;
@@ -360,14 +380,14 @@ public class ModelBuilderTool {
             BaseLanguageModel model = null;
             if (isBinary) {
                 DataInputStream dis = new DataInputStream(new FileInputStream(file));
-                com.scaleunlimited.yalder.hash.HashLanguageModel binaryModel = new com.scaleunlimited.yalder.hash.HashLanguageModel();
+                HashLanguageModel binaryModel = new HashLanguageModel();
                 binaryModel.readAsBinary(dis);
                 dis.close();
                 
                 model = binaryModel;
             } else {
                 InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
-                com.scaleunlimited.yalder.text.TextLanguageModel textModel = new com.scaleunlimited.yalder.text.TextLanguageModel();
+                TextLanguageModel textModel = new TextLanguageModel();
                 textModel.readAsText(isr);
                 isr.close();
 
@@ -419,12 +439,12 @@ public class ModelBuilderTool {
             File modelFile = new File(dirFile,  modelFileName);
 
             if (isBinary) {
-                com.scaleunlimited.yalder.hash.HashLanguageModel model = (com.scaleunlimited.yalder.hash.HashLanguageModel)baseModel;
+                HashLanguageModel model = (HashLanguageModel)baseModel;
                 DataOutputStream dos = new DataOutputStream(new FileOutputStream(modelFile));
                 model.writeAsBinary(dos);
                 dos.close();
             } else {
-                com.scaleunlimited.yalder.text.TextLanguageModel model = (com.scaleunlimited.yalder.text.TextLanguageModel)baseModel;
+                TextLanguageModel model = (TextLanguageModel)baseModel;
                 OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(modelFile), "UTF-8");
                 model.writeAsText(osw);
                 osw.close();
@@ -465,9 +485,11 @@ public class ModelBuilderTool {
                 // TODO have base tool, with readInputLine code that takes prompt text
                 // TODO how to set params per language for collapsing chars, setting max ngram length, etc.
                 // TODO add help command
-                String cmdName = readInputLine("Enter command (data, build, load, save, test, euro, quit): ");
+                String cmdName = readInputLine("Enter command (mode, data, build, load, save, test, euro, quit): ");
                 if (cmdName.equalsIgnoreCase("data")) {
                     tool.loadTrainingData();
+                } else if (cmdName.equalsIgnoreCase("mode")) {
+                    tool.changeMode();
                 } else if (cmdName.equalsIgnoreCase("build")) {
                     tool.buildModels();
                 } else if (cmdName.equalsIgnoreCase("save")) {
