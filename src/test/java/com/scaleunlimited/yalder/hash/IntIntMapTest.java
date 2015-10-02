@@ -1,8 +1,12 @@
-package com.scaleunlimited.yalder;
+package com.scaleunlimited.yalder.hash;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 import org.junit.Test;
+
+import com.scaleunlimited.yalder.hash.IntIntMap;
 
 public class IntIntMapTest {
 
@@ -56,6 +60,7 @@ public class IntIntMapTest {
         }
         
         int[] keys = map.keySet();
+        Arrays.sort(keys);
         for (int i = 0; i < numEntries; i++) {
             assertEquals(i, keys[i]);
         }

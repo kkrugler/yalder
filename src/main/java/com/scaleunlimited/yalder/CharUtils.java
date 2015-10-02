@@ -1,14 +1,10 @@
 package com.scaleunlimited.yalder;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import com.scaleunlimited.yalder.text.TextTokenizer;
 
 public class CharUtils {
 
     /**
-     * Return hash value for <key> that has low three bits cleared.
+     * Return hash value for <key>
      * 
      * @param key
      * @return
@@ -44,26 +40,7 @@ public class CharUtils {
         hash ^= (hash >>> 11);
         hash += (hash << 15);
         
-        return hash & ~0x07;
+        return hash;
     }
-
-    public static Map<String, NGramStats> calcNGramStats(String text, int minNGramLength, int maxNGramLength) {
-        Map<String, NGramStats> result = new HashMap<String, NGramStats>();
-        
-        TextTokenizer tokenizer = new TextTokenizer(text, minNGramLength, maxNGramLength);
-        while (tokenizer.hasNext()) {
-            String token = tokenizer.next();
-            NGramStats curStats = result.get(token);
-            if (curStats == null) {
-                curStats = new NGramStats();
-                result.put(token, curStats);
-            }
-            
-            curStats.incNGramCount();
-        }
-        
-        return result;
-    }
-    
 
 }

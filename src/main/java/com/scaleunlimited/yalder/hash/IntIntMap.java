@@ -1,4 +1,4 @@
-package com.scaleunlimited.yalder;
+package com.scaleunlimited.yalder.hash;
 
 import java.util.Arrays;
 

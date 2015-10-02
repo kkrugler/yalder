@@ -2,10 +2,8 @@ package com.scaleunlimited.yalder;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -14,6 +12,7 @@ import org.apache.log4j.Logger;
 
 import com.scaleunlimited.yalder.hash.HashLanguageModel;
 import com.scaleunlimited.yalder.hash.HashTokenizer;
+import com.scaleunlimited.yalder.hash.IntIntMap;
 import com.scaleunlimited.yalder.text.TextLanguageModel;
 import com.scaleunlimited.yalder.text.TextTokenizer;
 
@@ -85,7 +84,7 @@ public class ModelBuilder {
             _perLangTextCounts.put(language, ngramCounts);
         }
         
-        TextTokenizer tokenizer = new TextTokenizer(text, 1, _maxNGramLength);
+        TextTokenizer tokenizer = new TextTokenizer(text, _maxNGramLength);
         while (tokenizer.hasNext()) {
             String token = tokenizer.next();
             Integer curCount = ngramCounts.get(token);
@@ -104,7 +103,7 @@ public class ModelBuilder {
             _perLangHashCounts.put(language, ngramCounts);
         }
         
-        HashTokenizer tokenizer = new HashTokenizer(text, 1, _maxNGramLength);
+        HashTokenizer tokenizer = new HashTokenizer(text, _maxNGramLength);
         while (tokenizer.hasNext()) {
             int token = tokenizer.next();
             ngramCounts.add(token, 1);

@@ -1,126 +1,135 @@
 package com.scaleunlimited.yalder;
 
-import java.util.BitSet;
+import it.unimi.dsi.fastutil.chars.Char2CharOpenHashMap;
 
 public abstract class BaseTokenizer {
+    
+    private static final Char2CharOpenHashMap CHARMAP = new Char2CharOpenHashMap();
+    static {
+        CHARMAP.defaultReturnValue('\0');
+        
+        for (int i = 0; i < 0x80; i++) {
+            char c = (char)i;
+            if (!Character.isLetter(c)) {
+                CHARMAP.put(c, ' ');
+            }
+        }
+        
+        for (int i = 0x80; i < 0xFFFF; i++) {
+            char c = (char)i;
+            if (Character.isWhitespace(c)) {
+                CHARMAP.put(c, ' ');
+            }
+        }
+        
+        CHARMAP.put('»', ' ');
+        CHARMAP.put('«', ' ');
+        CHARMAP.put('º', ' ');
+        CHARMAP.put('°', ' ');
+        
+        CHARMAP.put('–', ' ');
+        CHARMAP.put('―', ' ');
+        CHARMAP.put('—', ' ');
+        
+        CHARMAP.put('”', ' ');
+        CHARMAP.put('“', ' ');
+        
+        CHARMAP.put('’', ' ');
+        CHARMAP.put('‘', ' ');
+        
+        CHARMAP.put('‚', ' ');
+        CHARMAP.put('‛', ' ');
+        
+        CHARMAP.put('„', ' ');
+        CHARMAP.put('‟', ' ');
+        
+        CHARMAP.put('½', ' ');
+        CHARMAP.put('…', ' ');
+        
+        CHARMAP.put('\u00A0', ' ');    // Non-breaking space
+        CHARMAP.put('\u00AD', ' ');    // SOFT HYPHEN
+        CHARMAP.put('\u2022', ' ');    // Bullet
+    }
+    
     private final CharSequence _buffer;
     private int _bufferPos; // Position we're at in _buffer for getting raw
                             // (unnormalized) chars.
 
-    protected int _minLength;
-    protected int _maxLength;
+    protected int _maxNGramLength;
 
-    protected char[] _normalized;   // Normalized results, which might be less than
-                                    // what's in _buffer.
+    protected char[] _normalized;   // Normalized results.
+    protected int _normalizedPos;   // Start of current ngram in _normalized buffer.
     protected int _normalizedLength; // Length of _normalized data.
-    protected int _normalizedPos;   // Position we're at in _normalized for
-                                    // generating ngrams
 
-    protected int _curNGramSize;
+    protected int _curNGramLength;
 
-    private static final BitSet PUNCT_CHARS = new BitSet(65536);
-    
-    static {
-        PUNCT_CHARS.set((int)'»');
-        PUNCT_CHARS.set((int)'«');
-        PUNCT_CHARS.set((int)'º');
-        PUNCT_CHARS.set((int)'°');
-        
-        PUNCT_CHARS.set((int)'–');
-        PUNCT_CHARS.set((int)'―');
-        PUNCT_CHARS.set((int)'—');
-        
-        PUNCT_CHARS.set((int)'”');
-        PUNCT_CHARS.set((int)'“');
-        
-        PUNCT_CHARS.set((int)'’');
-        PUNCT_CHARS.set((int)'‘');
-        
-        PUNCT_CHARS.set((int)'‚');
-        PUNCT_CHARS.set((int)'‛');
-        
-        PUNCT_CHARS.set((int)'„');
-        PUNCT_CHARS.set((int)'‟');
-        
-        PUNCT_CHARS.set((int)'½');
-        PUNCT_CHARS.set((int)'…');
-        
-        PUNCT_CHARS.set(0x00AD);    // SOFT HYPHEN
-    }
-
-    public BaseTokenizer(CharSequence buffer, int minLength, int maxLength) {
+    public BaseTokenizer(CharSequence buffer, int maxNGramLength) {
         _buffer = buffer;
-        _minLength = minLength;
-        _maxLength = maxLength;
+        _maxNGramLength = maxNGramLength;
 
         _bufferPos = 0;
 
-        // TODO only allocate up to a reasonable limit (say 8K), and expand as
-        // needed (should be rare)
-        _normalized = new char[_buffer.length()];
+        // TODO start with a space in the buffer?
+        _normalized = new char[1000];
         _normalizedLength = 0;
         _normalizedPos = 0;
 
-        _curNGramSize = _minLength;
+        _curNGramLength = 1;
     }
 
-    protected int getNumNormalizedChars() {
-        return _normalizedLength - _normalizedPos;
-    }
-
-    protected void loadChars() {
-        while ((_bufferPos < _buffer.length()) && (getNumNormalizedChars() < _maxLength)) {
+    protected void fillNormalized() {
+        // while ((_bufferPos < _buffer.length()) && (_normalizedLength < _curNGramLength)) {
+        while ((_bufferPos < _buffer.length()) && (_normalizedLength < _curNGramLength)) {
             // TODO normalize blocks of text to a single character...need to flag somehow
             char curChar = _buffer.charAt(_bufferPos++);
-
-            boolean charIsWhitespace = false;
-            if ((curChar < 0x80) || (curChar == '\u00A0') || (curChar == '\u2022')){
-                if (!Character.isLetter(curChar)) {
-                    curChar = ' ';
-                    charIsWhitespace = true;
-                }
-            } else if (Character.isWhitespace(curChar)) {
-                curChar = ' ';
-                charIsWhitespace = true;
-            } else if (PUNCT_CHARS.get((int)curChar)) {
-                curChar = ' ';
-                charIsWhitespace = true;
+            char newChar = CHARMAP.get(curChar);
+            if (newChar != 0) {
+                curChar = newChar;
             }
-
-            boolean prevIsWhitespace = (_normalizedLength > 0)
-                            && Character.isWhitespace(_normalized[_normalizedLength - 1]);
-            if (prevIsWhitespace && charIsWhitespace) {
+            
+            // If we have two spaces in a row, skip this character.
+            if ((curChar == ' ')
+             && (_normalizedLength > 0)
+             && (CHARMAP.get(_normalized[_normalizedPos + _normalizedLength - 1]) == ' ')) {
                 continue;
             }
 
-            _normalized[_normalizedLength++] = Character.toLowerCase(curChar);
+            // Reset the buffer positions if we're at the end.
+            if (_normalizedPos + _normalizedLength >= _normalized.length) {
+                System.arraycopy(_normalized, _normalizedPos, _normalized, 0, _normalizedLength);
+                _normalizedPos = 0;
+            }
+            
+            _normalized[_normalizedPos + _normalizedLength] = Character.toLowerCase(curChar);
+            _normalizedLength += 1;
         }
     }
 
     public boolean hasNext() {
-        loadChars();
-
-        // If we don't have enough chars for the current size, but we could if
-        // we went for a shorter ngram, reset to min and advance.
-        if ((getNumNormalizedChars() < _curNGramSize) && (_curNGramSize > _minLength)
-                        && (_normalizedPos < _normalizedLength)) {
-            _curNGramSize = _minLength;
-            _normalizedPos += 1;
+        fillNormalized();
+        
+        // Check if we have reached the end of the buffer, but we've got enough chars left
+        // to continue with short ngrams
+        if ((_curNGramLength > _normalizedLength) && (_curNGramLength > 1)) {
+            advanceNGram();
         }
-
-        return getNumNormalizedChars() >= _curNGramSize;
+        
+        return _curNGramLength <= _normalizedLength;
     }
 
-    // TODO make this part of hasNext(), which means hasNext() must set up
-    // a separate current pos/length variable pair for normalized data that
-    // can be used by next().
-    protected void expandNGram() {
-        // Expand the ngram size, but shift forward if we're at our max.
-        if (_curNGramSize < _maxLength) {
-            _curNGramSize += 1;
-        } else {
-            _normalizedPos += 1;
-            _curNGramSize = _minLength;
-        }
+    // Called by the next() method from the tokenizers after they've returned the current ngram, thus setting
+    // up for subsequent hasNext()/next() calls.
+    protected void nextNGram() {
+        _curNGramLength += 1;
+        
+        if (_curNGramLength > _maxNGramLength) {
+            advanceNGram();
+       }
+    }
+
+    private void advanceNGram() {
+        _normalizedPos += 1;
+        _normalizedLength -= 1;
+        _curNGramLength = 1;
     }
 }

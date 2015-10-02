@@ -11,6 +11,7 @@ public abstract class BaseLanguageDetector {
     public static final double DEFAULT_DAMPENING = 0.001;
 
     protected static final double MIN_LANG_PROBABILITY = 0.1;
+    protected static final double MIN_GOOD_LANG_PROBABILITY = 0.99;
     
     protected int _maxNGramLength;
     

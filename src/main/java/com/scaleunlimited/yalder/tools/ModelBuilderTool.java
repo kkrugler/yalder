@@ -431,14 +431,13 @@ public class ModelBuilderTool {
             return;
         }
         
-        String modelSuffix = readInputLine("Enter type of model (bin or txt): ");
-        boolean isBinary = modelSuffix.equals("bin");
+        String modelSuffix = _binaryMode ? "bin" : "txt";
 
         for (BaseLanguageModel baseModel : _models) {
             String modelFileName = String.format("yalder_model_%s.%s", baseModel.getLanguage().getName(), modelSuffix);
             File modelFile = new File(dirFile,  modelFileName);
 
-            if (isBinary) {
+            if (_binaryMode) {
                 HashLanguageModel model = (HashLanguageModel)baseModel;
                 DataOutputStream dos = new DataOutputStream(new FileOutputStream(modelFile));
                 model.writeAsBinary(dos);
