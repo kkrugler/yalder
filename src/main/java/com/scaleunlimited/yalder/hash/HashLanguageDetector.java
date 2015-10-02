@@ -6,14 +6,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import com.scaleunlimited.yalder.BaseLanguageDetector;
 import com.scaleunlimited.yalder.BaseLanguageModel;
 import com.scaleunlimited.yalder.DetectionResult;
-import com.scaleunlimited.yalder.IntIntMap;
 import com.scaleunlimited.yalder.LanguageLocale;
-import com.scaleunlimited.yalder.text.TextTokenizer;
 
 /**
  * Language detector that works with ngram hashes (versus text), for
@@ -22,17 +19,17 @@ import com.scaleunlimited.yalder.text.TextTokenizer;
  */
 public class HashLanguageDetector extends BaseLanguageDetector {
 
+    private static final int RENORMALIZE_INTERVAL  = 10;
+    private static final int EARLY_TERMINATION_INTERVAL = RENORMALIZE_INTERVAL * 11;
+
     // Map from language of model to index used for accessing arrays.
     private Map<LanguageLocale, Integer> _langToIndex;
     
     // Map from ngram (hash) to index.
-    private IntToIndex _ngramToIndex;
+    private FUIntToIndex _ngramToIndex;
     
     // For each ngram, store the probability for each language.
     private double[][] _ngramProbabilities;
-    
-    // TODO switch to double[] vs. map
-    private Map<LanguageLocale, Double> _langProbabilities;
     
     public HashLanguageDetector(Collection<BaseLanguageModel> models) {
         this(models, getMaxNGramLengthFromModels(models));
@@ -50,7 +47,7 @@ public class HashLanguageDetector extends BaseLanguageDetector {
         // so we can compute probabilities for languages being mixed-in.
         
         // So the first step is to build a map from every ngram (hash) to an index.
-        _ngramToIndex = new IntToIndex();
+        _ngramToIndex = new FUIntToIndex();
         for (BaseLanguageModel baseModel : _models) {
             HashLanguageModel model = (HashLanguageModel)baseModel;
             IntIntMap langCounts = model.getNGramCounts();
@@ -62,15 +59,12 @@ public class HashLanguageDetector extends BaseLanguageDetector {
         int uniqueNGrams = _ngramToIndex.size();
         int [][] ngramCounts = new int[uniqueNGrams][];
         
-        _langProbabilities = new HashMap<LanguageLocale, Double>();
         _ngramProbabilities = new double[uniqueNGrams][];
         
         for (BaseLanguageModel baseModel : _models) {
             HashLanguageModel model = (HashLanguageModel)baseModel;
             LanguageLocale language = model.getLanguage();
             int langIndex = langToIndex(language);
-            
-            _langProbabilities.put(language, 0.0);
             
             IntIntMap langCounts = model.getNGramCounts();
             for (int ngramHash : langCounts.keySet()) {
@@ -126,14 +120,19 @@ public class HashLanguageDetector extends BaseLanguageDetector {
 
     @Override
     public Collection<DetectionResult> detect(String text) {
-        double startingProb = 1.0 / _langProbabilities.size();
-        for (LanguageLocale language : _langProbabilities.keySet()) {
-            _langProbabilities.put(language,  startingProb);
+        final int numLanguages = _langToIndex.size();
+        double[] langProbabilities = new double[numLanguages];
+                        ;
+        double startingProb = 1.0 / numLanguages;
+        for (int i = 0; i < numLanguages; i++) {
+            langProbabilities[i] = startingProb;
         }
         
         int numKnownNGrams = 0;
         int numUnknownNGrams = 0;
-        HashTokenizer tokenizer = new HashTokenizer(text, 1, _maxNGramLength);
+        int curBestLanguageIndex = -1;
+        
+        HashTokenizer tokenizer = new HashTokenizer(text, _maxNGramLength);
         while (tokenizer.hasNext()) {
             int hash = tokenizer.next();
             int index = _ngramToIndex.getIndex(hash);
@@ -147,8 +146,7 @@ public class HashLanguageDetector extends BaseLanguageDetector {
             
             numKnownNGrams += 1;
             
-            for (LanguageLocale language : _langProbabilities.keySet()) {
-                int langIndex = langToIndex(language);
+            for (int langIndex = 0; langIndex < numLanguages; langIndex++) {
                 double prob = _ngramProbabilities[index][langIndex];
                 
                 // Unknown ngrams for the language get a default probability of "alpha".
@@ -162,22 +160,34 @@ public class HashLanguageDetector extends BaseLanguageDetector {
                 // interesting language.
                 prob += (1.0 - prob) * _dampening;
                 
-                double curProb = _langProbabilities.get(language);
-                curProb *= prob;
-                _langProbabilities.put(language, curProb);
+                langProbabilities[langIndex] *= prob;
             }
             
             // So we don't let probabilities become 0.0, we have to adjust
-            if ((numKnownNGrams % 10) == 0) {
-                normalizeLangProbabilities();
+            if ((numKnownNGrams % RENORMALIZE_INTERVAL) == 0) {
+                normalizeLangProbabilities(langProbabilities);
+            }
+            
+            // See if we haven't had a change in a very probable language in N ngrams
+            // We rely on probabilities being normalized, so our interval is always a
+            // multiple of the renormalization interval.
+            
+            // TODO need to factor in confidence, which includes number of unknown ngrams.
+            if ((numKnownNGrams % EARLY_TERMINATION_INTERVAL) == 0) {
+                int newBestLanguageIndex = calcBestLanguageIndex(langProbabilities);
+                if ((newBestLanguageIndex != -1) && (newBestLanguageIndex == curBestLanguageIndex)) {
+                    break;
+                }
+                
+                curBestLanguageIndex = newBestLanguageIndex;
             }
         }
         
-        normalizeLangProbabilities();
+        normalizeLangProbabilities(langProbabilities);
 
         List<DetectionResult> result = new ArrayList<DetectionResult>();
-        for (LanguageLocale language : _langProbabilities.keySet()) {
-            double curProb = _langProbabilities.get(language);
+        for (LanguageLocale language : _langToIndex.keySet()) {
+            double curProb = langProbabilities[_langToIndex.get(language)];
             
             if (curProb >= MIN_LANG_PROBABILITY) {
                 DetectionResult dr = new DetectionResult(language, curProb);
@@ -189,18 +199,26 @@ public class HashLanguageDetector extends BaseLanguageDetector {
         return result;
     }
 
-    private void normalizeLangProbabilities() {
-        double totalProb = 0.0;
-        for (LanguageLocale language : _langProbabilities.keySet()) {
-            totalProb += _langProbabilities.get(language);
+    private int calcBestLanguageIndex(double[] langProbabilities) {
+        for (int i = 0; i < langProbabilities.length; i++) {
+            if (langProbabilities[i] > MIN_GOOD_LANG_PROBABILITY) {
+                return i;
+            }
         }
 
+        return -1;
+    }
+
+    private void normalizeLangProbabilities(double[] langProbabilities) {
+        double totalProb = 0.0;
+        for (double prob : langProbabilities) {
+            totalProb += prob;
+        }
+        
         double scalar = 1.0/totalProb;
         
-        for (LanguageLocale language : _langProbabilities.keySet()) {
-            double curProb = _langProbabilities.get(language);
-            curProb *= scalar;
-            _langProbabilities.put(language, curProb);
+        for (int i = 0; i < langProbabilities.length; i++) {
+            langProbabilities[i] *= scalar;
         }
     }
 

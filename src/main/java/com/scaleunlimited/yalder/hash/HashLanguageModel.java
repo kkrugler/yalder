@@ -5,7 +5,6 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 import com.scaleunlimited.yalder.BaseLanguageModel;
-import com.scaleunlimited.yalder.IntIntMap;
 import com.scaleunlimited.yalder.LanguageLocale;
 
 

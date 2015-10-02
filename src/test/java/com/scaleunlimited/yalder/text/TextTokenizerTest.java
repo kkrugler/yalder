@@ -1,4 +1,4 @@
-package com.scaleunlimited.yalder;
+package com.scaleunlimited.yalder.text;
 
 import static org.junit.Assert.*;
 
@@ -9,16 +9,17 @@ import org.junit.Test;
 
 import com.scaleunlimited.yalder.text.TextTokenizer;
 
-public class NGramTokenizerTest {
+public class TextTokenizerTest {
 
     @Test
     public void testMyNGramIteratorTrigrams() throws Exception {
-        TextTokenizer tokenizer = new TextTokenizer("abc", 1, 3);
+        TextTokenizer tokenizer = new TextTokenizer("abc", 3);
         
         Set<String> ngrams = new HashSet<String>();
         
         while (tokenizer.hasNext()) {
             String ngram = tokenizer.next();
+            System.out.println(ngram);
             assertTrue(ngrams.add(ngram));
         }
         
@@ -27,7 +28,7 @@ public class NGramTokenizerTest {
     
     @Test
     public void testNormalizationAndSpaceCollapse() throws Exception {
-        TextTokenizer tokenizer = new TextTokenizer("A ,!", 1, 3);
+        TextTokenizer tokenizer = new TextTokenizer("A ,!", 3);
         
         Set<String> ngrams = new HashSet<String>();
         while (tokenizer.hasNext()) {
@@ -39,6 +40,25 @@ public class NGramTokenizerTest {
         assertTrue(ngrams.contains("a"));
         assertTrue(ngrams.contains("a "));
         assertTrue(ngrams.contains(" "));
+    }
+    
+    @Test
+    public void testNormalizedBufferReset() throws Exception {
+        int numChars = 2000;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < numChars; i++) {
+            sb.append((char)((int)'a' + (i % 10)));
+        }
+        
+        // We should get 3(N - 1) ngrams
+        int numNGrams = 0;
+        TextTokenizer tokenizer = new TextTokenizer(sb.toString(), 3);
+        while (tokenizer.hasNext()) {
+            tokenizer.next();
+            numNGrams += 1;
+        }
+        
+        assertEquals(3 * (numChars - 1), numNGrams);
     }
 
 }

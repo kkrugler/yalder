@@ -14,7 +14,6 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.scaleunlimited.yalder.IntIntMap;
 import com.scaleunlimited.yalder.LanguageLocale;
 import com.scaleunlimited.yalder.hash.HashLanguageModel;
 

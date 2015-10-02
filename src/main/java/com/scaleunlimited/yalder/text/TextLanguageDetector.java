@@ -99,7 +99,7 @@ public class TextLanguageDetector extends BaseLanguageDetector {
         
         int numKnownNGrams = 0;
         int numUnknownNGrams = 0;
-        TextTokenizer tokenizer = new TextTokenizer(text, 1, _maxNGramLength);
+        TextTokenizer tokenizer = new TextTokenizer(text, _maxNGramLength);
         while (tokenizer.hasNext()) {
             String ngram = tokenizer.next();
             

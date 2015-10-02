@@ -3,7 +3,9 @@ package com.scaleunlimited.yalder.hash;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.io.DataInputStream;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -26,9 +28,9 @@ import com.scaleunlimited.yalder.BaseLanguageModel;
 import com.scaleunlimited.yalder.DetectionResult;
 import com.scaleunlimited.yalder.EuroParlUtils;
 import com.scaleunlimited.yalder.IntCounter;
-import com.scaleunlimited.yalder.IntIntMap;
 import com.scaleunlimited.yalder.LanguageLocale;
 import com.scaleunlimited.yalder.ModelBuilder;
+import com.scaleunlimited.yalder.OtherDetectorsTest;
 
 public class LanguageDetectorTest {
     private static final Logger LOGGER = Logger.getLogger(LanguageDetectorTest.class);
@@ -398,55 +400,55 @@ public class LanguageDetectorTest {
 
     @Test
     public void testPerformance() throws Exception {
+        Collection<BaseLanguageModel> models = loadModels(OtherDetectorsTest.TARGET_LANGUAGES_FOR_YALDER);
+        
         List<String> lines = EuroParlUtils.readLines();
-
-        ModelBuilder builder = new ModelBuilder().setBinaryMode(true);
-        
-        // Skip languages that Mike McCandless didn't try because Tika didn't support them:
-        // Bulgarian (bg), Czech (cs), Lithuanian (lt) and Latvian (lv)
-        Set<String> skippedLanguages = new HashSet<String>();
-        // skippedLanguages.add("bg");
-        // skippedLanguages.add("cs");
-        // skippedLanguages.add("lt");
-        // skippedLanguages.add("lv");
-        
-        for (String line : lines) {
-            // Format is <language code><tab>text
-            String[] pieces = line.split("\t", 2);
-            String language = pieces[0];
-            String text = pieces[1];
-
-            if (skippedLanguages.contains(language)) {
-                continue;
-            }
-            
-            builder.addTrainingDoc(language, text);
-        }
-
-        Collection<BaseLanguageModel> models = builder.makeModels();
-        HashLanguageDetector detector = new HashLanguageDetector(models, builder.getMaxNGramLength());
+        HashLanguageDetector detector = new HashLanguageDetector(models);
         
         // Do 10 runs, and take the fastest time.
         long bestDuration = Long.MAX_VALUE;
         for (int i = 0; i < 10; i++) {
+            int numHits = 0;
+            int numMisses = 0;
+
             long startTime = System.currentTimeMillis();
             for (String line : lines) {
                 String[] pieces = line.split("\t", 2);
-                String language = pieces[0];
-                if (skippedLanguages.contains(language)) {
-                    continue;
+                LanguageLocale ll = LanguageLocale.fromString(pieces[0]);
+                String text = pieces[1];
+                Collection<DetectionResult> result = detector.detect(text);
+                if (result.size() > 0 && result.iterator().next().getLanguage().weaklyEqual(ll)) {
+                    numHits += 1;
+                } else {
+                    numMisses += 1;
                 }
 
-                String text = pieces[1];
-                detector.detect(text);
             }
             
             long duration = System.currentTimeMillis() - startTime;
             System.out.println(String.format("Run #%d duration = %dms", i + 1, duration));
+            System.out.println(String.format("Run #%d error rate = %f%%", i + 1, 100.0 * (double)numMisses/(double)(numMisses + numHits)));
             bestDuration = Math.min(bestDuration, duration);
         }
         
         System.out.println(String.format("Best duration = %dms", bestDuration));
+    }
+
+    private Collection<BaseLanguageModel> loadModels(String[] targetLanguages) throws IOException {
+        Collection<BaseLanguageModel> result = new ArrayList<>();
+        for (String languageTag : targetLanguages) {
+            LanguageLocale ll = LanguageLocale.fromString(languageTag);
+            
+            HashLanguageModel model = new HashLanguageModel();
+            String modelName = String.format("/models/yalder_model_%s.bin", ll.getISO3LetterName());
+            DataInputStream dis = new DataInputStream(LanguageDetectorTest.class.getResourceAsStream(modelName));
+            model.readAsBinary(dis);
+            dis.close();
+            
+            result.add(model);
+        }
+        
+        return result;
     }
 
     private Collection<BaseLanguageModel> makeModelsAndTestData(List<String> testLines, Random rand) throws Exception {

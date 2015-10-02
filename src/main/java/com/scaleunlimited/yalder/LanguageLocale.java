@@ -148,6 +148,10 @@ public class LanguageLocale {
         }
     }
     
+    public String getISO3LetterName() {
+        return _language;
+    }
+
     public final String toString() {
         String languageTag;
         if (!_script.isEmpty()) {
@@ -190,6 +194,7 @@ public class LanguageLocale {
             return false;
         return true;
     }
+
 
     
 }

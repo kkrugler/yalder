@@ -11,6 +11,8 @@ import java.util.Random;
 import java.util.Set;
 
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import com.google.common.base.Optional;
@@ -49,7 +51,7 @@ public class OtherDetectorsTest {
         "sv"
     };
     
-    private static final String[] TARGET_LANGUAGES_FOR_YALDER = new String[] {
+    public static final String[] TARGET_LANGUAGES_FOR_YALDER = new String[] {
         "bg",
         "cs",
         "da",
@@ -87,8 +89,8 @@ public class OtherDetectorsTest {
 
         //build language detector:
         com.optimaize.langdetect.LanguageDetector languageDetector = LanguageDetectorBuilder.create(NgramExtractors.standard())
-                .withProfiles(languageProfiles)
-                .build();
+                        .withProfiles(languageProfiles)
+                        .build();
 
         //create a text object factory
         TextObjectFactory textObjectFactory = CommonTextObjectFactories.forDetectingShortCleanText();
@@ -97,43 +99,24 @@ public class OtherDetectorsTest {
         SummaryStatistics stats = new SummaryStatistics();
 
         List<String> lines = EuroParlUtils.readLines();
+        int numHits = 0;
+        int numMisses = 0;
 
-        // Build sets of 20% of the data, and get the error rate.
-        for (int i = 0; i < 100; i++) {
-            Random rand = new Random();
-            List<String> testLines = new ArrayList<String>(lines.size() / 5);
-            int numHits = 0;
-            int numMisses = 0;
-
-            for (String line : lines) {
-                String[] pieces = line.split("\t", 2);
-                String language = pieces[0];
-                if (false /*SKIPPED_LANGUAGES_FOR_TIKA.contains(language)*/) {
-                    continue;
-                }
-
-                // See if we want to hold it out.
-                if (rand.nextInt(10) < 2) {
-                    testLines.add(line);
-                }
+        for (String line : lines) {
+            String[] pieces = line.split("\t", 2);
+            String language = pieces[0];
+            TextObject textObject = textObjectFactory.forText(pieces[1]);
+            List<DetectedLanguage> result = languageDetector.getProbabilities(textObject);
+            if (result.size() > 0 && result.get(0).getLanguage().equals(language)) {
+                numHits += 1;
+            } else {
+                numMisses += 1;
             }
-            
-            for (String line : testLines) {
-                String[] pieces = line.split("\t", 2);
-                String language = pieces[0];
-                TextObject textObject = textObjectFactory.forText(pieces[1]);
-                List<DetectedLanguage> result = languageDetector.getProbabilities(textObject);
-                if (result.size() > 0 && result.get(0).getLanguage().equals(language)) {
-                    numHits += 1;
-                } else {
-                    numMisses += 1;
-                }
-            }
-
-            double missPercentage = 100.0 * (double)numMisses/(double)(numMisses + numHits);
-            stats.addValue(missPercentage);
-            System.out.println(String.format("Total miss ratio = %.2f%%", missPercentage));
         }
+
+        double missPercentage = 100.0 * (double)numMisses/(double)(numMisses + numHits);
+        stats.addValue(missPercentage);
+        System.out.println(String.format("Total miss ratio = %.2f%%", missPercentage));
 
         System.out.println(String.format("Min = %.2f%%,  max =  %.2f%%, mean =  %.2f%%, std deviation = %f",
                         stats.getMin(), stats.getMax(), stats.getMean(), stats.getStandardDeviation()));
@@ -141,6 +124,9 @@ public class OtherDetectorsTest {
 
     @Test
     public void testLanguageDetectorPerformance() throws IOException {
+        System.setProperty("logging.root.level", "INFO");
+        Logger.getRootLogger().setLevel(Level.INFO);
+        
         //load target languages:
         List<LanguageProfile> languageProfiles = new LanguageProfileReader().read(Arrays.asList(TARGET_LANGUAGES_FOR_YALDER));
 
@@ -157,17 +143,15 @@ public class OtherDetectorsTest {
 
         // Do 10 runs, and take the fastest time.
         long bestDuration = Long.MAX_VALUE;
-        int numHits = 0;
-        int numMisses = 0;
         
         for (int i = 0; i < 10; i++) {
+            int numHits = 0;
+            int numMisses = 0;
+            
             long startTime = System.currentTimeMillis();
             for (String line : lines) {
                 String[] pieces = line.split("\t", 2);
                 String language = pieces[0];
-                if (false /*SKIPPED_LANGUAGES_FOR_TIKA.contains(language)*/) {
-                    continue;
-                }
                 
                 TextObject textObject = textObjectFactory.forText(pieces[1]);
                 List<DetectedLanguage> result = languageDetector.getProbabilities(textObject);
