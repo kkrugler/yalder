@@ -1,54 +1,68 @@
 package com.scaleunlimited.yalder;
 
-import it.unimi.dsi.fastutil.chars.Char2CharOpenHashMap;
 
 public abstract class BaseTokenizer {
     
-    private static final Char2CharOpenHashMap CHARMAP = new Char2CharOpenHashMap();
+    private static final char[] CHARMAP = new char[65536];
+
     static {
-        CHARMAP.defaultReturnValue('\0');
-        
-        for (int i = 0; i < 0x80; i++) {
-            char c = (char)i;
-            if (!Character.isLetter(c)) {
-                CHARMAP.put(c, ' ');
+
+        for (int i = 0; i < 0x10000; i++) {
+            char ch = (char)i;
+            
+            if ((i < 0x80) && !Character.isLetter(ch)) {
+                CHARMAP[i] = ' ';
+            } else if (Character.isWhitespace(ch)) {
+                CHARMAP[i] = ' ';
+            } else {
+                // TODO allow models to provide their own re-mapping data, and move Japanese/Korean support there
+                Character.UnicodeBlock block = Character.UnicodeBlock.of(ch);
+                if ((block == Character.UnicodeBlock.KATAKANA)
+                 || (block == Character.UnicodeBlock.KATAKANA_PHONETIC_EXTENSIONS)) {
+                    CHARMAP[i] = '\u30A2';
+                } else if (block == Character.UnicodeBlock.HIRAGANA) {
+                    CHARMAP[i] = '\u3042';
+                } else if ((block == Character.UnicodeBlock.HANGUL_JAMO)
+                        || (block == Character.UnicodeBlock.HANGUL_COMPATIBILITY_JAMO)
+                        || (block == Character.UnicodeBlock.HANGUL_JAMO_EXTENDED_A)
+                        || (block == Character.UnicodeBlock.HANGUL_JAMO_EXTENDED_B)
+                        || (block == Character.UnicodeBlock.HANGUL_SYLLABLES)) {
+                    CHARMAP[i] = '\uAC00';
+                } else {
+                    // TODO what about math, dingbats, etc? Is there a general way to detect
+                    // those and map to space?
+                    CHARMAP[i] = Character.toLowerCase(ch);
+                }
             }
         }
         
-        for (int i = 0x80; i < 0xFFFF; i++) {
-            char c = (char)i;
-            if (Character.isWhitespace(c)) {
-                CHARMAP.put(c, ' ');
-            }
-        }
+        CHARMAP['»'] = ' ';
+        CHARMAP['«'] = ' ';
+        CHARMAP['º'] = ' ';
+        CHARMAP['°'] = ' ';
         
-        CHARMAP.put('»', ' ');
-        CHARMAP.put('«', ' ');
-        CHARMAP.put('º', ' ');
-        CHARMAP.put('°', ' ');
+        CHARMAP['–'] = ' ';
+        CHARMAP['―'] = ' ';
+        CHARMAP['—'] = ' ';
         
-        CHARMAP.put('–', ' ');
-        CHARMAP.put('―', ' ');
-        CHARMAP.put('—', ' ');
+        CHARMAP['”'] = ' ';
+        CHARMAP['“'] = ' ';
         
-        CHARMAP.put('”', ' ');
-        CHARMAP.put('“', ' ');
+        CHARMAP['’'] = ' ';
+        CHARMAP['‘'] = ' ';
         
-        CHARMAP.put('’', ' ');
-        CHARMAP.put('‘', ' ');
+        CHARMAP['‚'] = ' ';
+        CHARMAP['‛'] = ' ';
         
-        CHARMAP.put('‚', ' ');
-        CHARMAP.put('‛', ' ');
+        CHARMAP['„'] = ' ';
+        CHARMAP['‟'] = ' ';
         
-        CHARMAP.put('„', ' ');
-        CHARMAP.put('‟', ' ');
+        CHARMAP['½'] = ' ';
+        CHARMAP['…'] = ' ';
         
-        CHARMAP.put('½', ' ');
-        CHARMAP.put('…', ' ');
-        
-        CHARMAP.put('\u00A0', ' ');    // Non-breaking space
-        CHARMAP.put('\u00AD', ' ');    // SOFT HYPHEN
-        CHARMAP.put('\u2022', ' ');    // Bullet
+        CHARMAP['\u00A0'] = ' ';    // Non-breaking space
+        CHARMAP['\u00AD'] = ' ';    // SOFT HYPHEN
+        CHARMAP['\u2022'] = ' ';    // Bullet
     }
     
     private final CharSequence _buffer;
@@ -78,19 +92,14 @@ public abstract class BaseTokenizer {
     }
 
     protected void fillNormalized() {
-        // while ((_bufferPos < _buffer.length()) && (_normalizedLength < _curNGramLength)) {
         while ((_bufferPos < _buffer.length()) && (_normalizedLength < _curNGramLength)) {
             // TODO normalize blocks of text to a single character...need to flag somehow
-            char curChar = _buffer.charAt(_bufferPos++);
-            char newChar = CHARMAP.get(curChar);
-            if (newChar != 0) {
-                curChar = newChar;
-            }
+            char curChar = CHARMAP[_buffer.charAt(_bufferPos++)];
             
             // If we have two spaces in a row, skip this character.
             if ((curChar == ' ')
              && (_normalizedLength > 0)
-             && (CHARMAP.get(_normalized[_normalizedPos + _normalizedLength - 1]) == ' ')) {
+             && (CHARMAP[_normalized[_normalizedPos + _normalizedLength - 1]] == ' ')) {
                 continue;
             }
 
@@ -100,7 +109,7 @@ public abstract class BaseTokenizer {
                 _normalizedPos = 0;
             }
             
-            _normalized[_normalizedPos + _normalizedLength] = Character.toLowerCase(curChar);
+            _normalized[_normalizedPos + _normalizedLength] = curChar;
             _normalizedLength += 1;
         }
     }
