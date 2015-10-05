@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.dom4j.Document;
@@ -75,6 +77,7 @@ public class WikipediaCrawlTool {
         System.out.println("dump - dump previously loaded page (as XML)");
         System.out.println("clean - dump text extracted from previously loaded page");
         System.out.println("crawl - crawl Wikipedia pages, given a list of Q-codes");
+        System.out.println("random - crawl random Wikipedia pages, given a list of language codes");
         System.out.println("xpath - evaluate XPath expressions using previously loaded HTML document");
         System.out.println("quit - quit");
     }
@@ -229,27 +232,40 @@ public class WikipediaCrawlTool {
         }
     }
     
-    private int saveWikipediaPage(Document doc, File parentFolder, String topicName, String language) throws IOException {
+    private int saveWikipediaPage(Document doc, File parentFolder, String topicName, String language, boolean overwrite) throws IOException {
+        String content = extractContent(doc);
+        
+        // Don't bother saving super-short pages.
+        if (content.length() < 100) {
+            return 0;
+        }
+        
         // Write out the original content, as XML, so we could potentially re-process it
         File xmlDir = new File(parentFolder, XML_SUBDIR_NAME);
         xmlDir.mkdirs();
         
         File xmlFile = new File(xmlDir, String.format("%s_%s.xml", topicName, language));
-        OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(xmlFile), "UTF-8");
-        osw.write(formatXml(doc));
-        osw.close();
-
+        if (overwrite || !xmlFile.exists()) {
+            OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(xmlFile), "UTF-8");
+            osw.write(formatXml(doc));
+            osw.close();
+        }
+        
         File textDir = new File(parentFolder, TEXT_SUBDIR_NAME);
         textDir.mkdirs();
 
         // Now save the main content
         File textFile = new File(textDir, String.format("%s_%s.txt", topicName, language));
-        osw = new OutputStreamWriter(new FileOutputStream(textFile), "UTF-8");
-        String content = extractContent(doc);
-        osw.write(content);
-        osw.close();
+        if (overwrite || !textFile.exists()) {
+            OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(textFile), "UTF-8");
+            osw.write(content);
+            osw.close();
+            
+            return content.length();
+        } else {
+            return 0;
+        }
         
-        return content.length();
     }
     
     private String extractContent(Document doc) {
@@ -286,6 +302,97 @@ public class WikipediaCrawlTool {
         }
         
         return mainContent.toString();
+    }
+
+    private void doRandomCrawl() throws IOException, DocumentException, BaseFetchException {
+        String langCodes = readInputLine("Enter a comma-separated list of ISO 639-2 language codes: ");
+        if (langCodes.trim().isEmpty()) {
+            return;
+        }
+
+        String numCharsAsStr = readInputLine("Enter target number of chars per language: ");
+        if (numCharsAsStr.trim().isEmpty()) {
+            return;
+        }
+        int targetChars = Integer.parseInt(numCharsAsStr);
+        
+        String directoryName = readInputLine("Enter output directory: ");
+        if (directoryName.length() == 0) {
+            return;
+        }
+        
+        File parentFolder = new File(directoryName);
+        if (!parentFolder.exists()) {
+            System.err.println("Output directory must exist");
+            return;
+        }
+        
+        if (!parentFolder.isDirectory()) {
+            System.err.println("Output path specified isn't a directory");
+            return;
+        }
+        
+        for (String langCode : langCodes.split(",")) {
+            langCode = langCode.trim();
+            
+            // Figure out the Wikipedia language. First do a bogus call to load up
+            // the data.
+            String wikiLang = mapISOLangToWikiLang(langCode);
+            if (wikiLang == null) {
+                System.err.println("Unknown ISO 639-2 lang code: " + langCode);
+                return;
+            }
+            
+            int totalPages = 0;
+            int numCharsExtracted = 0;
+            while ((numCharsExtracted < targetChars) && (totalPages < 100)) {
+                // Get another random page.
+                String pageURL = String.format("https://%s.wikipedia.org/wiki/Special:Random", wikiLang);
+                Document subPage = loadDocument(pageURL);
+                String topic = extractTopicName(subPage);
+                topic = URLDecoder.decode(topic, "UTF-8");
+                
+                int numChars = saveWikipediaPage(subPage, parentFolder, topic, langCode, false);
+                if (numChars > 0) {
+                    LOGGER.debug(String.format("Fetched topic '%s' with %d chars for language '%s'", topic, numChars, langCode));
+                    numCharsExtracted += numChars;
+                }
+                
+                totalPages += 1;
+            }
+        }
+    }
+    
+    /**
+     * Try to extract the topic name from this page, by first finding the English URL. If we
+     * can't find that, then extract the head/title node, split that on " - ", and take the
+     * first part.
+     * 
+     * @param wikipediaPage
+     * @return
+     */
+    private String extractTopicName(Document wikipediaPage) {
+        // See if there's a link to the English version.
+        List<Node> nodes = selectNodes(wikipediaPage, "//li[contains(concat(' ', @class, ' '), ' interwiki-en ')]/a");
+        if (nodes.size() == 1) {
+            String href = ((Element)nodes.get(0)).attributeValue("href");
+            if (href != null) {
+                Pattern p = Pattern.compile("en.wikipedia.org/wiki/(.+)");
+                Matcher m = p.matcher(href);
+                if (m.find()) {
+                    return m.group(1);
+                }
+            }
+        }
+        
+        nodes = selectNodes(wikipediaPage, "//title");
+        if (nodes.size() != 1) {
+            return "unknown";
+        } else {
+            String title = nodes.get(0).getText();
+            // Some Wikipedias use a long dash in the title...why?
+            return title.split(" (\\-|—) ")[0];
+        }
     }
 
     private void doCrawl() throws IOException, DocumentException, BaseFetchException {
@@ -373,7 +480,7 @@ public class WikipediaCrawlTool {
                     // Ignore, we have enough text from this language.
                 } else {
                     Document subPage = loadDocument(pageURL);
-                    int numChars = saveWikipediaPage(subPage, parentFolder, topic, language);
+                    int numChars = saveWikipediaPage(subPage, parentFolder, topic, language, true);
                     
                     // When tracking chars per language, limit # we get out of each page so we
                     // don't hit our target (e.g. 100K) with a single page.
@@ -429,8 +536,20 @@ public class WikipediaCrawlTool {
 
         return result;
     }
+    
+    private String mapISOLangToWikiLang(String langCode) {
+        loadWikiLangMap();
+        
+        for (String wikiLang : WIKIPEDIA_TO_ISO_LANGUAGE.keySet()) {
+            if (WIKIPEDIA_TO_ISO_LANGUAGE.get(wikiLang).equals(langCode)) {
+                return wikiLang;
+            }
+        }
 
-    private String mapWikipediaLanguage(String language) {
+        return null;
+    }
+
+    private void loadWikiLangMap() {
         synchronized (WIKIPEDIA_TO_ISO_LANGUAGE) {
             if (WIKIPEDIA_TO_ISO_LANGUAGE.isEmpty()) {
                 try (InputStream is = WikipediaCrawlTool.class.getResourceAsStream("/wikipedia-languages.txt")) {
@@ -456,6 +575,10 @@ public class WikipediaCrawlTool {
                 }
             }
         }
+    }
+    
+    private String mapWikipediaLanguage(String language) {
+        loadWikiLangMap();
         
         return WIKIPEDIA_TO_ISO_LANGUAGE.get(language);
     }
@@ -594,7 +717,7 @@ public class WikipediaCrawlTool {
             
             // Now loop, getting commands
             while (true) {
-                String cmdName = readInputLine("Enter command (help, load, dump, clean, xpath, crawl, merge, quit): ");
+                String cmdName = readInputLine("Enter command (help, load, dump, clean, xpath, crawl, random, merge, quit): ");
                 if (cmdName.equalsIgnoreCase("help")) {
                     tool.displayHelp();
                 } else if (cmdName.equalsIgnoreCase("load")) {
@@ -612,6 +735,8 @@ public class WikipediaCrawlTool {
                     tool.doCrawl();
                 } else if (cmdName.equalsIgnoreCase("merge")) {
                     tool.mergeResults();
+                } else if (cmdName.equalsIgnoreCase("random")) {
+                    tool.doRandomCrawl();
                 } else if (cmdName.equalsIgnoreCase("quit")) {
                     break;
                 } else {
