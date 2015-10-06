@@ -4,6 +4,7 @@
 .settings/
 build
 target
+trash/
 build-eclipse
 *.dot
 *.hprof
