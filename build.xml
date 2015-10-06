@@ -72,7 +72,7 @@ Copyright (c) 2015 Ken Krugler
 	</target>
 
 	<target name="mvn-install" xmlns:artifact="urn:maven-artifact-ant" depends="mvn-init">
-		<artifact:install file="${build.dir}/${jar.name}">
+		<artifact:install file="${build.dir}/${core-jar.name}">
 			<pom refid="maven.project"/>
 		</artifact:install>
 	</target>
@@ -185,20 +185,55 @@ Copyright (c) 2015 Ken Krugler
 	<!-- Build jar                                                          -->
 	<!-- ================================================================== -->
 
-	<target name="jar" depends="compile">
+	<target name="core-jar"
+	        depends="compile"
+	        description="--> build jar with code and models for core languages">
 
 		<tstamp>
 			<format property="timestamp" pattern="MMM dd yyyy, HH:mm:ss" />
 		</tstamp>
 
-		<jar jarfile="${build.dir}/${jar.name}"
+		<jar jarfile="${build.dir}/${core-jar.name}"
 		     basedir="${build.dir.main-classes}">
-			<fileset dir="${main.res.dir}" />
+			<fileset dir="${main.res.dir}">
+			    <exclude name="**/models/extras/**" />
+			</fileset>
 		    
 			<manifest>
 				<section name="yald">
 					<attribute name="Implementation-Vendor"
-					           value="Scale Unlimied" />
+					           value="Ken Krugler" />
+					<attribute name="Implementation-Title"
+					           value="${ant.project.name}" />
+					<attribute name="Implementation-Version"
+					           value="${version}" />
+					<attribute name="Compile-Time" value="${timestamp}" />
+					<attribute name="Compiled-By" value="${user.name}" />
+				</section>
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- ================================================================== -->
+	<!-- Build jar with extra language models                               -->
+	<!-- ================================================================== -->
+
+	<target name="extras-jar"
+	        description="--> build jar with models for extra languages">
+
+		<tstamp>
+			<format property="timestamp" pattern="MMM dd yyyy, HH:mm:ss" />
+		</tstamp>
+
+		<jar jarfile="${build.dir}/${extras-jar.name}">
+			<fileset dir="${main.res.dir}">
+			    <exclude name="**/models/core/**" />
+			</fileset>
+		    
+			<manifest>
+				<section name="yald">
+					<attribute name="Implementation-Vendor"
+					           value="Ken Krugler" />
 					<attribute name="Implementation-Title"
 					           value="${ant.project.name}" />
 					<attribute name="Implementation-Version"
