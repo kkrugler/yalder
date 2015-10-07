@@ -446,6 +446,7 @@ public class LanguageDetectorTest {
             String modelName = String.format("/org/krugler/yalder/models/core/yalder_model_%s.bin", ll.getName());
             InputStream is = LanguageDetectorTest.class.getResourceAsStream(modelName);
             if (is == null) {
+                LOGGER.debug(String.format("Loading non-core model '%s'", ll.getName()));
                 modelName = String.format("/org/krugler/yalder/models/extras/yalder_model_%s.bin", ll.getName());
                 is = LanguageDetectorTest.class.getResourceAsStream(modelName);
             }
