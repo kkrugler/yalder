@@ -125,13 +125,8 @@ public class LanguageDetectorTest {
         System.setProperty("logging.root.level", "INFO");
         Logger.getRootLogger().setLevel(Level.INFO);
 
-        final int MAX_NGRAM_LENGTH = 4;
-        final int MIN_NORMALIZED_NGRAM_COUNT = 10;
-
         // First build all models
-        ModelBuilder mb = new ModelBuilder()
-        .setMaxNGramLength(MAX_NGRAM_LENGTH)
-        .setMinNormalizedCount(MIN_NORMALIZED_NGRAM_COUNT);
+        ModelBuilder mb = new ModelBuilder();
 
         // TODO add support for remapping some language names, e.g.
         // zh-min-nan => nan (Min Nan dialect of Chinese)
@@ -182,7 +177,7 @@ public class LanguageDetectorTest {
         System.out.println("Building training models...");
         Collection<BaseLanguageModel> models = mb.makeModels();
 
-        HashLanguageDetector detector = new HashLanguageDetector(models, MAX_NGRAM_LENGTH);
+        HashLanguageDetector detector = new HashLanguageDetector(models);
 
         fis = new FileInputStream("src/test/resources/udhr.txt");
         lines = IOUtils.readLines(fis, "UTF-8");

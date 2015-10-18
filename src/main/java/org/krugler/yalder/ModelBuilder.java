@@ -20,7 +20,8 @@ public class ModelBuilder {
 
     public static final int DEFAULT_MAX_NGRAM_LENGTH = 4;
     
-    public static final int DEFAULT_MIN_NORMALIZED_COUNT = (int)Math.round(0.00002 * BaseLanguageModel.NORMALIZED_COUNT);
+    // Minimum frequency for ngram
+    public static final double DEFAULT_MIN_NGRAM_FREQUENCY = 0.00002;
     
     // Minimum number of ngrams we want to see for a language.
     // Since we get roughly <max length> * chars number of ngrams, we're really saying we
@@ -31,7 +32,7 @@ public class ModelBuilder {
     private Map<LanguageLocale, Map<String, Integer>> _perLangTextCounts;
     
     private int _maxNGramLength = DEFAULT_MAX_NGRAM_LENGTH;
-    private int _minNormalizedCount = DEFAULT_MIN_NORMALIZED_COUNT;
+    private double _minNGramFrequency = DEFAULT_MIN_NGRAM_FREQUENCY;
     private int _minNGramsForLanguage = DEFAULT_MIN_NGRAMS_FOR_LANGUAGE;
     private boolean _binaryMode = true;
     
@@ -49,13 +50,13 @@ public class ModelBuilder {
         return _maxNGramLength;
     }
     
-    public ModelBuilder setMinNormalizedCount(int minNormalizedCount) {
-        _minNormalizedCount = minNormalizedCount;
+    public ModelBuilder setMinNGramFrequency(double minNGramFrequency) {
+        _minNGramFrequency = minNGramFrequency;
         return this;
     }
     
-    public int getMinNormalizedCount() {
-        return _minNormalizedCount;
+    public double getMinNGramFrequency() {
+        return _minNGramFrequency;
     }
     
     public ModelBuilder setBinaryMode(boolean binaryMode) {
@@ -137,6 +138,7 @@ public class ModelBuilder {
             perLanguageTotalNGramCount.put(language,  languageNGrams);
         }
 
+        int minNormalizedCount = (int)Math.round(_minNGramFrequency) * BaseLanguageModel.NORMALIZED_COUNT;
         Set<LanguageLocale> languagesToSkip = new HashSet<LanguageLocale>();
         for (LanguageLocale language : languages) {
             int ngramsForLanguage = perLanguageTotalNGramCount.get(language);
@@ -158,7 +160,7 @@ public class ModelBuilder {
                 // Set to ignore if we don't have enough of these to matter.
                 // TODO actually key this off alpha somehow, as if we don't have an ngram then
                 // we give it a probability of x?
-                if (adjustedCount >= _minNormalizedCount) {
+                if (adjustedCount >= minNormalizedCount) {
                     normalizedCounts.put(ngram, adjustedCount);
                 }
             }
@@ -190,6 +192,7 @@ public class ModelBuilder {
             perLanguageTotalNGramCount.put(language, ngramCounts.sum());
         }
 
+        int minNormalizedCount = (int)Math.round(_minNGramFrequency) * BaseLanguageModel.NORMALIZED_COUNT;
         Set<LanguageLocale> languagesToSkip = new HashSet<LanguageLocale>();
         for (LanguageLocale language : languages) {
             int ngramsForLanguage = perLanguageTotalNGramCount.get(language);
@@ -213,7 +216,7 @@ public class ModelBuilder {
                 
                 // Set to ignore if we don't have enough of these to matter.
                 // FUTURE change limit based on length of the ngram (which we no longer have)?
-                if (adjustedCount >= _minNormalizedCount) {
+                if (adjustedCount >= minNormalizedCount) {
                     normalizedCounts.add(ngramHash, adjustedCount);
                 }
             }

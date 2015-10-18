@@ -133,7 +133,7 @@ public class ModelBuilderTool {
         _builder = new ModelBuilder()
             .setBinaryMode(_binaryMode)
             .setMaxNGramLength(_options.getMaxNGramLength())
-            .setMinNormalizedCount(_options.getMinNGramCount());
+            .setMinNGramFrequency(_options.getMinNGramFrequency());
         
         _models = null;
     }
@@ -423,6 +423,27 @@ public class ModelBuilderTool {
         }
     }
 
+    private void pruneModels() {
+        if (_models.isEmpty()) {
+            System.err.println("Models must be built or loaded first before pruning");
+            return;
+        }
+        
+        String minNGramCountAsStr = readInputLine("Enter minimum normalized ngram count: ");
+        if (minNGramCountAsStr.trim().isEmpty()) {
+            return;
+        }
+        
+        int minNGramCount = Integer.parseInt(minNGramCountAsStr);
+        
+        int totalPruned = 0;
+        for (BaseLanguageModel model : _models) {
+            totalPruned += model.prune(minNGramCount);
+        }
+        
+        System.out.println(String.format("Pruned %d ngrams by setting min count to 20", totalPruned));
+    }
+    
     private void loadModels() throws IOException {
         String dirname = readInputLine("Enter path to directory containing models: ");
         if (dirname.length() == 0) {
@@ -446,13 +467,11 @@ public class ModelBuilderTool {
         System.out.println(String.format("Loading models from files in '%s'...", dirFile.getCanonicalPath()));
         Set<BaseLanguageModel> newModels = new HashSet<>();
         
-        int totalPruned = 0;
-        for (File file : FileUtils.listFiles(dirFile, new String[]{"txt"}, true)) {
+        for (File file : FileUtils.listFiles(dirFile, new String[]{"txt", "bin"}, true)) {
             String filename = file.getName();
             Pattern p = Pattern.compile(String.format("yalder_model_(.+).%s", modelSuffix));
             Matcher m = p.matcher(filename);
             if (!m.matches()) {
-                LOGGER.warn(String.format("Found file '%s' with invalid name", filename));
                 continue;
             }
 
@@ -477,8 +496,6 @@ public class ModelBuilderTool {
                 model = textModel;
             }
 
-            totalPruned += model.prune(20);
-            
             newModels.add(model);
         }
 
@@ -487,7 +504,6 @@ public class ModelBuilderTool {
             return;
         }
         
-        System.out.println(String.format("Pruned %d ngrams by setting min count to 20", totalPruned));
         _models = newModels;
     }
     
@@ -585,7 +601,7 @@ public class ModelBuilderTool {
                 // TODO have base tool, with readInputLine code that takes prompt text
                 // TODO how to set params per language for collapsing chars, setting max ngram length, etc.
                 // TODO add help command
-                String cmdName = readInputLine("Enter command (mode, data, build, load, save, test, euro, quit): ");
+                String cmdName = readInputLine("Enter command (mode, data, build, load, prune, save, test, euro, quit): ");
                 if (cmdName.equalsIgnoreCase("data")) {
                     tool.loadTrainingData();
                 } else if (cmdName.equalsIgnoreCase("mode")) {
@@ -596,6 +612,8 @@ public class ModelBuilderTool {
                     tool.saveModels();
                 } else if (cmdName.equalsIgnoreCase("load")) {
                     tool.loadModels();
+                } else if (cmdName.equalsIgnoreCase("prune")) {
+                    tool.pruneModels();
                 } else if (cmdName.equalsIgnoreCase("test")) {
                     tool.interactiveTest();
                 } else if (cmdName.equalsIgnoreCase("euro")) {
@@ -620,11 +638,15 @@ public class ModelBuilderTool {
      * @return Text that the user entered
      * @throws IOException
      */
-    private static String readInputLine(String prompt) throws IOException {
+    private static String readInputLine(String prompt) {
         System.out.print(prompt);
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
-        return br.readLine();
+        try {
+            return br.readLine();
+        } catch (IOException e) {
+            throw new RuntimeException("Impossible error", e);
+        }
     }
 
     private static void printUsageAndExit(CmdLineParser parser) {
@@ -636,7 +658,7 @@ public class ModelBuilderTool {
         
         private static final int DEFAULT_MAX_NGRAM_LENGTH = 4;
         
-        private static final int DEFAULT_MIN_NORMALIZED_NGRAM_COUNT = 10;
+        private static final double DEFAULT_MIN_NGRAM_FREQUENCY = ModelBuilder.DEFAULT_MIN_NGRAM_FREQUENCY;
         
 
         private boolean _debugLogging = false;
@@ -647,7 +669,7 @@ public class ModelBuilderTool {
         private String _inputFile = null;
         
         private int _maxNGramLength = DEFAULT_MAX_NGRAM_LENGTH;
-        private int _minNormalizedNGramCount = DEFAULT_MIN_NORMALIZED_NGRAM_COUNT;
+        private double _minNGramFrequency = DEFAULT_MIN_NGRAM_FREQUENCY;
         
         @Option(name = "-debug", usage = "debug logging", required = false)
         public void setDebugLogging(boolean debugLogging) {
@@ -704,13 +726,13 @@ public class ModelBuilderTool {
             return _maxNGramLength;
         }
         
-        @Option(name = "-minngramcount", usage = "minimum (normalized) count of ngrams to be included in model", required = false)
-        public void setMinNGramCount(int minNGramCount) {
-            _minNormalizedNGramCount = minNGramCount;
+        @Option(name = "-minngramfreq", usage = "minimum frequency of ngrams to be included in model", required = false)
+        public void setMinNGramFrequency(double minNGramFrequency) {
+            _minNGramFrequency = minNGramFrequency;
         }
 
-        public int getMinNGramCount() {
-            return _minNormalizedNGramCount;
+        public double getMinNGramFrequency() {
+            return _minNGramFrequency;
         }
     }
 }
