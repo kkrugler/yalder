@@ -47,11 +47,13 @@
             <version>1.2.14</version>
         </dependency>
         
+        <!-- We embed the specific classes we need.
         <dependency>
             <groupId>it.unimi.dsi</groupId>
             <artifactId>fastutil</artifactId>
             <version>6.6.3</version>
         </dependency>
+        -->
         
         <!-- For Yalder tool/builder -->
         <dependency>
@@ -82,6 +84,12 @@
             <groupId>bixo</groupId>
             <artifactId>bixo-core</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.scaleunlimited</groupId>
+                    <artifactId>cascading.utils</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         
         <!-- Provided -->
