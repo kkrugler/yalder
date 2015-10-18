@@ -1,0 +1,291 @@
+1	English	en	eng
+2	Swedish	sv	swe
+3	German	de	deu
+4	Dutch	nl	nld
+5	French	fr	fra
+6	Waray-Waray	war	war
+7	Russian	ru	rus
+8	Cebuano	ceb	ceb
+9	Italian	it	ita
+10	Spanish	es	spa
+11	Vietnamese	vi	vie
+12	Polish	pl	pol
+13	Japanese	ja	jpn
+14	Portuguese	pt	por
+15	Chinese	zh	zho
+16	Ukrainian	uk	ukr
+17	Catalan	ca	cat
+18	Persian	fa	fas
+19	Serbo-Croatian	sh	xxx	# Ignore obsolete language
+20	Norwegian (Bokmål)	no	nob
+21	Arabic	ar	ara
+22	Finnish	fi	fin
+23	Indonesian	id	ind
+24	Romanian	ro	ron
+25	Hungarian	hu	hun
+26	Czech	cs	ces
+27	Korean	ko	kor
+28	Serbian	sr	srp
+29	Malay	ms	msa
+30	Turkish	tr	tur
+31	Minangkabau	min	min
+32	Esperanto	eo	epo
+33	Kazakh	kk	kaz
+34	Basque	eu	eus
+35	Danish	da	dan
+36	Bulgarian	bg	bul
+37	Slovak	sk	slk
+38	Armenian	hy	hye
+39	Hebrew	he	heb
+40	Lithuanian	lt	lit
+41	Croatian	hr	hrv
+42	Slovenian	sl	slv
+43	Estonian	et	est
+44	Uzbek	uz	uzb
+45	Galician	gl	glg
+46	Norwegian (Nynorsk)	nn	nno
+47	Latin	la	lat
+48	Volapük	vo	vol
+49	Simple English	simple	xxx	# ignore, too close to English
+50	Greek	el	ell
+51	Belarusian	be	bel
+52	Chechen	ce	che
+53	Hindi	hi	hin
+54	Azerbaijani	az	aze	# Macrolanguage
+55	Georgian	ka	kat
+56	Thai	th	tha
+57	Occitan	oc	oci
+58	Macedonian	mk	mkd
+59	Urdu	ur	urd
+60	Malagasy	mg	mlg
+61	Newar (Nepal Bhasa)	new	new
+62	Tamil	ta	tam
+63	Welsh	cy	cym
+64	Tatar	tt	tat
+65	Piedmontese	pms	xxx	# No 639-2 code
+66	Tagalog	tl	tgl
+67	Bosnian	bs	bos
+68	Latvian	lv	lav
+69	Telugu	te	tel
+70	Belarusian (Taraškievica)	be-tarask	xxx	# obsolete (was called be-x-old)
+71	Breton	br	bre
+72	Haitian	ht	hat
+73	Albanian	sq	sqi
+74	Javanese	jv	jav
+75	Kirghiz	ky	kir
+76	Min Nan	zh-min-nan	xxx	# TODO - Not sure
+77	Luxembourgish	lb	ltz
+78	Marathi	mr	mar
+79	Malayalam	ml	mal
+80	Cantonese	zh-yue	xxx	# TODO - not sure
+81	Icelandic	is	isl
+82	Tajik	tg	tgk
+83	Bengali	bn	ben
+84	Afrikaans	af	afr
+85	Irish	ga	gle
+86	Bashkir	ba	bak
+87	Western Punjabi	pnb	xxx	# No 639-2 code, maybe pan-Arab vs. pan-Guru
+88	Scots	sco	sco
+89	Chuvash	cv	chv
+90	West Frisian	fy	fry
+91	Lombard	lmo	xxx	# No 639-2 code
+92	Burmese	my	mya
+93	Yoruba	yo	yor
+94	Aragonese	an	arg
+95	Swahili	sw	swa	# Macrolanguage
+96	Nepali	ne	nep	# Macrolanguage
+97	Asturian	ast	ast
+98	Ido	io	xxx	# Constructed language
+99	Gujarati	gu	guj
+100	Sicilian	scn	scn
+101	Bishnupriya Manipuri	bpy	xxx	# No 639-2 code
+102	Low Saxon (Low German)	nds	nds
+103	Kurdish	ku	kur
+104	Alemannic	als	xxx	# No 639-2 code
+105	Quechua	qu	que	# Macrolanguage
+106	Punjabi (Panjabi)	pa	pan
+107	Sundanese	su	sun
+108	Kannada	kn	kan
+109	Sorani	ckb	xxx	# No 639-2 code
+110	Bavarian	bar	xxx	# No 639-2 code
+111	Mongolian	mn	mon
+112	Interlingua	ia	xxx	# Constructed language
+113	Egyptian Arabic	arz	xxx	# No 639-2 code
+114	Neapolitan	nap	nap
+115	Buginese	bug	bug
+116	Samogitian	bat-smg	xxx	# TODO not sure, 'bat' is collective "Baltic languages"
+117	Walloon	wa	wln
+118	Scottish Gaelic	gd	gla
+119	Amharic	am	amh
+120	Banyumasan	map-bms	xxx	# TODO not sure, 'map' is collective "Austronesian languages"
+121	Yiddish	yi	yid	# Macrolanguage
+122	Mazandarani	mzn	xxx	# No 639-2 code
+123	Faroese	fo	fao
+124	Sinhalese (Sinhala)	si	sin
+125	Nahuatl	nah	xxx	# Collective
+126	Venetian	vec	xxx	# No 639-2 code
+127	Sakha (Yakut)	sah	sah
+128	Ossetian	os	oss
+129	Sanskrit	sa	san
+130	Hill Mari	mrj	xxx	# No 639-2 code
+131	Limburgish (Limburgan)	li	lim
+132	Upper Sorbian	hsb	hsb
+133	Tarantino	roa-tara	xxx	# TODO not sure, 'roa' is collective "Romance languages"
+134	Oriya (Odiya)	or	ori	# Macrolanguage
+135	Kapampangan (Pampanga)	pam	pam
+136	Meadow Mari	mhr	xxx	# No 639-2 code
+137	Northern Sami	se	sme
+138	Maori	mi	mri
+139	Ilokano (Iloko)	ilo	ilo
+140	Central Bicolano	bcl	xxx	# No 639-2 code
+141	Fiji Hindi	hif	xxx	# No 639-2 code
+142	Gan	gan	xxx	# No 639-2 code
+143	Pashto (Pushto)	ps	pus
+144	South Azerbaijani	azb	xxx	# No 639-2 code
+145	Zazaki	diq	xxx	# No 639-2 code
+146	Bihari	bh	xxx	# Collective
+147	Gilaki	glk	xxx	# No 639-2 code
+148	Rusyn	rue	xxx	# No 639-2 code
+149	Dutch Low Saxon	nds-nl	xxx	# TODO not sure, 'nds' is low German
+150	West Flemish	vls	xxx	# No 639-2 code
+151	Tibetan	bo	bod
+152	Hakka	hak	xxx	# No 639-2 code
+153	Võro	fiu-vro	xxx	# No 639-2 code, and 'fiu' is a Collective
+154	Mingrelian	xmf	xxx	# No 639-2 code
+155	Corsican	co	cos
+156	Turkmen	tk	tuk
+157	Sardinian	sc	src	# Macrolanguage
+158	Vepsian	vep	xxx	# No 639-2 code
+159	Northern Luri	lrc	xxx	# No 639-2 code
+160	Manx	gv	glv
+161	Khmer	km	khm
+162	Kashubian	csb	csb
+163	Komi	kv	kom
+164	Zeelandic	zea	xxx	# No 639-2 code
+165	Crimean Tatar	crh	crh
+166	Emilian-Romagnol	eml	xxx	# No 639-2 code
+167	North Frisian	frr	frr
+168	Classical Chinese	zh-classical	xxx	# Ignore
+169	Sindhi	sd	snd
+170	Wu	wuu	xxx	# No 639-2 code
+171	Assamese	as	asm
+172	Aymara	ay	aym
+173	Udmurt	udm	udm
+174	Cornish	kw	cor
+175	Saterland Frisian	stq	xxx	# No 639-2 code
+176	Silesian	szl	xxx	# No 639-2 code
+177	Norman	nrm	xxx	# No 639-2 code
+178	Somali	so	som
+179	Romansh	rm	roh
+180	Komi-Permyak	koi	xxx	# No 639-2 code
+181	Ladino	lad	lad
+182	Min Dong	cdo	xxx	# No 639-2 code
+183	Friulian	fur	fur
+184	Interlingue	ie	xxx	# Constructed language
+185	Maltese	mt	mlt
+186	Picard	pcd	xxx	# No 639-2 code
+187	Guarani	gn	grn
+188	Lower Sorbian	dsb	dsb
+189	Divehi (Dhivehi)	dv	div
+190	Ligurian	lij	xxx	# No 639-2 code
+191	Zamboanga Chavacano	cbk-zam	xxx	# No 639-2 code
+192	Ripuarian	ksh	xxx	# No 639-2 code
+193	Extremaduran	ext	xxx	# No 639-2 code
+194	Mirandese	mwl	mwl
+195	Gagauz	gag	xxx	# No 639-2 code
+196	Anglo-Saxon	ang	xxx	# No 639-2 code
+197	Erzya	myv	myv
+198	Lezgian (Lezghian)	lez	lez
+199	Acehnese (Achinese)	ace	ace
+200	Uyghur (Uighur)	ug	uig
+201	Pali	pi	pli
+202	Pangasinan	pag	pag
+203	Northern Sotho	nso	nso
+204	Navajo	nv	nav
+205	Franco-Provençal	frp	xxx	# No 639-2 code
+206	Shona	sn	sna
+207	Kabyle	kab	kab
+208	Lingala	ln	lin
+209	Avar (Avaric)	av	ava
+210	Hawaiian	haw	haw
+211	Palatinate German	pfl	xxx	# No 639-2 code
+212	Kalmyk	xal	xal
+213	Karachay-Balkar	krc	krc
+214	Kinyarwanda	rw	kin
+215	Karakalpak	kaa	xxx	# No 639-2 code
+216	Pennsylvania German	pdc	xxx	# No 639-2 code
+217	Tongan (Tonga Islands)	to	ton
+218	Greenlandic (Kalaallisut)	kl	kal
+219	Aramaic	arc	xxx	# Ancient
+220	Novial	nov	xxx	# No 639-2 code
+221	Kabardian Circassian	kbd	kbd
+222	Buryat	bxr	xxx	# No 639-2 code
+223	Lao	lo	lao
+224	Banjar	bjn	xxx	# No 639-2 code
+225	Hausa	ha	hau
+226	Tetum	tet	tet
+227	Papiamentu (Papiamento)	pap	pop
+228	Tok Pisin	tpi	tpi
+229	Nauruan (Nauru)	na	nau
+230	Tuvan (Tuvinian)	tyv	tyv
+231	Lak	lbe	xxx	# No 639-2 code
+232	Lojban	jbo	xxx	# Constructed language
+233	Tahitian	ty	tah
+234	Aromanian	roa-rup	xxx	# No 639-2 code
+235	Moksha	mdf	mdf
+236	Zhuang	za	zha	# Macrolanguage
+237	Igbo	ig	ibo
+238	Wolof	wo	wol
+239	Sranan	srn	srn
+240	Kongo	kg	kon	# Macrolanguage
+241	Abkhazian	ab	abk
+242	Latgalian	ltg	xxx	# No 639-2 code
+243	Zulu	zu	zul
+244	Goan Konkani	gom	xxx	# No 639-2 code
+245	Oromo	om	orm	# Macrolanguage
+246	Cheyenne	chy	chy
+247	Romani	rmy	xxx	# No 639-2 code
+248	Old Church Slavonic	cu	xxx	# Ancient
+249	Maithili	mai	mai
+250	Twi	tw	twi
+251	Luganda (Ganda)	lg	lug
+252	Tswana	tn	tsn
+253	Cherokee	chr	chr
+254	Norfolk	pih	xxx	# No 639-2 code
+255	Bislama	bi	bis
+256	Gothic	got	xxx	# Ancient
+257	Samoan	sm	smo
+258	Swati	ss	ssw
+259	Moldovan	mo	xxx	# Redacted ISO 639-1 code, essentially Romanian
+260	Kirundi (Rundi)	rn	run
+261	Xhosa	xh	xho
+262	Kikuyu	ki	kik
+263	Pontic	pnt	xxx	# No 639-2 code
+264	Bambara	bm	bam
+265	Inuktitut	iu	iku	# Macrolanguage
+266	Ewe	ee	ewe
+267	Sesotho (Southern Sotho)	st	sot
+268	Tsonga	ts	tso
+269	Kashmiri	ks	kas
+270	Fijian	fj	fij
+271	Akan	ak	aka	# Macrolanguage
+272	Sango	sg	sag
+273	Inupiak (Inupiaq)	ik	ipk	# Macrolanguage
+274	Venda	ve	ven
+275	Fula	ff	ful	# Macrolanguage
+276	Chichewa (Nyanja)	ny	nya
+277	Tigrinya	ti	tir
+278	Chamorro	ch	cha
+279	Dzongkha	dz	dzo
+280	Tumbuka	tum	tum
+281	Cree	cr	cre
+282	Ndonga	ng	ndo
+283	Choctaw	cho	cho
+284	Kuanyama	kj	kua
+285	Marshallese	mh	mah
+286	Hiri Motu	ho	hmo
+287	Sichuan Yi	ii	iii
+288	Afar	aa	aar
+289	Muscogee (Creek)	mus	mus
+290	Herero	hz	her
+291	Kanuri	kr	kau
