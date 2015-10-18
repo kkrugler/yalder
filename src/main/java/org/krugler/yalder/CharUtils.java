@@ -4,24 +4,13 @@ package org.krugler.yalder;
 public class CharUtils {
 
     /**
-     * Return hash value for <key>
+     * Return hash value for <text>, for <length> chars at <offset>
      * 
-     * @param key
-     * @return
+     * @param text
+     * @param offset
+     * @param length
+     * @return hash of characters.
      */
-    public static int joaat_hash(CharSequence key) {
-        int hash = 0;
-        
-        for (int i = 0; i < key.length(); i++) {
-            int c = (int)key.charAt(i);
-            hash += c;
-            hash += (hash << 10);
-            hash ^= (hash >>> 6);
-        }
-        
-        return conditionHash(hash);
-    }
-
     public static int joaat_hash(char[] text, int offset, int length) {
         int hash = 0;
         
@@ -32,15 +21,12 @@ public class CharUtils {
             hash ^= (hash >>> 6);
         }
         
-        return conditionHash(hash);
-    }
-
-    private static int conditionHash(int hash) {
         hash += (hash << 3);
         hash ^= (hash >>> 11);
         hash += (hash << 15);
         
         return hash;
     }
+
 
 }
