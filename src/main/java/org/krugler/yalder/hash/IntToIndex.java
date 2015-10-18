@@ -2,14 +2,11 @@ package org.krugler.yalder.hash;
 
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 
-import java.util.Arrays;
-
 public class IntToIndex {
 
     private static final int DEFAULT_CAPACITY = 1000;
     
     private Int2IntOpenHashMap _map;
-    
     
     public IntToIndex() {
         this(DEFAULT_CAPACITY);
