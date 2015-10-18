@@ -1,0 +1,89 @@
+<!--
+Copyright (c) 2015 Ken Krugler
+-->
+
+<project name="yalder" default="install">
+
+	<property name="root.dir" value="${basedir}" />
+	<property file="${root.dir}/build.properties" />
+
+	<!-- ================================================================== -->
+	<!-- Updating Eclipse project files                                     -->
+	<!-- ================================================================== -->
+
+	<target name="eclipse" 
+	        depends="eclipse-core, eclipse-tools"
+	        description="--> build clean Eclipse project files">
+		<echo>Building clean Eclipse project files</echo>
+	</target>
+
+
+	<target name="eclipse-core"
+	        description="--> eclipse core">
+		<subant target="eclipse">
+			<fileset dir="./core" includes="build.xml"/>
+        </subant>
+	</target>
+
+	<target name="eclipse-tools"
+	        description="--> eclipse language">
+		<subant target="eclipse">
+			<fileset dir="./tools" includes="build.xml"/>
+        </subant>
+	</target>
+
+	<!-- ================================================================== -->
+	<!-- General cleaning sources                                           -->
+	<!-- ================================================================== -->
+
+	<target name="clean" 
+	        depends="clean-core, clean-tools"
+	        description="--> clean the project">
+		<echo>Cleaning ${ant.project.name}</echo>		
+	</target>
+
+
+	<target name="clean-core"
+	        description="--> clean core">
+		<subant target="clean">
+			<fileset dir="./core" includes="build.xml"/>
+        </subant>
+	</target>
+
+	<target name="clean-tools"
+	        description="--> clean language">
+		<subant target="clean">
+			<fileset dir="./tools" includes="build.xml"/>
+        </subant>
+	</target>
+
+
+	<!-- ================================================================== -->
+	<!-- Installing maven artifacts                                         -->
+	<!-- ================================================================== -->
+
+	<target name="install"
+	        depends="install-core, install-tools"
+	        description="--> install the project's Maven artifacts">
+		<echo>Installing ${ant.project.name} Maven artifacts</echo>
+	</target>
+	
+
+	<target name="install-core"
+	        description="--> install core">
+		<subant target="install">
+			<fileset dir="./core" includes="build.xml"/>
+        </subant>
+	</target>
+
+	<target name="install-tools"
+	        description="--> install language">
+		<subant target="install">
+			<fileset dir="./tools" includes="build.xml"/>
+        </subant>
+	</target>
+
+
+
+
+</project>
