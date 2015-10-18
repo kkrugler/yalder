@@ -19,26 +19,32 @@ public class TextTokenizerTest {
         while (tokenizer.hasNext()) {
             String ngram = tokenizer.next();
             System.out.println(ngram);
-            assertTrue(ngrams.add(ngram));
+            ngrams.add(ngram);
         }
         
-        assertEquals(6, ngrams.size());
+        // tokenizer automatically adds a space at the beginning & end, so
+        // we actually have a string of 5 chars we're tokenizing.
+        // But we have a duplicate space character (leading/trailing),
+        // so the actual count is one less.
+        assertEquals(12 - 1, ngrams.size());
     }
     
     @Test
     public void testNormalizationAndSpaceCollapse() throws Exception {
         TextTokenizer tokenizer = new TextTokenizer("A ,!", 3);
-        
         Set<String> ngrams = new HashSet<String>();
         while (tokenizer.hasNext()) {
             String ngram = tokenizer.next();
-            assertTrue(ngrams.add(ngram.toString()));
+            ngrams.add(ngram.toString());
         }
         
-        assertEquals(3, ngrams.size());
+        // Space is added twice, so only 5 (vs 6) ngrams.
+        assertEquals(5, ngrams.size());
+        assertTrue(ngrams.contains(" "));
+        assertTrue(ngrams.contains(" a"));
+        assertTrue(ngrams.contains(" a "));
         assertTrue(ngrams.contains("a"));
         assertTrue(ngrams.contains("a "));
-        assertTrue(ngrams.contains(" "));
     }
     
     @Test
@@ -57,7 +63,8 @@ public class TextTokenizerTest {
             numNGrams += 1;
         }
         
-        assertEquals(3 * (numChars - 1), numNGrams);
+        // Tokenizer adds a space at the beginning and end, so it's (numChars + 2)
+        assertEquals(3 * ((numChars + 2) - 1), numNGrams);
     }
 
 }

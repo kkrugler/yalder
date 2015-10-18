@@ -85,16 +85,22 @@ public abstract class BaseTokenizer {
 
         // TODO start with a space in the buffer?
         _normalized = new char[1000];
-        _normalizedLength = 0;
+        _normalized[0] = ' ';
+        _normalizedLength = 1;
         _normalizedPos = 0;
 
         _curNGramLength = 1;
     }
 
     protected void fillNormalized() {
-        while ((_bufferPos < _buffer.length()) && (_normalizedLength < _curNGramLength)) {
-            // TODO normalize blocks of text to a single character...need to flag somehow
-            char curChar = CHARMAP[_buffer.charAt(_bufferPos++)];
+        while ((_bufferPos <= _buffer.length()) && (_normalizedLength < _curNGramLength)) {
+            char curChar;
+            if (_bufferPos < _buffer.length()) {
+                curChar = CHARMAP[_buffer.charAt(_bufferPos++)];
+            } else {
+                curChar = ' ';
+                _bufferPos += 1;
+            }
             
             // If we have two spaces in a row, skip this character.
             if ((curChar == ' ')
