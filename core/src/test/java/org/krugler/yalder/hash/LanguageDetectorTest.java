@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.DataInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,6 +28,7 @@ import org.krugler.yalder.EuroParlUtils;
 import org.krugler.yalder.IntCounter;
 import org.krugler.yalder.LanguageLocale;
 import org.krugler.yalder.ModelBuilder;
+import org.krugler.yalder.ModelLoader;
 import org.krugler.yalder.OtherDetectorsTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,70 +84,17 @@ public class LanguageDetectorTest {
         }
     }
 
-    // TODO reenable this test when we're loading binary models
-    // @Test
+    @Test
     public void testUniversalDeclarationOfHumanRights() throws Exception {
         System.setProperty("logging.root.level", "INFO");
         // Logger.getRootLogger().setLevel(Level.INFO);
 
-        // TODO move modelbuilder to tools?
-        // TODO load models
-        // First build all models
-        ModelBuilder mb = new ModelBuilder();
-
-        // TODO add support for remapping some language names, e.g.
-        // zh-min-nan => nan (Min Nan dialect of Chinese)
-
-        // TODO put this into a WikipediaUtils class, use it everywhere
-        Set<String> excludedLanguages = new HashSet<String>();
-
-        // Simplified English looks like English
-        excludedLanguages.add("simple");
-
-        // Belarusian using classic orthography
-        excludedLanguages.add("be-x-old");
-
-        // https://en.wikipedia.org/wiki/Sranan_Tongo (looks like Dutch)
-        excludedLanguages.add("srn");
-
-        // Chavacano or Chabacano [tʃaβaˈkano] is a Spanish-based creole language spoken in the Philippines
-        excludedLanguages.add("cbk-zam");
-
-        // https://en.wikipedia.org/wiki/Asturian_language (looks like Spanish)
-        excludedLanguages.add("ast");
-
-        // https://en.wikipedia.org/wiki/Galician_language (looks like Spanish)
-        excludedLanguages.add("gl");
-
-        // Scottish looks like English
-        excludedLanguages.add("sco");
-
-        // Deprecated code for obsolete "Serbo-Croatian"
-        // http://www.personal.psu.edu/ejp10/blogs/gotunicode/2010/08/the-language-codes-of-the-form.html
-        excludedLanguages.add("sh");
-
-        FileInputStream fis = new FileInputStream("src/test/resources/wikipedia.txt");
-        List<String> lines = IOUtils.readLines(fis, "UTF-8");
-        fis.close();
-
-        for (String line : lines) {
-            String[] parts = line.split("\t", 2);
-            String language = parts[0];
-            if (excludedLanguages.contains(language)) {
-                continue;
-            }
-
-            String text = parts[1];
-            mb.addTrainingDoc(language, text);
-        }
-        
-        System.out.println("Building training models...");
-        Collection<BaseLanguageModel> models = mb.makeModels();
-
+        File modelDir = new File("src/main/resources/org/krugler/yalder/models/");
+        Collection<BaseLanguageModel> models = ModelLoader.loadModelsFromDirectory(modelDir, true);
         HashLanguageDetector detector = new HashLanguageDetector(models);
 
-        fis = new FileInputStream("src/test/resources/udhr.txt");
-        lines = IOUtils.readLines(fis, "UTF-8");
+        FileInputStream fis = new FileInputStream("src/test/resources/udhr.txt");
+        List<String> lines = IOUtils.readLines(fis, "UTF-8");
         fis.close();
 
         for (String line : lines) {
