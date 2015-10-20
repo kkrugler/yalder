@@ -331,8 +331,7 @@ spa	Spanish	Todos los seres humanos nacen libres e iguales en dignidad y derecho
 swa	Swahili	Watu wote wamezaliwa huru, hadhi na haki zao ni sawa. Wote wamejaliwa akili na dhamiri, hivyo yapasa watendeane kindugu.
    	Swati	Bonkhe bantfu batalwa bakhululekile balingana ngalokufananako ngesitfunti nangemalungelo. Baphiwe ingcondvo nekucondza kanye nanembeza ngakoke bafanele batiphatse nekutsi baphatse nalabanye ngemoya webuzalwane.
 swe	Swedish	Alla människor äro födda fria och lika i värde och rättigheter. De äro utrustade med förnuft och samvete och böra handla gentemot varandra i en anda av broderskap.
-tgl-Latn	Tagalog	Ang lahat ng tao'y isinilang na malaya at pantay-pantay sa karangalan at mga karapatan. Sila'y pinagkalooban ng katwiran at budhi at dapat magpalagayan ang isa't isa sa diwa ng pagkakapatiran.
-tgl-????	Tagalog (Tagalog)	ᜀᜅ ᜎᜑᜆ᜔ ᜅ ᜆᜂᜌ᜔ ᜁᜐᜒᜈᜒᜎᜅ ᜈ ᜋᜎᜌ ᜀᜆ᜔ ᜉᜈ᜔ᜆᜌ᜔ ᜉᜈ᜔ᜆᜌ᜔ ᜐ ᜃᜇᜅᜎᜈ᜔ ᜀᜆ᜔ ᜋ᜔ᜄ ᜃᜇᜓᜉᜆᜈ᜔᜶ ᜐᜒᜎᜌ᜔ ᜉᜒᜈᜄ᜔ᜃᜎᜓᜊᜈ᜔ ᜅ ᜃᜆ᜔ᜏᜒᜇᜈ᜔ ᜀᜆ᜔ ᜊᜓᜇ᜔ᜑᜒ ᜀᜆ᜔ ᜇᜉᜆ᜔ ᜋᜄ᜔ᜉᜎᜄᜌᜈ᜔ ᜀᜅ ᜁᜐᜆ᜔ ᜁᜐ ᜐ ᜇᜒᜏ ᜅ ᜉᜄ᜔ᜃᜃᜉᜆᜒᜇᜈ᜔᜶
+tgl	Tagalog	Ang lahat ng tao'y isinilang na malaya at pantay-pantay sa karangalan at mga karapatan. Sila'y pinagkalooban ng katwiran at budhi at dapat magpalagayan ang isa't isa sa diwa ng pagkakapatiran.
    	Tahitian	E fanauhia te tā'āto'ara'a o te ta'ata-tupu ma te ti'amā e te ti'amanara'a 'aifaito. Ua 'ī te mana'o pa'ari e i te manava e ma te 'a'au taea'e 'oia ta ratou ha'a i rotopū ia ratou iho, e ti'a ai;
 tgk	Tajiki	Тамоми одамон озод ва аз лиҳози шарафу ҳуқуқ ба ҳам баробар ба дунё меоянд. Онҳо соҳиби ақлу виҷдонанд ва бояд бо якдигар муносибати бародарона дошта бошанд.
    	Talysh	Həmmə insonon bəştə ləyoğəti iyən həxonro ozod iyən bərobər movardə bedən. Çəvon şuur iyən vicdon hese, əve ki, deyəndı mınasibətədə bənə bıvə rəftor kardəninin.
