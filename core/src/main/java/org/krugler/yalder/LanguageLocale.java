@@ -110,6 +110,18 @@ public class LanguageLocale {
         return LOCALES.get(languageName);
     }
     
+    /**
+     * Return a language name (suitable for passing into the fromString method) from
+     * a language (2 or 3 character) and script (always four character, e.g. "Latn").
+     * 
+     * @param language
+     * @param script
+     * @return standard format for language name
+     */
+    public static String makeLanguageName(String language, String script) {
+        return String.format("%s-%s", language, script);
+    }
+    
     private LanguageLocale(String languageTag) {
         Locale locale = Locale.forLanguageTag(languageTag);
         
