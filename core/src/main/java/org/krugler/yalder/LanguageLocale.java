@@ -8,6 +8,10 @@ public class LanguageLocale {
 
     private static Map<String, LanguageLocale> LOCALES = new HashMap<String, LanguageLocale>();
     
+    // Java Locale support uses ISO 639-2 bibliographic codes, versus the terminological codes
+    // (which is what we use). So we have a table to normalize from bib to term, and we need
+    // a second table to get the names for terminological codes.
+    
     // From http://www.loc.gov/standards/iso639-2/php/English_list.php
     private static Map<String, String> BIB_TO_TERM_MAPPING = new HashMap<String, String>();
     
@@ -34,12 +38,53 @@ public class LanguageLocale {
         BIB_TO_TERM_MAPPING.put("fre", "fra");
     }
 
+    // Java Locale support uses 
+    private static Map<String, String> TERM_CODE_TO_NAME = new HashMap<String, String>();
+    static {
+        TERM_CODE_TO_NAME.put("sqi", "Albanian");
+        TERM_CODE_TO_NAME.put("hye", "Armenian");
+        TERM_CODE_TO_NAME.put("eus", "Basque");
+        TERM_CODE_TO_NAME.put("zho", "Chinese");
+        TERM_CODE_TO_NAME.put("ces", "Czech");
+        TERM_CODE_TO_NAME.put("nld", "Dutch");
+        TERM_CODE_TO_NAME.put("kat", "Georgian");
+        TERM_CODE_TO_NAME.put("deu", "German");
+        TERM_CODE_TO_NAME.put("ell", "Greek");
+        TERM_CODE_TO_NAME.put("isl", "Icelandic");
+        TERM_CODE_TO_NAME.put("mkd", "Macedonian");
+        TERM_CODE_TO_NAME.put("msa", "Malay");
+        TERM_CODE_TO_NAME.put("mri", "Maori");
+        TERM_CODE_TO_NAME.put("ron", "Romanian");
+        TERM_CODE_TO_NAME.put("fas", "Persian");
+        TERM_CODE_TO_NAME.put("slk", "Slovak");
+        TERM_CODE_TO_NAME.put("bod", "Tibetan");
+        TERM_CODE_TO_NAME.put("cym", "Welsh");
+        TERM_CODE_TO_NAME.put("fra", "French");
+    }
+    
     private static Map<String, String> IMPLICIT_SCRIPT = new HashMap<String, String>();
     static {
         // TODO add full set of these.
-        IMPLICIT_SCRIPT.put("zhoTW", "Hant");
-        IMPLICIT_SCRIPT.put("zhoCN", "Hans");
+        IMPLICIT_SCRIPT.put("aze", "Latn");
+        IMPLICIT_SCRIPT.put("bos", "Latn");
+        IMPLICIT_SCRIPT.put("uzb", "Latn");
+        IMPLICIT_SCRIPT.put("tuk", "Latn");
+        IMPLICIT_SCRIPT.put("msa", "Latn");
+        
+        IMPLICIT_SCRIPT.put("mon", "Cyrl");
+        IMPLICIT_SCRIPT.put("srp", "Cyrl");
+        
+        IMPLICIT_SCRIPT.put("pan", "Guru");
     }
+    
+    private static Map<String, String> IMPLICIT_COUNTRY_SCRIPT = new HashMap<String, String>();
+    static {
+        // TODO add full set of these.
+        IMPLICIT_COUNTRY_SCRIPT.put("zhoTW", "Hant");
+        IMPLICIT_COUNTRY_SCRIPT.put("zhoCN", "Hans");
+    }
+    
+    
     
     private static Map<String, String> SPECIFIC_TO_MACRO = new HashMap<String, String>();
     static {
@@ -93,15 +138,17 @@ public class LanguageLocale {
             if (!country.isEmpty()) {
                 // TODO look up language + country
                 String languagePlusCountry = _language + country;
-                if (IMPLICIT_SCRIPT.containsKey(languagePlusCountry)) {
-                    _script = IMPLICIT_SCRIPT.get(languagePlusCountry);
+                if (IMPLICIT_COUNTRY_SCRIPT.containsKey(languagePlusCountry)) {
+                    _script = IMPLICIT_COUNTRY_SCRIPT.get(languagePlusCountry);
                 }
             }
-        } else {
-        // TODO - if the script isn't empty, and it's the default script for the language,
-        // then remove it so we don't include it in comparisons.
         }
         
+        // If the script isn't empty, and it's the default script for the language,
+        // then remove it so we don't include it in comparisons.
+        if (!_script.isEmpty() && _script.equals(IMPLICIT_SCRIPT.get(_language))) {
+            _script = "";
+        }
     }
 
     // We add a special "weakly equal" method that's used to
@@ -160,8 +207,13 @@ public class LanguageLocale {
             languageTag = _language;
         }
         
-        Locale locale = Locale.forLanguageTag(languageTag);
-        return String.format("%s (%s)", languageTag, locale.getDisplayLanguage());
+        String displayLanguage = Locale.forLanguageTag(languageTag).getDisplayLanguage();
+        if (TERM_CODE_TO_NAME.containsKey(_language)) {
+            // It's a terminological code, so we have to provide the name ourselves.
+            displayLanguage = TERM_CODE_TO_NAME.get(_language);
+        }
+        
+        return String.format("%s (%s)", languageTag, displayLanguage);
     }
 
     @Override
