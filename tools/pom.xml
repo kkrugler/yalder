@@ -45,13 +45,13 @@
 		<dependency>
 		    <groupId>org.slf4j</groupId>
 		    <artifactId>slf4j-api</artifactId>
-            <version>1.7.2</version>
+            <version>1.7.7</version>
 		</dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.2</version>
+            <version>1.7.7</version>
         </dependency>
 
         <dependency>
@@ -67,6 +67,13 @@
         </dependency>
         
         <dependency>
+            <groupId>com.github.crawler-commons</groupId>
+            <artifactId>crawler-commons</artifactId>
+            <version>0.6</version>
+        </dependency>
+
+        <!-- TODO remove this
+        <dependency>
             <groupId>bixo</groupId>
             <artifactId>bixo-core</artifactId>
             <version>0.9.2</version>
@@ -77,6 +84,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        -->
         
         <!-- Provided -->
         
