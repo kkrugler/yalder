@@ -65,5 +65,8 @@ public class LanguageLocaleTest {
         LanguageLocale withRegion = LanguageLocale.fromString("zh-TW");
         LanguageLocale withScript = LanguageLocale.fromString("zh-Hant");
         assertEquals(withRegion, withScript);
+        
+        withScript = LanguageLocale.fromString("zho-Hant");
+        assertEquals(withRegion, withScript);
     }
 }
