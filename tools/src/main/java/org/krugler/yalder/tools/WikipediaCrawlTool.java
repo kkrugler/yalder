@@ -39,10 +39,10 @@ import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 import org.krugler.yalder.LanguageLocale;
 
-import bixo.config.UserAgent;
-import bixo.exceptions.BaseFetchException;
-import bixo.fetcher.FetchedResult;
-import bixo.fetcher.SimpleHttpFetcher;
+import crawlercommons.fetcher.BaseFetchException;
+import crawlercommons.fetcher.FetchedResult;
+import crawlercommons.fetcher.http.SimpleHttpFetcher;
+import crawlercommons.fetcher.http.UserAgent;
 
 public class WikipediaCrawlTool {
     public static final Logger LOGGER = Logger.getLogger(WikipediaCrawlTool.class);
@@ -80,19 +80,34 @@ public class WikipediaCrawlTool {
         System.out.println("quit - quit");
     }
     
-    private Document loadDocument(String docName) throws IOException, DocumentException, BaseFetchException {
-        if (docName == null) {
-            docName = readInputLine("Enter HTML document file path or URL: ");
-        }
+    private void loadDocument() throws IOException, DocumentException, BaseFetchException {
+        String docName = readInputLine("Enter HTML document file path or URL: ");
         
         if (docName.length() == 0) {
-            return null;
+            return;
         }
         
+        String acceptLanguage = null;
+        if (docName.startsWith("http://") || docName.startsWith("https://")) {
+            acceptLanguage = readInputLine("Enter \"Accept-Language\" for request: ");
+            if (acceptLanguage.isEmpty()) {
+                acceptLanguage = null;
+            }
+        }
+        
+        Document doc = loadAndParseHTML(docName, acceptLanguage);
+        setCurPage(doc);
+    }        
+
+    private Document loadAndParseHTML(String docName) throws IOException, DocumentException, BaseFetchException {
+        return loadAndParseHTML(docName, null);
+    }
+    
+    private Document loadAndParseHTML(String docName, String acceptLanguage) throws IOException, DocumentException, BaseFetchException {
         InputStream is;
         
         if (docName.startsWith("http://") || docName.startsWith("https://")) {
-            FetchedResult result = fetchPage(docName);
+            FetchedResult result = fetchPage(docName, acceptLanguage);
             is = new ByteArrayInputStream(result.getContent());
         } else {
             is = new FileInputStream(docName);
@@ -102,7 +117,7 @@ public class WikipediaCrawlTool {
         return parser.parse(is);
     }
     
-    private FetchedResult fetchPage(String pageURL) throws IOException, DocumentException, BaseFetchException {
+    private FetchedResult fetchPage(String pageURL, String acceptLanguage) throws IOException, DocumentException, BaseFetchException {
         URL url = new URL(pageURL);
         String domain = url.getHost();
         Long lastFetchTime = _lastFetchTime.get(domain);
@@ -118,6 +133,10 @@ public class WikipediaCrawlTool {
             } catch (InterruptedException e) {
                 // Ignore interrupted exception.
             }
+        }
+        
+        if (acceptLanguage != null) {
+            _fetcher.setAcceptLanguage(acceptLanguage);
         }
         
         FetchedResult result = _fetcher.fetch(pageURL);
@@ -333,34 +352,42 @@ public class WikipediaCrawlTool {
         for (String langCode : langCodes.split(",")) {
             langCode = langCode.trim();
             
-            // Figure out the Wikipedia language. First do a bogus call to load up
-            // the data.
+            // Figure out the Wikipedia language.
             String wikiLang = mapISOLangToWikiLang(langCode);
             if (wikiLang == null) {
                 System.err.println("Unknown ISO 639-2 lang code: " + langCode);
-                return;
+                continue;
             }
             
-            int totalPages = 0;
-            int numCharsExtracted = 0;
-            while ((numCharsExtracted < targetChars) && (totalPages < 100)) {
-                // Get another random page.
-                String pageURL = String.format("https://%s.wikipedia.org/wiki/Special:Random", wikiLang);
-                Document subPage = loadDocument(pageURL);
-                String topic = extractTopicName(subPage);
-                topic = URLDecoder.decode(topic, "UTF-8");
-                
-                int numChars = saveWikipediaPage(subPage, parentFolder, topic, langCode, false);
-                if (numChars > 0) {
-                    LOGGER.debug(String.format("Fetched topic '%s' with %d chars for language '%s'", topic, numChars, langCode));
-                    numCharsExtracted += numChars;
-                }
-                
-                totalPages += 1;
+            if (langCode.equals("zho")) {
+                loadWikipediaPages(parentFolder, langCode + "-Hant", wikiLang, "zh-Hant", targetChars);
+                loadWikipediaPages(parentFolder, langCode + "-Hans", wikiLang, "zh-Hans", targetChars);
+            } else {
+                loadWikipediaPages(parentFolder, langCode, wikiLang, null, targetChars);
             }
         }
     }
     
+    private void loadWikipediaPages(File parentFolder, String langCode, String wikiLang, String acceptLanguage, int targetChars) throws IOException, DocumentException, BaseFetchException {
+        int totalPages = 0;
+        int numCharsExtracted = 0;
+        while ((numCharsExtracted < targetChars) && (totalPages < 100)) {
+            // Get another random page.
+            String pageURL = String.format("https://%s.wikipedia.org/wiki/Special:Random", wikiLang);
+            Document subPage = loadAndParseHTML(pageURL, acceptLanguage);
+            String topic = extractTopicName(subPage);
+            topic = URLDecoder.decode(topic, "UTF-8");
+            
+            int numChars = saveWikipediaPage(subPage, parentFolder, topic, langCode, false);
+            if (numChars > 0) {
+                LOGGER.debug(String.format("Fetched topic '%s' with %d chars for language '%s'", topic, numChars, langCode));
+                numCharsExtracted += numChars;
+            }
+            
+            totalPages += 1;
+        }
+    }
+
     /**
      * Try to extract the topic name from this page, by first finding the English URL. If we
      * can't find that, then extract the head/title node, split that on " - ", and take the
@@ -404,6 +431,12 @@ public class WikipediaCrawlTool {
         
         Map<String, Integer> charsPerLanguage = new HashMap<>();
         Set<String> completedLanguages = new HashSet<>();
+        
+        String languageCodes = readInputLine("Enter comma-separated list of languages (3-char codes), or nothing for all that we find: ");
+        Set<String> targetLanguages = new HashSet<>();
+        for (String languageCode : languageCodes.split(",")) {
+            targetLanguages.add(languageCode.trim());
+        }
         
         List<String> qCodes = new ArrayList<String>();
         if (qCodeOrCount.startsWith("Q")) {
@@ -450,7 +483,7 @@ public class WikipediaCrawlTool {
         // for a language (all that we've seen so far are complete).
         for (String qCode : qCodes) {
             // Fetch the QCode page
-            Document page = loadDocument("https://www.wikidata.org/wiki/" + qCode);
+            Document page = loadAndParseHTML("https://www.wikidata.org/wiki/" + qCode);
             List<Node> nodes = selectNodes(page, "//span[@class=\"wikibase-title-label\"]");
             if (nodes.size() != 1) {
                 throw new IllegalArgumentException(String.format("Wikidata page %s doesn't have a title label", qCode));
@@ -469,28 +502,21 @@ public class WikipediaCrawlTool {
                     continue;
                 }
                 
-                String language = mapWikipediaLanguage(m.group(1));
-                if (language == null) {
-                    LOGGER.warn("Unknown Wikipedia language: " + m.group(1));
-                } else if (language.equals("xxx")) {
-                    // Ignore, not a language we want to process.
-                } else if (completedLanguages.contains(language)) {
-                    // Ignore, we have enough text from this language.
-                } else {
-                    Document subPage = loadDocument(pageURL);
-                    int numChars = saveWikipediaPage(subPage, parentFolder, topic, language, true);
-                    
-                    // When tracking chars per language, limit # we get out of each page so we
-                    // don't hit our target (e.g. 100K) with a single page.
-                    numChars = Math.min(numChars, maxCharsPerPage);
-                    Integer curChars = charsPerLanguage.get(language);
-                    if (curChars == null) {
-                        curChars = numChars;
-                    } else {
-                        curChars += numChars;
+                String urlLanguage = m.group(1);
+                if (!targetLanguages.isEmpty() && !targetLanguages.contains(urlLanguage)) {
+                    // Skip a language we don't want to get.
+                    continue;
+                }
+                
+                String[] languages = makeLanguageListFromWikipediaLanguage(urlLanguage);
+                for (String language : languages) {
+                    if (completedLanguages.contains(language)) {
+                        // Ignore, we have enough text from this language.
+                        continue;
                     }
-                    
-                    charsPerLanguage.put(language, curChars);
+
+                    int numChars = loadAndSaveWikipediaPage(parentFolder, pageURL, maxCharsPerPage, topic, language, makeAcceptLanguageFromLanguage(language), true);
+                    int curChars = incrementCount(charsPerLanguage, language, numChars);
                     if (curChars >= targetCharsPerLanguage) {
                         completedLanguages.add(language);
                     }
@@ -504,6 +530,64 @@ public class WikipediaCrawlTool {
         }
     }
     
+    /**
+     * The only languages we currently care about are Chinese (Traditional & Simplified).
+     * Wikipedia needs the Accept-Language value to be an ISO two character name, so do
+     * an explicit mapping here.
+     * 
+     * FUTURE - extract the language code portion, and try to map from ISO 639-2 (3 char) to
+     * ISO-639-1 (2 char)...if the mapping exists, update it and return that result.
+     * 
+     * @param language Language name (using ISO 639-2 codes)
+     * @return language name (using ISO 639-1 codes)
+     */
+    private String makeAcceptLanguageFromLanguage(String language) {
+        if (language.equals("zho-Hant")) {
+            return "zh-Hant";
+        } else if (language.equals("zho-Hans")) {
+            return "zh-Hans";
+        } else {
+            return language;
+        }
+    }
+
+    private String[] makeLanguageListFromWikipediaLanguage(String wikipediaLanguage) {
+        String language = mapWikipediaLanguage(wikipediaLanguage);
+        if (language == null) {
+            LOGGER.warn("Unknown Wikipedia language: " + wikipediaLanguage);
+            return new String[0];
+        } else if (language.equals("xxx")) {
+            // Ignore, not a language we want to process.
+            return new String[0];
+        } else if (language.equals("zho")) {
+            // TODO use LanguageLocale.makeLanguageName
+            return new String[] {"zho-Hant", "zho-Hans"};
+        } else {
+            return new String[] {language};
+        }
+    }
+
+    private int incrementCount(Map<String, Integer> keyToCountMap, String key, int amount) {
+        Integer curCount = keyToCountMap.get(key);
+        if (curCount == null) {
+            curCount = amount;
+        } else {
+            curCount += amount;
+        }
+        
+        keyToCountMap.put(key, curCount);
+        return curCount;
+    }
+
+    private int loadAndSaveWikipediaPage(File parentFolder, String pageURL, int maxCharsPerPage, String topic, String language, String acceptLanguage, boolean overwrite) throws IOException, DocumentException, BaseFetchException {
+        Document subPage = loadAndParseHTML(pageURL, acceptLanguage);
+        int numChars = saveWikipediaPage(subPage, parentFolder, topic, language, overwrite);
+        
+        // When tracking chars per language, limit # we get out of each page so we
+        // don't hit our target (e.g. 100K) with a single page.
+        return Math.min(numChars, maxCharsPerPage);
+    }
+
     private List<String> readImportantQCodes() {
         List<String> result = new ArrayList<>();
         try (InputStream is = WikipediaCrawlTool.class.getResourceAsStream("/wikipedia-key-articles.txt")) {
@@ -719,10 +803,7 @@ public class WikipediaCrawlTool {
                 if (cmdName.equalsIgnoreCase("help")) {
                     tool.displayHelp();
                 } else if (cmdName.equalsIgnoreCase("load")) {
-                    Document newDoc = tool.loadDocument(null);
-                    if (newDoc != null) {
-                        tool.setCurPage(newDoc);
-                    }
+                    tool.loadDocument();
                 } else if (cmdName.equalsIgnoreCase("dump")) {
                     tool.doDump();
                 } else if (cmdName.equalsIgnoreCase("clean")) {
