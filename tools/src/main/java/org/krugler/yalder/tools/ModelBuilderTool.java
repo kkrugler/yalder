@@ -243,7 +243,9 @@ public class ModelBuilderTool {
             String text = pieces[1];
             
             totalCount += 1;
-            Collection<DetectionResult> results = detector.detect(text);
+            detector.reset();
+            detector.addText(text);
+            Collection<DetectionResult> results = detector.detect();
             if (results.isEmpty()) {
                 errorCount += 1;
             } else {
@@ -299,7 +301,9 @@ public class ModelBuilderTool {
                 }
             } else {
                 StringBuilder details = new StringBuilder();
-                Collection<DetectionResult> results = detector.detect(text, details, detailLanguages);
+                detector.reset();
+                detector.addText(text.toCharArray(), 0, text.length(), details, detailLanguages);
+                Collection<DetectionResult> results = detector.detect();
                 System.out.println(String.format("Detection details:\n%s", details));
                 System.out.println(String.format("Alpha = %f, dampening = %f", detector.getAlpha(), detector.getDampening()));
                 if (results.isEmpty()) {
@@ -374,7 +378,9 @@ public class ModelBuilderTool {
             String text = pieces[1];
             
             boolean correct = false;
-            Collection<DetectionResult> results = detector.detect(text);
+            detector.reset();
+            detector.addText(text);
+            Collection<DetectionResult> results = detector.detect();
             if (results.isEmpty()) {
                 System.out.println(String.format("'%s' detected as '<unknown>': %s", language, text));
             } else {

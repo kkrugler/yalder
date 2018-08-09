@@ -3,8 +3,6 @@ package org.krugler.yalder;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.krugler.yalder.text.TextLanguageModel;
-
 public abstract class BaseLanguageDetector {
 
     public static final double DEFAULT_ALPHA = 0.000002;
@@ -90,5 +88,18 @@ public abstract class BaseLanguageDetector {
         throw new IllegalArgumentException("Unknown language: " + language);
     }
 
-    public abstract Collection<DetectionResult> detect(String text);
+    public abstract void reset();
+    
+    public abstract void addText(char[] text, int offset, int length);
+    
+    public void addText(String text) {
+        addText(text.toCharArray(), 0, text.length());
+    }
+    
+    public abstract Collection<DetectionResult> detect();
+    
+    public boolean hasEnoughText() {
+        return false;
+    }
+    
 }

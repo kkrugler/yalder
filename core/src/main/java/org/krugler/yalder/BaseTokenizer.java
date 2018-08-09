@@ -15,7 +15,7 @@ public abstract class BaseTokenizer {
             } else if (Character.isWhitespace(ch)) {
                 CHARMAP[i] = ' ';
             } else {
-                // TODO allow models to provide their own re-mapping data, and move Japanese/Korean support there
+                // FUTURE allow models to provide their own re-mapping data, and move Japanese/Korean support there
                 Character.UnicodeBlock block = Character.UnicodeBlock.of(ch);
                 if ((block == Character.UnicodeBlock.KATAKANA)
                  || (block == Character.UnicodeBlock.KATAKANA_PHONETIC_EXTENSIONS)) {
@@ -29,7 +29,7 @@ public abstract class BaseTokenizer {
                         || (block == Character.UnicodeBlock.HANGUL_SYLLABLES)) {
                     CHARMAP[i] = '\uAC00';
                 } else {
-                    // TODO what about math, dingbats, etc? Is there a general way to detect
+                    // FUTURE what about math, dingbats, etc? Is there a general way to detect
                     // those and map to space?
                     CHARMAP[i] = Character.toLowerCase(ch);
                 }
@@ -65,7 +65,8 @@ public abstract class BaseTokenizer {
         CHARMAP['\u2022'] = ' ';    // Bullet
     }
     
-    private final CharSequence _buffer;
+    private final char[] _buffer;
+    private int _bufferLen; // Length of buffer in characters.
     private int _bufferPos; // Position we're at in _buffer for getting raw
                             // (unnormalized) chars.
 
@@ -77,13 +78,18 @@ public abstract class BaseTokenizer {
 
     protected int _curNGramLength;
 
-    public BaseTokenizer(CharSequence buffer, int maxNGramLength) {
+    public BaseTokenizer(String text, int maxNGramLength) {
+        this(text.toCharArray(), 0, text.length(), maxNGramLength);
+    }
+    
+    public BaseTokenizer(char[] buffer, int offset, int length, int maxNGramLength) {
         _buffer = buffer;
+        _bufferLen = length;
         _maxNGramLength = maxNGramLength;
 
-        _bufferPos = 0;
+        _bufferPos = offset;
 
-        // TODO start with a space in the buffer?
+        // Start with a space in the buffer
         _normalized = new char[1000];
         _normalized[0] = ' ';
         _normalizedLength = 1;
@@ -93,10 +99,10 @@ public abstract class BaseTokenizer {
     }
 
     protected void fillNormalized() {
-        while ((_bufferPos <= _buffer.length()) && (_normalizedLength < _curNGramLength)) {
+        while ((_bufferPos <= _bufferLen) && (_normalizedLength < _curNGramLength)) {
             char curChar;
-            if (_bufferPos < _buffer.length()) {
-                curChar = CHARMAP[_buffer.charAt(_bufferPos++)];
+            if (_bufferPos < _bufferLen) {
+                curChar = CHARMAP[_buffer[_bufferPos++]];
             } else {
                 curChar = ' ';
                 _bufferPos += 1;

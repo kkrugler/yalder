@@ -14,7 +14,6 @@ public abstract class BaseLanguageModel {
     protected int _maxNGramLength;
     
     public BaseLanguageModel() {
-        
     }
     
     public BaseLanguageModel(LanguageLocale modelLanguage, int maxNGramLength) {

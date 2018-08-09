@@ -6,8 +6,12 @@ import org.krugler.yalder.BaseTokenizer;
 
 public class TextTokenizer extends BaseTokenizer {
 
-    public TextTokenizer(CharSequence buffer, int max) {
-        super(buffer, max);
+    public TextTokenizer(String text, int maxNGramLength) {
+        super(text, maxNGramLength);
+    }
+
+    public TextTokenizer(char[] buffer, int offset, int length, int maxNGramLength) {
+        super(buffer, offset, length, maxNGramLength);
     }
 
     // Return the next ngram.
