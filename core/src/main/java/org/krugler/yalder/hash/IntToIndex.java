@@ -31,8 +31,17 @@ public class IntToIndex {
     
     // Put the key.
     public void add(int key) {
-        if (!_map.containsKey(key)) {
-            _map.put(key, _map.size());
+        _map.put(key, -1);
+    }
+    
+    public void remove(int key) {
+        _map.remove(key);
+    }
+    
+    public void setIndexes() {
+        int index = 0;
+        for (int key : _map.keySet()) {
+            _map.put(key, index++);
         }
     }
     

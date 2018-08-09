@@ -1,7 +1,6 @@
 package org.krugler.yalder.hash;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.io.DataInputStream;
 import java.io.File;
@@ -21,6 +20,7 @@ import java.util.Random;
 import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.krugler.yalder.BaseLanguageModel;
 import org.krugler.yalder.DetectionResult;
@@ -66,7 +66,10 @@ public class LanguageDetectorTest {
         HashLanguageDetector detector = new HashLanguageDetector(builder.makeModels());
         
         for (String languageTag : knownText.keySet()) {
-            Collection<DetectionResult> results = detector.detect(knownText.get(languageTag));
+            detector.reset();
+            detector.addText(knownText.get(languageTag));
+            
+            Collection<DetectionResult> results = detector.detect();
             LanguageLocale targetLanguage = LanguageLocale.fromString(languageTag);
             assertTrue("No results for language " + targetLanguage, results.size() > 0);
             DetectionResult result = results.iterator().next();
@@ -76,7 +79,10 @@ public class LanguageDetectorTest {
         
         // TODO verify that we have low confidence in whatever results we get back here.
         for (String languageTag : unknownText.keySet()) {
-            Collection<DetectionResult> results = detector.detect(unknownText.get(languageTag));
+            detector.reset();
+            detector.addText(unknownText.get(languageTag));
+
+            Collection<DetectionResult> results = detector.detect();
             LanguageLocale targetLanguage = LanguageLocale.fromString(languageTag);
             for (DetectionResult result : results) {
                 LOGGER.info(String.format("'%s': %s", targetLanguage, result.toString()));                
@@ -116,7 +122,9 @@ public class LanguageDetectorTest {
                 continue;
             }
             
-            Collection<DetectionResult> result = detector.detect(text);
+            detector.reset();
+            detector.addText(text);
+            Collection<DetectionResult> result = detector.detect();
             if (result.isEmpty()) {
                 System.out.println(String.format("Detected '%s' as nothing", language));
             } else {
@@ -242,7 +250,9 @@ public class LanguageDetectorTest {
                 missesPerLanguage.put(language, missCounter);
             }
             
-            List<DetectionResult> sortedResults = new ArrayList<DetectionResult>(detector.detect(text));
+            detector.reset();
+            detector.addText(text);
+            List<DetectionResult> sortedResults = new ArrayList<DetectionResult>(detector.detect());
             DetectionResult bestResult = sortedResults.isEmpty() ? new DetectionResult(LanguageLocale.fromString("zxx"), 0.0) : sortedResults.get(0);
             LanguageLocale bestLanguage = bestResult.getLanguage();
             if (bestLanguage.equals(language)) {
@@ -302,6 +312,23 @@ public class LanguageDetectorTest {
         return missRatio;
     }
 
+    @Ignore
+    @Test
+    public void testShortJapanese() throws Exception {
+        File modelDir = new File("src/main/resources/org/krugler/yalder/models/");
+        Collection<BaseLanguageModel> models = ModelLoader.loadModelsFromDirectory(modelDir, true);
+        HashLanguageDetector detector = new HashLanguageDetector(models);
+        detector.reset();
+        detector.addText("私はガラスを食べられます。それは私を傷つけません。");
+        Collection<DetectionResult> results = detector.detect();
+        
+        assertTrue(results.size() > 0);
+        
+        DetectionResult topResult = results.iterator().next();
+        assertEquals("jpn", topResult.getLanguage().getISO3LetterName());
+        assertTrue(topResult.getScore() > 0.8);
+    }
+    
     @Test
     public void testPerformance() throws Exception {
         Collection<BaseLanguageModel> models = loadModels(OtherDetectorsTest.TARGET_LANGUAGES_FOR_YALDER);
@@ -320,7 +347,10 @@ public class LanguageDetectorTest {
                 String[] pieces = line.split("\t", 2);
                 LanguageLocale ll = LanguageLocale.fromString(pieces[0]);
                 String text = pieces[1];
-                Collection<DetectionResult> result = detector.detect(text);
+                
+                detector.reset();
+                detector.addText(text);
+                Collection<DetectionResult> result = detector.detect();
                 if (result.size() > 0 && result.iterator().next().getLanguage().weaklyEqual(ll)) {
                     numHits += 1;
                 } else {

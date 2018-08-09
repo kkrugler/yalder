@@ -5,8 +5,12 @@ import org.krugler.yalder.CharUtils;
 
 public class HashTokenizer extends BaseTokenizer {
 
-    public HashTokenizer(CharSequence buffer, int maxLength) {
-        super(buffer, maxLength);
+    public HashTokenizer(String buffer, int maxNGramLength) {
+        super(buffer, maxNGramLength);
+    }
+
+    public HashTokenizer(char[] buffer, int offset, int length, int maxNGramLength) {
+        super(buffer, offset, length, maxNGramLength);
     }
 
     // Return the next hashed ngram.
@@ -21,5 +25,4 @@ public class HashTokenizer extends BaseTokenizer {
 
         return hash;
     }
-
 }

@@ -237,6 +237,15 @@ Copyright (c) 2015 Ken Krugler
 	</target>
 
 	<!-- ================================================================== -->
+	<!-- Install in local Maven repository									-->
+	<!-- ================================================================== -->
+
+	<target name="install"
+			depends="clean, test, tools-jar, mvn-install"
+			description="--> install SNAPSHOT tools jar to local repository">
+	</target>
+	
+	<!-- ================================================================== -->
 	<!-- Generating eclipse file                                            -->
 	<!-- ================================================================== -->
 

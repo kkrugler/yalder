@@ -1,5 +1,5 @@
 <!--
-Copyright (c) 2015 Ken Krugler
+Copyright (c) 2015-2018 Ken Krugler
 -->
 
 <project name="yalder" default="install">
@@ -12,7 +12,7 @@ Copyright (c) 2015 Ken Krugler
 	<!-- ================================================================== -->
 
 	<target name="eclipse" 
-	        depends="eclipse-core, eclipse-tools"
+	        depends="eclipse-core, eclipse-tools, eclipse-tika"
 	        description="--> build clean Eclipse project files">
 		<echo>Building clean Eclipse project files</echo>
 	</target>
@@ -26,9 +26,16 @@ Copyright (c) 2015 Ken Krugler
 	</target>
 
 	<target name="eclipse-tools"
-	        description="--> eclipse language">
+	        description="--> eclipse tools">
 		<subant target="eclipse">
 			<fileset dir="./tools" includes="build.xml"/>
+        </subant>
+	</target>
+
+	<target name="eclipse-tika"
+	        description="--> eclipse tika">
+		<subant target="eclipse">
+			<fileset dir="./tika" includes="build.xml"/>
         </subant>
 	</target>
 
@@ -37,7 +44,7 @@ Copyright (c) 2015 Ken Krugler
 	<!-- ================================================================== -->
 
 	<target name="clean" 
-	        depends="clean-core, clean-tools"
+	        depends="clean-core, clean-tools, clean-tika"
 	        description="--> clean the project">
 		<echo>Cleaning ${ant.project.name}</echo>		
 	</target>
@@ -51,9 +58,16 @@ Copyright (c) 2015 Ken Krugler
 	</target>
 
 	<target name="clean-tools"
-	        description="--> clean language">
+	        description="--> clean tools">
 		<subant target="clean">
 			<fileset dir="./tools" includes="build.xml"/>
+        </subant>
+	</target>
+
+	<target name="clean-tika"
+	        description="--> clean tika">
+		<subant target="clean">
+			<fileset dir="./tika" includes="build.xml"/>
         </subant>
 	</target>
 
@@ -63,7 +77,7 @@ Copyright (c) 2015 Ken Krugler
 	<!-- ================================================================== -->
 
 	<target name="install"
-	        depends="install-core, install-tools"
+	        depends="install-core, install-tools, install-tika"
 	        description="--> install the project's Maven artifacts">
 		<echo>Installing ${ant.project.name} Maven artifacts</echo>
 	</target>
@@ -77,9 +91,16 @@ Copyright (c) 2015 Ken Krugler
 	</target>
 
 	<target name="install-tools"
-	        description="--> install language">
+	        description="--> install tools">
 		<subant target="install">
 			<fileset dir="./tools" includes="build.xml"/>
+        </subant>
+	</target>
+
+	<target name="install-tika"
+	        description="--> install tika">
+		<subant target="install">
+			<fileset dir="./tika" includes="build.xml"/>
         </subant>
 	</target>
 

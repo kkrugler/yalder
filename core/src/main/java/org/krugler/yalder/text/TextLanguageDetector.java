@@ -25,6 +25,10 @@ public class TextLanguageDetector extends BaseLanguageDetector {
     private Map<String, Map<LanguageLocale, Double>> _ngramProbabilities;
     private Map<LanguageLocale, Double> _langProbabilities;
     
+    // Dynamic values during detection of one document.
+    private int _numKnownNGrams;
+    private int _numUnknownNGrams;
+    
     public TextLanguageDetector(Collection<BaseLanguageModel> models) {
         this(models, getMaxNGramLengthFromModels(models));
     }
@@ -83,23 +87,24 @@ public class TextLanguageDetector extends BaseLanguageDetector {
         }
     }
     
-    public Collection<DetectionResult> detect(String text) {
-        return detect(text, null);
-    }
-    
-    public Collection<DetectionResult> detect(String text, StringBuilder details) {
-        return detect(text, details, null);
-    }
-    
-    public Collection<DetectionResult> detect(String text, StringBuilder details, Set<String> detailLanguages) {
+    @Override
+    public void reset() {
         double startingProb = 1.0 / _langProbabilities.size();
         for (LanguageLocale language : _langProbabilities.keySet()) {
             _langProbabilities.put(language,  startingProb);
         }
         
-        int numKnownNGrams = 0;
-        int numUnknownNGrams = 0;
-        TextTokenizer tokenizer = new TextTokenizer(text, _maxNGramLength);
+        _numKnownNGrams = 0;
+        _numUnknownNGrams = 0;
+    }
+
+    @Override
+    public void addText(char[] text, int offset, int length) {
+        addText(text, offset, length, null, null);
+    }
+    
+    public void addText(char[] text, int offset, int length, StringBuilder details, Set<String> detailLanguages) {
+        TextTokenizer tokenizer = new TextTokenizer(text, offset, length, _maxNGramLength);
         while (tokenizer.hasNext()) {
             String ngram = tokenizer.next();
             
@@ -107,7 +112,7 @@ public class TextLanguageDetector extends BaseLanguageDetector {
             if (probs == null) {
                 // FUTURE track how many unknown ngrams we get, and use that
                 // to adjust probabilities.
-                numUnknownNGrams += 1;
+                _numUnknownNGrams += 1;
 //                
 //                if (provideDetails) {
 //                    details.append(String.format("'%s': not found\n", ngram));
@@ -116,7 +121,7 @@ public class TextLanguageDetector extends BaseLanguageDetector {
                 continue;
             }
             
-            numKnownNGrams += 1;
+            _numKnownNGrams += 1;
             if (details != null) {
                 details.append(String.format("ngram '%s' probs:", ngram));
                 details.append(detailLanguages == null ? '\n' : ' ');
@@ -145,7 +150,7 @@ public class TextLanguageDetector extends BaseLanguageDetector {
                 details.append('\n');
             }
 
-            if ((details != null) || (numKnownNGrams % 10) == 0) {
+            if ((details != null) || (_numKnownNGrams % 10) == 0) {
                 normalizeLangProbabilities();
             }
             
@@ -155,6 +160,10 @@ public class TextLanguageDetector extends BaseLanguageDetector {
                 details.append('\n');
             }
         }
+    }
+
+    @Override
+    public Collection<DetectionResult> detect() {
         
         normalizeLangProbabilities();
 
@@ -223,6 +232,7 @@ public class TextLanguageDetector extends BaseLanguageDetector {
             _langProbabilities.put(language, curProb);
         }
     }
+
 
 
 }
