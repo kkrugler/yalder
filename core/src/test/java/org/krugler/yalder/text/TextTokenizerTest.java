@@ -48,6 +48,19 @@ public class TextTokenizerTest {
     }
     
     @Test
+    public void testReturnNormalization() throws Exception {
+        TextTokenizer tokenizer = new TextTokenizer("\r\t\n", 1);
+        
+        assertTrue(tokenizer.hasNext());
+        assertEquals(" ", tokenizer.next());
+        assertFalse(tokenizer.hasNext());
+        
+        // Make sure nothing changes after we are complete.
+        tokenizer.complete();
+        assertFalse(tokenizer.hasNext());
+    }
+    
+    @Test
     public void testNormalizedBufferReset() throws Exception {
         int numChars = 2000;
         StringBuilder sb = new StringBuilder();
