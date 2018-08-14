@@ -3,6 +3,9 @@ package org.krugler.yalder;
 
 public abstract class BaseTokenizer {
     
+    private static final int STARTING_BUFFER_SIZE = 1024;
+    private static final int NEW_BUFFER_SLOP = 128;
+
     private static final char[] CHARMAP = new char[65536];
 
     static {
@@ -65,54 +68,101 @@ public abstract class BaseTokenizer {
         CHARMAP['\u2022'] = ' ';    // Bullet
     }
     
-    private final char[] _buffer;
-    private int _bufferLen; // Length of buffer in characters.
+    private char[] _buffer;
+    private int _bufferLen; // Number of remaining chars in buffer.
     private int _bufferPos; // Position we're at in _buffer for getting raw
                             // (unnormalized) chars.
-
+    private boolean _completed;
+    
     protected int _maxNGramLength;
 
     protected char[] _normalized;   // Normalized results.
     protected int _normalizedPos;   // Start of current ngram in _normalized buffer.
     protected int _normalizedLength; // Length of _normalized data.
-
+    private boolean _normalizedSpace;   // True if last normalized char was a space.
+    
     protected int _curNGramLength;
 
-    public BaseTokenizer(String text, int maxNGramLength) {
-        this(text.toCharArray(), 0, text.length(), maxNGramLength);
+    public BaseTokenizer(int maxNGramLength) {
+        _maxNGramLength = maxNGramLength;
+        _buffer = new char[STARTING_BUFFER_SIZE];
+        
+        reset();
+    }
+
+    public void reset() {
+        _bufferLen = 0;
+        _bufferPos = 0; 
+        
+       _normalized = new char[1000];
+        _normalizedLength = 0;
+        _normalizedPos = 0;
+        _normalizedSpace = false;
+        
+        _curNGramLength = 1;
+        _completed = false;
+        
+        // Start with a space in the buffer
+        addText(new char[]{' '}, 0, 1);
     }
     
-    public BaseTokenizer(char[] buffer, int offset, int length, int maxNGramLength) {
-        _buffer = buffer;
-        _bufferLen = length;
-        _maxNGramLength = maxNGramLength;
-
-        _bufferPos = offset;
-
-        // Start with a space in the buffer
-        _normalized = new char[1000];
-        _normalized[0] = ' ';
-        _normalizedLength = 1;
-        _normalizedPos = 0;
-
-        _curNGramLength = 1;
+    public void addText(String text) {
+        addText(text.toCharArray(), 0, text.length());
     }
+    
+    public void addText(char[] buffer, int offset, int length) {
+        if (_completed) {
+            throw new IllegalStateException("Can't call addText() after calling complete() without a reset()");
+        }
 
-    protected void fillNormalized() {
-        while ((_bufferPos <= _bufferLen) && (_normalizedLength < _curNGramLength)) {
-            char curChar;
-            if (_bufferPos < _bufferLen) {
-                curChar = CHARMAP[_buffer[_bufferPos++]];
-            } else {
-                curChar = ' ';
-                _bufferPos += 1;
+        if (_bufferLen + length > _buffer.length) {
+            char[] newBuffer = new char[_bufferLen + length + NEW_BUFFER_SLOP];
+            System.arraycopy(_buffer, _bufferPos, newBuffer, 0, _bufferLen);
+            _buffer = newBuffer;
+            _bufferPos = 0;
+        } else {
+            // It will fit without reallocation, now see if we have to shift things down.
+            if (_bufferPos + _bufferLen + length > _buffer.length) {
+                System.arraycopy(_buffer, _bufferPos, _buffer, 0, _bufferLen);
+                _bufferPos = 0;
             }
+        }
+
+        // Add the new characters to the end.
+        System.arraycopy(buffer, offset, _buffer, _bufferPos + _bufferLen, length);
+        _bufferLen += length;
+    }
+    
+    /**
+     * Flag that we're ready to process all of the text in the buffer (no more
+     * addText calls will be made).
+     */
+    public void complete() {
+        if (!_completed) {
+            addText(new char[]{' '}, 0, 1);
+            _completed = true;
+        }
+    }
+    
+    /**
+     * Add normalized characters from _buffer to _normalized, until we have enough for
+     * the current ngram we're trying to return, or we run out of (usable) characters
+     * in the buffer.
+     */
+    protected void addNormalized() {
+        while ((_bufferLen > 0) && (_normalizedLength < _curNGramLength)) {
+            char curChar = CHARMAP[_buffer[_bufferPos++]];
+            _bufferLen--;
             
             // If we have two spaces in a row, skip this character.
-            if ((curChar == ' ')
-             && (_normalizedLength > 0)
-             && (CHARMAP[_normalized[_normalizedPos + _normalizedLength - 1]] == ' ')) {
-                continue;
+            if (curChar == ' ') {
+                if (_normalizedSpace) {
+                    continue;
+                } else {
+                    _normalizedSpace = true;
+                }
+            } else {
+                _normalizedSpace = false;
             }
 
             // Reset the buffer positions if we're at the end.
@@ -127,11 +177,11 @@ public abstract class BaseTokenizer {
     }
 
     public boolean hasNext() {
-        fillNormalized();
+        addNormalized();
         
         // Check if we have reached the end of the buffer, but we've got enough chars left
         // to continue with short ngrams
-        if ((_curNGramLength > _normalizedLength) && (_curNGramLength > 1)) {
+        if ((_curNGramLength > _normalizedLength) && (_curNGramLength > 1) && _completed) {
             advanceNGram();
         }
         
@@ -141,7 +191,7 @@ public abstract class BaseTokenizer {
     // Called by the next() method from the tokenizers after they've returned the current ngram, thus setting
     // up for subsequent hasNext()/next() calls.
     protected void nextNGram() {
-        _curNGramLength += 1;
+        _curNGramLength++;
         
         if (_curNGramLength > _maxNGramLength) {
             advanceNGram();
@@ -149,8 +199,8 @@ public abstract class BaseTokenizer {
     }
 
     private void advanceNGram() {
-        _normalizedPos += 1;
-        _normalizedLength -= 1;
+        _normalizedPos++;
+        _normalizedLength--;
         _curNGramLength = 1;
     }
 }
