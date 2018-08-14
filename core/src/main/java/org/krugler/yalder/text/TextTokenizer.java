@@ -7,11 +7,13 @@ import org.krugler.yalder.BaseTokenizer;
 public class TextTokenizer extends BaseTokenizer {
 
     public TextTokenizer(String text, int maxNGramLength) {
-        super(text, maxNGramLength);
+        this(text.toCharArray(), 0, text.length(), maxNGramLength);
     }
 
     public TextTokenizer(char[] buffer, int offset, int length, int maxNGramLength) {
-        super(buffer, offset, length, maxNGramLength);
+        super(maxNGramLength);
+        addText(buffer, offset, length);
+        complete();
     }
 
     // Return the next ngram.
