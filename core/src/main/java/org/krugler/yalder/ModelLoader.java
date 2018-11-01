@@ -4,7 +4,6 @@ import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.HashSet;
@@ -23,15 +22,24 @@ public class ModelLoader {
     }
     
     public static Collection<BaseLanguageModel> loadModelsFromResources() throws IOException {
-        Set<BaseLanguageModel> result = new HashSet<>();
+        Set<LanguageLocale> languages = new HashSet<>();
         for (LanguageLocale lang : CoreModels.CORE_LANGUAGES) {
+            languages.add(lang);
+        }
+        
+        // TODO use reflection to see if yalder-extras jar is on classpath, add those languages
+        
+        return loadModelsFromResources(languages);
+    }
+    
+    public static Collection<BaseLanguageModel> loadModelsFromResources(Set<LanguageLocale> languages) throws IOException {
+        Set<BaseLanguageModel> result = new HashSet<>();
+        for (LanguageLocale lang : languages) {
             String resource = resourceFromLanguage(lang);
             try (DataInputStream dis = new DataInputStream(ModelLoader.class.getResourceAsStream(resource))) {
                 result.add(loadBinaryModel(lang, dis));
-            } 
+            }
         }
-        
-        // TODO use reflection to see if extras jar is on classpath, add those languages.
         
         return result;
     }

@@ -211,6 +211,10 @@ public class LanguageLocale {
         return _language;
     }
 
+    public String getISO2LetterName() {
+        throw new UnsupportedOperationException("getISO2LetterName() is not yet supported");
+    }
+
     public final String toString() {
         String languageTag;
         if (!_script.isEmpty()) {

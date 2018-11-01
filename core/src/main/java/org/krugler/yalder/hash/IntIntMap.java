@@ -2,18 +2,16 @@ package org.krugler.yalder.hash;
 
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 
+/**
+ * Wrapper for FastUtil's Int2IntOpenHashMap.
+ *
+ */
 public class IntIntMap {
 
     private static final int DEFAULT_CAPACITY = 1000;
     
     private Int2IntOpenHashMap _map;
     
-    /**
-     * Native int to int map that uses a single sorted array of longs to store
-     * the key (high int) and value (low int).
-     * 
-     * 
-     */
     public IntIntMap() {
         this(DEFAULT_CAPACITY);
     }

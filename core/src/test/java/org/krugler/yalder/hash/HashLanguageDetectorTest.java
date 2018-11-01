@@ -22,6 +22,7 @@ import java.util.Set;
 import org.apache.commons.io.IOUtils;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.krugler.yalder.BaseLanguageDetector;
 import org.krugler.yalder.BaseLanguageModel;
 import org.krugler.yalder.DetectionResult;
 import org.krugler.yalder.EuroParlUtils;
@@ -33,9 +34,44 @@ import org.krugler.yalder.OtherDetectorsTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LanguageDetectorTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LanguageDetectorTest.class);
+public class HashLanguageDetectorTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(HashLanguageDetectorTest.class);
 
+    // TODO set up detector we can use in multiple tests with @before
+    
+    @Test
+    public void testApriorProbabilities() throws Exception {
+        System.setProperty("logging.root.level", "TRACE");
+
+        String tibetan = "འགྲོ་བ་མིའི་རིགས་རྒྱུད་ཡོངས་ལ་སྐྱེས་ཙམ་ཉིད་ནས་ཆེ་མཐོངས་དང༌། ཐོབ་ཐངགི་རང་དབང་འདྲ་མཉམ་དུ་ཡོད་ལ། ཁོང་ཚོར་རང་བྱུང་གི་བློ་རྩལ་དང་བསམ་ཚུལ་བཟང་པོ་འདོན་པའི་འོས་བབས་ཀྱང་ཡོད། དེ་བཞིན་ཕན་ཚུན་གཅིག་གིས་གཅིག་ལ་བུ་སྤུན་གྱི་འདུ་ཤེས་འཛིན་པའི་བྱ་སྤྱོད་ཀྱང་ལག་ལེན་བསྟར་དགོས་པ་ཡིན༎";
+        String dzongkha = "འགྲོ་བ་མི་རིགས་ག་ར་དབང་ཆ་འདྲ་མཏམ་འབད་སྒྱེཝ་ལས་ག་ར་གིས་གཅིག་གིས་གཅིག་ལུ་སྤུན་ཆའི་དམ་ཚིག་བསྟན་དགོ།";
+        
+        // TODO seems like we don't have many matching ngrams for Waray?
+        // TODO maybe we should have a "detailed" detection mode, where we ignore ngram probabilities
+        // for languages that are essentially at 0 probability. We'd have to sum the the probabilities
+        // for contender languages.
+        // Normally we detect Waray as Cebuano, but let's skew probabilities.
+        String waray = "Nga an ngatanan nga mga tawo, nahimugso talwas ug katpong ha ira dignidad ug katdungan. "
+                        + "Hira natawo dinhi ha tuna mayda konsensya ug isip ug kaangayan gud la nga an ira pagtagad "
+                        + "ha tagsatagsa sugad hin magburugto.";        
+
+        String cebuano = "Ang tanang katawhan gipakatawo nga may kagawasan ug managsama sa kabililhon. Sila gigasahan "
+                        + " sa salabutan ug tanlag og mag-ilhanay isip managsoon sa usa'g-usa diha sa diwa sa ospiritu.";
+        
+        File modelDir = new File("src/main/resources/org/krugler/yalder/models/");
+        Collection<BaseLanguageModel> models = ModelLoader.loadModelsFromDirectory(modelDir, true);
+        BaseLanguageDetector detector = new HashLanguageDetector(models)
+                        .setRenormalizeInterval(1);
+        // detector.setDampening(detector.getDampening() * 10.0);
+        // detector.setAlpha(detector.getAlpha() * 10.0);
+        
+        detector.addText(dzongkha);
+        Collection<DetectionResult> results = detector.detect();
+        for (DetectionResult result : results) {
+            System.out.println(result);
+        }
+    }
+    
     @Test
     public void testHumanRightsDeclaration() throws Exception {
         System.setProperty("logging.root.level", "INFO");
@@ -329,6 +365,46 @@ public class LanguageDetectorTest {
         assertTrue(topResult.getScore() > 0.8);
     }
     
+    // With default alpha, results are OK (error rate of 0.13%) until
+    // dampening gets to 0.837, after which the error rate starts climbing
+    // quickly. With no dampening, error rate is 0.057% (so 1/20th of a 
+    // percent).
+    
+    @Ignore
+    @Test
+    public void testDampening() throws Exception {
+        Collection<BaseLanguageModel> models = loadModels(OtherDetectorsTest.TARGET_LANGUAGES_FOR_YALDER);
+        
+        List<String> lines = EuroParlUtils.readLines();
+        HashLanguageDetector detector = new HashLanguageDetector(models);
+        
+        // Keep incrementing dampening.
+        double dampening = 0.0;
+        while (dampening < 1.0) {
+            detector.setDampening(dampening);
+            int numHits = 0;
+            int numMisses = 0;
+
+            for (String line : lines) {
+                String[] pieces = line.split("\t", 2);
+                LanguageLocale ll = LanguageLocale.fromString(pieces[0]);
+                String text = pieces[1];
+                
+                detector.reset();
+                detector.addText(text);
+                Collection<DetectionResult> result = detector.detect();
+                if (result.size() > 0 && result.iterator().next().getLanguage().weaklyEqual(ll)) {
+                    numHits += 1;
+                } else {
+                    numMisses += 1;
+                }
+            }
+            
+            System.out.println(String.format("Dampening %04f: error rate = %f%%", dampening, 100.0 * (double)numMisses/(double)(numMisses + numHits)));
+            dampening += 0.001;
+        }
+    }
+    
     @Test
     public void testPerformance() throws Exception {
         Collection<BaseLanguageModel> models = loadModels(OtherDetectorsTest.TARGET_LANGUAGES_FOR_YALDER);
@@ -375,11 +451,11 @@ public class LanguageDetectorTest {
             
             HashLanguageModel model = new HashLanguageModel();
             String modelName = String.format("/org/krugler/yalder/models/core/yalder_model_%s.bin", ll.getName());
-            InputStream is = LanguageDetectorTest.class.getResourceAsStream(modelName);
+            InputStream is = HashLanguageDetectorTest.class.getResourceAsStream(modelName);
             if (is == null) {
                 LOGGER.debug(String.format("Loading non-core model '%s'", ll.getName()));
                 modelName = String.format("/org/krugler/yalder/models/extras/yalder_model_%s.bin", ll.getName());
-                is = LanguageDetectorTest.class.getResourceAsStream(modelName);
+                is = HashLanguageDetectorTest.class.getResourceAsStream(modelName);
             }
             
             DataInputStream dis = new DataInputStream(is);

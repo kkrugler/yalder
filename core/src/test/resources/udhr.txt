@@ -1,6 +1,6 @@
 # Data from http://unicode.org/udhr/assemblies/first_article_all.html
 # Language codes for names from https://www.loc.gov/standards/iso639-2/php/code_list.php
-# Format is ISO 639-3 code, tab, Language name, tab, text
+# Format is ISO 639-2 code, tab, Language name, tab, text
 # If no ISO code is known for the language, '???' is used.
 # If the ISO code hasn't been assigned yet, it's set to '   '
 # Some ISO codes include -<four letter script name>, where the script name is from https://en.wikipedia.org/wiki/ISO_15924

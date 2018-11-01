@@ -1,6 +1,7 @@
 package org.krugler.yalder.hash;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -11,6 +12,8 @@ import org.krugler.yalder.BaseLanguageDetector;
 import org.krugler.yalder.BaseLanguageModel;
 import org.krugler.yalder.DetectionResult;
 import org.krugler.yalder.LanguageLocale;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
@@ -21,12 +24,17 @@ import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
  *
  */
 public class HashLanguageDetector extends BaseLanguageDetector {
+    private static final Logger LOGGER = LoggerFactory.getLogger(HashLanguageDetector.class);
 
-    private static final int RENORMALIZE_INTERVAL  = 10;
-    private static final int EARLY_TERMINATION_INTERVAL = RENORMALIZE_INTERVAL * 11;
+    private static final int EARLY_TERMINATION_INTERVAL = DEFAULT_RENORMALIZE_INTERVAL * 11;
 
     // Map from language of model to index used for accessing arrays.
     private Map<LanguageLocale, Integer> _langToIndex;
+    
+    // For debugging, mapping from index to language
+    private LanguageLocale[] _indexToLang;
+    
+    private HashTokenizer _tokenizer;
     
     // Map from ngram (hash) to index.
     private IntToIndex _ngramToIndex;
@@ -42,6 +50,8 @@ public class HashLanguageDetector extends BaseLanguageDetector {
     // double value for every supported language (based on loaded models)
     double[] _langProbabilities;
     double[] _singleLangProbabilities;
+    double _singleLangProbability;
+    double _singleLangAlpha;
     
     // For normalization, confidence, and early termination.
     int _numKnownNGrams;
@@ -63,7 +73,8 @@ public class HashLanguageDetector extends BaseLanguageDetector {
         // TODO verify that each model is a binary model
 
         int numLanguages = makeLangToIndex(models);
-        
+        _indexToLang = new LanguageLocale[numLanguages];
+
         // Build a master map from ngram to per-language probabilities
         // Each model should contain a normalized count (not probability) of the ngram
         // so we can compute probabilities for languages being mixed-in.
@@ -72,7 +83,10 @@ public class HashLanguageDetector extends BaseLanguageDetector {
         _ngramToIndex = new IntToIndex();
         _ngramToOneLanguage = new Int2IntOpenHashMap();
         for (BaseLanguageModel baseModel : _models) {
-            int langIndex = langToIndex(baseModel.getLanguage());
+            LanguageLocale ll = baseModel.getLanguage();
+            int langIndex = langToIndex(ll);
+            _indexToLang[langIndex] = ll;
+            
             HashLanguageModel model = (HashLanguageModel)baseModel;
             IntIntMap langCounts = model.getNGramCounts();
             for (int ngramHash : langCounts.keySet()) {
@@ -141,17 +155,25 @@ public class HashLanguageDetector extends BaseLanguageDetector {
             
             _ngramProbabilities[i] = probs;
         }
+        
+        _tokenizer = new HashTokenizer(maxNGramLength);
+        
+        reset();
     }
     
     private int langToIndex(LanguageLocale language) {
         return _langToIndex.get(language);
     }
     
+    private LanguageLocale indexToLang(int index) {
+        return _indexToLang[index];
+    }
+    
     private int makeLangToIndex(Collection<BaseLanguageModel> models) {
         // Build a master map from language to index (0...n-1), which we'll use to index into
-        // arrays associated with each ngram.
-        
+        // arrays associated with each ngram. Return the number of actual models.
         _langToIndex = new HashMap<>(_models.size());
+                        ;
         int curIndex = 0;
         for (BaseLanguageModel model : _models) {
             if (_langToIndex.put(model.getLanguage(), curIndex) != null) {
@@ -175,21 +197,31 @@ public class HashLanguageDetector extends BaseLanguageDetector {
         
         _singleLangProbabilities = new double[numLanguages];
         
+        // Determine what probability to use for an ngram
+        // that's only in use by a single language.
+        _singleLangAlpha = _alpha * numLanguages;
+        _singleLangProbability = 1.0 - (_singleLangAlpha * (numLanguages - 1));
+        Arrays.fill(_singleLangProbabilities, _singleLangAlpha);
+
         _numKnownNGrams = 0;
         _numUnknownNGrams = 0;
         _curBestLanguageIndex = -1;
         _hasEnoughText = false;
+        
+        _tokenizer.reset();
     }
     
     @Override
     public void addText(char[] text, int offset, int length) {
         final int numLanguages = _langToIndex.size();
+
+        final boolean tracing = LOGGER.isTraceEnabled();
         
-        HashTokenizer tokenizer = new HashTokenizer(text, offset, length, _maxNGramLength);
-        while (tokenizer.hasNext()) {
-            int hash = tokenizer.next();
+        _tokenizer.addText(text, offset, length);
+        while (_tokenizer.hasNext()) {
+            int hash = _tokenizer.next();
             int index = _ngramToIndex.getIndex(hash);
-            
+
             double[] ngramProbabilities = null;
             int singleLangIndex = -1;
             if (index == -1) {
@@ -199,47 +231,81 @@ public class HashLanguageDetector extends BaseLanguageDetector {
                     // FUTURE track how many unknown ngrams we get, and use that
                     // to adjust probabilities.
                     _numUnknownNGrams += 1;
-                    continue;
-               }
                     
+                    if (tracing) {
+                        LOGGER.trace("Got unknown ngram: {}", hash);
+                    }
+                    
+                    continue;
+                }
+
+                if (tracing) {
+                    LOGGER.trace("Got single language ngram {} for language {}", hash, indexToLang(singleLangIndex));
+                }
+                
+                // Set up dynamic array with one probability
+                _singleLangProbabilities[singleLangIndex] = _singleLangProbability;
                 ngramProbabilities = _singleLangProbabilities;
-                ngramProbabilities[singleLangIndex] = 1.0;
             } else {
                 ngramProbabilities = _ngramProbabilities[index];
             }
-            
+
             _numKnownNGrams += 1;
-            
+
+            int numLangsWithNgram = 0;
+            StringBuilder details = tracing ? new StringBuilder('\t') : null;
             for (int langIndex = 0; langIndex < numLanguages; langIndex++) {
                 double prob = ngramProbabilities[langIndex];
-                
+
                 // Unknown ngrams for the language get a default probability of "alpha".
                 if (prob == 0.0) {
                     prob = _alpha;
+                } else if (singleLangIndex == -1) {
+                    // We only need to calc numLangsWithNgram if we don't have an ngram
+                    // that's used by one language. And probabilities for the single lang
+                    // case are pre-set to a special _singleLangAlpha value, not 0.0
+                    numLangsWithNgram += 1;
                 }
-                
+
                 // apply dampening, which increases the probability by a percentage
                 // of the delta from 1.0, and thus reduces the rapid swings caused by
                 // getting a few ngrams in a row with very low probability for an
                 // interesting language.
                 prob += (1.0 - prob) * _dampening;
-                
+
                 _langProbabilities[langIndex] *= prob;
+                
+                if (tracing && (_langProbabilities[langIndex] > _alpha/100.0)) {
+                    details.append(indexToLang(langIndex).getISO3LetterName());
+                    details.append(':');
+                    details.append(String.format("%02.4f", _langProbabilities[langIndex] * 100.0));
+                    details.append(',');
+                }
             }
             
+            if (tracing) {
+                if (singleLangIndex == -1) {
+                    LOGGER.trace("Got ngram {} used by {} languages", hash, numLangsWithNgram);
+                }
+                
+                LOGGER.trace(details.toString());
+            }
+            
+            // Reset our single array that we use when an ngram only appears in
+            // one language model.
             if (singleLangIndex != -1) {
-                _singleLangProbabilities[singleLangIndex] = 0.0;
+                _singleLangProbabilities[singleLangIndex] = _singleLangAlpha;
             }
-            
+
             // So we don't let probabilities become 0.0, we have to adjust
-            if ((_numKnownNGrams % RENORMALIZE_INTERVAL) == 0) {
+            if ((_numKnownNGrams % _renormalizeInterval) == 0) {
                 normalizeLangProbabilities();
             }
-            
+
             // See if we haven't had a change in a very probable language in N ngrams
             // We rely on probabilities being normalized, so our interval is always a
             // multiple of the renormalization interval.
-            
+
             // TODO need to factor in confidence, which includes number of unknown ngrams.
             // TODO support "mixed text" mode, and skip this if it's true.
             if ((_numKnownNGrams % EARLY_TERMINATION_INTERVAL) == 0) {
@@ -248,7 +314,7 @@ public class HashLanguageDetector extends BaseLanguageDetector {
                     _hasEnoughText = true;
                     break;
                 }
-                
+
                 _curBestLanguageIndex = newBestLanguageIndex;
             }
         }

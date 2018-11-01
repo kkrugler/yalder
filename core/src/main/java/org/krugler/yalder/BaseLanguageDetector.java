@@ -5,21 +5,33 @@ import java.util.Iterator;
 
 public abstract class BaseLanguageDetector {
 
+    // Probability for an ngram that doesn't exist in a language's model.
+    // TODO currently if ngram is only in one language, then that language
+    // probability is like 99.9%, which completely skews results - every
+    // other language probability goes to almost 0.0%
     public static final double DEFAULT_ALPHA = 0.000002;
+    
     public static final double DEFAULT_DAMPENING = 0.001;
 
     protected static final double MIN_LANG_PROBABILITY = 0.1;
     protected static final double MIN_GOOD_LANG_PROBABILITY = 0.99;
+
+    protected static final int DEFAULT_RENORMALIZE_INTERVAL = 10;
     
     protected int _maxNGramLength;
     
     // The probability we use for an ngram when we have no data for it for a given language.
     protected double _alpha;
     
-    // Used to increase an ngram's probability, to reduce rapid swings in short text
-    // snippets. The probability is increased by (1 - prob) * dampening.
+    // Applied to an ngram's probability, to reduce rapid swings in short text
+    // snippets. The probability is increased by (1 - prob) * dampening, before
+    // it's multiplied into the ngram's current probability for the text being
+    // analyzed. A dampening of 1.0 would mean all probabilities are effectively
+    // equal to 1.0, while a dampening of 0 means there's no adjustment.
     protected double _dampening = DEFAULT_DAMPENING;
 
+    protected int _renormalizeInterval = DEFAULT_RENORMALIZE_INTERVAL;
+    
     protected Collection<? extends BaseLanguageModel> _models;
     
     protected static int getMaxNGramLengthFromModels(Collection<? extends BaseLanguageModel> models) {
@@ -54,6 +66,15 @@ public abstract class BaseLanguageDetector {
     
     public double getDampening() {
         return _dampening;
+    }
+    
+    public BaseLanguageDetector setRenormalizeInterval(int renormalizeInterval) {
+        _renormalizeInterval = renormalizeInterval;
+        return this;
+    }
+    
+    public int getRenormalizeInterval() {
+        return _renormalizeInterval;
     }
     
     /**
