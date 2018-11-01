@@ -447,7 +447,7 @@ public class ModelBuilderTool {
             totalPruned += model.prune(minNGramCount);
         }
         
-        System.out.println(String.format("Pruned %d ngrams by setting min count to 20", totalPruned));
+        System.out.println(String.format("Pruned %d ngrams by setting min count to %d", totalPruned, minNGramCount));
     }
     
     private void loadModels() throws IOException {

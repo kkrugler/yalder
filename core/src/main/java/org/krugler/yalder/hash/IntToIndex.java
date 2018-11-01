@@ -7,6 +7,7 @@ public class IntToIndex {
     private static final int DEFAULT_CAPACITY = 1000;
     
     private Int2IntOpenHashMap _map;
+    private boolean _frozen = false;
     
     public IntToIndex() {
         this(DEFAULT_CAPACITY);
@@ -29,23 +30,49 @@ public class IntToIndex {
         return _map.containsKey(key);
     }
     
-    // Put the key.
+    /**
+     * Add the key, with an unset index (value)
+     * 
+     * @param key
+     */
     public void add(int key) {
+        if (_frozen) {
+            throw new IllegalStateException("Can't add a key to a frozen IntToIndex map");
+        }
+        
         _map.put(key, -1);
     }
     
     public void remove(int key) {
+        if (_frozen) {
+            throw new IllegalStateException("Can't remove a key from a frozen IntToIndex map");
+        }
+        
         _map.remove(key);
     }
     
+    /**
+     * One-time call (once all keys have been added) to
+     * assign increasing index values for every key.
+     */
     public void setIndexes() {
+        if (_frozen) {
+            throw new IllegalStateException("setIndexes() has already been called");
+        }
+        
         int index = 0;
         for (int key : _map.keySet()) {
             _map.put(key, index++);
         }
+        
+        _frozen = true;
     }
     
     public int getIndex(int key) {
+        if (!_frozen) {
+            throw new IllegalStateException("setIndexes() must be called before getIndex()");
+        }
+        
         return _map.get(key);
     }
     

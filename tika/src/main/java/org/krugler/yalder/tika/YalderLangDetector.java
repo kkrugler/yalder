@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -19,7 +20,7 @@ import org.krugler.yalder.hash.HashLanguageDetector;
 
 /**
  * Implementation of the LanguageDetector API that uses
- * https://github.com/optimaize/language-detector
+ * https://github.com/kkrugler/yalder
  */
 public class YalderLangDetector extends LanguageDetector {
 
@@ -42,9 +43,14 @@ public class YalderLangDetector extends LanguageDetector {
 
     @Override
     public LanguageDetector loadModels(Set<String> languages) throws IOException {
-        // TODO convert languages (ISO 639-1, and "-xx" optional country code) into LanguageLocale 
-        // TODO Use new ModelLoader.loadModelsFromResources(languageLocales)
-        // TODO what to do if we don't have a model for the language?
+        Set<LanguageLocale> ll = new HashSet<>();
+        for (String language : languages) {
+            ll.add(LanguageLocale.fromString(language));
+        }
+        
+        models = ModelLoader.loadModelsFromResources(ll);
+        detector = new HashLanguageDetector(models);
+
         return this;
     }
 
@@ -54,8 +60,10 @@ public class YalderLangDetector extends LanguageDetector {
             throw new IllegalStateException("Models must be loaded before calling addText()");
         }
         
-        hasText = true;
-        detector.addText(cbuf, off, len);
+        if (len > 0) {
+            hasText = true;
+            detector.addText(cbuf, off, len);
+        }
     }
 
     @Override
@@ -67,7 +75,7 @@ public class YalderLangDetector extends LanguageDetector {
         List<LanguageResult> result = new ArrayList<>();
         for (DetectionResult dr : detector.detect()) {
             LanguageConfidence confidence = mapConfidenceScoreToEnum(dr.getConfidence());
-            result.add(new LanguageResult(dr.getLanguage().getISO3LetterName(), confidence, (float)dr.getScore()));
+            result.add(new LanguageResult(dr.getLanguage().getISO2LetterName(), confidence, (float)dr.getScore()));
         }
         
         return result;
@@ -89,6 +97,7 @@ public class YalderLangDetector extends LanguageDetector {
     public boolean hasModel(String language) {
         LanguageLocale lang = LanguageLocale.fromString(language);
         String resource = ModelLoader.resourceFromLanguage(lang);
+        // TODO - any better way to detect presence of the resource?
         try (InputStream is = YalderLangDetector.class.getResourceAsStream(resource)) {
             return is != null;
         } catch (IOException e) {

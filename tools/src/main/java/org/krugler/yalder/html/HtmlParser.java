@@ -1,4 +1,4 @@
-package org.krugler.yalder.tools;
+package org.krugler.yalder.html;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
