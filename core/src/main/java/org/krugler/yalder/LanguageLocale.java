@@ -3,6 +3,7 @@ package org.krugler.yalder;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.MissingResourceException;
 
 public class LanguageLocale {
 
@@ -77,16 +78,14 @@ public class LanguageLocale {
         IMPLICIT_SCRIPT.put("pan", "Guru");
     }
     
-    private static Map<String, String> IMPLICIT_COUNTRY_SCRIPT = new HashMap<String, String>();
+    private static Map<String, String> IMPLICIT_COUNTRY_SCRIPT = new HashMap<>();
     static {
         // TODO add full set of these.
         IMPLICIT_COUNTRY_SCRIPT.put("zhoTW", "Hant");
         IMPLICIT_COUNTRY_SCRIPT.put("zhoCN", "Hans");
     }
     
-    
-    
-    private static Map<String, String> SPECIFIC_TO_MACRO = new HashMap<String, String>();
+    private static Map<String, String> SPECIFIC_TO_MACRO = new HashMap<>();
     static {
         // TODO add full set of these.
         SPECIFIC_TO_MACRO.put("nno", "nor");
@@ -215,6 +214,19 @@ public class LanguageLocale {
         throw new UnsupportedOperationException("getISO2LetterName() is not yet supported");
     }
 
+    /**
+     * @param alpha2Code
+     * @return ISO 639-2 "alpha3" code, or null if no mapping exists.
+     */
+    public static String convertISO2LetterNameTo3Letters(String alpha2Code) {
+        try {
+            LanguageLocale ll = LanguageLocale.fromString(alpha2Code);
+            return ll.getISO3LetterName();
+        } catch (MissingResourceException e) {
+            return null;
+        }
+    }
+    
     public final String toString() {
         String languageTag;
         if (!_script.isEmpty()) {
@@ -262,7 +274,4 @@ public class LanguageLocale {
             return false;
         return true;
     }
-
-
-    
 }

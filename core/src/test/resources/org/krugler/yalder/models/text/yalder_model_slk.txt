@@ -1,0 +1,12046 @@
+version: 2
+language: slk
+max ngram length: 4
+alpha: 4031
+ngrams:
+	 a : 1410
+	 a a: 41
+	 a d: 101
+	 a f: 8
+	 a h: 32
+	 a i: 30
+	 a j: 32
+	 a k: 45
+	 a l: 4
+	 a m: 73
+	 a n: 96
+	 a o: 51
+	 a p: 244
+	 a r: 66
+	 a s: 109
+	 a t: 83
+	 a v: 115
+	 a z: 77
+	 a č: 24
+	 a ď: 8
+	 a ľ: 6
+	 a š: 9
+	 a ž: 36
+	 ab: 282
+	 aby: 265
+	 ac: 2
+	 ad: 2
+	 af: 17
+	 ag: 15
+	 agr: 2
+	 ai: 2
+	 aj: 206
+	 aj : 206
+	 ak: 451
+	 ak : 71
+	 ake: 6
+	 ako: 280
+	 aké: 21
+	 akú: 8
+	 aký: 28
+	 akč: 6
+	 ale: 191
+	 ali: 2
+	 alt: 8
+	 am: 15
+	 ame: 4
+	 an: 64
+	 and: 4
+	 ani: 36
+	 ant: 6
+	 ap: 9
+	 ar: 17
+	 as: 26
+	 at: 8
+	 au: 28
+	 av: 13
+	 avš: 11
+	 az: 6
+	 až: 9
+	 až : 9
+	 b: 1145
+	 ba: 45
+	 be: 105
+	 beh: 2
+	 ben: 2
+	 bez: 92
+	 bi: 17
+	 bil: 2
+	 blí: 11
+	 bo: 257
+	 boh: 13
+	 boj: 43
+	 bol: 165
+	 bu: 235
+	 bud: 216
+	 bul: 13
+	 by: 407
+	 by : 323
+	 byť: 75
+	 bán: 6
+	 bú: 6
+	 búr: 6
+	 býv: 9
+	 c: 509
+	 ca: 8
+	 ccs: 4
+	 cel: 77
+	 cer: 2
+	 ces: 24
+	 cez: 11
+	 ch: 225
+	 chc: 124
+	 che: 2
+	 cho: 23
+	 chr: 11
+	 chu: 11
+	 chv: 9
+	 chy: 23
+	 chý: 8
+	 ci: 109
+	 cie: 88
+	 co: 8
+	 cu: 2
+	 cy: 9
+	 cyk: 8
+	 cz: 2
+	 d: 1457
+	 da: 36
+	 dal: 2
+	 dan: 8
+	 dar: 2
+	 dat: 6
+	 dau: 2
+	 daň: 8
+	 dať: 6
+	 de: 145
+	 de : 24
+	 dec: 4
+	 del: 13
+	 den: 2
+	 des: 11
+	 det: 4
+	 dev: 2
+	 deň: 4
+	 di: 86
+	 die: 9
+	 dlh: 17
+	 dn: 60
+	 dne: 56
+	 do: 687
+	 do : 161
+	 dob: 49
+	 dod: 39
+	 doh: 84
+	 dok: 47
+	 dop: 77
+	 dos: 128
+	 dov: 26
+	 dp: 6
+	 dph: 6
+	 dru: 36
+	 drž: 2
+	 du: 15
+	 dv: 43
+	 dva: 15
+	 dve: 11
+	 dvo: 17
+	 dá: 45
+	 dá : 8
+	 dám: 32
+	 dé: 2
+	 dô: 222
+	 dôc: 9
+	 dôk: 13
+	 dôl: 107
+	 dôr: 13
+	 dôs: 26
+	 dôv: 51
+	 dú: 36
+	 dúf: 36
+	 dň: 4
+	 e: 773
+	 ef: 9
+	 eg: 2
+	 egy: 2
+	 el: 11
+	 el : 4
+	 em: 15
+	 en: 73
+	 er: 8
+	 es: 15
+	 es : 9
+	 est: 2
+	 et: 11
+	 eul: 6
+	 eur: 402
+	 exi: 41
+	 exp: 4
+	 eú: 96
+	 eú : 96
+	 eš: 49
+	 ešt: 49
+	 f: 238
+	 fa: 41
+	 faj: 6
+	 fe: 4
+	 fiš: 6
+	 fo: 32
+	 for: 17
+	 fr: 38
+	 fra: 15
+	 fu: 17
+	 fyz: 6
+	 g: 103
+	 ga: 13
+	 gal: 2
+	 ge: 23
+	 gen: 13
+	 ges: 2
+	 gi: 6
+	 go: 8
+	 gr: 21
+	 gra: 6
+	 gru: 6
+	 gré: 9
+	 h: 556
+	 ha: 21
+	 han: 4
+	 har: 6
+	 hd: 4
+	 hdp: 4
+	 he: 8
+	 hel: 4
+	 her: 2
+	 hi: 19
+	 hl: 133
+	 hla: 126
+	 hm: 6
+	 hn: 6
+	 ho: 259
+	 ho : 19
+	 hoc: 19
+	 hod: 45
+	 hos: 103
+	 hov: 56
+	 hr: 49
+	 hra: 34
+	 hro: 8
+	 hu: 17
+	 hym: 4
+	 hľ: 24
+	 hľa: 24
+	 i: 573
+	 i : 15
+	 ib: 17
+	 iba: 17
+	 ic: 86
+	 ich: 84
+	 id: 73
+	 ide: 73
+	 ig: 2
+	 ik: 4
+	 ikt: 4
+	 il: 2
+	 im: 23
+	 imp: 9
+	 in: 265
+	 inc: 2
+	 ind: 13
+	 int: 39
+	 iné: 24
+	 iný: 36
+	 inš: 30
+	 ir: 17
+	 is: 38
+	 it: 4
+	 it : 4
+	 iz: 23
+	 iš: 2
+	 j: 924
+	 ja: 92
+	 ja : 19
+	 jad: 9
+	 jas: 43
+	 jaz: 9
+	 je: 777
+	 je : 541
+	 jed: 145
+	 jeh: 43
+	 jej: 41
+	 jo: 8
+	 ju: 24
+	 ju : 15
+	 juž: 6
+	 jú: 23
+	 júl: 9
+	 jún: 13
+	 k: 1873
+	 k : 169
+	 k d: 23
+	 k i: 11
+	 k n: 15
+	 k o: 11
+	 k p: 11
+	 k s: 9
+	 k t: 41
+	 k v: 15
+	 ka: 124
+	 kan: 13
+	 kas: 2
+	 kaž: 53
+	 kd: 24
+	 kde: 24
+	 keb: 11
+	 keď: 81
+	 ki: 9
+	 klí: 23
+	 ko: 475
+	 koh: 2
+	 kom: 212
+	 kon: 182
+	 kor: 4
+	 kr: 255
+	 kra: 146
+	 kro: 21
+	 krá: 15
+	 krí: 30
+	 kt: 571
+	 kto: 571
+	 ku: 28
+	 ku : 17
+	 kv: 32
+	 kva: 24
+	 kó: 8
+	 kľ: 15
+	 kľú: 15
+	 l: 199
+	 la: 8
+	 le: 105
+	 leg: 6
+	 len: 66
+	 les: 2
+	 li: 51
+	 lo: 8
+	 lu: 2
+	 lá: 13
+	 lát: 11
+	 líš: 4
+	 maj: 38
+	 mal: 150
+	 man: 11
+	 mar: 11
+	 max: 13
+	 maď: 4
+	 mať: 39
+	 me: 255
+	 mem: 2
+	 mer: 6
+	 met: 13
+	 mie: 88
+	 mim: 38
+	 min: 32
+	 mis: 8
+	 mit: 2
+	 ml: 15
+	 mla: 9
+	 mli: 6
+	 mn: 62
+	 mno: 60
+	 moh: 41
+	 moj: 21
+	 mon: 11
+	 mor: 9
+	 mož: 88
+	 mrz: 4
+	 mu: 246
+	 mul: 2
+	 mus: 223
+	 muž: 11
+	 my: 86
+	 my : 23
+	 mys: 54
+	 myš: 9
+	 má: 103
+	 má : 36
+	 mál: 9
+	 mám: 45
+	 mát: 9
+	 méd: 13
+	 mô: 111
+	 môc: 8
+	 môj: 8
+	 môž: 96
+	 mň: 11
+	 mňa: 11
+	 n: 2694
+	 na: 1269
+	 na : 657
+	 nad: 41
+	 naj: 150
+	 nak: 15
+	 nao: 21
+	 nap: 83
+	 nav: 45
+	 naď: 17
+	 naš: 111
+	 ne: 621
+	 ne : 2
+	 neb: 56
+	 ned: 51
+	 nej: 24
+	 nel: 4
+	 nem: 83
+	 neo: 24
+	 nep: 83
+	 nes: 64
+	 nev: 68
+	 nez: 54
+	 neš: 9
+	 než: 23
+	 ni: 272
+	 nie: 218
+	 nič: 17
+	 no: 115
+	 no : 11
+	 non: 4
+	 nov: 79
+	 nu: 4
+	 ná: 404
+	 náj: 9
+	 nák: 19
+	 nám: 53
+	 nár: 45
+	 nás: 77
+	 náv: 116
+	 náz: 36
+	 náš: 30
+	 o: 1643
+	 o : 355
+	 o k: 17
+	 o n: 24
+	 o o: 32
+	 o s: 34
+	 o t: 51
+	 o v: 30
+	 o ú: 6
+	 o ď: 4
+	 o ľ: 8
+	 ob: 375
+	 oba: 23
+	 obc: 32
+	 obd: 15
+	 obh: 4
+	 obl: 94
+	 obm: 23
+	 obn: 26
+	 obá: 6
+	 obč: 56
+	 od: 252
+	 od : 45
+	 odb: 19
+	 odd: 9
+	 odh: 15
+	 odk: 8
+	 odm: 17
+	 odo: 11
+	 odp: 24
+	 ods: 26
+	 odv: 39
+	 odô: 4
+	 oh: 32
+	 ohr: 11
+	 ohľ: 15
+	 ok: 71
+	 oka: 17
+	 okr: 32
+	 oku: 8
+	 ol: 8
+	 om: 6
+	 on: 13
+	 on : 2
+	 opa: 54
+	 opä: 23
+	 org: 56
+	 osl: 8
+	 oso: 32
+	 osp: 6
+	 ost: 28
+	 osô: 8
+	 ot: 131
+	 otv: 23
+	 otá: 101
+	 ove: 9
+	 ovp: 11
+	 oz: 23
+	 ozn: 23
+	 oč: 26
+	 oča: 17
+	 očk: 6
+	 p: 5106
+	 pa: 300
+	 pal: 2
+	 pan: 81
+	 par: 178
+	 pas: 2
+	 pe: 39
+	 pen: 2
+	 per: 8
+	 pev: 11
+	 pi: 8
+	 pie: 2
+	 pl: 165
+	 pln: 41
+	 plu: 2
+	 ply: 21
+	 plá: 41
+	 po: 1721
+	 po : 66
+	 poc: 28
+	 pod: 330
+	 poh: 28
+	 pok: 118
+	 pom: 64
+	 pos: 206
+	 pot: 188
+	 pov: 150
+	 poz: 109
+	 poč: 47
+	 poď: 24
+	 poľ: 30
+	 pož: 38
+	 pr: 2532
+	 pra: 146
+	 pre: 1083
+	 pri: 420
+	 prv: 45
+	 prá: 214
+	 prí: 248
+	 pu: 2
+	 pá: 244
+	 pác: 4
+	 pán: 222
+	 pár: 15
+	 päť: 4
+	 pí: 23
+	 pís: 23
+	 pô: 30
+	 pôd: 8
+	 pôs: 6
+	 pôv: 11
+	 púš: 4
+	 pý: 6
+	 pýt: 6
+	 q: 2
+	 qu: 2
+	 qua: 2
+	 r: 1201
+	 rad: 88
+	 ras: 34
+	 re: 195
+	 rec: 2
+	 red: 2
+	 res: 2
+	 reč: 15
+	 ria: 30
+	 rie: 43
+	 riz: 11
+	 ro: 580
+	 rob: 13
+	 rod: 28
+	 rok: 141
+	 rop: 8
+	 rov: 43
+	 roz: 338
+	 ryb: 13
+	 rá: 101
+	 rád: 41
+	 rám: 53
+	 ráz: 6
+	 rô: 17
+	 rôz: 17
+	 rú: 8
+	 rúk: 4
+	 rý: 15
+	 rýc: 15
+	 s: 4066
+	 s : 270
+	 s c: 28
+	 s k: 17
+	 s n: 38
+	 s o: 19
+	 s p: 30
+	 s t: 30
+	 s u: 8
+	 s v: 34
+	 sa: 856
+	 sa : 783
+	 saa: 2
+	 san: 2
+	 sav: 2
+	 se: 64
+	 seb: 11
+	 sem: 4
+	 sen: 4
+	 ser: 2
+	 si: 208
+	 si : 126
+	 sig: 2
+	 sin: 2
+	 sis: 2
+	 sk: 193
+	 skl: 17
+	 sko: 17
+	 sku: 128
+	 skô: 11
+	 skú: 6
+	 sl: 111
+	 slo: 45
+	 slu: 39
+	 slú: 9
+	 sm: 261
+	 sme: 255
+	 sn: 36
+	 sna: 28
+	 sná: 6
+	 so : 43
+	 sol: 15
+	 som: 255
+	 sp: 586
+	 spe: 2
+	 spl: 13
+	 spo: 274
+	 spr: 195
+	 spá: 11
+	 spô: 75
+	 srb: 6
+	 st: 394
+	 str: 137
+	 stá: 34
+	 su: 41
+	 sur: 2
+	 sv: 165
+	 sve: 41
+	 svo: 120
+	 sys: 47
+	 sz: 2
+	 sá: 8
+	 sám: 6
+	 sú: 362
+	 sú : 124
+	 súb: 6
+	 súd: 28
+	 súh: 39
+	 súk: 8
+	 súl: 17
+	 sús: 8
+	 súv: 62
+	 súč: 60
+	 súť: 11
+	 tak: 175
+	 tal: 4
+	 tan: 2
+	 tar: 2
+	 ted: 26
+	 tej: 105
+	 tem: 2
+	 tex: 32
+	 teš: 13
+	 th: 4
+	 tha: 2
+	 the: 2
+	 tie: 152
+	 tl: 11
+	 tla: 9
+	 to: 618
+	 to : 293
+	 toh: 120
+	 tom: 126
+	 tot: 60
+	 toľ: 4
+	 tra: 41
+	 tre: 68
+	 trh: 60
+	 trv: 9
+	 tu: 58
+	 tu : 47
+	 tur: 11
+	 tvo: 8
+	 tvr: 11
+	 ty: 4
+	 tá: 56
+	 tá : 8
+	 tát: 47
+	 tém: 21
+	 tí: 13
+	 tí : 11
+	 tú: 58
+	 tút: 58
+	 tüv: 4
+	 tý: 203
+	 týc: 45
+	 týk: 71
+	 tým: 73
+	 týž: 13
+	 u: 548
+	 udr: 30
+	 uis: 4
+	 uk: 53
+	 uka: 9
+	 uko: 11
+	 uká: 17
+	 umo: 30
+	 un: 8
+	 uni: 8
+	 upl: 15
+	 ur: 69
+	 uro: 24
+	 urý: 4
+	 urč: 38
+	 usk: 26
+	 ut: 6
+	 uv: 64
+	 uva: 9
+	 uve: 24
+	 uvi: 17
+	 uvá: 11
+	 uzn: 39
+	 uľ: 4
+	 uľa: 4
+	 už: 68
+	 už : 62
+	 v: 3401
+	 v : 965
+	 v a: 9
+	 v b: 47
+	 v c: 11
+	 v d: 17
+	 v e: 56
+	 v g: 13
+	 v h: 6
+	 v i: 17
+	 v j: 19
+	 v k: 53
+	 v m: 60
+	 v n: 47
+	 v o: 62
+	 v p: 113
+	 v r: 81
+	 v s: 161
+	 v t: 113
+	 v u: 15
+	 v z: 26
+	 v č: 21
+	 v ň: 4
+	 va: 41
+	 var: 4
+	 vaš: 32
+	 ve: 366
+	 vec: 36
+	 ved: 47
+	 vek: 6
+	 ver: 66
+	 veľ: 182
+	 vh: 11
+	 vho: 11
+	 vi: 111
+	 via: 41
+	 vl: 71
+	 vla: 30
+	 vlá: 41
+	 vn: 56
+	 vní: 9
+	 vnú: 47
+	 vo : 105
+	 vod: 13
+	 voj: 19
+	 vop: 4
+	 voč: 19
+	 voľ: 17
+	 vp: 26
+	 vpl: 21
+	 vr: 38
+	 vrá: 30
+	 vst: 9
+	 vt: 8
+	 vte: 6
+	 vy: 509
+	 vy : 6
+	 vyb: 15
+	 vyd: 11
+	 vyh: 41
+	 vyj: 43
+	 vyk: 36
+	 vyl: 15
+	 vyn: 15
+	 vyp: 17
+	 vyr: 23
+	 vys: 73
+	 vyt: 51
+	 vyu: 56
+	 vyv: 24
+	 vyz: 28
+	 vyú: 6
+	 vyš: 36
+	 vyž: 8
+	 vz: 120
+	 vzd: 43
+	 vzh: 17
+	 vzi: 8
+	 vzn: 11
+	 vzť: 36
+	 vá: 199
+	 vám: 23
+	 vás: 24
+	 váš: 8
+	 váž: 145
+	 väz: 4
+	 väč: 56
+	 ví: 24
+	 vít: 17
+	 vô: 11
+	 vôb: 9
+	 vý: 291
+	 výb: 49
+	 výc: 15
+	 výd: 8
+	 výh: 21
+	 výl: 6
+	 vým: 8
+	 výn: 6
+	 výr: 43
+	 výs: 64
+	 výv: 19
+	 výz: 36
+	 výš: 19
+	 vč: 9
+	 vča: 8
+	 vď: 19
+	 vďa: 19
+	 vš: 237
+	 vša: 77
+	 vše: 156
+	 vž: 9
+	 vžd: 9
+	 w: 11
+	 wa: 6
+	 we: 4
+	 y: 4
+	 z: 1898
+	 z : 222
+	 z d: 15
+	 z e: 13
+	 z f: 8
+	 z h: 13
+	 z n: 30
+	 z t: 49
+	 z v: 11
+	 z ú: 6
+	 za: 591
+	 za : 139
+	 zab: 73
+	 zah: 30
+	 zai: 11
+	 zaj: 17
+	 zam: 56
+	 zao: 15
+	 zar: 28
+	 zas: 45
+	 zau: 11
+	 zav: 34
+	 zaz: 8
+	 zač: 39
+	 zb: 19
+	 zba: 8
+	 zd: 94
+	 zdr: 53
+	 zdá: 8
+	 zdô: 28
+	 ze: 8
+	 zh: 13
+	 zho: 6
+	 zhr: 8
+	 zis: 15
+	 zj: 17
+	 zja: 8
+	 zje: 9
+	 zl: 60
+	 zle: 36
+	 zlo: 19
+	 zly: 4
+	 zm: 115
+	 zme: 43
+	 zmi: 11
+	 zml: 47
+	 zmy: 9
+	 zn: 137
+	 zna: 45
+	 zne: 24
+	 zni: 13
+	 zno: 21
+	 zná: 9
+	 zní: 24
+	 zo: 126
+	 zo : 23
+	 zod: 43
+	 zoh: 9
+	 zos: 36
+	 zoz: 8
+	 zr: 39
+	 zra: 8
+	 zre: 9
+	 zri: 4
+	 zro: 9
+	 zru: 8
+	 zv: 111
+	 zvi: 8
+	 zvl: 9
+	 zvo: 8
+	 zvr: 4
+	 zvy: 24
+	 zvá: 8
+	 zvä: 8
+	 zvý: 32
+	 zá: 278
+	 zác: 6
+	 zák: 75
+	 zál: 11
+	 zám: 19
+	 zár: 28
+	 zás: 45
+	 záu: 32
+	 záv: 51
+	 zí: 26
+	 zís: 26
+	 zú: 17
+	 zúč: 15
+	 án: 11
+	 áno: 11
+	 áz: 6
+	 ázi: 6
+	 ís: 8
+	 ísť: 8
+	 ú: 486
+	 úb: 4
+	 úbo: 4
+	 úc: 6
+	 úct: 6
+	 úd: 15
+	 úda: 13
+	 úl: 34
+	 úlo: 34
+	 úm: 15
+	 úmy: 13
+	 ún: 133
+	 úni: 131
+	 úp: 32
+	 úpl: 19
+	 úpr: 11
+	 úr: 79
+	 úra: 32
+	 úro: 47
+	 ús: 64
+	 úsi: 26
+	 úsp: 28
+	 úst: 9
+	 úv: 24
+	 úva: 15
+	 úve: 6
+	 úz: 11
+	 úzk: 8
+	 úč: 56
+	 úča: 9
+	 úče: 11
+	 úči: 34
+	 č: 520
+	 č : 8
+	 č o: 4
+	 ča: 81
+	 čak: 8
+	 čas: 71
+	 če: 39
+	 čel: 17
+	 čer: 6
+	 čes: 17
+	 či: 71
+	 či : 32
+	 čin: 32
+	 čl: 137
+	 čle: 126
+	 člá: 8
+	 čo: 167
+	 čo : 145
+	 čoh: 4
+	 čok: 4
+	 čom: 4
+	 čor: 9
+	 čí: 17
+	 čín: 11
+	 čít: 4
+	 ď: 86
+	 ďa: 86
+	 ďak: 19
+	 ďal: 68
+	 ľ: 120
+	 ľa: 6
+	 ľu: 111
+	 ľud: 99
+	 ľuď: 8
+	 ľú: 4
+	 ľút: 4
+	 ň: 8
+	 ňo: 6
+	 ňom: 6
+	 š: 274
+	 šes: 8
+	 šir: 13
+	 šk: 21
+	 ško: 19
+	 šp: 17
+	 št: 186
+	 šta: 13
+	 štr: 11
+	 štu: 4
+	 štv: 6
+	 šty: 6
+	 štá: 143
+	 štú: 4
+	 švé: 8
+	 šír: 4
+	 ť: 15
+	 ťa: 15
+	 ťaž: 15
+	 ž: 743
+	 že: 599
+	 že : 569
+	 žen: 17
+	 ži: 143
+	 žia: 62
+	 žie: 8
+	 žij: 9
+	 živ: 62
+	a : 5309
+	a a : 128
+	a ab: 26
+	a ac: 2
+	a aj: 24
+	a ak: 38
+	a as: 2
+	a b: 180
+	a bi: 2
+	a bo: 28
+	a bu: 39
+	a by: 64
+	a c: 79
+	a ch: 36
+	a da: 6
+	a de: 23
+	a di: 15
+	a do: 128
+	a dv: 9
+	a dá: 9
+	a dô: 21
+	a dú: 13
+	a e: 103
+	a et: 2
+	a eú: 9
+	a eš: 11
+	a f: 32
+	a fo: 4
+	a g: 9
+	a hl: 17
+	a ho: 28
+	a i: 77
+	a ic: 21
+	a je: 120
+	a k: 267
+	a k : 26
+	a ka: 6
+	a kd: 6
+	a ko: 101
+	a kr: 26
+	a kt: 77
+	a ku: 4
+	a l: 30
+	a la: 2
+	a li: 6
+	a lo: 4
+	a m: 268
+	a mr: 6
+	a mu: 45
+	a mô: 23
+	a mý: 4
+	a mň: 8
+	a n: 405
+	a na: 176
+	a ne: 105
+	a ni: 47
+	a ná: 58
+	a o: 203
+	a o : 45
+	a ob: 49
+	a od: 24
+	a on: 2
+	a p: 681
+	a pe: 6
+	a pl: 21
+	a po: 242
+	a pr: 298
+	a pá: 58
+	a pý: 6
+	a r: 197
+	a re: 26
+	a ro: 92
+	a rá: 11
+	a rý: 4
+	a s: 447
+	a s : 28
+	a sa: 51
+	a se: 11
+	a si: 9
+	a sk: 26
+	a sl: 23
+	a sn: 9
+	a sp: 84
+	a st: 62
+	a su: 9
+	a sv: 24
+	a sú: 38
+	a t: 355
+	a ti: 38
+	a to: 101
+	a tú: 13
+	a tý: 60
+	a ud: 17
+	a uk: 15
+	a ur: 13
+	a už: 9
+	a v: 484
+	a v : 128
+	a va: 9
+	a ve: 56
+	a vi: 6
+	a vl: 9
+	a vn: 13
+	a vr: 11
+	a vt: 4
+	a vy: 107
+	a vz: 13
+	a vý: 34
+	a vš: 32
+	a z: 329
+	a z : 24
+	a za: 111
+	a zd: 15
+	a zh: 6
+	a zj: 6
+	a zl: 13
+	a zm: 21
+	a zn: 13
+	a zo: 17
+	a zr: 9
+	a zv: 28
+	a zá: 49
+	a zí: 4
+	a zú: 4
+	a ú: 79
+	a ún: 36
+	a úp: 4
+	a úr: 9
+	a ús: 8
+	a č: 68
+	a ča: 8
+	a če: 9
+	a čl: 15
+	a čo: 24
+	a čí: 8
+	a ď: 17
+	a ďa: 17
+	a ľ: 23
+	a ľu: 21
+	a ň: 4
+	a š: 28
+	a šp: 8
+	a št: 9
+	a ť: 4
+	a ťa: 4
+	a ž: 109
+	a že: 77
+	a ži: 32
+	aa: 2
+	ab: 422
+	aba: 4
+	abez: 56
+	abi: 21
+	abrá: 13
+	aby: 265
+	aby : 265
+	abáz: 6
+	ac: 312
+	ac : 41
+	ac a: 11
+	ac n: 6
+	acc: 2
+	ace: 21
+	acej: 6
+	ach : 56
+	achá: 9
+	aci: 43
+	acic: 9
+	acii: 6
+	aciu: 8
+	aco: 96
+	acoc: 4
+	acov: 88
+	acíc: 8
+	ad: 929
+	ad n: 19
+	adav: 13
+	adať: 15
+	adch: 6
+	ade : 90
+	aden: 47
+	adi: 60
+	adis: 21
+	adiť: 9
+	adké: 4
+	adn: 139
+	adne: 43
+	adno: 13
+	adnu: 21
+	adny: 9
+	adné: 11
+	adnú: 6
+	adný: 21
+	adob: 9
+	adoc: 11
+	adom: 38
+	ados: 9
+	adov: 28
+	adr: 53
+	adri: 23
+	adrí: 4
+	adu: 60
+	adu : 32
+	aduj: 23
+	ady: 49
+	ady : 49
+	adzu: 6
+	adá: 23
+	adá : 17
+	adý: 8
+	adý : 4
+	adýc: 4
+	adš: 8
+	adše: 6
+	af: 38
+	af : 6
+	aft: 4
+	ag: 49
+	aga: 2
+	age: 11
+	agi: 2
+	agov: 9
+	agr: 2
+	ah: 272
+	ahl: 19
+	ahla: 6
+	ahli: 4
+	ahn: 58
+	ahne: 8
+	ahnu: 49
+	aho: 53
+	ahov: 34
+	ahož: 6
+	ahra: 13
+	ahu: 49
+	ahu : 21
+	ahuj: 28
+	ahy: 38
+	ahy : 34
+	ahyn: 4
+	ahč: 4
+	ahŕ: 8
+	ahŕň: 8
+	ai: 23
+	aid: 2
+	ail: 2
+	ais: 11
+	ait: 2
+	aj: 976
+	aj : 225
+	aj e: 6
+	aj h: 4
+	aj k: 21
+	aj m: 15
+	aj n: 30
+	aj o: 15
+	aj p: 34
+	aj t: 15
+	aj v: 26
+	aj z: 13
+	aj ď: 4
+	aja: 11
+	ajc: 26
+	ajca: 13
+	ajco: 13
+	ajdô: 9
+	aji: 115
+	ajin: 113
+	ajk: 8
+	ajl: 15
+	ajle: 15
+	ajm: 56
+	ajme: 6
+	ajmi: 4
+	ajmä: 45
+	ajn: 24
+	ajne: 13
+	ajov: 8
+	ajp: 13
+	ajpr: 11
+	ajr: 8
+	ajro: 4
+	ajrý: 4
+	ajs: 13
+	ajsk: 8
+	ajt: 15
+	ajtr: 13
+	ajv: 26
+	ajvi: 9
+	ajvy: 8
+	ajvz: 6
+	ají: 47
+	ajín: 45
+	ajú: 312
+	ajú : 128
+	ajúc: 178
+	ajč: 8
+	ajče: 6
+	ajš: 13
+	ajši: 8
+	ajší: 4
+	ak: 986
+	ak : 225
+	ak b: 24
+	ak c: 9
+	ak j: 13
+	ak p: 13
+	ak t: 17
+	ak v: 23
+	ak ľ: 4
+	ak ž: 15
+	ake: 11
+	akej: 9
+	akis: 21
+	akl: 13
+	akla: 11
+	akm: 6
+	akme: 6
+	ako: 344
+	ako : 293
+	akov: 28
+	akrá: 4
+	aks: 2
+	akto: 17
+	aktí: 6
+	aku: 32
+	aku : 9
+	akuj: 21
+	akzv: 8
+	aká: 39
+	aká : 19
+	akáv: 17
+	aké: 60
+	aké : 47
+	akéh: 4
+	akét: 6
+	akú: 19
+	akú : 9
+	akús: 6
+	aký: 56
+	aký : 11
+	akýc: 13
+	akým: 30
+	akč: 6
+	akčn: 6
+	akž: 11
+	akže: 11
+	al: 1123
+	al : 124
+	al c: 2
+	al e: 2
+	al ž: 6
+	ala: 116
+	ala : 116
+	alb: 2
+	ald: 4
+	ale: 238
+	aleb: 71
+	alej: 24
+	ales: 2
+	ali: 387
+	ali : 261
+	alk: 2
+	all: 4
+	alm: 4
+	alo: 99
+	alo : 54
+	alos: 13
+	aloš: 4
+	alož: 24
+	als: 4
+	alt: 13
+	alu: 2
+	alí: 13
+	alík: 11
+	alóg: 9
+	alý: 21
+	alýc: 9
+	alš: 64
+	alši: 19
+	alšo: 6
+	alší: 38
+	am : 171
+	am s: 23
+	am č: 6
+	am ž: 32
+	ama: 15
+	amb: 11
+	ame : 66
+	amed: 4
+	amer: 32
+	ames: 26
+	ami: 173
+	ami : 145
+	amin: 2
+	amis: 2
+	amo : 2
+	amom: 8
+	amov: 8
+	amoz: 26
+	amu : 23
+	amž: 15
+	amži: 15
+	an: 1567
+	an : 9
+	an k: 2
+	an o: 2
+	an p: 2
+	ana: 26
+	anca: 13
+	ance: 6
+	anco: 43
+	ancú: 11
+	and: 30
+	ande: 2
+	ando: 2
+	ane : 49
+	anej: 15
+	ang: 15
+	ange: 2
+	ani: 586
+	ani : 111
+	ania: 145
+	anie: 203
+	anis: 2
+	aniu: 34
+	anič: 19
+	anmi: 8
+	ann: 13
+	anný: 6
+	ano: 143
+	anov: 98
+	ans: 53
+	ant: 21
+	ante: 2
+	anti: 8
+	anto: 6
+	any : 34
+	anz: 6
+	aná: 26
+	aná : 13
+	anás: 6
+	ané: 115
+	ané : 92
+	anéh: 19
+	aní: 156
+	aní : 120
+	aním: 34
+	anú: 15
+	anú : 15
+	aný: 49
+	aný : 26
+	anýc: 19
+	anč: 45
+	ančn: 45
+	anž: 4
+	anže: 4
+	aob: 13
+	aobc: 8
+	aobe: 6
+	aoz: 19
+	aoza: 19
+	ap: 139
+	apa: 6
+	apoj: 8
+	apok: 8
+	apr: 69
+	apri: 13
+	aprí: 47
+	ar: 482
+	ar : 6
+	ar e: 2
+	ara: 28
+	ara : 4
+	aran: 2
+	arb: 2
+	ard: 23
+	ardn: 9
+	ardá: 6
+	are: 23
+	are : 2
+	arg: 4
+	aril: 15
+	arié: 8
+	ark: 6
+	arn: 4
+	arsk: 19
+	art: 36
+	arte: 2
+	artn: 34
+	aruč: 19
+	ary: 2
+	aráb: 6
+	arí : 9
+	as: 674
+	as : 66
+	as a: 6
+	as c: 2
+	as n: 9
+	as p: 6
+	as s: 4
+	as t: 4
+	as v: 4
+	asah: 6
+	ase: 19
+	asi: 26
+	asl: 21
+	asle: 17
+	aslú: 4
+	asn: 118
+	asne: 21
+	asno: 30
+	asná: 8
+	asné: 41
+	asnú: 6
+	asný: 6
+	aso: 73
+	asom: 6
+	asov: 68
+	ass: 2
+	ast: 229
+	asta: 11
+	asti: 94
+	astn: 41
+	astí: 8
+	astú: 11
+	así: 24
+	asím: 17
+	asť: 32
+	asť : 23
+	asťo: 9
+	at: 627
+	at : 11
+	at a: 2
+	at o: 2
+	ata: 21
+	atab: 6
+	ate: 141
+	ate : 21
+	atel: 4
+	ater: 9
+	ateľ: 81
+	ati: 120
+	ati : 4
+	atia: 13
+	atic: 58
+	atiť: 8
+	atky: 6
+	atn: 58
+	atne: 9
+	atno: 9
+	atné: 15
+	atní: 11
+	atný: 11
+	ato: 41
+	ato : 11
+	atoč: 17
+	atr: 73
+	atre: 47
+	atrí: 9
+	ats: 6
+	atu: 2
+	atvo: 4
+	aty: 2
+	atá : 6
+	até: 30
+	atég: 24
+	atí: 54
+	atí : 13
+	atív: 34
+	atý: 8
+	atý : 6
+	atň: 8
+	atňo: 8
+	au: 54
+	aud: 8
+	aug: 2
+	aují: 6
+	auk: 2
+	aus: 2
+	aut: 23
+	av: 676
+	av : 15
+	avať: 9
+	avd: 19
+	avde: 9
+	avdu: 6
+	aved: 17
+	avej: 6
+	aven: 23
+	avi: 131
+	avid: 36
+	avil: 17
+	avin: 11
+	aviť: 17
+	avk: 19
+	avn: 60
+	avné: 15
+	avný: 23
+	avo: 88
+	avod: 43
+	avov: 15
+	avr: 36
+	avrh: 32
+	avri: 4
+	avu: 58
+	avu : 23
+	avuj: 36
+	avy: 54
+	avy : 47
+	avyš: 8
+	avá: 15
+	avác: 4
+	avád: 9
+	avín: 11
+	avý: 8
+	avým: 6
+	avš: 15
+	avša: 11
+	aw: 2
+	axi: 17
+	axim: 13
+	az b: 6
+	azi: 2
+	azn: 56
+	azne: 17
+	azni: 26
+	azu: 26
+	azuj: 21
+	azy: 23
+	azy : 9
+	azyk: 9
+	ač: 169
+	ača: 28
+	ačal: 17
+	ačať: 8
+	ačk: 11
+	ačky: 6
+	ačl: 8
+	ačle: 8
+	ačn: 58
+	ačné: 23
+	ačnú: 4
+	ačný: 17
+	ačo: 32
+	ačov: 32
+	ačuj: 13
+	ačí : 4
+	aď: 23
+	aďa: 21
+	aďal: 17
+	aďar: 4
+	aľ: 84
+	aľ : 69
+	aľ i: 38
+	aľ n: 9
+	aľ t: 4
+	aľ č: 8
+	aľk: 4
+	aľo: 4
+	aľov: 4
+	aľu: 8
+	aľuj: 8
+	aň: 17
+	aň : 6
+	aňo: 8
+	aňov: 8
+	aňu: 4
+	aňuj: 4
+	aš: 154
+	aša : 15
+	aše: 47
+	aše : 32
+	ašej: 15
+	aši: 39
+	ašic: 24
+	ašim: 9
+	ašo: 11
+	ašom: 6
+	aštr: 4
+	ašu: 32
+	ašu : 32
+	ať: 604
+	ať : 597
+	ať a: 53
+	ať b: 9
+	ať c: 8
+	ať d: 19
+	ať e: 6
+	ať h: 6
+	ať i: 9
+	ať j: 4
+	ať k: 17
+	ať l: 11
+	ať m: 9
+	ať n: 56
+	ať o: 24
+	ať p: 69
+	ať r: 8
+	ať s: 62
+	ať t: 19
+	ať v: 73
+	ať z: 38
+	ať á: 4
+	ať ú: 6
+	ať č: 8
+	ať ž: 36
+	aťa: 4
+	aťa : 4
+	aťr: 4
+	aťro: 4
+	až: 173
+	až : 19
+	až a: 4
+	ažd: 56
+	ažde: 8
+	aždo: 11
+	aždé: 11
+	aždý: 24
+	ažiť: 8
+	ažk: 13
+	ažko: 8
+	ažo: 26
+	ažov: 26
+	ažu: 21
+	ažuj: 21
+	aží: 9
+	b: 3272
+	b : 41
+	b a: 17
+	b ak: 13
+	ba: 156
+	balí: 11
+	ban: 11
+	ban : 2
+	bar: 15
+	bav: 28
+	bavy: 13
+	bať: 6
+	bať : 6
+	bb: 2
+	bc: 43
+	bch: 34
+	bcho: 26
+	bchá: 8
+	bcí: 4
+	bcí : 4
+	bd: 15
+	bdo: 11
+	bdob: 11
+	be: 295
+	be : 23
+	bec: 32
+	becn: 23
+	ben: 15
+	ber: 39
+	ber : 2
+	bere: 2
+	bet: 13
+	betí: 8
+	bez: 161
+	bez : 32
+	bezp: 122
+	bežn: 4
+	bhaj: 4
+	bi: 203
+	bi : 2
+	bia: 2
+	bidv: 4
+	bieh: 8
+	biel: 11
+	biln: 15
+	bin: 2
+	bite: 26
+	bitn: 9
+	biť: 32
+	biť : 32
+	bjas: 4
+	bk: 23
+	bko: 13
+	bkov: 13
+	bla: 101
+	blah: 8
+	blas: 94
+	ble: 9
+	blem: 8
+	bli: 23
+	bliž: 9
+	blé: 69
+	blém: 69
+	blí: 15
+	blíz: 9
+	blíž: 6
+	bm: 30
+	bme: 28
+	bmed: 28
+	bn: 186
+	bne: 39
+	bne : 32
+	bno: 43
+	bnos: 13
+	bnov: 26
+	bná: 13
+	bná : 13
+	bné: 66
+	bné : 60
+	bnéh: 6
+	bnú: 4
+	bnú : 4
+	bný: 17
+	bnýc: 9
+	bným: 6
+	bo: 571
+	bo : 77
+	bo n: 9
+	bo o: 9
+	bod: 41
+	body: 9
+	boh: 23
+	boha: 9
+	bohu: 9
+	boj: 45
+	boj : 13
+	boja: 13
+	boji: 8
+	bok: 8
+	bol: 203
+	bol : 30
+	bola: 39
+	boli: 60
+	bolo: 71
+	bom: 43
+	bom : 41
+	bons: 21
+	bor: 77
+	bor : 15
+	born: 17
+	boru: 26
+	bovo: 4
+	brať: 8
+	bre: 26
+	brov: 19
+	brá: 17
+	brán: 17
+	brú : 4
+	bsa: 19
+	bsah: 17
+	bu: 345
+	bu z: 6
+	buch: 6
+	bud: 250
+	bude: 131
+	budn: 9
+	budú: 96
+	buj: 34
+	buje: 30
+	bujú: 4
+	bulh: 13
+	bvin: 6
+	by: 768
+	by : 655
+	by a: 17
+	by b: 41
+	by e: 13
+	by i: 8
+	by k: 17
+	by m: 56
+	by n: 19
+	by p: 23
+	by s: 344
+	by u: 9
+	by v: 34
+	by z: 15
+	byt: 15
+	byti: 4
+	byto: 8
+	byv: 11
+	byva: 11
+	byča: 4
+	byť: 75
+	byť : 75
+	bá: 47
+	bác: 8
+	bách: 8
+	báln: 11
+	bánk: 6
+	báva: 6
+	báz: 6
+	bí: 19
+	bí : 11
+	bí n: 6
+	bô: 4
+	bôd: 4
+	bôd : 4
+	bú: 8
+	búr: 6
+	búrk: 4
+	býv: 11
+	býva: 11
+	bč: 56
+	bča: 41
+	bčan: 41
+	bči: 15
+	bčia: 15
+	bň: 8
+	bňo: 6
+	bňov: 6
+	c: 4706
+	c ak: 9
+	c kt: 6
+	c n: 17
+	c ne: 11
+	c pr: 13
+	c sa: 8
+	ca: 154
+	ca : 126
+	ca n: 11
+	ca p: 23
+	ca v: 9
+	cal: 2
+	can: 4
+	cas: 4
+	cat: 8
+	cc: 11
+	ccs : 4
+	ce a: 34
+	ce d: 2
+	ce s: 26
+	ce ž: 6
+	ced: 4
+	ceh: 11
+	ceho: 11
+	cej: 28
+	cej : 28
+	cel: 158
+	cel : 39
+	cela: 30
+	celk: 15
+	celo: 32
+	celá: 8
+	celé: 17
+	celú: 4
+	celý: 6
+	cem: 43
+	cem : 19
+	ceme: 19
+	cen: 21
+	cent: 8
+	cer: 9
+	ces: 54
+	cete: 6
+	cez: 11
+	cez : 4
+	cezh: 8
+	ch: 2044
+	ch : 1363
+	ch a: 101
+	ch c: 21
+	ch e: 34
+	ch h: 30
+	ch j: 26
+	ch k: 124
+	ch m: 38
+	ch n: 68
+	ch o: 75
+	ch p: 205
+	ch r: 49
+	ch s: 116
+	ch t: 36
+	ch v: 103
+	ch z: 73
+	ch ú: 15
+	ch č: 21
+	ch ľ: 11
+	ch š: 47
+	ch ž: 13
+	chať: 4
+	chc: 131
+	chce: 130
+	che: 8
+	chen: 4
+	chi: 6
+	chlo: 9
+	chno: 19
+	cho: 150
+	chod: 58
+	chop: 39
+	chov: 23
+	chr: 56
+	chra: 39
+	chrá: 9
+	chrí: 6
+	cht: 34
+	chto: 34
+	chu: 30
+	chu : 13
+	chud: 13
+	chv: 38
+	chva: 9
+	chvá: 19
+	chví: 9
+	chy: 54
+	chyb: 38
+	chys: 11
+	chá: 62
+	chád: 49
+	cháp: 8
+	chôd: 4
+	chý: 11
+	chýb: 9
+	ci: 997
+	ci : 274
+	ci a: 28
+	ci b: 11
+	ci k: 19
+	ci n: 23
+	ci p: 32
+	ci s: 41
+	ci t: 17
+	ci v: 36
+	cial: 8
+	cic: 51
+	cich: 51
+	cid: 2
+	cie: 237
+	cie : 131
+	ciel: 15
+	cieľ: 69
+	cii: 41
+	cii : 41
+	cil: 2
+	cim : 9
+	cin: 2
+	cio: 23
+	cion: 4
+	ciou: 17
+	cip: 2
+	cis: 4
+	cisá: 4
+	citl: 8
+	citn: 6
+	ciu: 69
+	ciu : 69
+	ciá: 79
+	ciác: 8
+	ciál: 68
+	ciám: 4
+	cií: 54
+	cií : 54
+	ció: 9
+	cióz: 9
+	ck: 312
+	cke: 49
+	ckej: 47
+	cko: 23
+	cko : 9
+	ckom: 8
+	cku: 9
+	cku : 9
+	cky: 23
+	cky : 21
+	cká: 13
+	cká : 13
+	cké: 71
+	cké : 45
+	ckéh: 23
+	ckí: 4
+	ckí : 4
+	ckú: 28
+	ckú : 28
+	cký: 84
+	cký : 23
+	ckýc: 39
+	ckým: 23
+	cn: 66
+	cne: 8
+	cnej: 6
+	cno: 36
+	cnos: 36
+	cné: 15
+	cné : 8
+	cnéh: 6
+	co: 235
+	co : 8
+	coch: 4
+	com: 38
+	com : 38
+	cou : 21
+	cov: 160
+	cov : 45
+	cova: 45
+	covi: 9
+	covn: 54
+	cový: 4
+	cr: 6
+	cre: 2
+	croč: 4
+	cs: 9
+	ct: 75
+	cte: 2
+	cti: 4
+	ctio: 2
+	ctu: 4
+	ctu : 4
+	ctv: 66
+	ctva: 28
+	ctvo: 36
+	cu: 56
+	cu : 54
+	cy: 9
+	cyk: 8
+	cykl: 8
+	cz: 4
+	céne: 4
+	cí ú: 4
+	cíd: 4
+	cíp : 4
+	cít: 4
+	cú: 13
+	cúz: 11
+	cúzs: 9
+	cť: 23
+	cť : 21
+	cť p: 4
+	cť s: 6
+	cť z: 4
+	d: 6878
+	d : 295
+	d a: 13
+	d by: 21
+	d d: 9
+	d de: 2
+	d e: 4
+	d f: 4
+	d i: 2
+	d jú: 4
+	d l: 2
+	d m: 8
+	d ná: 6
+	d o: 8
+	d pá: 6
+	d ro: 11
+	d s : 6
+	d sú: 4
+	d t: 11
+	d v : 8
+	d vý: 6
+	d ž: 9
+	d že: 8
+	da: 618
+	da : 150
+	daj: 158
+	dajc: 26
+	dajú: 111
+	dala: 17
+	dali: 19
+	dalo: 9
+	dam: 28
+	dame: 4
+	dan: 45
+	dans: 2
+	dané: 13
+	dar: 47
+	darí: 9
+	dat: 17
+	dau: 2
+	davk: 19
+	daň: 9
+	daňo: 8
+	dať: 71
+	dať : 71
+	dbež: 4
+	dc: 26
+	dch: 21
+	dchá: 19
+	ddie: 4
+	de: 757
+	de : 330
+	de a: 9
+	de b: 8
+	de c: 4
+	de d: 4
+	de e: 4
+	de f: 6
+	de i: 4
+	de l: 4
+	de o: 64
+	de r: 9
+	de t: 15
+	deck: 11
+	dej : 6
+	deje: 8
+	del: 86
+	del : 8
+	dels: 2
+	delá: 34
+	den: 124
+	den : 11
+	deni: 45
+	dent: 26
+	dené: 6
+	dení: 13
+	dený: 11
+	der: 6
+	dern: 4
+	des: 11
+	det: 11
+	dev: 8
+	deľ: 4
+	deľo: 4
+	deň: 11
+	deň : 11
+	dhad: 8
+	di: 383
+	di : 2
+	dia: 66
+	dia : 34
+	diac: 4
+	diaľ: 4
+	dic: 4
+	did: 4
+	die: 81
+	die : 24
+	diel: 30
+	dieť: 15
+	dif: 2
+	dig: 6
+	dim: 2
+	din: 43
+	ding: 2
+	dinn: 9
+	diná: 15
+	disk: 69
+	dit: 11
+	dit : 2
+	dií: 9
+	dií : 9
+	dič: 17
+	dičo: 8
+	diť: 15
+	diť : 15
+	dk: 109
+	dka: 11
+	dkaz: 8
+	dkl: 13
+	dkla: 13
+	dko: 38
+	dkov: 30
+	dku: 19
+	dku : 19
+	dky: 24
+	dky : 24
+	dl: 154
+	dlh: 17
+	dlho: 11
+	dli: 45
+	dli : 17
+	dliv: 15
+	dliš: 9
+	dlo: 39
+	dlo : 15
+	dlož: 23
+	dlá: 19
+	dlá : 19
+	dlž: 4
+	dm: 69
+	dmeň: 6
+	dmi: 58
+	dmi : 8
+	dmie: 49
+	dn: 768
+	dna : 17
+	dne: 171
+	dne : 58
+	dnej: 34
+	dnen: 6
+	dnes: 54
+	dneš: 11
+	dnik: 34
+	dniť: 4
+	dno: 173
+	dnod: 23
+	dnom: 13
+	dnos: 36
+	dnot: 75
+	dnou: 19
+	dnu: 62
+	dnut: 51
+	dny: 19
+	dny : 8
+	dnym: 8
+	dná : 9
+	dné: 84
+	dné : 54
+	dnéh: 24
+	dní: 54
+	dníc: 43
+	dník: 4
+	dníč: 6
+	dnô: 4
+	dnôt: 4
+	dnú: 23
+	dnú : 13
+	dnúť: 9
+	dný: 98
+	dný : 13
+	dnýc: 47
+	dným: 38
+	do: 1168
+	do c: 2
+	do r: 23
+	do ú: 15
+	dob: 131
+	dobe: 9
+	dobn: 36
+	dobr: 39
+	dobu: 11
+	doby: 9
+	dobí: 8
+	dod: 41
+	dodr: 17
+	dodá: 13
+	doh: 92
+	doho: 62
+	dohr: 8
+	dohô: 8
+	dohľ: 11
+	dok: 62
+	dok : 13
+	doká: 15
+	dol : 23
+	dom: 141
+	dom : 71
+	domn: 34
+	don: 6
+	dop: 83
+	dopl: 41
+	dopr: 26
+	dopĺ: 6
+	dor: 6
+	dos: 161
+	dosa: 15
+	dosi: 56
+	dosp: 9
+	dost: 69
+	dosť: 11
+	dote: 8
+	dov: 167
+	dov : 38
+	dova: 51
+	dovo: 28
+	dovú: 4
+	dovš: 28
+	doz: 13
+	doze: 8
+	dozo: 4
+	doč: 6
+	dp: 233
+	dph: 6
+	dph : 6
+	dpi: 21
+	dpis: 21
+	dpo: 184
+	dpor: 124
+	dpov: 56
+	dpre: 11
+	dpí: 4
+	dpís: 4
+	drav: 30
+	dren: 9
+	dril: 11
+	driť: 9
+	drob: 8
+	droj: 23
+	drov: 8
+	dru: 47
+	druh: 36
+	druj: 6
+	drž: 66
+	drži: 23
+	držn: 11
+	ds: 360
+	ds : 2
+	dsa : 4
+	dse: 182
+	dsed: 178
+	dsk: 62
+	dsko: 8
+	dské: 8
+	dský: 34
+	dst: 101
+	dsta: 75
+	dstr: 9
+	dstú: 4
+	dsú: 6
+	dsúd: 4
+	dt: 9
+	dtý: 6
+	dtým: 6
+	du : 128
+	du a: 9
+	du k: 15
+	du o: 9
+	duch: 19
+	duj: 51
+	duje: 19
+	dujú: 30
+	duna: 8
+	dus: 4
+	dust: 2
+	duš: 9
+	dv: 99
+	dve: 43
+	dve : 15
+	dvet: 26
+	dvih: 6
+	dvo: 23
+	dvoc: 8
+	dy: 152
+	dy : 145
+	dy a: 26
+	dy k: 15
+	dy o: 13
+	dy v: 11
+	dy z: 9
+	dz: 280
+	dza: 69
+	dza : 11
+	dzaj: 26
+	dzal: 6
+	dzan: 11
+	dzať: 9
+	dzb: 4
+	dze: 38
+	dzen: 32
+	dzer: 6
+	dzi: 126
+	dzi : 73
+	dzie: 4
+	dzin: 34
+	dzit: 4
+	dzk: 9
+	dzko: 6
+	dzov: 17
+	dzu: 11
+	dzuj: 9
+	dá: 278
+	dá : 36
+	dá p: 8
+	dá s: 13
+	dác: 17
+	dách: 11
+	dáci: 6
+	dám: 36
+	dámy: 32
+	dár: 137
+	dárn: 8
+	dáro: 8
+	dárs: 118
+	dát: 9
+	dáv: 38
+	dáva: 24
+	dávo: 4
+	dé: 17
+	déh: 11
+	dého: 11
+	dés: 2
+	dí: 49
+	dí : 36
+	dí k: 8
+	dí v: 6
+	dín: 6
+	dín : 6
+	dô: 267
+	dôc: 9
+	dôch: 9
+	dôk: 13
+	dôka: 4
+	dôkl: 9
+	dôl: 116
+	dôle: 116
+	dôr: 41
+	dôra: 41
+	dôs: 26
+	dôsl: 23
+	dôst: 4
+	dôv: 58
+	dôve: 8
+	dôvo: 51
+	dú: 141
+	dú : 41
+	dú k: 4
+	dú m: 8
+	dú p: 6
+	dú s: 6
+	dú z: 8
+	dúc: 62
+	dúce: 9
+	dúci: 11
+	dúcn: 36
+	dúco: 6
+	dúf: 36
+	dúfa: 36
+	dý: 32
+	dý : 28
+	dý p: 6
+	dý s: 4
+	dýc: 4
+	dých: 4
+	dč: 24
+	dča: 6
+	dčas: 6
+	dče: 15
+	dčen: 15
+	dľ: 34
+	dľa: 32
+	dľa : 28
+	dľah: 4
+	dň: 15
+	dňa: 4
+	dňo: 9
+	dňov: 8
+	dš: 9
+	dše: 6
+	dšej: 4
+	dž: 2
+	e: 17749
+	e a : 178
+	e ab: 30
+	e aj: 60
+	e ak: 73
+	e al: 19
+	e an: 8
+	e ap: 2
+	e ar: 4
+	e as: 4
+	e au: 6
+	e be: 8
+	e bi: 2
+	e by: 62
+	e c: 47
+	e d: 210
+	e da: 6
+	e de: 26
+	e di: 6
+	e dn: 19
+	e do: 88
+	e dá: 8
+	e dô: 51
+	e e: 88
+	e en: 2
+	e es: 4
+	e eú: 9
+	e eš: 6
+	e f: 26
+	e fa: 6
+	e fo: 2
+	e g: 13
+	e ge: 2
+	e gr: 4
+	e ha: 2
+	e hl: 24
+	e ho: 47
+	e i: 83
+	e i : 2
+	e ib: 8
+	e id: 13
+	e im: 4
+	e in: 26
+	e is: 2
+	e j: 178
+	e je: 156
+	e k: 214
+	e k : 30
+	e kt: 56
+	e kľ: 9
+	e l: 28
+	e le: 17
+	e me: 15
+	e má: 11
+	e mô: 15
+	e mň: 4
+	e n: 385
+	e na: 131
+	e ne: 115
+	e ni: 56
+	e no: 21
+	e ná: 60
+	e o : 118
+	e ob: 43
+	e od: 38
+	e on: 2
+	e p: 710
+	e pa: 21
+	e pe: 8
+	e po: 283
+	e pr: 347
+	e pt: 8
+	e pá: 15
+	e q: 2
+	e qu: 2
+	e re: 26
+	e ro: 101
+	e s: 616
+	e s : 47
+	e sa: 197
+	e se: 8
+	e sk: 45
+	e sl: 17
+	e sm: 24
+	e sp: 83
+	e su: 8
+	e sú: 41
+	e to: 109
+	e tá: 9
+	e tú: 8
+	e tý: 17
+	e uv: 19
+	e už: 15
+	e v: 546
+	e v : 158
+	e va: 2
+	e vy: 88
+	e vz: 11
+	e vá: 39
+	e vý: 30
+	e vš: 62
+	e w: 2
+	e we: 2
+	e z: 287
+	e z : 30
+	e za: 92
+	e zl: 9
+	e zm: 17
+	e zn: 19
+	e zo: 21
+	e zv: 17
+	e zá: 51
+	e ís: 4
+	e ú: 39
+	e úp: 8
+	e ús: 15
+	e č: 54
+	e ča: 11
+	e če: 9
+	e či: 9
+	e čo: 17
+	e ď: 9
+	e ďa: 9
+	e ľ: 23
+	e ľu: 21
+	e ž: 86
+	e že: 69
+	e ži: 17
+	ea: 49
+	eago: 8
+	ean: 4
+	eb: 355
+	ebez: 11
+	ebi: 34
+	ebit: 26
+	ebn: 69
+	ebná: 11
+	ebné: 49
+	ebný: 4
+	ebo: 111
+	ebo : 75
+	ebol: 28
+	ebu: 49
+	ebu : 8
+	ebud: 13
+	ebuj: 28
+	eby: 21
+	eby : 21
+	ec: 252
+	ec : 56
+	ec n: 8
+	ec s: 11
+	ece: 4
+	echc: 8
+	eci: 28
+	eci : 17
+	eck: 38
+	ecké: 9
+	ecký: 6
+	ecn: 23
+	ecné: 15
+	eco: 4
+	ect: 11
+	ectv: 11
+	ecí : 4
+	ed: 1519
+	ed : 53
+	ed t: 2
+	eda: 263
+	eda : 68
+	edaj: 107
+	edal: 34
+	edať: 41
+	edc: 13
+	edch: 13
+	ede: 64
+	ede : 8
+	edec: 11
+	edie: 19
+	edk: 69
+	edkl: 8
+	edko: 26
+	edku: 11
+	edky: 24
+	edlo: 26
+	edn: 270
+	edne: 24
+	edno: 124
+	ednu: 6
+	edné: 17
+	ední: 49
+	edný: 36
+	edo: 148
+	edok: 9
+	edol: 15
+	edom: 34
+	edos: 24
+	edov: 51
+	edoz: 8
+	edp: 24
+	edpi: 21
+	edr: 2
+	eds: 252
+	edse: 178
+	edst: 64
+	edtý: 6
+	eduj: 19
+	edz: 156
+	edze: 32
+	edzi: 120
+	edá: 13
+	edáv: 9
+	edú: 8
+	edúc: 6
+	edč: 24
+	edča: 6
+	edče: 15
+	edči: 4
+	ee: 4
+	ef: 54
+	eft: 2
+	efó: 6
+	efón: 6
+	eg: 184
+	ega: 11
+	ega : 4
+	egam: 8
+	ege: 2
+	egen: 2
+	egic: 11
+	egió: 41
+	ego: 23
+	egom: 6
+	egov: 15
+	egrá: 13
+	egu: 19
+	egy: 9
+	egác: 8
+	eh: 227
+	ehav: 13
+	ehli: 8
+	eho: 180
+	eho : 169
+	ehô: 6
+	ehôd: 4
+	ei: 8
+	eil: 2
+	eir: 4
+	eiro: 2
+	eis: 2
+	eist: 2
+	ej: 1117
+	ej : 751
+	ej a: 28
+	ej b: 11
+	ej c: 11
+	ej d: 30
+	ej e: 23
+	ej f: 6
+	ej h: 11
+	ej k: 39
+	ej l: 11
+	ej m: 47
+	ej o: 23
+	ej p: 92
+	ej r: 28
+	ej s: 122
+	ej t: 9
+	ej u: 8
+	ej v: 43
+	ej z: 41
+	ej ú: 107
+	ej č: 11
+	ej š: 6
+	ej ž: 6
+	ejak: 17
+	ejav: 21
+	ejm: 32
+	ejme: 23
+	ejn: 49
+	ejno: 15
+	ejné: 21
+	ejný: 9
+	ejsť: 6
+	ejt: 107
+	ejto: 107
+	ejš: 111
+	ejši: 47
+	ejší: 56
+	eke: 2
+	eki: 2
+	ekoľ: 13
+	ekt: 156
+	ekti: 2
+	ektm: 4
+	ekto: 99
+	ektí: 13
+	ekva: 8
+	eká: 19
+	ekár: 6
+	ekát: 4
+	ekáž: 8
+	el: 554
+	el : 103
+	el b: 19
+	el d: 2
+	el m: 2
+	elat: 4
+	ele: 105
+	ele : 15
+	eli: 56
+	eliť: 9
+	elm: 2
+	elom: 13
+	els: 15
+	elt: 4
+	elt : 2
+	elá: 53
+	elá : 6
+	elám: 8
+	elár: 6
+	eláv: 34
+	eléh: 9
+	elú: 4
+	elú : 4
+	elý: 9
+	elý : 6
+	elč: 4
+	em: 665
+	em : 208
+	em d: 4
+	em e: 2
+	em ž: 17
+	ema: 39
+	emaj: 8
+	emal: 17
+	emb: 9
+	embr: 9
+	eme : 175
+	emen: 11
+	emié: 8
+	emok: 47
+	emož: 8
+	emp: 2
+	ems: 2
+	emu: 36
+	emu : 32
+	emy: 26
+	emys: 26
+	emô: 30
+	emôž: 30
+	en: 2116
+	en : 133
+	en a: 6
+	en b: 2
+	en c: 2
+	en h: 4
+	en i: 2
+	en j: 2
+	en k: 8
+	en m: 6
+	en o: 8
+	en r: 4
+	en s: 8
+	en t: 8
+	en v: 21
+	en z: 4
+	enať: 8
+	ence: 2
+	end: 6
+	end : 2
+	enda: 2
+	endi: 2
+	enej: 38
+	eng: 4
+	eni: 460
+	enia: 178
+	enie: 235
+	eniu: 24
+	eniť: 9
+	enk: 56
+	enka: 15
+	enku: 8
+	enky: 19
+	enn: 9
+	enne: 8
+	enok: 13
+	enov: 28
+	ensk: 107
+	enst: 28
+	ent: 330
+	ent : 64
+	enta: 4
+	ente: 26
+	enti: 6
+	entn: 34
+	entr: 2
+	entu: 69
+	entá: 24
+	entú: 9
+	enuj: 8
+	enul: 8
+	eny: 24
+	eny : 24
+	enzá: 4
+	enzí: 6
+	enzý: 4
+	ená: 111
+	ená : 94
+	enám: 8
+	ené: 118
+	ené : 101
+	enéh: 13
+	ení: 133
+	ení : 92
+	ením: 38
+	enú: 11
+	enú : 6
+	enúť: 6
+	ený: 169
+	ený : 115
+	enýc: 41
+	eným: 13
+	enč: 9
+	enčn: 9
+	enš: 19
+	enši: 9
+	enší: 6
+	eo : 2
+	eob: 28
+	eobe: 21
+	eobm: 6
+	eodk: 4
+	epa: 4
+	epe: 2
+	epo: 66
+	epoc: 11
+	epod: 17
+	epoj: 6
+	epok: 13
+	ept: 8
+	epľ: 6
+	epľo: 6
+	epš: 64
+	epše: 21
+	epši: 36
+	er: 760
+	er : 43
+	er a: 6
+	er b: 6
+	er d: 2
+	er h: 2
+	er k: 2
+	er n: 4
+	er s: 4
+	era : 6
+	eraj: 8
+	eran: 45
+	eraz: 38
+	erať: 17
+	erc: 9
+	ere: 122
+	ere : 36
+	erej: 51
+	eren: 24
+	ereč: 4
+	erf: 4
+	erge: 38
+	erh: 4
+	eri: 41
+	erin: 4
+	erk: 4
+	erl: 4
+	erm: 8
+	ermi: 6
+	erna: 9
+	erni: 32
+	erný: 8
+	ero : 2
+	eroc: 4
+	erom: 28
+	erov: 17
+	err: 4
+	ers: 24
+	ert: 8
+	eru : 23
+	erv: 6
+	erve: 2
+	ery : 19
+	erác: 9
+	erál: 8
+	eré: 2
+	erím: 8
+	es: 586
+	es : 68
+	es e: 2
+	es k: 2
+	es l: 2
+	es m: 6
+	es n: 4
+	es o: 2
+	es p: 2
+	es r: 2
+	es s: 13
+	es t: 2
+	esad: 17
+	esať: 8
+	esc: 8
+	ese: 36
+	ese : 9
+	esi: 53
+	esia: 24
+	eskú: 11
+	esmi: 13
+	esmú: 8
+	eso: 6
+	esov: 6
+	esp: 17
+	est: 218
+	est : 8
+	esta: 30
+	este: 9
+	esti: 9
+	estn: 62
+	estr: 4
+	estí: 11
+	esv: 19
+	esve: 17
+	esú: 17
+	esú : 6
+	esúh: 8
+	esúv: 4
+	esť: 19
+	esť : 15
+	et: 734
+	et : 26
+	et e: 2
+	et f: 2
+	et k: 2
+	et o: 2
+	et p: 4
+	et s: 6
+	et v: 2
+	eta: 19
+	etc: 23
+	etci: 23
+	ete : 64
+	eten: 4
+	etic: 28
+	etik: 15
+	etiu: 4
+	etk: 145
+	etko: 11
+	etky: 30
+	etký: 96
+	etnu: 4
+	eto: 248
+	eto : 152
+	etov: 30
+	etož: 60
+	ets: 4
+	ett: 2
+	ette: 2
+	etv: 26
+	etvi: 13
+	etví: 13
+	etí: 28
+	etí : 11
+	etíc: 13
+	etó: 9
+	etód: 9
+	eu : 4
+	euk: 15
+	euka: 6
+	euká: 9
+	eumo: 4
+	euro: 13
+	euró: 375
+	eut: 2
+	ev: 195
+	evam: 32
+	eve: 11
+	eve : 2
+	evi: 17
+	evk: 6
+	evn: 19
+	evné: 6
+	evo: 8
+	evok: 6
+	evr: 2
+	evy: 49
+	evyh: 34
+	evyv: 4
+	evá: 11
+	evád: 11
+	eví: 8
+	evíz: 6
+	ew: 4
+	exi: 56
+	exis: 43
+	exn: 6
+	exný: 4
+	exp: 4
+	ez t: 13
+	ezd : 6
+	ezh: 9
+	ezhr: 8
+	ezid: 17
+	ezos: 6
+	ezp: 122
+	ezpe: 115
+	ezá: 23
+	ezáv: 17
+	ezís: 4
+	ezó: 6
+	ezón: 6
+	eáln: 6
+	eú: 98
+	eú : 96
+	eú a: 19
+	eú b: 4
+	eú k: 6
+	eú m: 4
+	eú p: 11
+	eú r: 4
+	eú s: 6
+	eú u: 4
+	eú v: 9
+	eú z: 4
+	eč: 208
+	ečb: 6
+	eče: 24
+	ečen: 21
+	eči: 45
+	ečil: 8
+	ečis: 4
+	ečiť: 30
+	ečn: 88
+	ečno: 41
+	ečny: 4
+	eční: 15
+	ečný: 11
+	ečo: 26
+	ečo : 23
+	ečí: 13
+	ečí : 6
+	ečít: 8
+	eď: 92
+	eď : 73
+	eď b: 8
+	eď j: 6
+	eď m: 8
+	eď p: 4
+	eď s: 21
+	eď t: 6
+	eď v: 4
+	eď z: 4
+	eďu: 4
+	eďuj: 4
+	eďž: 15
+	eďže: 15
+	eľ: 436
+	eľ : 17
+	eľ s: 6
+	eľa: 45
+	eľa : 43
+	eľk: 66
+	eľka: 4
+	eľke: 15
+	eľko: 4
+	eľká: 6
+	eľké: 21
+	eľkú: 4
+	eľký: 13
+	eľm: 107
+	eľmi: 107
+	eľn: 58
+	eľne: 8
+	eľno: 9
+	eľné: 15
+	eľnú: 6
+	eľný: 19
+	eľo: 124
+	eľom: 53
+	eľov: 71
+	eľs: 17
+	eľsk: 9
+	eľst: 8
+	eň: 88
+	eň : 47
+	eň i: 4
+	eň t: 6
+	eňo: 8
+	eňov: 8
+	eňu: 34
+	eňuj: 34
+	eš: 184
+	eše: 36
+	ešen: 36
+	eši: 32
+	ešil: 6
+	ešiť: 21
+	ešn: 26
+	ešne: 8
+	ešné: 11
+	ešný: 6
+	ešp: 8
+	ešpe: 8
+	ešt: 54
+	ešte: 49
+	eštr: 6
+	eší: 15
+	eší : 13
+	ešť: 8
+	eť: 58
+	eť : 43
+	eť k: 8
+	eť m: 4
+	eť n: 11
+	eť p: 4
+	eť t: 4
+	eťa: 11
+	eťa : 6
+	eťať: 4
+	eťo: 4
+	ež: 298
+	ež : 115
+	ež b: 8
+	ež c: 8
+	ež d: 6
+	ež m: 6
+	ež o: 6
+	ež p: 19
+	ež s: 11
+	ež u: 4
+	ež v: 19
+	ež z: 9
+	ež ž: 4
+	eži: 173
+	ežia: 4
+	ežit: 161
+	f: 511
+	f : 13
+	f d: 2
+	fa: 81
+	fajč: 6
+	falš: 4
+	fam: 36
+	fam : 28
+	fame: 8
+	fe: 39
+	fen: 2
+	fer: 13
+	fesi: 11
+	fi: 137
+	fic: 15
+	fici: 6
+	fik: 28
+	fiko: 15
+	fiká: 13
+	finí: 4
+	fiš: 6
+	fišk: 6
+	fo: 98
+	for: 83
+	for : 2
+	fr: 54
+	fr v: 15
+	fra: 19
+	fraš: 4
+	ft: 6
+	fu: 21
+	fung: 15
+	fyz: 6
+	fyzi: 6
+	fó: 15
+	fób: 6
+	fóbi: 6
+	fón: 6
+	fóny: 4
+	g: 691
+	g : 17
+	g b: 2
+	g p: 2
+	g s: 4
+	g v: 6
+	ga: 68
+	ga : 4
+	gal: 8
+	gali: 4
+	gami: 11
+	gan: 26
+	ganc: 4
+	gar: 4
+	gazy: 6
+	gaž: 8
+	gažo: 8
+	ge: 92
+	geb: 2
+	gel: 2
+	gen: 38
+	ger: 2
+	ges: 2
+	geti: 38
+	gi: 186
+	gia: 8
+	gic: 34
+	gick: 34
+	gie : 36
+	gií: 9
+	gií : 9
+	gió: 41
+	gión: 41
+	gl: 24
+	gle: 4
+	gli: 2
+	gn: 9
+	go: 64
+	gov: 45
+	gova: 24
+	gr: 92
+	gra: 53
+	gre: 6
+	gro: 4
+	gru: 6
+	grá: 15
+	grác: 15
+	gré: 9
+	gréc: 9
+	gt: 2
+	gu: 60
+	guj: 8
+	gujú: 4
+	gulá: 4
+	gy: 9
+	gá: 51
+	gác: 9
+	gáci: 9
+	gán: 38
+	gáno: 13
+	gány: 17
+	génn: 4
+	h: 4592
+	h : 1382
+	h a: 116
+	h a : 68
+	h ak: 15
+	h ci: 11
+	h do: 21
+	h dô: 11
+	h e: 38
+	h eu: 23
+	h h: 30
+	h hl: 9
+	h ho: 9
+	h hr: 8
+	h j: 28
+	h je: 28
+	h k: 131
+	h ka: 11
+	h kr: 62
+	h kt: 32
+	h m: 41
+	h me: 17
+	h mé: 4
+	h n: 77
+	h na: 24
+	h ná: 34
+	h o: 81
+	h ob: 30
+	h od: 11
+	h op: 11
+	h os: 8
+	h p: 214
+	h po: 64
+	h pr: 131
+	h pá: 4
+	h r: 49
+	h re: 23
+	h ro: 19
+	h s: 120
+	h s : 8
+	h sa: 15
+	h si: 17
+	h sl: 15
+	h sú: 9
+	h te: 17
+	h v: 107
+	h v : 19
+	h ve: 21
+	h vl: 9
+	h vn: 6
+	h vy: 13
+	h vz: 9
+	h vý: 13
+	h z: 79
+	h za: 19
+	h zd: 17
+	h zá: 17
+	h ú: 15
+	h ún: 4
+	h úp: 4
+	h č: 23
+	h čl: 13
+	h ľ: 11
+	h ľu: 11
+	h š: 47
+	h št: 43
+	h ž: 13
+	h ži: 11
+	ha: 145
+	hajo: 4
+	hajú: 4
+	hal: 13
+	han: 23
+	hand: 2
+	hané: 4
+	haní: 4
+	har: 26
+	hars: 13
+	has: 2
+	hat: 9
+	have: 2
+	havo: 6
+	havý: 4
+	hať: 8
+	hať : 8
+	hc: 131
+	hce: 130
+	hce : 13
+	hcel: 73
+	hcem: 38
+	hcet: 6
+	hd: 4
+	hdp: 4
+	hdp : 4
+	he: 34
+	he : 9
+	he d: 2
+	he e: 2
+	hej: 8
+	hej : 8
+	hel: 4
+	hem: 2
+	hen: 6
+	her: 2
+	het: 2
+	hi: 30
+	hie: 4
+	hin: 2
+	his: 11
+	hk: 2
+	hl: 329
+	hla: 190
+	hla : 15
+	hlad: 19
+	hlas: 116
+	hlav: 39
+	hle : 8
+	hlej: 8
+	hli: 54
+	hli : 36
+	hlia: 13
+	hlo: 21
+	hlo : 15
+	hlu : 4
+	hlá: 34
+	hlás: 32
+	hn: 158
+	hnu: 92
+	hnut: 68
+	hnuť: 24
+	hnú: 17
+	hnúť: 17
+	ho: 1445
+	ho : 708
+	ho a: 39
+	ho b: 32
+	ho d: 30
+	ho f: 13
+	ho h: 28
+	ho k: 24
+	ho m: 15
+	ho n: 41
+	ho o: 32
+	ho p: 146
+	ho r: 49
+	ho s: 41
+	ho t: 23
+	ho u: 13
+	ho v: 53
+	ho z: 36
+	ho ú: 6
+	ho č: 19
+	ho ľ: 4
+	ho š: 15
+	ho ž: 17
+	hoc: 28
+	hoch: 9
+	hoci: 19
+	hod: 287
+	hod : 11
+	hoda: 13
+	hode: 13
+	hodk: 8
+	hodl: 23
+	hodn: 116
+	hodo: 32
+	hodu: 21
+	hody: 30
+	hodí: 6
+	hodň: 4
+	hol : 11
+	hop: 39
+	hopi: 11
+	hopn: 28
+	horú: 4
+	horš: 8
+	hos: 135
+	hosp: 130
+	hov: 163
+	hov : 30
+	hova: 36
+	hovo: 79
+	hová: 9
+	hože: 6
+	hr: 178
+	hra: 105
+	hrad: 9
+	hral: 4
+	hran: 81
+	hrač: 8
+	hrn: 15
+	hrnu: 9
+	hro: 28
+	hrom: 9
+	hroz: 19
+	hrá: 19
+	hrán: 9
+	hráv: 8
+	hrí: 6
+	hríp: 6
+	ht: 96
+	hto: 96
+	hto : 96
+	hu: 203
+	hu : 128
+	hu a: 8
+	hu m: 6
+	hu p: 17
+	hu s: 11
+	hu t: 6
+	hu v: 15
+	hu z: 6
+	hu č: 4
+	hud: 15
+	hudo: 11
+	huj: 43
+	huje: 34
+	hujú: 9
+	huži: 6
+	hvaľ: 9
+	hvá: 19
+	hvál: 19
+	hví: 9
+	hvíľ: 6
+	hy: 139
+	hy : 71
+	hy a: 11
+	hy k: 8
+	hy m: 8
+	hy s: 11
+	hy v: 8
+	hyb: 47
+	hybn: 21
+	hybu: 9
+	hybň: 8
+	hyn: 4
+	hynu: 4
+	hys: 11
+	hyst: 11
+	há: 75
+	hád: 53
+	hádz: 49
+	háp: 8
+	hápe: 8
+	hä: 2
+	hí : 6
+	hô: 17
+	hôd: 15
+	hôd : 11
+	hôdz: 4
+	hý: 45
+	hý : 9
+	hýb: 13
+	hýba: 11
+	hýc: 17
+	hých: 17
+	hľ: 86
+	hľa: 86
+	hľad: 86
+	hŕ: 8
+	hŕň: 8
+	hŕňa: 8
+	i: 12555
+	i : 2500
+	i a : 120
+	i aj: 11
+	i ak: 19
+	i b: 99
+	i bu: 23
+	i by: 41
+	i c: 32
+	i co: 2
+	i d: 84
+	i da: 2
+	i de: 6
+	i di: 4
+	i dá: 9
+	i dô: 21
+	i e: 56
+	i eú: 15
+	i g: 2
+	i hl: 8
+	i i: 39
+	i ic: 9
+	i in: 13
+	i je: 45
+	i jú: 6
+	i ka: 8
+	i kr: 21
+	i kt: 51
+	i l: 15
+	i my: 15
+	i mô: 4
+	i n: 165
+	i na: 83
+	i no: 2
+	i ná: 34
+	i o : 24
+	i ob: 23
+	i od: 19
+	i p: 319
+	i pa: 15
+	i po: 96
+	i pr: 186
+	i pá: 9
+	i ro: 36
+	i rá: 11
+	i rô: 6
+	i s: 302
+	i s : 56
+	i se: 8
+	i sl: 17
+	i sm: 17
+	i sú: 15
+	i tú: 6
+	i tý: 11
+	i un: 4
+	i v: 222
+	i v : 68
+	i vy: 26
+	i vz: 13
+	i vá: 13
+	i ví: 6
+	i vý: 19
+	i vš: 13
+	i w: 4
+	i z: 137
+	i za: 51
+	i zd: 11
+	i zm: 8
+	i zá: 23
+	i ú: 21
+	i úm: 4
+	i úr: 9
+	i č: 30
+	i čl: 15
+	i ľ: 11
+	i ľu: 9
+	i št: 19
+	i ť: 4
+	i ťa: 4
+	i ž: 54
+	i že: 47
+	i ži: 8
+	ia: 1372
+	ia : 695
+	ia a: 77
+	ia b: 39
+	ia k: 36
+	ia m: 39
+	ia n: 77
+	ia p: 84
+	ia s: 54
+	ia t: 24
+	ia v: 64
+	ia z: 32
+	ia č: 8
+	ia ľ: 4
+	ia ž: 6
+	iac: 131
+	iac : 41
+	iaca: 6
+	iace: 15
+	iach: 36
+	iaco: 13
+	iad: 195
+	iada: 66
+	iade: 38
+	iadi: 13
+	iadk: 8
+	iadn: 58
+	iah: 73
+	iahl: 13
+	iahn: 56
+	iaho: 4
+	ial: 32
+	ialó: 9
+	iam : 19
+	iame: 2
+	iami: 23
+	iamo: 2
+	ians: 21
+	iatí: 13
+	iav: 26
+	iava: 26
+	iaz: 9
+	iaza: 6
+	iaľ: 73
+	iaľ : 69
+	iaľk: 4
+	iať: 8
+	iať : 8
+	ib: 53
+	iba: 19
+	iba : 17
+	ibu: 2
+	ica: 23
+	ica : 23
+	ich : 199
+	ichá: 8
+	ici: 51
+	ick: 250
+	icke: 41
+	icko: 13
+	ická: 13
+	ické: 62
+	ickí: 4
+	ickú: 28
+	ický: 79
+	ico: 4
+	icu : 8
+	icz: 2
+	id: 220
+	id : 2
+	ida: 15
+	ide: 103
+	ide : 62
+	iden: 24
+	ideu: 4
+	idie: 17
+	idl: 36
+	idlo: 9
+	idlá: 19
+	ido: 13
+	ido : 4
+	idop: 4
+	idu: 2
+	idve: 4
+	idá: 15
+	idáv: 4
+	ie: 2298
+	ie : 1091
+	ie a: 103
+	ie b: 38
+	ie j: 66
+	ie k: 62
+	ie n: 62
+	ie o: 53
+	ie p: 109
+	ie r: 32
+	ie s: 103
+	ie t: 49
+	ie v: 90
+	ie w: 2
+	ie ú: 8
+	ie č: 6
+	ie ď: 4
+	ie ľ: 9
+	ie ž: 8
+	ieb: 24
+	ieb : 21
+	iec : 21
+	iedk: 24
+	iedl: 11
+	iedo: 17
+	ieh: 41
+	ieha: 26
+	ieho: 15
+	iek: 115
+	ieko: 24
+	iekt: 54
+	iel: 105
+	iel : 24
+	iele: 38
+	ielo: 13
+	iely: 8
+	ieme: 21
+	iemu: 9
+	iemy: 24
+	ien: 99
+	ien : 17
+	ieni: 2
+	ienk: 51
+	ient: 13
+	ier : 8
+	iery: 9
+	iest: 66
+	iesť: 9
+	iet : 2
+	ietk: 6
+	ieto: 58
+	iev: 54
+	iev : 8
+	ieva: 45
+	iezd: 8
+	ieč: 17
+	iečb: 6
+	iečn: 4
+	iečo: 8
+	ieľ: 71
+	ieľ : 11
+	ieľa: 6
+	ieľo: 54
+	ieš: 66
+	ieše: 32
+	ieši: 32
+	ieť: 54
+	ieť : 43
+	ieťa: 9
+	iež: 99
+	iež : 99
+	if: 28
+	ifik: 28
+	ig: 24
+	iga: 2
+	ige: 8
+	igen: 6
+	igi: 4
+	ign: 8
+	igu: 2
+	ih: 21
+	ihnu: 4
+	ihu: 6
+	ii: 96
+	ii z: 6
+	ij: 86
+	ijal: 9
+	ijat: 34
+	ijať: 13
+	ijem: 6
+	ijm: 9
+	ijme: 4
+	ijmú: 6
+	ijím: 6
+	ik: 312
+	ik : 2
+	ikač: 9
+	ikdy: 6
+	ike: 17
+	ikmi: 6
+	iknú: 4
+	ikou: 8
+	ikov: 39
+	ikto: 9
+	iku : 43
+	iky: 58
+	iky : 58
+	iká: 30
+	ikác: 21
+	iké : 4
+	il: 565
+	il : 96
+	il a: 2
+	ila: 73
+	ila : 66
+	ile: 8
+	ile : 2
+	ili: 240
+	ili : 122
+	ilia: 19
+	ilie: 23
+	ilió: 28
+	iln: 53
+	ilne: 15
+	ilné: 15
+	ilný: 8
+	ilo : 51
+	ilov: 11
+	im: 227
+	ima: 11
+	ime: 36
+	imen: 4
+	imi: 47
+	imi : 28
+	imne: 4
+	imo : 4
+	imor: 28
+	imov: 6
+	imp: 9
+	imu: 8
+	imá: 21
+	imál: 21
+	in: 903
+	in : 8
+	in p: 2
+	inc: 8
+	inci: 2
+	ind: 13
+	ind : 2
+	inde: 4
+	indi: 4
+	ine: 47
+	ine : 24
+	ing: 21
+	ing : 4
+	inge: 2
+	ini: 34
+	inis: 6
+	ink: 9
+	inn: 88
+	inno: 49
+	inné: 13
+	inný: 19
+	inou: 11
+	inov: 38
+	ins: 11
+	int: 43
+	inte: 43
+	inul: 23
+	iny: 92
+	iny : 92
+	iná: 116
+	inác: 45
+	inám: 9
+	inár: 51
+	ináš: 9
+	iné: 24
+	iné : 15
+	inéh: 9
+	inú: 15
+	inú : 4
+	inút: 6
+	inúť: 6
+	iný: 39
+	inýc: 15
+	iným: 21
+	inš: 30
+	inšp: 6
+	inšt: 24
+	io: 105
+	io : 2
+	ion: 32
+	ion : 2
+	iona: 2
+	ioná: 28
+	iorí: 6
+	iou: 38
+	iou : 38
+	ip : 4
+	ipa: 2
+	ipo: 28
+	ipoj: 9
+	ipom: 17
+	ipra: 19
+	ir: 71
+	ir : 2
+	ira: 8
+	ire: 2
+	iri: 2
+	irm: 6
+	irmá: 4
+	irod: 6
+	irok: 11
+	irov: 8
+	irt: 2
+	is: 751
+	is : 13
+	is a: 2
+	is e: 2
+	is i: 2
+	is s: 2
+	isa: 26
+	isab: 23
+	isc: 2
+	isch: 2
+	isia: 49
+	isie: 71
+	isiu: 13
+	isií: 8
+	isku: 41
+	isl: 83
+	islo: 68
+	isný: 4
+	ispi: 15
+	ispô: 11
+	ist: 229
+	ista: 8
+	iste: 13
+	isti: 60
+	istu: 47
+	isté: 11
+	istú: 13
+	istý: 6
+	isu: 4
+	isy : 13
+	isá: 43
+	isár: 43
+	isí: 9
+	isíc: 8
+	isť: 15
+	isťa: 9
+	isťo: 6
+	it: 794
+	it : 15
+	ita: 30
+	itar: 6
+	itat: 4
+	itej: 23
+	iteľ: 86
+	iti : 2
+	itik: 88
+	itn: 28
+	itné: 9
+	itnú: 4
+	itný: 9
+	ito : 6
+	itos: 54
+	itoč: 6
+	its: 8
+	itsk: 8
+	itu : 41
+	ituá: 45
+	ity : 36
+	itá: 36
+	itá : 13
+	itál: 13
+	ité: 81
+	ité : 66
+	itéh: 11
+	ití: 39
+	itík: 8
+	itím: 11
+	itív: 19
+	itú: 28
+	itú : 6
+	itúc: 19
+	itút: 4
+	itý: 26
+	itý : 8
+	itýc: 11
+	itým: 8
+	iu: 223
+	iu : 218
+	iu a: 36
+	iu d: 15
+	iu e: 11
+	iu n: 11
+	iu o: 11
+	iu p: 26
+	iu s: 11
+	iu t: 11
+	iu z: 11
+	iv: 186
+	iv : 2
+	ivc: 6
+	ivco: 6
+	ive: 21
+	ive : 2
+	ivej: 6
+	ivi: 23
+	ivo: 84
+	ivot: 64
+	iví: 6
+	ivý: 26
+	ivýc: 15
+	ivým: 8
+	iza: 6
+	izmu: 23
+	izo: 43
+	izol: 8
+	izov: 34
+	izuj: 9
+	izá: 45
+	izác: 43
+	iá: 98
+	iá : 4
+	iác: 13
+	iách: 13
+	iál: 69
+	iáln: 62
+	iám: 6
+	iám : 6
+	iér: 15
+	iér : 4
+	iéry: 6
+	ií: 84
+	ií : 84
+	ií a: 11
+	ií d: 4
+	ií k: 9
+	ií o: 8
+	ií p: 9
+	ií s: 6
+	ií v: 6
+	ión : 2
+	ióne: 9
+	ióno: 34
+	ióny: 23
+	ióz: 11
+	iózn: 11
+	ič: 94
+	ič : 13
+	ič n: 9
+	ičk: 11
+	ičko: 6
+	ičn: 30
+	ičné: 4
+	ičnú: 6
+	ičný: 11
+	ičo: 24
+	ičom: 13
+	ičov: 11
+	iň: 6
+	išiň: 4
+	išká: 6
+	išn: 9
+	išné: 4
+	iť: 467
+	iť : 467
+	iť a: 69
+	iť c: 6
+	iť d: 17
+	iť e: 8
+	iť i: 13
+	iť j: 8
+	iť k: 23
+	iť l: 4
+	iť m: 8
+	iť n: 34
+	iť o: 23
+	iť p: 43
+	iť r: 4
+	iť s: 49
+	iť t: 34
+	iť u: 4
+	iť v: 34
+	iť z: 23
+	iť ú: 6
+	iť č: 4
+	iť ď: 4
+	iť ž: 23
+	iž: 28
+	ižn: 8
+	ižne: 4
+	ižo: 11
+	ižov: 11
+	ižš: 9
+	ižši: 6
+	j: 4348
+	j : 1072
+	j a: 38
+	j a : 19
+	j ak: 9
+	j c: 15
+	j ce: 6
+	j d: 34
+	j do: 19
+	j dô: 4
+	j e: 30
+	j en: 8
+	j eu: 15
+	j f: 6
+	j fi: 4
+	j h: 19
+	j hl: 4
+	j ho: 11
+	j in: 15
+	j ju: 4
+	j k: 71
+	j ke: 17
+	j ko: 21
+	j kr: 15
+	j l: 11
+	j lá: 4
+	j lí: 4
+	j m: 64
+	j me: 9
+	j mi: 32
+	j n: 43
+	j na: 24
+	j ná: 8
+	j o: 39
+	j o : 8
+	j ob: 17
+	j p: 148
+	j pl: 8
+	j po: 68
+	j pr: 62
+	j r: 36
+	j re: 15
+	j ro: 11
+	j s: 143
+	j sa: 17
+	j sc: 6
+	j sl: 9
+	j sm: 6
+	j sp: 39
+	j st: 24
+	j sú: 15
+	j t: 26
+	j v: 90
+	j v : 32
+	j vl: 17
+	j vý: 13
+	j z: 54
+	j zm: 15
+	j zo: 9
+	j zá: 8
+	j ú: 109
+	j ún: 66
+	j úp: 4
+	j úr: 21
+	j ús: 4
+	j úč: 9
+	j č: 15
+	j či: 8
+	j čl: 4
+	j ď: 4
+	j ďa: 4
+	j š: 8
+	j št: 4
+	j ž: 6
+	j ži: 4
+	ja: 330
+	ja : 68
+	ja k: 4
+	jad: 51
+	jadr: 51
+	jajú: 6
+	jaké: 13
+	jam: 2
+	jan: 8
+	jasn: 54
+	jatá: 4
+	jaté: 4
+	jatí: 9
+	jatý: 6
+	jav: 36
+	jav : 9
+	javo: 8
+	jaz: 9
+	jazy: 9
+	jať: 19
+	jať : 19
+	jc: 26
+	jca: 13
+	jca : 11
+	jco: 13
+	jcom: 6
+	jcov: 8
+	jdô: 9
+	jdôl: 9
+	je: 1327
+	je : 811
+	je a: 30
+	je d: 45
+	je h: 17
+	je j: 21
+	je m: 36
+	je n: 68
+	je o: 28
+	je p: 109
+	je r: 19
+	je s: 56
+	je t: 77
+	je v: 101
+	je z: 60
+	je ú: 11
+	je č: 15
+	je ž: 21
+	jed: 154
+	jedi: 8
+	jedn: 135
+	jeh: 43
+	jeho: 43
+	jej: 62
+	jej : 62
+	jek: 36
+	jekt: 34
+	jem: 154
+	jem : 77
+	jeme: 73
+	jens: 8
+	jený: 13
+	jete: 11
+	jh: 15
+	jho: 15
+	jho : 13
+	ji : 13
+	jic: 17
+	jich: 17
+	jin: 113
+	jina: 24
+	jine: 9
+	jino: 6
+	jinu: 9
+	jiny: 36
+	jiná: 26
+	jiť: 9
+	jiť : 9
+	jk: 11
+	jkoľ: 4
+	jlep: 15
+	jm: 141
+	jme: 45
+	jme : 36
+	jmi: 4
+	jmi : 4
+	jmo: 19
+	jmoc: 6
+	jmom: 6
+	jmov: 6
+	jmu: 11
+	jmu : 11
+	jmä: 45
+	jmä : 45
+	jmé : 6
+	jmú: 6
+	jmú : 6
+	jn: 98
+	jn : 2
+	jne: 21
+	jne : 17
+	jno: 19
+	jnop: 4
+	jnos: 15
+	jná : 4
+	jné: 23
+	jné : 13
+	jnéh: 9
+	jnú: 4
+	jnú : 4
+	jný: 13
+	jo: 90
+	jom: 24
+	jom : 17
+	jomn: 8
+	jos: 2
+	jou : 6
+	jov: 47
+	jov : 26
+	jova: 11
+	jový: 8
+	jp: 13
+	jpr: 11
+	jpri: 4
+	jprv: 8
+	jro: 4
+	jroz: 4
+	jrý: 4
+	jrýc: 4
+	jskô: 4
+	jstn: 4
+	jsť: 19
+	jsť : 19
+	jt: 126
+	jte : 6
+	jto: 107
+	jto : 107
+	jtr: 13
+	jtra: 13
+	ju: 60
+	jujú: 4
+	jun: 2
+	juž: 6
+	južn: 6
+	jv: 26
+	jvi: 9
+	jvia: 9
+	jvy: 8
+	jvyš: 8
+	jvz: 6
+	jvzd: 6
+	jí: 68
+	jím: 11
+	jíma: 11
+	jín: 45
+	jín : 45
+	jú: 565
+	jú : 225
+	jú a: 17
+	jú b: 4
+	jú d: 15
+	jú h: 6
+	jú j: 4
+	jú k: 4
+	jú l: 4
+	jú m: 11
+	jú n: 21
+	jú o: 13
+	jú p: 21
+	jú r: 13
+	jú s: 21
+	jú t: 13
+	jú v: 21
+	jú z: 13
+	jú č: 4
+	jú š: 4
+	jú ž: 6
+	júc: 312
+	júca: 38
+	júce: 90
+	júci: 154
+	júco: 15
+	júcu: 15
+	júl: 9
+	júla: 8
+	jún: 13
+	júna: 8
+	júno: 4
+	jč: 8
+	jče: 6
+	jčen: 4
+	jš: 124
+	jšej: 6
+	jši: 54
+	jšie: 41
+	jšiu: 13
+	jšou: 4
+	jší: 60
+	jší : 13
+	jšíc: 34
+	jším: 13
+	k: 7205
+	k : 589
+	k bu: 9
+	k by: 11
+	k ch: 9
+	k do: 23
+	k dô: 8
+	k eu: 8
+	k eú: 6
+	k j: 26
+	k je: 23
+	k kt: 9
+	k m: 6
+	k n: 43
+	k na: 21
+	k ná: 8
+	k ob: 15
+	k od: 8
+	k p: 49
+	k pr: 32
+	k sm: 6
+	k t: 69
+	k to: 39
+	k tý: 8
+	k v: 64
+	k v : 13
+	k vy: 13
+	k vz: 4
+	k vý: 8
+	k vš: 11
+	k zr: 4
+	k zv: 6
+	k č: 8
+	k čo: 6
+	k ľ: 6
+	k ľu: 6
+	k ž: 15
+	k že: 15
+	ka : 267
+	ka k: 47
+	ka z: 11
+	ka ú: 38
+	kad: 4
+	kaj: 54
+	kajú: 43
+	kajš: 11
+	kal: 19
+	kam: 47
+	kamž: 15
+	kan: 19
+	kaná: 4
+	kaní: 4
+	kas: 2
+	kau: 2
+	kaz: 43
+	kazu: 24
+	kač: 9
+	kačn: 9
+	kať: 9
+	kať : 9
+	kaž: 53
+	každ: 53
+	kciu: 6
+	kde: 24
+	kde : 24
+	keb: 11
+	keby: 11
+	kedy: 4
+	keh: 54
+	keho: 54
+	kej: 263
+	kej : 246
+	kejk: 4
+	kejš: 9
+	kel: 2
+	kemu: 8
+	ken: 2
+	ker: 2
+	ket: 2
+	keď: 81
+	keď : 66
+	keďž: 15
+	ki: 90
+	ki : 11
+	kiaľ: 43
+	kie: 2
+	kim: 2
+	kin: 2
+	king: 2
+	kist: 21
+	kk: 2
+	kke: 2
+	kl: 267
+	kla: 193
+	klad: 176
+	klam: 11
+	klon: 8
+	klí: 23
+	klím: 23
+	kmer: 6
+	kmi: 19
+	kmi : 19
+	kne : 6
+	knu: 9
+	knut: 6
+	knuť: 4
+	knú: 6
+	knúť: 6
+	ko: 1579
+	ko : 394
+	ko a: 21
+	ko b: 11
+	ko c: 11
+	ko d: 17
+	ko h: 8
+	ko j: 17
+	ko m: 26
+	ko n: 26
+	ko p: 60
+	ko s: 54
+	ko t: 19
+	ko v: 34
+	ko z: 21
+	ko č: 8
+	koc: 15
+	koch: 15
+	kodi: 8
+	koh: 8
+	koj: 30
+	kojn: 11
+	kole: 39
+	kolo: 13
+	kom: 298
+	kom : 81
+	komi: 171
+	komu: 17
+	kon: 300
+	kona: 56
+	konc: 23
+	koni: 15
+	kont: 51
+	koná: 17
+	konč: 26
+	kore: 9
+	kot: 2
+	kou: 71
+	kou : 71
+	kov: 250
+	kov : 116
+	kova: 81
+	kove: 9
+	kové: 17
+	kový: 13
+	koľ: 36
+	koľk: 13
+	koľv: 21
+	kr: 462
+	kra: 244
+	krac: 17
+	kraj: 161
+	krač: 30
+	krem: 32
+	kro: 47
+	krok: 32
+	kroč: 6
+	kryť: 4
+	krá: 30
+	krát: 26
+	kráľ: 4
+	kré: 15
+	krét: 15
+	krí: 30
+	kríz: 30
+	ks: 2
+	ksi: 2
+	kt: 869
+	kt ž: 6
+	kte: 6
+	kter: 6
+	ktie: 19
+	ktm: 4
+	ktmi: 4
+	kto: 698
+	kto : 23
+	ktoc: 4
+	ktom: 11
+	ktor: 638
+	ktov: 23
+	kty : 24
+	ktér: 4
+	ktí: 21
+	ktív: 21
+	któb: 8
+	ktú: 8
+	ktúr: 8
+	ku: 627
+	ku : 300
+	ku a: 36
+	ku c: 8
+	ku k: 23
+	ku n: 17
+	ku o: 13
+	ku p: 30
+	ku s: 23
+	ku v: 26
+	ku ú: 4
+	ku č: 6
+	kuj: 32
+	kuje: 24
+	kujú: 8
+	kum : 13
+	kumn: 8
+	kun: 2
+	kup: 68
+	kupi: 51
+	kupá: 8
+	kupí: 8
+	kur: 19
+	kusi: 26
+	kut: 107
+	kuto: 101
+	kv: 49
+	kva: 36
+	kval: 24
+	kvap: 8
+	ky: 430
+	ky : 327
+	ky a: 30
+	ky b: 13
+	ky e: 8
+	ky h: 8
+	ky k: 15
+	ky l: 6
+	ky m: 15
+	ky n: 30
+	ky o: 8
+	ky p: 45
+	ky s: 19
+	ky t: 19
+	ky u: 8
+	ky v: 32
+	ky z: 11
+	ky č: 15
+	kyc: 30
+	kych: 30
+	kym: 19
+	kym : 11
+	kymi: 8
+	kyne: 4
+	kyt: 45
+	kytn: 11
+	kyto: 23
+	kytu: 8
+	kyňa: 4
+	kzv: 8
+	kzva: 8
+	ká: 190
+	ká : 56
+	ká a: 6
+	ká n: 8
+	ká p: 9
+	ká v: 9
+	ká ž: 8
+	kác: 24
+	kách: 9
+	káci: 15
+	kám : 6
+	kát: 8
+	káte: 4
+	káv: 17
+	káva: 17
+	káz: 38
+	káza: 38
+	káž: 21
+	káže: 11
+	kážk: 8
+	ké: 263
+	ké : 163
+	ké k: 11
+	ké n: 11
+	ké o: 13
+	ké p: 34
+	ké v: 9
+	ké z: 9
+	ké š: 28
+	kéh: 75
+	kého: 75
+	kém: 15
+	kému: 15
+	kéto: 6
+	kí : 9
+	kí k: 4
+	kô: 17
+	kôr: 17
+	kôr : 17
+	kú: 101
+	kú : 66
+	kú b: 4
+	kú d: 4
+	kú i: 4
+	kú n: 4
+	kú p: 11
+	kú s: 8
+	kú v: 6
+	kú z: 6
+	kú ú: 9
+	kúm: 13
+	kúma: 13
+	kús: 9
+	kúse: 4
+	kúsk: 6
+	kúš: 8
+	kúša: 8
+	ký: 389
+	ký : 60
+	ký j: 6
+	ký p: 13
+	ký r: 8
+	ký s: 6
+	ký ú: 4
+	ký š: 4
+	kýc: 182
+	kých: 182
+	kým: 145
+	kým : 103
+	kými: 36
+	kýmt: 4
+	kč: 11
+	kčn: 11
+	kčnú: 4
+	kčný: 4
+	kľ: 15
+	kľú: 15
+	kľúč: 15
+	kš: 2
+	kž: 11
+	kže: 11
+	kže : 11
+	l: 6422
+	l : 420
+	l a: 28
+	l by: 32
+	l c: 2
+	l d: 15
+	l e: 6
+	l h: 4
+	l i: 8
+	l in: 2
+	l k: 6
+	l m: 13
+	l mn: 4
+	l na: 23
+	l ná: 6
+	l o: 11
+	l pá: 13
+	l so: 23
+	l t: 17
+	l u: 6
+	l v : 13
+	l vy: 8
+	l vá: 8
+	l vý: 9
+	l č: 6
+	l čo: 4
+	l ž: 23
+	l že: 23
+	la : 319
+	la b: 36
+	la c: 2
+	la l: 2
+	la ž: 11
+	lab: 8
+	lac: 4
+	lacn: 4
+	lad: 233
+	lad : 49
+	lada: 17
+	lade: 39
+	ladm: 4
+	ladn: 47
+	lado: 30
+	ladá: 15
+	ladý: 8
+	laho: 8
+	lajk: 4
+	lak : 9
+	lanc: 38
+	land: 4
+	laní: 6
+	lar: 2
+	las: 238
+	las : 17
+	laso: 64
+	last: 107
+	lasí: 21
+	lasť: 15
+	latn: 21
+	latí: 15
+	latň: 8
+	lau: 2
+	laus: 2
+	lav: 45
+	lavn: 34
+	lačn: 8
+	lať: 4
+	lať : 4
+	lb: 4
+	lc: 6
+	ld: 9
+	lda: 2
+	lde: 2
+	le: 1102
+	le : 193
+	le d: 6
+	le i: 2
+	le p: 23
+	le r: 4
+	le z: 17
+	leb: 81
+	lebn: 6
+	lebo: 75
+	led: 90
+	ledk: 38
+	ledn: 23
+	ledo: 15
+	ledu: 15
+	lefó: 6
+	lego: 19
+	legá: 11
+	lej: 45
+	lej : 34
+	lejš: 11
+	leká: 6
+	lem: 13
+	leme: 6
+	len: 289
+	len : 99
+	leni: 24
+	leno: 19
+	lens: 92
+	lená: 8
+	lené: 11
+	lep: 71
+	lepé: 4
+	lepš: 64
+	ler: 6
+	les: 15
+	les : 6
+	let: 2
+	lev: 2
+	lex: 23
+	lexn: 6
+	lež: 163
+	leži: 163
+	lf: 2
+	lhar: 13
+	lhod: 6
+	li : 558
+	li b: 43
+	li m: 30
+	li n: 45
+	li o: 34
+	li p: 58
+	li r: 15
+	li s: 60
+	li t: 21
+	li u: 15
+	li v: 54
+	li z: 30
+	li ž: 9
+	lia : 24
+	liad: 13
+	lic: 8
+	lid: 13
+	lidá: 6
+	lie : 23
+	lieh: 19
+	lieť: 6
+	lig: 6
+	lige: 6
+	liky: 8
+	lil: 21
+	lil : 9
+	lim: 13
+	lin: 13
+	lio: 2
+	lis: 43
+	litn: 8
+	litu: 17
+	lití: 8
+	liv: 60
+	livc: 6
+	livo: 15
+	livé: 8
+	livý: 23
+	liza: 4
+	lizo: 28
+	lizá: 21
+	lió: 28
+	lión: 28
+	ličo: 4
+	liš: 17
+	lišn: 9
+	liť: 23
+	liť : 23
+	liž: 9
+	ližš: 6
+	lk: 21
+	ll: 6
+	llo: 2
+	lm: 11
+	lma: 2
+	lmi: 2
+	lmoč: 4
+	ln: 364
+	lne: 158
+	lne : 69
+	lneh: 21
+	lnej: 32
+	lnem: 8
+	lnen: 28
+	lnil: 6
+	lniť: 17
+	lnom: 9
+	lnou: 8
+	lnu : 11
+	lny: 64
+	lny : 34
+	lnyc: 17
+	lnym: 13
+	lné: 21
+	lné : 19
+	lnú: 15
+	lnú : 15
+	lný: 21
+	lnýc: 9
+	lným: 6
+	lo: 802
+	lo : 229
+	lo a: 17
+	lo b: 21
+	lo k: 11
+	lo v: 38
+	lo z: 17
+	lo ž: 11
+	lob: 45
+	lobo: 23
+	lobá: 11
+	lobô: 4
+	loh: 34
+	loho: 6
+	lohu: 11
+	lohy: 6
+	lom : 19
+	lor: 9
+	loru: 9
+	lost: 81
+	losv: 9
+	losť: 13
+	lov: 90
+	lov : 13
+	lova: 26
+	lovi: 13
+	lovo: 8
+	loč: 126
+	loče: 23
+	ločn: 92
+	lož: 71
+	lože: 28
+	loži: 38
+	ložk: 4
+	ls: 26
+	lsku: 8
+	lst: 2
+	lt: 39
+	lt : 2
+	lta: 2
+	lta : 2
+	lte: 8
+	lti: 4
+	ltu: 2
+	ltur: 2
+	ltú: 15
+	ltúr: 15
+	lu: 238
+	lu : 53
+	lu a: 9
+	luc: 2
+	lup: 58
+	lupr: 56
+	lut: 4
+	luv: 45
+	luvy: 21
+	luč: 9
+	lučn: 6
+	luču: 4
+	luš: 19
+	lušn: 19
+	luž: 36
+	lužb: 21
+	luži: 15
+	lv: 4
+	lve: 2
+	lyn: 30
+	lyno: 8
+	lynu: 13
+	lynú: 6
+	lyv: 32
+	lyv : 9
+	lyvn: 6
+	lyvo: 4
+	lyvň: 8
+	lá: 272
+	lá : 28
+	lá n: 4
+	lá v: 6
+	lác: 19
+	láci: 17
+	lád: 51
+	lád : 6
+	láda: 15
+	láde: 6
+	ládn: 8
+	lády: 9
+	lám: 8
+	lán: 47
+	lán : 13
+	lánk: 6
+	láno: 11
+	lánu: 11
+	lár: 9
+	lári: 6
+	lás: 38
+	láse: 26
+	lásť: 4
+	látk: 8
+	láv: 49
+	láva: 47
+	lé: 109
+	léh: 17
+	lého: 17
+	lém: 71
+	lém : 17
+	lémo: 15
+	lému: 13
+	lémy: 23
+	lí: 128
+	lík: 13
+	lík : 6
+	líka: 6
+	lím: 73
+	lím : 51
+	límy: 19
+	lít: 4
+	líz: 9
+	lízk: 9
+	líš: 6
+	líši: 6
+	lóg: 24
+	lóg : 6
+	lógi: 15
+	lógu: 4
+	lú: 41
+	lút: 6
+	lútn: 6
+	lúč: 11
+	lúče: 9
+	lúž: 13
+	lúži: 13
+	lý: 41
+	lý : 13
+	lýc: 13
+	lých: 13
+	lým: 6
+	lým : 6
+	lýza: 4
+	lň: 36
+	lňu: 34
+	lňuj: 34
+	lš: 64
+	lši: 19
+	lšie: 13
+	lšiu: 6
+	lšo: 6
+	lšov: 4
+	lší: 38
+	lší : 15
+	lšíc: 11
+	lším: 11
+	m: 7700
+	m : 2142
+	m a: 158
+	m a : 83
+	m ab: 15
+	m ak: 34
+	m b: 58
+	m bo: 23
+	m by: 24
+	m ch: 23
+	m de: 6
+	m do: 28
+	m e: 19
+	m eú: 4
+	m hl: 9
+	m j: 45
+	m je: 41
+	m k: 107
+	m k : 24
+	m kt: 36
+	m mô: 4
+	m n: 165
+	m na: 83
+	m ne: 39
+	m ná: 26
+	m o: 84
+	m ob: 21
+	m od: 19
+	m p: 282
+	m po: 115
+	m pr: 124
+	m pá: 9
+	m r: 60
+	m ro: 19
+	m rá: 9
+	m s: 287
+	m s : 9
+	m sa: 90
+	m si: 43
+	m sp: 66
+	m sv: 15
+	m sú: 4
+	m t: 116
+	m to: 36
+	m tr: 23
+	m tú: 6
+	m tý: 6
+	m v: 171
+	m v : 26
+	m ve: 21
+	m vn: 8
+	m vr: 6
+	m vy: 34
+	m vá: 17
+	m vý: 17
+	m vď: 4
+	m vš: 21
+	m z: 116
+	m z : 24
+	m za: 38
+	m zn: 13
+	m zo: 8
+	m zá: 13
+	m zú: 6
+	m ú: 13
+	m ús: 6
+	m č: 45
+	m ča: 11
+	m čl: 11
+	m čo: 15
+	m ď: 4
+	m ďa: 4
+	m ľ: 6
+	m ľu: 6
+	m š: 23
+	m št: 21
+	m ž: 101
+	m že: 98
+	ma: 467
+	ma : 39
+	ma p: 2
+	ma ž: 6
+	mac: 2
+	mag: 4
+	mai: 2
+	maj: 47
+	majú: 45
+	mal: 176
+	mala: 32
+	mali: 84
+	malo: 21
+	malý: 11
+	man: 39
+	mand: 6
+	manž: 4
+	mar: 15
+	mark: 2
+	mas: 11
+	mas : 6
+	mat: 41
+	max: 13
+	maxi: 13
+	maď: 4
+	maďa: 4
+	mať: 49
+	mať : 49
+	mb: 32
+	mbe: 2
+	mber: 2
+	mbr: 9
+	mc: 45
+	mca: 9
+	mca : 9
+	mci: 30
+	mci : 30
+	me: 1556
+	me : 680
+	me a: 43
+	me h: 19
+	me m: 43
+	me n: 32
+	me o: 39
+	me p: 68
+	me r: 26
+	me s: 83
+	me u: 28
+	me v: 77
+	me z: 62
+	me č: 8
+	me ž: 19
+	mec: 23
+	mec : 9
+	med: 160
+	medi: 2
+	medz: 156
+	mel: 4
+	mem: 6
+	men: 394
+	men : 2
+	mena: 26
+	mene: 58
+	mens: 2
+	ment: 193
+	menu: 13
+	meny: 17
+	mená: 26
+	mení: 9
+	menú: 6
+	menš: 19
+	mer: 167
+	mera: 51
+	merc: 2
+	mern: 38
+	mero: 30
+	mesi: 19
+	mest: 41
+	met: 21
+	metó: 9
+	meň: 39
+	meňo: 6
+	meňu: 32
+	mi: 1169
+	mi : 544
+	mi a: 51
+	mi b: 11
+	mi d: 26
+	mi j: 17
+	mi k: 38
+	mi m: 17
+	mi n: 30
+	mi o: 21
+	mi p: 53
+	mi r: 24
+	mi s: 68
+	mi t: 15
+	mi v: 43
+	mi z: 34
+	mi ú: 8
+	mi č: 13
+	mi š: 13
+	mie: 210
+	mien: 64
+	mier: 62
+	mies: 45
+	miet: 17
+	miez: 6
+	mieť: 4
+	mig: 2
+	mili: 43
+	mim: 38
+	mimo: 38
+	min: 49
+	mina: 2
+	mini: 11
+	miná: 11
+	minú: 6
+	mis: 210
+	mis : 8
+	misa: 2
+	misi: 146
+	misn: 8
+	mist: 6
+	misá: 39
+	mit: 32
+	mit : 2
+	mitu: 9
+	mié: 8
+	miér: 8
+	miť: 8
+	miť : 8
+	mky: 6
+	mky : 6
+	ml: 64
+	mla: 11
+	mlad: 9
+	mlie: 6
+	mlu: 45
+	mluv: 45
+	mm: 2
+	mmi: 2
+	mn: 186
+	mne: 34
+	mne : 24
+	mnej: 9
+	mni: 34
+	mnie: 34
+	mno: 73
+	mnoh: 38
+	mnos: 8
+	množ: 23
+	mné: 15
+	mné : 9
+	mnéh: 6
+	mník: 4
+	mný: 15
+	mný : 8
+	mnýc: 6
+	mo : 6
+	mob: 26
+	mobi: 26
+	moc: 54
+	moc : 17
+	moci: 17
+	moco: 6
+	mog: 2
+	moh: 51
+	mohl: 43
+	moj: 21
+	moju: 6
+	mokr: 47
+	mom: 30
+	mom : 26
+	mon: 13
+	mora: 2
+	mori: 32
+	morn: 9
+	mos: 21
+	motn: 8
+	mov: 64
+	mov : 32
+	mova: 17
+	movl: 4
+	moz: 26
+	mozr: 24
+	mož: 130
+	možn: 120
+	možň: 9
+	mp: 49
+	mpl: 13
+	mpli: 2
+	mpr: 11
+	mrzí: 4
+	ms: 13
+	mto: 64
+	mto : 64
+	mu: 539
+	mu : 233
+	mu a: 26
+	mu d: 17
+	mu e: 11
+	mu m: 11
+	mu n: 15
+	mu o: 13
+	mu p: 24
+	mu r: 13
+	mu s: 15
+	mu v: 15
+	mu z: 9
+	mu č: 8
+	mul: 9
+	mulá: 4
+	mum: 2
+	mun: 23
+	mus: 233
+	musi: 45
+	musí: 175
+	muto: 13
+	muž: 11
+	mužm: 4
+	mužo: 4
+	my: 248
+	my : 128
+	my a: 38
+	my k: 17
+	my m: 9
+	mys: 105
+	myse: 32
+	mysl: 73
+	myš: 9
+	myšl: 9
+	má: 197
+	má : 41
+	má t: 6
+	má v: 9
+	mác: 32
+	máci: 30
+	máh: 9
+	máha: 9
+	mál: 45
+	máln: 32
+	málo: 9
+	mám: 51
+	mám : 19
+	máme: 32
+	mát: 13
+	máte: 11
+	mä : 45
+	mä p: 6
+	mä v: 13
+	mä č: 4
+	médi: 13
+	mén: 2
+	mína: 6
+	mô: 173
+	môc: 21
+	môcť: 21
+	môj: 8
+	môjh: 6
+	môž: 143
+	môže: 115
+	môžu: 28
+	mú : 13
+	mý: 8
+	mň: 11
+	mňa: 11
+	mňa : 11
+	mž: 15
+	mži: 15
+	mžit: 15
+	n : 405
+	n a: 26
+	n al: 2
+	n an: 2
+	n b: 6
+	n c: 6
+	n d: 6
+	n e: 2
+	n g: 4
+	n h: 8
+	n ha: 2
+	n i: 2
+	n in: 2
+	n j: 8
+	n k: 47
+	n kt: 19
+	n l: 6
+	n ló: 4
+	n m: 11
+	n ma: 2
+	n me: 2
+	n mi: 2
+	n mu: 2
+	n mô: 4
+	n n: 19
+	n o: 15
+	n pr: 118
+	n r: 9
+	n re: 4
+	n s: 19
+	n sa: 2
+	n so: 2
+	n st: 2
+	n t: 11
+	n ta: 2
+	n te: 2
+	n to: 2
+	n tý: 6
+	n u: 2
+	n v: 30
+	n v : 13
+	n va: 2
+	n ve: 2
+	n vi: 2
+	n vo: 4
+	n vt: 4
+	n z: 8
+	n ú: 11
+	n úr: 8
+	na: 1873
+	na : 807
+	na b: 21
+	na h: 19
+	na j: 26
+	na k: 49
+	na m: 32
+	na p: 66
+	na s: 64
+	na t: 62
+	na v: 73
+	na z: 88
+	na ú: 19
+	na č: 15
+	na ď: 6
+	na ľ: 9
+	na ž: 9
+	nac: 11
+	naci: 2
+	nadc: 6
+	nai: 2
+	naj: 165
+	najd: 9
+	najl: 15
+	najm: 53
+	najp: 13
+	najr: 8
+	najs: 8
+	najv: 26
+	najú: 9
+	nak : 6
+	nako: 28
+	naké: 8
+	naký: 6
+	nal : 6
+	nale: 2
+	nalo: 15
+	nam: 115
+	nam : 23
+	name: 43
+	nami: 34
+	nan: 130
+	nani: 21
+	naní: 19
+	nanč: 45
+	nao: 21
+	naoz: 19
+	nap: 84
+	napo: 15
+	napr: 60
+	nas: 26
+	nasl: 17
+	nat: 24
+	natí: 8
+	nau: 4
+	nav: 49
+	navr: 32
+	navy: 8
+	nač: 34
+	načn: 9
+	načo: 11
+	naď: 17
+	naďa: 17
+	naš: 111
+	naša: 11
+	naše: 36
+	naši: 32
+	našu: 23
+	nať: 38
+	nať : 38
+	naž: 21
+	naži: 13
+	naží: 6
+	nc: 171
+	nca: 24
+	nca : 19
+	nce: 13
+	nce : 2
+	ncia: 8
+	nciá: 15
+	nco: 53
+	ncom: 9
+	ncov: 43
+	ncú: 11
+	ncúz: 11
+	nd: 66
+	nd : 6
+	nd d: 2
+	nda: 11
+	nde: 6
+	nde : 4
+	ndel: 2
+	ndi: 9
+	ndo: 6
+	nds: 4
+	ndu: 11
+	ndus: 2
+	ne: 1984
+	ne : 644
+	ne a: 51
+	ne d: 24
+	ne e: 6
+	ne n: 45
+	ne p: 143
+	ne s: 75
+	ne v: 58
+	ne z: 32
+	ne ú: 8
+	ne č: 8
+	nea: 2
+	neb: 56
+	nebe: 13
+	nebo: 28
+	nebu: 13
+	nech: 28
+	ned: 51
+	nedo: 30
+	nedá: 8
+	nee: 2
+	neh: 43
+	neho: 39
+	nehô: 4
+	nei: 2
+	nej: 298
+	nej : 222
+	neja: 19
+	nejš: 56
+	nek: 9
+	nel: 8
+	nem : 8
+	nema: 24
+	nemu: 15
+	nemá: 6
+	nemô: 30
+	neni: 45
+	nené: 15
+	není: 17
+	nený: 9
+	neo: 26
+	neob: 8
+	nep: 94
+	nepo: 53
+	nepr: 28
+	ner : 2
+	nerg: 60
+	nerm: 6
+	nerá: 13
+	nes: 148
+	nese: 26
+	nesm: 21
+	nesp: 15
+	nesú: 15
+	neum: 6
+	nev: 69
+	nevy: 45
+	nez: 54
+	neza: 11
+	nezo: 8
+	nezá: 23
+	neč: 23
+	neči: 8
+	nečn: 13
+	nešn: 11
+	než: 23
+	než : 15
+	neže: 6
+	ng: 62
+	ng : 6
+	nga: 8
+	ngaž: 8
+	nge: 9
+	ngen: 4
+	nger: 2
+	ngov: 21
+	ni: 1952
+	ni p: 49
+	nia: 374
+	nia : 345
+	niam: 15
+	nick: 15
+	nicu: 9
+	nie: 775
+	nie : 591
+	niek: 77
+	niel: 36
+	niev: 36
+	nieč: 8
+	nih: 2
+	nik: 79
+	nikm: 6
+	niko: 15
+	niké: 4
+	nil: 49
+	nil : 15
+	nili: 15
+	nin: 8
+	niny: 4
+	nio: 11
+	niou: 11
+	nis: 11
+	nist: 8
+	niu: 64
+	niu : 64
+	nizá: 17
+	nič: 43
+	nič : 13
+	ničn: 23
+	niť: 101
+	niť : 101
+	niž: 17
+	nižo: 11
+	nk: 145
+	nk : 6
+	nkaj: 11
+	nke: 4
+	nkou: 9
+	nkré: 15
+	nku : 15
+	nky: 30
+	nky : 24
+	nl: 9
+	nmi : 11
+	nn: 133
+	nna: 2
+	nne: 21
+	nne : 9
+	nnej: 11
+	nnos: 47
+	nné: 23
+	nné : 15
+	nnéh: 8
+	nnú: 4
+	nnú : 4
+	nný: 26
+	nný : 6
+	nnýc: 13
+	nným: 8
+	no: 1395
+	no : 56
+	no s: 2
+	nodu: 21
+	nofó: 4
+	noh: 69
+	noho: 38
+	nohé: 6
+	nohí: 6
+	nohý: 19
+	nok: 15
+	nok : 15
+	noló: 13
+	nom : 107
+	nomi: 6
+	non: 8
+	non : 4
+	nopr: 9
+	nor: 21
+	nos: 475
+	nos : 2
+	nost: 248
+	nosť: 223
+	notk: 6
+	notl: 24
+	notn: 9
+	nou : 77
+	nov: 370
+	nov : 79
+	nova: 47
+	nove: 58
+	novi: 71
+	novu: 24
+	nová: 19
+	nové: 24
+	novú: 9
+	nový: 28
+	nož: 23
+	nožs: 21
+	ns: 257
+	nsa: 2
+	nse: 6
+	nsk: 193
+	nske: 41
+	nsko: 15
+	nsku: 8
+	nsky: 8
+	nské: 49
+	nskú: 4
+	nský: 56
+	nst: 30
+	nsti: 2
+	nstv: 28
+	nt: 454
+	nt : 64
+	nt e: 2
+	nta: 6
+	nta : 4
+	nte: 83
+	nte : 28
+	nten: 6
+	nter: 13
+	nti: 19
+	ntn: 34
+	ntno: 8
+	ntné: 15
+	ntný: 8
+	nto: 94
+	nto : 53
+	ntom: 15
+	ntov: 23
+	ntr: 38
+	ntu: 69
+	ntu : 68
+	ntá: 30
+	ntác: 13
+	ntál: 13
+	ntú: 9
+	ntúr: 9
+	nu: 349
+	nul: 49
+	nuli: 11
+	nulo: 9
+	nulé: 6
+	num: 2
+	nut: 146
+	nuti: 58
+	nutn: 36
+	nutá: 6
+	nuté: 11
+	nutí: 11
+	nutý: 17
+	nuť: 32
+	nuť : 32
+	nv: 28
+	ny: 430
+	ny : 298
+	ny a: 34
+	ny d: 19
+	ny k: 24
+	ny p: 45
+	ny r: 13
+	ny s: 19
+	ny v: 32
+	ny z: 13
+	ny ú: 6
+	ny š: 6
+	nyc: 79
+	nych: 79
+	nym: 51
+	nym : 34
+	nymi: 17
+	nz: 32
+	nza: 2
+	nza : 2
+	nzá: 6
+	nzác: 4
+	nzí: 6
+	nzív: 6
+	nzý: 4
+	nzým: 4
+	ná: 833
+	ná : 191
+	ná a: 26
+	ná b: 6
+	ná d: 6
+	ná n: 17
+	ná p: 49
+	ná r: 6
+	ná s: 13
+	ná t: 4
+	ná z: 8
+	ná ž: 15
+	nác: 49
+	nách: 32
+	náci: 17
+	náh: 6
+	náj: 9
+	nájs: 9
+	nák: 19
+	nákl: 19
+	nál: 34
+	náln: 26
+	nám: 88
+	nám : 53
+	náme: 6
+	námi: 8
+	námk: 6
+	námo: 11
+	nár: 101
+	nára: 11
+	náro: 71
+	nárs: 9
+	nás: 86
+	nás : 41
+	nási: 15
+	nást: 24
+	nát: 8
+	náv: 148
+	náva: 32
+	návr: 113
+	náz: 38
+	názo: 38
+	náď: 4
+	náď : 4
+	náš: 43
+	náš : 17
+	náša: 11
+	nášh: 11
+	nç: 2
+	né: 927
+	né : 689
+	né a: 88
+	né b: 6
+	né c: 8
+	né d: 21
+	né h: 11
+	né k: 30
+	né m: 15
+	né n: 43
+	né o: 34
+	né p: 118
+	né r: 23
+	né s: 38
+	né t: 13
+	né v: 64
+	né z: 58
+	né ú: 15
+	né š: 4
+	né ž: 23
+	néh: 205
+	ného: 205
+	ném: 30
+	nému: 30
+	ní: 514
+	ní : 268
+	ní a: 34
+	ní k: 17
+	ní m: 17
+	ní n: 28
+	ní s: 30
+	ní ď: 4
+	níc: 81
+	níc : 6
+	níci: 13
+	níck: 11
+	níct: 51
+	ník: 45
+	níka: 6
+	níkm: 4
+	níko: 30
+	ním: 86
+	ním : 75
+	níma: 11
+	níč: 8
+	níčk: 8
+	níž: 24
+	níže: 15
+	níži: 9
+	nô: 4
+	nôt: 4
+	nôt : 4
+	nú: 250
+	nú : 131
+	nú a: 6
+	nú b: 4
+	nú d: 13
+	nú e: 4
+	nú i: 8
+	nú m: 8
+	nú n: 4
+	nú p: 36
+	nú r: 9
+	nú s: 8
+	nú v: 8
+	nú z: 11
+	núc: 6
+	núce: 4
+	núkn: 4
+	nút: 56
+	núti: 6
+	núto: 28
+	nútr: 19
+	núť: 53
+	núť : 53
+	ný: 741
+	ný : 285
+	ný a: 26
+	ný b: 6
+	ný m: 8
+	ný n: 21
+	ný o: 6
+	ný p: 126
+	ný r: 8
+	ný s: 15
+	ný t: 9
+	ný z: 11
+	ný ž: 13
+	nýc: 310
+	ných: 310
+	ným: 146
+	ným : 99
+	nými: 47
+	nč: 81
+	nče: 15
+	nčen: 15
+	nčn: 54
+	nčne: 11
+	nčná: 4
+	nčné: 19
+	nčný: 21
+	nčí: 6
+	nčím: 6
+	nš: 51
+	nši: 9
+	nšp: 6
+	nšt: 26
+	nšti: 24
+	nší: 6
+	nšín: 4
+	nž: 6
+	nžel: 4
+	o: 19664
+	o : 3557
+	o ab: 45
+	o aj: 24
+	o ak: 23
+	o b: 124
+	o bo: 32
+	o bu: 23
+	o by: 51
+	o c: 45
+	o d: 161
+	o da: 2
+	o de: 17
+	o di: 13
+	o dv: 9
+	o dô: 34
+	o dú: 4
+	o e: 45
+	o en: 2
+	o eú: 6
+	o eš: 6
+	o g: 6
+	o h: 53
+	o hl: 11
+	o ho: 26
+	o hľ: 11
+	o i: 38
+	o ic: 9
+	o in: 13
+	o j: 83
+	o je: 73
+	o jú: 6
+	o k: 130
+	o k : 11
+	o ko: 51
+	o kr: 23
+	o kt: 23
+	o kó: 4
+	o l: 11
+	o la: 2
+	o m: 152
+	o mi: 28
+	o mn: 15
+	o mô: 15
+	o n: 261
+	o na: 109
+	o ne: 62
+	o ni: 30
+	o no: 8
+	o ná: 53
+	o o: 190
+	o ob: 49
+	o od: 39
+	o ok: 9
+	o op: 15
+	o ot: 24
+	o p: 524
+	o pe: 4
+	o pl: 15
+	o po: 173
+	o pr: 259
+	o pô: 4
+	o r: 139
+	o re: 11
+	o ro: 86
+	o rá: 11
+	o s: 426
+	o sa: 84
+	o se: 8
+	o sk: 17
+	o sm: 39
+	o sp: 75
+	o st: 53
+	o sv: 34
+	o sy: 11
+	o sú: 43
+	o t: 169
+	o to: 60
+	o tr: 45
+	o té: 15
+	o tý: 6
+	o un: 2
+	o uz: 9
+	o v: 332
+	o v : 41
+	o ve: 49
+	o vh: 4
+	o vl: 9
+	o vn: 6
+	o vo: 26
+	o vy: 43
+	o vz: 21
+	o vá: 15
+	o vý: 49
+	o vš: 38
+	o w: 2
+	o z: 182
+	o za: 43
+	o zm: 17
+	o zn: 24
+	o zo: 9
+	o zv: 17
+	o zá: 34
+	o á: 4
+	o ú: 43
+	o ús: 9
+	o úv: 17
+	o úč: 8
+	o č: 62
+	o či: 11
+	o čl: 13
+	o čo: 30
+	o ď: 8
+	o ďa: 8
+	o ľ: 13
+	o ľu: 13
+	o š: 39
+	o št: 26
+	o ž: 77
+	o že: 62
+	o ži: 15
+	oa: 8
+	ob: 929
+	ob : 21
+	ob a: 13
+	obav: 17
+	obc: 43
+	obch: 34
+	obco: 4
+	obcí: 4
+	obd: 15
+	obdo: 11
+	obe: 69
+	obe : 9
+	obec: 23
+	oben: 11
+	obet: 11
+	obh: 4
+	obha: 4
+	obi: 96
+	obid: 4
+	obil: 43
+	obit: 11
+	obiť: 30
+	obja: 6
+	obk: 21
+	obko: 13
+	obl: 171
+	obla: 94
+	oble: 8
+	oblé: 69
+	obm: 30
+	obme: 28
+	obn: 88
+	obne: 28
+	obno: 34
+	obné: 11
+	obný: 13
+	obo: 71
+	obod: 21
+	obom: 39
+	obro: 19
+	obrú: 4
+	obsa: 19
+	obu: 23
+	obud: 9
+	oby: 39
+	oby : 17
+	obyt: 8
+	obyv: 11
+	obá: 21
+	obál: 11
+	obáv: 6
+	obí: 13
+	obí : 11
+	obô: 4
+	obôd: 4
+	obč: 56
+	obča: 41
+	obči: 15
+	oc: 407
+	oced: 2
+	och: 227
+	och : 128
+	ocho: 15
+	ochr: 39
+	ochu: 8
+	ochy: 26
+	oci: 109
+	oci : 36
+	ocia: 6
+	ocit: 11
+	ociá: 51
+	ocou: 8
+	ocí: 8
+	od: 1500
+	od : 86
+	od h: 8
+	oda: 92
+	odaj: 30
+	odar: 32
+	odať: 4
+	odbo: 19
+	odh: 15
+	odha: 9
+	odi: 47
+	odin: 19
+	odič: 11
+	odka: 9
+	odkl: 6
+	odko: 8
+	odl: 49
+	odla: 8
+	odli: 36
+	odm: 58
+	odme: 8
+	odmi: 51
+	odn: 252
+	odne: 38
+	odni: 38
+	odno: 36
+	odnu: 26
+	odné: 53
+	odnô: 4
+	odnú: 17
+	odný: 36
+	odo: 133
+	odob: 51
+	odoh: 6
+	odom: 21
+	odov: 36
+	odp: 197
+	odpo: 182
+	odpí: 4
+	održ: 17
+	ods: 39
+	odst: 28
+	odsú: 6
+	odu: 101
+	odu : 58
+	oduj: 9
+	odv: 43
+	odve: 26
+	ody: 47
+	ody : 47
+	odá: 156
+	odác: 6
+	odár: 130
+	odáv: 15
+	odí: 9
+	odín: 6
+	odô: 4
+	odôv: 4
+	odľ: 30
+	odľa: 30
+	odň: 8
+	odňo: 6
+	oe: 9
+	of: 28
+	of : 4
+	ofób: 4
+	og: 75
+	og : 2
+	oga: 6
+	ogic: 23
+	oh: 481
+	oh : 6
+	ohat: 8
+	ohl: 51
+	ohla: 8
+	ohli: 32
+	ohlo: 8
+	ohnú: 4
+	oho: 188
+	oho : 77
+	ohod: 54
+	ohos: 28
+	ohov: 13
+	ohr: 24
+	ohro: 13
+	ohrá: 8
+	oht: 62
+	ohto: 62
+	ohu: 21
+	ohu : 15
+	ohy: 13
+	ohy : 6
+	ohyb: 8
+	ohé : 6
+	ohí: 6
+	ohí : 6
+	ohô: 8
+	ohôd: 8
+	ohý: 21
+	ohýc: 17
+	ohľ: 45
+	ohľa: 45
+	oi: 4
+	ois: 4
+	oj: 475
+	oj : 99
+	oj a: 9
+	oj h: 4
+	oj k: 9
+	oj p: 23
+	oj s: 11
+	oj v: 21
+	oja : 38
+	oje: 143
+	ojej: 21
+	ojek: 30
+	ojen: 51
+	ojh: 8
+	ojho: 8
+	oji: 47
+	ojic: 17
+	ojiť: 9
+	ojm: 4
+	ojmu: 4
+	ojn: 24
+	ojne: 6
+	ojo: 62
+	ojom: 15
+	ojou: 6
+	ojov: 39
+	oju : 26
+	ojuj: 9
+	ojí: 9
+	ojí : 9
+	ok: 670
+	ok : 122
+	ok p: 15
+	ok v: 11
+	ok č: 4
+	okam: 17
+	okej: 4
+	oki: 43
+	okia: 43
+	okl: 15
+	okla: 8
+	okm: 9
+	okmi: 9
+	oko: 148
+	okoc: 13
+	okoj: 30
+	okom: 13
+	okon: 19
+	okov: 47
+	okoľ: 6
+	okr: 135
+	okra: 84
+	okre: 32
+	okro: 15
+	októ: 8
+	oku: 98
+	oku : 54
+	okuj: 8
+	okup: 8
+	oky: 13
+	oky : 13
+	oká: 19
+	okáz: 6
+	okáž: 9
+	oké: 9
+	oké : 6
+	okéh: 4
+	okú: 11
+	okú : 4
+	okúš: 8
+	oký: 11
+	oký : 4
+	okýc: 6
+	ol: 815
+	ol : 77
+	ol b: 6
+	ol n: 11
+	ol p: 9
+	ol ž: 9
+	ola : 43
+	ole : 2
+	oleb: 6
+	oleg: 36
+	oli : 58
+	olič: 6
+	oliť: 8
+	oll: 2
+	olo: 233
+	olo : 64
+	olov: 21
+	oloč: 115
+	olož: 11
+	olup: 56
+	oly : 15
+	olá: 21
+	olác: 8
+	oláv: 11
+	oló: 15
+	ológ: 15
+	olú: 6
+	olút: 6
+	om: 1644
+	om : 1038
+	om a: 75
+	om b: 32
+	om c: 26
+	om j: 24
+	om k: 53
+	om m: 32
+	om n: 90
+	om o: 39
+	om p: 120
+	om r: 36
+	om s: 120
+	om t: 45
+	om u: 24
+	om v: 83
+	om z: 49
+	om ú: 6
+	om č: 24
+	om š: 6
+	om ž: 13
+	oma: 17
+	oma : 2
+	ome: 28
+	omiť: 6
+	omn: 81
+	omne: 19
+	omni: 34
+	omno: 11
+	omná: 4
+	omné: 4
+	omný: 6
+	omoc: 39
+	omoh: 6
+	omp: 24
+	omt: 39
+	omto: 39
+	omu: 68
+	omu : 30
+	omuj: 8
+	omut: 13
+	omá : 4
+	omáh: 6
+	omím: 4
+	omô: 30
+	omôc: 13
+	omôž: 17
+	on: 486
+	on : 17
+	on a: 6
+	on d: 2
+	on l: 2
+	on o: 2
+	on v: 2
+	ona: 62
+	onal: 11
+	onan: 15
+	onať: 26
+	onca: 11
+	ond: 15
+	one: 30
+	one : 4
+	onen: 4
+	ones: 4
+	oneč: 9
+	ong: 4
+	oni: 34
+	oni : 4
+	onn: 11
+	ono: 21
+	onom: 6
+	ons: 32
+	onse: 2
+	onsk: 28
+	ont: 56
+	onta: 2
+	oná: 45
+	onál: 26
+	onáv: 15
+	onú: 6
+	onúk: 4
+	onč: 26
+	onče: 15
+	ončí: 6
+	oo: 13
+	oor: 11
+	op: 317
+	opat: 49
+	ope: 17
+	opea: 2
+	opil: 8
+	opl: 53
+	opla: 9
+	opln: 9
+	oplň: 32
+	opn: 30
+	opno: 8
+	opné: 13
+	opo: 6
+	opos: 4
+	opr: 60
+	opra: 34
+	oprá: 15
+	opu: 6
+	opá: 6
+	opät: 6
+	opäť: 17
+	opĺ: 6
+	opĺň: 6
+	or: 1541
+	or : 66
+	or a: 6
+	or e: 2
+	ora: 36
+	ord: 13
+	ord : 2
+	orej: 36
+	oren: 47
+	orgá: 38
+	ori: 203
+	oria: 53
+	oril: 41
+	oriť: 43
+	orma: 8
+	orme: 4
+	ormo: 13
+	ormy: 11
+	ormá: 41
+	orn: 79
+	orne: 15
+	orno: 21
+	orné: 13
+	orný: 21
+	oro: 96
+	oroc: 8
+	orom: 17
+	orov: 47
+	orr: 2
+	ors: 9
+	ort: 8
+	orte: 2
+	ortu: 4
+	oru: 131
+	oru : 73
+	oruj: 30
+	orus: 9
+	oruš: 13
+	ory: 24
+	ory : 24
+	orá: 66
+	orá : 62
+	oré: 244
+	oré : 225
+	oréh: 13
+	orí: 92
+	orí : 68
+	orím: 19
+	orít: 6
+	orú: 49
+	orú : 38
+	orúč: 11
+	orý: 163
+	orý : 98
+	orýc: 45
+	orým: 21
+	orš: 8
+	orši: 6
+	os: 1460
+	os : 2
+	os p: 2
+	osah: 15
+	ose: 4
+	osia: 62
+	osil: 19
+	osk: 47
+	osky: 43
+	osl: 73
+	osla: 51
+	osle: 19
+	osob: 30
+	osp: 156
+	ospo: 130
+	ospr: 9
+	oss: 2
+	ost: 689
+	osta: 122
+	osti: 345
+	ostl: 8
+	ostr: 83
+	ostu: 51
+	ostá: 17
+	ostí: 30
+	osv: 13
+	osve: 11
+	osím: 8
+	osô: 8
+	osôb: 8
+	osú: 8
+	osúl: 8
+	osť: 287
+	osť : 268
+	osťa: 4
+	osťo: 15
+	ot: 700
+	ot : 15
+	otep: 6
+	oteš: 6
+	oti: 88
+	oti : 68
+	otiť: 8
+	otl: 24
+	otli: 24
+	otn: 58
+	otné: 30
+	otný: 11
+	oto: 103
+	oto : 58
+	otom: 26
+	otr: 171
+	otra: 24
+	otre: 145
+	otv: 34
+	otvo: 23
+	otvr: 9
+	otá: 107
+	otáz: 101
+	ou : 323
+	ou a: 32
+	ou g: 6
+	ou j: 11
+	ou k: 19
+	ou n: 19
+	ou o: 15
+	ou p: 36
+	ou s: 34
+	ou v: 23
+	ou z: 21
+	ou ú: 19
+	oul: 2
+	out: 6
+	ouči: 6
+	ouž: 41
+	ouži: 15
+	ouží: 26
+	ov: 2604
+	ov : 586
+	ov a: 98
+	ov b: 11
+	ov d: 11
+	ov e: 21
+	ov j: 19
+	ov k: 43
+	ov m: 21
+	ov n: 34
+	ov o: 13
+	ov p: 36
+	ov r: 11
+	ov s: 41
+	ov t: 9
+	ov v: 41
+	ov z: 26
+	ov č: 8
+	ov ľ: 8
+	ova: 822
+	ovac: 13
+	oval: 124
+	ovam: 9
+	ovan: 375
+	ovač: 6
+	ovať: 225
+	ovaž: 26
+	ove: 304
+	oved: 139
+	ovej: 62
+	oven: 39
+	over: 4
+	oveď: 6
+	oveľ: 9
+	oveň: 28
+	ovi: 171
+	ovi : 58
+	ovia: 13
+	ovic: 8
+	ovie: 13
+	ovin: 36
+	ovis: 19
+	oviť: 9
+	ovlá: 4
+	ovn: 163
+	ovna: 43
+	ovne: 11
+	ovni: 30
+	ovno: 21
+	ovné: 15
+	ovní: 28
+	ovný: 15
+	ovo: 163
+	ovol: 19
+	ovom: 15
+	ovor: 73
+	ovov: 6
+	ovoz: 11
+	ovoľ: 11
+	ovp: 11
+	ovpl: 11
+	ovs: 30
+	ovsk: 24
+	ovst: 6
+	ovu: 28
+	ovu : 23
+	ovuj: 6
+	ová: 54
+	ová : 36
+	ovác: 11
+	ové: 83
+	ové : 41
+	ovéh: 38
+	ovú: 23
+	ovú : 23
+	ový: 109
+	ový : 21
+	ovýc: 62
+	ovým: 26
+	ovň: 4
+	ovňa: 4
+	ovš: 28
+	ovše: 28
+	ow: 4
+	owi: 2
+	oz: 627
+	ozaj: 19
+	ozd: 28
+	ozde: 8
+	ozdi: 19
+	oze: 21
+	ozem: 8
+	ozh: 73
+	ozho: 73
+	ozl: 8
+	ozm: 53
+	ozme: 47
+	ozn: 54
+	ozna: 38
+	ozná: 15
+	ozo: 38
+	ozor: 34
+	ozp: 81
+	ozpo: 39
+	ozpr: 39
+	ozr: 32
+	ozre: 24
+	ozri: 8
+	ozs: 17
+	ozsa: 8
+	ozsi: 6
+	ozu: 39
+	ozum: 30
+	ozv: 84
+	ozvi: 11
+	ozvo: 62
+	ozví: 8
+	ozí: 17
+	ozíc: 17
+	ozš: 24
+	ozši: 6
+	ozší: 19
+	oč: 419
+	oča: 38
+	očak: 17
+	očas: 21
+	oče: 47
+	očen: 26
+	očet: 19
+	oči: 49
+	oči : 21
+	očia: 9
+	očin: 13
+	očko: 6
+	očn: 222
+	očne: 39
+	očni: 11
+	očno: 84
+	očná: 9
+	očné: 30
+	oční: 9
+	očnú: 13
+	očný: 24
+	očt: 36
+	očto: 17
+	očtu: 15
+	oču: 8
+	očul: 6
+	očí: 9
+	očú: 4
+	očúv: 4
+	oď: 26
+	oďa: 24
+	oďak: 24
+	oľ: 103
+	oľa: 6
+	oľah: 4
+	oľb: 9
+	oľbá: 4
+	oľk: 17
+	oľko: 15
+	oľn: 41
+	oľno: 36
+	oľt: 8
+	oľte: 8
+	oľv: 21
+	oľve: 21
+	ošt: 17
+	oštá: 17
+	ož: 336
+	ožad: 9
+	ože: 96
+	ože : 60
+	ožel: 6
+	ožen: 30
+	oži: 73
+	ožia: 32
+	ožil: 19
+	ožiť: 8
+	ožk: 4
+	ožn: 120
+	ožni: 21
+	ožno: 60
+	ožné: 32
+	ožs: 21
+	ožst: 21
+	ožň: 11
+	ožňu: 11
+	p: 8233
+	p : 49
+	pa: 503
+	pa : 9
+	pad: 71
+	pad : 9
+	pade: 39
+	pal: 6
+	pani: 86
+	par: 197
+	para: 2
+	part: 34
+	pas: 4
+	pas : 2
+	patr: 69
+	pať: 4
+	pať : 4
+	pcov: 4
+	pe: 357
+	pe ž: 4
+	pea: 2
+	pean: 2
+	pech: 19
+	peje: 6
+	pekn: 4
+	pelý: 4
+	pen: 23
+	peni: 13
+	per: 24
+	pera: 4
+	pers: 4
+	perá: 6
+	pes: 6
+	pet: 6
+	pev: 23
+	pevk: 6
+	pevn: 11
+	peč: 115
+	peče: 17
+	peči: 38
+	pečn: 53
+	pečí: 6
+	peš: 17
+	pešn: 15
+	ph : 8
+	pie: 30
+	pieť: 13
+	pin: 56
+	pina: 13
+	piny: 36
+	pir: 2
+	piso: 9
+	pisy: 13
+	pitá: 9
+	pič: 4
+	pičk: 4
+	piť: 13
+	piť : 13
+	pl: 355
+	pl v: 8
+	pla: 79
+	plat: 69
+	ple: 13
+	pli: 9
+	plic: 2
+	pln: 92
+	plne: 47
+	plni: 17
+	plno: 6
+	plní: 6
+	plnú: 11
+	plu: 2
+	ply: 62
+	plyn: 30
+	plyv: 32
+	plá: 43
+	plán: 39
+	plň: 32
+	plňu: 32
+	pn: 60
+	pne: 11
+	pnos: 13
+	pné: 23
+	pné : 21
+	pný: 6
+	po: 2544
+	po p: 17
+	po t: 11
+	poc: 53
+	poch: 49
+	pod: 482
+	pode: 2
+	podm: 39
+	podn: 41
+	podo: 43
+	podp: 128
+	pods: 13
+	podá: 133
+	podľ: 26
+	poh: 28
+	pohn: 4
+	pohy: 8
+	pohľ: 13
+	poj: 43
+	poje: 32
+	poji: 9
+	pok: 156
+	poki: 43
+	pokl: 13
+	poko: 38
+	pokr: 47
+	pokú: 8
+	pol: 332
+	polo: 131
+	polu: 60
+	pom: 107
+	pomo: 32
+	pomá: 6
+	pomô: 30
+	pon: 21
+	ponú: 4
+	popl: 9
+	por : 2
+	pori: 38
+	port: 8
+	poru: 75
+	porí: 8
+	porú: 8
+	pos: 214
+	posk: 43
+	posl: 64
+	poss: 2
+	post: 71
+	pot: 225
+	poto: 26
+	potr: 171
+	potv: 9
+	pouč: 6
+	použ: 41
+	pov: 223
+	pova: 34
+	pove: 145
+	povi: 23
+	povo: 15
+	povr: 4
+	poz: 128
+	poze: 4
+	pozm: 34
+	pozn: 19
+	pozo: 30
+	pozr: 6
+	pozí: 17
+	poč: 88
+	poča: 17
+	poče: 19
+	počt: 36
+	poču: 8
+	počú: 4
+	poď: 24
+	poďa: 24
+	poľ: 34
+	poľa: 4
+	poľn: 28
+	pož: 39
+	poži: 30
+	pp: 11
+	ppe: 9
+	pr: 3107
+	pra: 323
+	prac: 79
+	prav: 220
+	pre: 1130
+	pre : 242
+	preb: 11
+	pred: 445
+	preh: 11
+	prej: 26
+	prek: 26
+	prer: 8
+	pret: 163
+	preu: 15
+	preč: 26
+	pri: 460
+	pri : 62
+	pria: 13
+	pric: 9
+	prid: 17
+	prie: 60
+	prij: 71
+	prip: 51
+	pris: 58
+	priv: 6
+	prič: 13
+	priš: 8
+	prod: 11
+	prop: 6
+	pros: 84
+	prot: 84
+	prov: 2
+	prv: 53
+	prv : 8
+	prvo: 8
+	prvé: 15
+	prvý: 13
+	prá: 437
+	prác: 92
+	práv: 345
+	prí: 304
+	príj: 13
+	prík: 51
+	príl: 45
+	príp: 62
+	prír: 13
+	prís: 96
+	prít: 11
+	príč: 8
+	ps: 304
+	psk: 298
+	pska: 53
+	pske: 148
+	psko: 28
+	psku: 13
+	psky: 49
+	pt: 23
+	ptov: 6
+	pu: 83
+	pu : 36
+	pu a: 11
+	puj: 13
+	puje: 8
+	pujú: 6
+	pust: 13
+	py: 38
+	py : 36
+	py a: 8
+	py v: 6
+	pá: 270
+	pác: 9
+	páci: 6
+	pád: 4
+	páj: 8
+	pája: 8
+	pán: 223
+	pán : 148
+	pána: 23
+	páni: 32
+	páno: 19
+	pár: 17
+	pár : 17
+	päto: 6
+	päť: 26
+	päť : 24
+	pé: 4
+	pí: 39
+	pín: 8
+	pín : 8
+	pís: 32
+	písa: 9
+	píso: 19
+	pô: 118
+	pôd: 8
+	pôdu: 4
+	pôro: 4
+	pôs: 92
+	pôso: 92
+	pôv: 11
+	pôvo: 11
+	púš: 8
+	púšt: 4
+	púšť: 4
+	pý: 8
+	pýt: 8
+	pýta: 8
+	pĺ: 9
+	pĺň: 9
+	pĺňa: 9
+	pľ: 6
+	pľo: 6
+	pľov: 6
+	pň: 4
+	pňo: 4
+	pňov: 4
+	pš: 66
+	pše: 21
+	pšen: 21
+	pši: 36
+	pšie: 19
+	pšiu: 4
+	pšiť: 9
+	q: 4
+	qu: 4
+	qua: 2
+	qui: 2
+	r: 10829
+	r : 193
+	r a: 15
+	r al: 2
+	r b: 11
+	r be: 2
+	r c: 2
+	r d: 8
+	r dá: 4
+	r e: 4
+	r eu: 2
+	r f: 2
+	r h: 2
+	r i: 2
+	r in: 2
+	r j: 6
+	r k: 11
+	r l: 2
+	r le: 2
+	r m: 9
+	r me: 4
+	r mi: 2
+	r n: 26
+	r o: 4
+	r p: 21
+	r pa: 2
+	r po: 2
+	r pr: 13
+	r r: 6
+	r s: 11
+	r so: 2
+	r t: 6
+	r ti: 2
+	r v: 24
+	r vi: 2
+	r vá: 15
+	ra : 69
+	ra d: 2
+	ra e: 2
+	ra s: 2
+	ra č: 4
+	rab: 4
+	rac: 103
+	raco: 79
+	rad: 145
+	rada: 32
+	radn: 9
+	radu: 21
+	rady: 38
+	radš: 4
+	rag: 9
+	rahy: 4
+	rai: 2
+	raj: 171
+	raji: 115
+	rají: 45
+	rajú: 6
+	rakú: 6
+	ral: 36
+	ramu: 13
+	ran: 252
+	rand: 2
+	rani: 56
+	rant: 2
+	ranu: 17
+	rany: 34
+	raná: 6
+	rané: 24
+	raní: 9
+	raný: 4
+	rar: 2
+	rast: 41
+	raté: 24
+	rav: 282
+	ravd: 19
+	rave: 34
+	ravi: 68
+	ravo: 58
+	ravu: 26
+	ravy: 30
+	raví: 11
+	raz: 120
+	raz : 64
+	razn: 47
+	rač: 45
+	račk: 6
+	račo: 21
+	raňu: 4
+	rať: 24
+	rať : 24
+	rb: 9
+	rbi: 2
+	rc: 36
+	rd: 64
+	rd : 6
+	rda: 2
+	rde: 4
+	rden: 4
+	rdné: 4
+	rdný: 6
+	rdá: 6
+	rdác: 4
+	re : 312
+	re a: 6
+	re d: 8
+	re e: 6
+	re i: 2
+	re v: 36
+	re z: 17
+	re ž: 6
+	rea: 43
+	reb: 163
+	rebi: 34
+	rebn: 62
+	rebu: 36
+	reby: 9
+	rec: 15
+	reck: 11
+	red: 520
+	red : 53
+	redc: 13
+	redi: 24
+	redk: 8
+	redl: 24
+	redn: 49
+	redo: 45
+	redp: 24
+	reds: 246
+	redt: 6
+	redá: 4
+	redč: 6
+	ree: 2
+	regi: 69
+	rehl: 9
+	rei: 2
+	rej: 148
+	rej : 39
+	reja: 21
+	rejm: 32
+	rejn: 49
+	rekv: 8
+	reká: 8
+	rel: 6
+	reme: 2
+	rend: 4
+	reni: 92
+	rení: 19
+	rený: 6
+	repu: 19
+	rer: 8
+	res: 116
+	rese: 2
+	resi: 8
+	resk: 17
+	resp: 2
+	resv: 17
+	ret: 199
+	retl: 8
+	reto: 154
+	retí: 15
+	reuk: 15
+	revá: 11
+	reví: 4
+	reč: 45
+	rečn: 19
+	rečo: 17
+	rečí: 8
+	reď: 4
+	reďu: 4
+	rešp: 6
+	rf: 4
+	rget: 38
+	rgií: 4
+	rgá: 38
+	rgán: 38
+	rh: 208
+	rh : 51
+	rh a: 8
+	rh k: 8
+	rh o: 4
+	rh p: 6
+	rh v: 4
+	rhe: 2
+	rhm: 4
+	rhmi: 4
+	rhn: 13
+	rhnu: 4
+	rhnú: 8
+	rho: 34
+	rhoc: 4
+	rhom: 4
+	rhov: 24
+	rhu: 73
+	rhu : 64
+	rhuj: 9
+	rhy: 24
+	rhy : 24
+	ri z: 8
+	ria: 150
+	riad: 98
+	riav: 4
+	ribu: 2
+	rick: 19
+	ridá: 4
+	rie: 199
+	ried: 26
+	riem: 38
+	rieš: 64
+	rieť: 6
+	rig: 2
+	rii: 2
+	rii : 2
+	rij: 71
+	rija: 56
+	rijm: 9
+	rijí: 6
+	ril: 77
+	ril : 17
+	rili: 28
+	rimn: 6
+	rin: 26
+	riná: 11
+	rio: 23
+	rip: 53
+	ripo: 28
+	ripr: 19
+	riro: 8
+	risp: 30
+	risť: 11
+	rit: 60
+	rite: 2
+	ritn: 4
+	riv: 8
+	rizá: 4
+	riér: 8
+	ričo: 13
+	rišl: 8
+	riť: 64
+	riť : 64
+	rk: 28
+	rke: 2
+	rky: 11
+	rky : 11
+	rle: 2
+	rm: 120
+	rma: 9
+	rme: 4
+	rmi: 13
+	rmi : 13
+	rmov: 13
+	rmy: 13
+	rmy : 13
+	rmá: 47
+	rmác: 30
+	rmál: 11
+	rn : 2
+	rna: 9
+	rna : 2
+	rnej: 21
+	rnic: 30
+	rniť: 4
+	rnyc: 6
+	rné: 23
+	rné : 13
+	rnéh: 8
+	rnú: 4
+	rný: 28
+	rný : 6
+	rnýc: 17
+	rným: 6
+	ro: 1780
+	ro : 19
+	rob: 161
+	robi: 34
+	robk: 21
+	robn: 9
+	roch: 24
+	rod: 133
+	rodi: 21
+	rodn: 73
+	roj: 77
+	roj : 9
+	roje: 43
+	rojo: 23
+	rok: 195
+	rok : 34
+	rokm: 9
+	roko: 69
+	roku: 56
+	roky: 11
+	rokú: 4
+	roly: 13
+	rom: 86
+	rom : 54
+	ron: 15
+	rop: 21
+	ropa: 6
+	rope: 6
+	rost: 83
+	rosí: 8
+	rote: 4
+	roti: 75
+	rov: 272
+	rov : 32
+	rova: 54
+	rove: 38
+	rovn: 92
+	rovs: 15
+	rový: 6
+	rovň: 4
+	roz: 383
+	rozd: 26
+	rozh: 73
+	rozm: 19
+	rozp: 81
+	rozs: 17
+	rozu: 34
+	rozv: 81
+	rozš: 24
+	ročí: 6
+	rošt: 17
+	rp: 11
+	rr: 13
+	rre: 2
+	rro: 6
+	rs: 191
+	rsk: 124
+	rske: 49
+	rsko: 9
+	rsku: 9
+	rsky: 17
+	rské: 8
+	rskú: 6
+	rský: 9
+	rstv: 56
+	rt: 68
+	rte: 6
+	rte : 4
+	rti: 2
+	rtn: 36
+	rtne: 34
+	rts: 2
+	rtu: 9
+	rtuľ: 4
+	ru : 115
+	ru n: 11
+	ru o: 11
+	ru p: 28
+	ruh: 38
+	ruhe: 6
+	ruho: 11
+	ruhé: 9
+	ruhý: 8
+	ruj: 43
+	ruje: 32
+	rujú: 11
+	rup: 2
+	rusk: 30
+	ruzí: 6
+	ruč: 30
+	ruči: 15
+	ručn: 8
+	ruš: 23
+	ruši: 8
+	rušo: 9
+	ružn: 6
+	rv : 8
+	rv v: 4
+	rve: 4
+	rvko: 4
+	rvom: 6
+	rvá: 11
+	rvé: 15
+	rvé : 13
+	rvý: 13
+	rvý : 4
+	rvýk: 4
+	rvým: 4
+	ry : 71
+	ry k: 9
+	ry n: 8
+	ryť: 4
+	ryť : 4
+	rz: 19
+	rzí: 6
+	rzí : 4
+	rá: 805
+	rá : 68
+	rá b: 8
+	rá j: 13
+	rá m: 8
+	rá s: 11
+	rá č: 4
+	rác: 124
+	ráca: 15
+	ráce: 36
+	ráci: 47
+	rácu: 26
+	rád: 41
+	rád : 41
+	rál: 15
+	ráln: 15
+	rám: 53
+	rámc: 43
+	ráme: 9
+	rán: 53
+	ráne: 8
+	ráni: 28
+	rát: 68
+	rát : 17
+	ráta: 23
+	rátk: 13
+	ráv: 357
+	ráv : 43
+	ráva: 77
+	ráve: 54
+	rávn: 94
+	rávo: 36
+	rávu: 17
+	rávy: 36
+	ráz: 8
+	rázn: 6
+	ráľ: 4
+	ráľo: 4
+	ráž: 6
+	ré: 280
+	ré : 229
+	ré b: 23
+	ré d: 13
+	ré k: 6
+	ré m: 21
+	ré n: 13
+	ré o: 6
+	ré p: 28
+	ré s: 79
+	ré v: 13
+	réck: 9
+	réh: 19
+	rého: 19
+	rému: 6
+	rét: 15
+	rétn: 15
+	rí: 466
+	rí : 88
+	rí d: 9
+	rí h: 4
+	rí k: 4
+	rí n: 11
+	rí p: 9
+	rí s: 15
+	rí t: 6
+	rí u: 6
+	rí z: 6
+	ríj: 13
+	ríje: 6
+	ríjm: 8
+	rík: 51
+	ríkl: 51
+	ríl: 45
+	ríle: 32
+	ríli: 9
+	rím: 30
+	rím : 15
+	ríme: 15
+	ríp: 68
+	rípa: 56
+	rípk: 6
+	rípr: 4
+	rír: 13
+	ríro: 13
+	rís: 96
+	rísl: 15
+	rísn: 11
+	rísp: 11
+	ríst: 56
+	rít: 17
+	rít : 6
+	ríto: 11
+	ríz: 30
+	ríza: 9
+	rízo: 4
+	rízy: 13
+	ríč: 8
+	ríči: 8
+	ró: 381
+	róp: 375
+	rópe: 32
+	róps: 298
+	rópu: 8
+	rópy: 23
+	rô: 17
+	rôz: 17
+	rôzn: 17
+	rú: 62
+	rú : 41
+	rú m: 6
+	rú n: 4
+	rú o: 4
+	rú p: 6
+	rú s: 11
+	rú v: 4
+	rúc: 4
+	rúca: 4
+	rúk: 4
+	rúk : 4
+	rúč: 11
+	rúča: 9
+	rü: 2
+	rý: 197
+	rý : 98
+	rý a: 6
+	rý b: 21
+	rý j: 8
+	rý o: 6
+	rý r: 4
+	rý s: 21
+	rýc: 73
+	rých: 73
+	rým: 23
+	rým : 17
+	rými: 6
+	rýva: 4
+	rč: 38
+	rče: 8
+	rčen: 8
+	rči: 28
+	rčit: 24
+	rčiť: 4
+	ršie: 4
+	rž: 66
+	ržal: 6
+	ržat: 17
+	ržať: 6
+	rži: 23
+	ržia: 23
+	ržn: 11
+	ržno: 11
+	s: 10214
+	s : 503
+	s a: 21
+	s a : 8
+	s al: 4
+	s au: 2
+	s b: 6
+	s c: 34
+	s ci: 28
+	s d: 23
+	s de: 4
+	s di: 2
+	s e: 15
+	s en: 2
+	s f: 6
+	s g: 2
+	s h: 11
+	s i: 9
+	s in: 4
+	s j: 11
+	s k: 26
+	s kt: 6
+	s ku: 2
+	s l: 2
+	s m: 21
+	s ma: 6
+	s me: 2
+	s mi: 6
+	s n: 58
+	s ne: 6
+	s no: 6
+	s o: 32
+	s p: 41
+	s pa: 4
+	s po: 9
+	s pr: 19
+	s pá: 8
+	s r: 11
+	s re: 2
+	s s: 24
+	s sa: 8
+	s si: 2
+	s t: 38
+	s te: 4
+	s tý: 21
+	s u: 11
+	s v: 69
+	s v : 11
+	s va: 4
+	s vi: 2
+	s vy: 19
+	s vý: 11
+	s ča: 4
+	sa: 1040
+	sa : 805
+	sa b: 21
+	sa d: 28
+	sa h: 11
+	sa k: 23
+	sa m: 54
+	sa n: 79
+	sa o: 28
+	sa p: 81
+	sa r: 32
+	sa s: 73
+	sa t: 96
+	sa u: 26
+	sa v: 84
+	sa z: 69
+	sa č: 4
+	sa ž: 26
+	saa: 2
+	sad: 62
+	sadn: 17
+	sadz: 21
+	sah: 56
+	sah : 8
+	saho: 11
+	sahu: 36
+	sal: 6
+	sama: 2
+	sami: 11
+	samo: 45
+	san: 4
+	sar: 2
+	sat: 2
+	sau: 2
+	sav: 2
+	sať: 9
+	sať : 6
+	saťr: 4
+	sb: 4
+	sc: 71
+	sch: 66
+	sche: 4
+	scho: 28
+	schv: 24
+	schô: 4
+	se: 404
+	se : 32
+	se a: 8
+	se m: 2
+	se n: 2
+	se p: 4
+	se s: 2
+	seba: 8
+	sed: 195
+	seda: 139
+	sedn: 26
+	sedo: 11
+	sel: 41
+	seln: 17
+	sem: 4
+	sem : 2
+	sen: 68
+	seni: 32
+	sené: 11
+	sení: 11
+	ser: 2
+	sezó: 6
+	sf: 6
+	sh: 4
+	si: 672
+	si z: 9
+	si ž: 30
+	sia: 188
+	sia : 86
+	siac: 26
+	siah: 68
+	siaľ: 4
+	sib: 2
+	sid: 4
+	sie : 90
+	sieť: 11
+	sig: 2
+	sign: 2
+	sii: 9
+	sii : 9
+	sil: 92
+	sili: 36
+	siln: 30
+	silu: 8
+	sim: 2
+	sin: 6
+	sio: 15
+	sion: 8
+	siou: 8
+	sis: 6
+	sist: 4
+	sit: 45
+	siu: 23
+	siu : 23
+	siác: 4
+	sií: 9
+	sií : 9
+	sk: 1293
+	ska : 113
+	skať: 8
+	ske: 270
+	skeh: 53
+	skej: 178
+	ski: 11
+	sko: 126
+	sko : 43
+	skom: 34
+	skou: 23
+	sku: 282
+	sku : 60
+	skum: 28
+	skup: 60
+	skut: 105
+	sky: 137
+	sky : 45
+	skyc: 28
+	skym: 19
+	skyt: 45
+	ské: 88
+	ské : 47
+	skéh: 39
+	skí: 6
+	skí : 6
+	skô: 17
+	skôr: 17
+	skú: 36
+	skú : 19
+	skúm: 13
+	skús: 4
+	ský: 124
+	ský : 19
+	skýc: 77
+	ským: 28
+	sl: 443
+	slan: 51
+	slať: 4
+	sle: 101
+	sle : 8
+	sled: 90
+	sli : 8
+	slo: 124
+	slob: 24
+	slos: 68
+	slov: 28
+	slu: 62
+	sluš: 19
+	služ: 36
+	slí: 45
+	slím: 45
+	slú: 13
+	slúž: 13
+	sm: 298
+	sme: 263
+	sme : 193
+	smer: 64
+	smie: 13
+	smo: 4
+	smú: 8
+	smú : 8
+	sn: 188
+	sna: 30
+	snah: 9
+	snaž: 19
+	sne: 36
+	sne : 23
+	snej: 9
+	sniť: 8
+	sno: 34
+	snos: 30
+	sná: 13
+	sná : 8
+	snáď: 4
+	sné: 43
+	sné : 36
+	snéh: 8
+	snú: 6
+	snú : 6
+	sný: 11
+	sný : 6
+	so : 45
+	so s: 23
+	so z: 11
+	so š: 6
+	sob: 130
+	sob : 21
+	sobe: 11
+	sobi: 23
+	sobn: 15
+	sobo: 38
+	sobu: 8
+	soko: 8
+	soké: 8
+	soký: 8
+	sol: 26
+	solu: 4
+	solú: 6
+	som: 287
+	som : 265
+	somn: 19
+	son: 4
+	son : 2
+	sos: 2
+	sov: 98
+	sova: 66
+	sovs: 6
+	sp: 892
+	spej: 6
+	spev: 11
+	speš: 15
+	spln: 13
+	spo: 430
+	spoc: 9
+	spod: 131
+	spoj: 21
+	spok: 9
+	spol: 178
+	spom: 17
+	spot: 34
+	spoz: 9
+	spoľ: 4
+	spr: 214
+	spra: 51
+	spre: 2
+	sprá: 156
+	sprí: 6
+	spá: 11
+	spáj: 8
+	späť: 6
+	spô: 86
+	spôs: 86
+	sr: 8
+	srb: 6
+	ss: 6
+	sse: 4
+	sse : 2
+	sso: 2
+	st: 2255
+	st : 19
+	st d: 2
+	st p: 4
+	sta : 13
+	stal: 41
+	stav: 107
+	stač: 6
+	stať: 23
+	ste: 88
+	ste : 66
+	stel: 2
+	stem: 2
+	sten: 13
+	ster: 2
+	sti: 539
+	sti : 415
+	stia: 28
+	stic: 38
+	stit: 2
+	stiť: 13
+	stn: 126
+	stna: 21
+	stne: 21
+	stny: 11
+	stná: 6
+	stné: 17
+	stnú: 4
+	stný: 24
+	sto: 163
+	stoj: 34
+	stom: 9
+	stov: 28
+	str: 297
+	stra: 105
+	stre: 84
+	stru: 4
+	strá: 23
+	stu: 210
+	stuj: 43
+	stup: 145
+	stv: 128
+	stva: 53
+	stve: 13
+	stvo: 56
+	stvá: 4
+	sty: 2
+	stá: 84
+	stác: 8
+	stál: 36
+	stáv: 21
+	sté: 58
+	sté : 9
+	stém: 47
+	stí: 53
+	stí : 39
+	stíc: 9
+	stú: 51
+	stú : 6
+	stúc: 6
+	stúp: 39
+	stý: 6
+	stý : 6
+	stň: 6
+	stňu: 4
+	su: 88
+	sudz: 4
+	sumy: 6
+	sur: 4
+	sus: 11
+	sv: 203
+	sve: 73
+	sved: 21
+	svet: 51
+	svo: 122
+	svoj: 122
+	sy : 19
+	sy k: 4
+	sys: 49
+	syst: 49
+	sz: 4
+	sám: 6
+	sám : 6
+	sár: 43
+	sár : 23
+	sárk: 8
+	sáro: 6
+	sí: 223
+	sí : 56
+	sí b: 15
+	sí d: 6
+	sí o: 4
+	sí č: 4
+	síl : 4
+	sím: 145
+	sím : 36
+	síme: 109
+	sô: 8
+	sôb: 8
+	sôb : 8
+	sú: 392
+	sú : 130
+	sú b: 4
+	sú c: 6
+	sú d: 15
+	sú j: 4
+	sú k: 4
+	sú n: 9
+	sú o: 11
+	sú p: 11
+	sú r: 4
+	sú s: 9
+	sú t: 8
+	sú v: 21
+	sú z: 9
+	súb: 6
+	súbo: 6
+	súd: 32
+	súde: 4
+	súdn: 11
+	súdr: 11
+	súh: 49
+	súhl: 45
+	súhr: 4
+	súk: 8
+	súkr: 8
+	súl: 24
+	súla: 24
+	sús: 8
+	súst: 8
+	súv: 66
+	súva: 4
+	súvi: 62
+	súč: 60
+	súča: 58
+	súť: 11
+	súťa: 11
+	sť: 394
+	sť : 340
+	sť a: 30
+	sť b: 6
+	sť d: 15
+	sť e: 13
+	sť f: 4
+	sť h: 4
+	sť j: 9
+	sť k: 13
+	sť m: 15
+	sť n: 21
+	sť o: 13
+	sť p: 28
+	sť r: 9
+	sť s: 24
+	sť t: 11
+	sť u: 6
+	sť v: 26
+	sť z: 17
+	sť ú: 6
+	sť č: 4
+	sť ž: 19
+	sťa: 19
+	sťah: 13
+	sťam: 4
+	sťo: 30
+	sťou: 24
+	sťov: 6
+	t: 10355
+	t : 233
+	t a: 26
+	t b: 2
+	t c: 2
+	t d: 4
+	t e: 8
+	t eu: 6
+	t f: 4
+	t g: 2
+	t h: 4
+	t j: 9
+	t k: 17
+	t ko: 4
+	t kt: 9
+	t m: 13
+	t me: 2
+	t mi: 2
+	t n: 8
+	t ne: 2
+	t o: 11
+	t p: 38
+	t pa: 2
+	t r: 4
+	t s: 26
+	t st: 2
+	t t: 4
+	t ta: 2
+	t to: 2
+	t u: 2
+	t v: 19
+	ta: 796
+	ta : 62
+	ta d: 4
+	ta j: 2
+	ta k: 2
+	ta m: 2
+	ta p: 4
+	ta s: 2
+	ta t: 2
+	tabá: 6
+	tac: 2
+	tajn: 8
+	tajú: 6
+	tak: 176
+	tak : 47
+	takm: 6
+	takt: 23
+	takz: 8
+	taká: 11
+	také: 19
+	takú: 4
+	taký: 21
+	takž: 11
+	tal: 58
+	tam: 49
+	tand: 6
+	tane: 32
+	tano: 68
+	tanú: 8
+	tar: 36
+	tari: 4
+	taro: 9
+	tas: 9
+	tat: 83
+	tate: 13
+	tati: 6
+	tatn: 36
+	tav: 107
+	tava: 6
+	tave: 17
+	tavi: 36
+	tavu: 30
+	tačí: 4
+	tať: 32
+	tať : 32
+	tb: 2
+	tc: 26
+	tci: 23
+	tci : 23
+	te: 1078
+	te : 338
+	te c: 4
+	te d: 15
+	te f: 2
+	te i: 2
+	te l: 2
+	te ž: 9
+	teda: 26
+	teg: 34
+	teh: 6
+	tej: 135
+	tejt: 103
+	tejš: 24
+	tek: 8
+	teká: 4
+	tel: 28
+	tele: 11
+	tem: 8
+	tema: 2
+	ten: 113
+	ten : 4
+	tent: 53
+	tený: 6
+	tepľ: 6
+	ter: 99
+	teri: 8
+	term: 2
+	tes: 9
+	tex: 41
+	text: 39
+	teče: 4
+	teľ: 167
+	teľ : 4
+	teľa: 13
+	teľk: 4
+	teľm: 6
+	teľn: 58
+	teľo: 66
+	teľs: 17
+	teš: 19
+	teše: 4
+	teší: 13
+	th: 9
+	th : 2
+	tha: 2
+	the: 2
+	the : 2
+	thi: 2
+	ti: 1303
+	ti : 496
+	ti a: 45
+	ti d: 4
+	ti p: 56
+	ti s: 75
+	ti z: 21
+	ti ľ: 4
+	ti ž: 9
+	tia: 69
+	tia : 26
+	tiac: 13
+	tiah: 4
+	tiam: 13
+	tiaľ: 11
+	tic: 175
+	tick: 158
+	tid: 4
+	tie: 246
+	tie : 71
+	tiet: 58
+	tiež: 99
+	tihn: 6
+	tiku: 39
+	tiky: 43
+	til: 28
+	til : 9
+	tiln: 4
+	tim: 15
+	tin: 11
+	ting: 4
+	tio: 2
+	tion: 2
+	tis: 15
+	tisí: 8
+	tit: 28
+	titu: 2
+	titú: 23
+	tiu : 9
+	tiv: 9
+	tiť: 36
+	tiť : 36
+	tk: 197
+	tko: 36
+	tko : 19
+	tkou: 4
+	tky: 43
+	tky : 43
+	tkém: 4
+	tký: 96
+	tkýc: 43
+	tkým: 53
+	tla: 24
+	tla : 4
+	tlak: 15
+	tli : 8
+	tliv: 36
+	tlm: 4
+	tlmo: 4
+	tmi: 23
+	tmi : 23
+	tn: 449
+	tnan: 21
+	tne: 111
+	tne : 49
+	tnej: 21
+	tnen: 4
+	tner: 34
+	tni: 13
+	tniť: 6
+	tno: 30
+	tnos: 21
+	tny: 24
+	tnyc: 17
+	tná: 11
+	tná : 6
+	tnáv: 6
+	tné: 116
+	tné : 86
+	tnéh: 26
+	tnú: 21
+	tnú : 13
+	tnúť: 8
+	tný: 69
+	tný : 23
+	tnýc: 38
+	tným: 9
+	to: 2789
+	to : 1047
+	to b: 36
+	to e: 8
+	to j: 30
+	to k: 39
+	to m: 39
+	to n: 83
+	to o: 84
+	to p: 156
+	to s: 139
+	to v: 69
+	to z: 51
+	to ú: 11
+	to č: 26
+	to ž: 43
+	toc: 26
+	toch: 26
+	toh: 120
+	toho: 58
+	toht: 62
+	toj : 9
+	tojí: 9
+	tok : 23
+	tom: 235
+	tom : 130
+	tomn: 11
+	tomt: 39
+	tomu: 41
+	tor: 715
+	tori: 13
+	torn: 26
+	toro: 43
+	torá: 62
+	toré: 244
+	torí: 60
+	torú: 38
+	torý: 161
+	tost: 30
+	tosť: 28
+	toto: 60
+	tov: 229
+	tov : 81
+	tova: 81
+	tove: 9
+	tovn: 13
+	tové: 13
+	tový: 19
+	toč: 120
+	točn: 118
+	toľ: 4
+	toľk: 4
+	tož: 62
+	tože: 60
+	tr: 890
+	tran: 83
+	trav: 30
+	tre: 344
+	treb: 152
+	tred: 69
+	tren: 49
+	tres: 28
+	tret: 36
+	treď: 4
+	trh: 60
+	trh : 11
+	trho: 8
+	trhu: 36
+	trhy: 4
+	trie: 28
+	triť: 4
+	tro : 2
+	troc: 9
+	troj: 23
+	trov: 24
+	troš: 17
+	trpi: 4
+	tru: 21
+	tru : 2
+	trv: 15
+	trva: 8
+	trvá: 8
+	trá: 32
+	trác: 8
+	trán: 15
+	trí: 9
+	trí : 8
+	ts: 28
+	ts : 2
+	tskí: 6
+	tt: 2
+	tte: 2
+	tte : 2
+	tu : 257
+	tu a: 34
+	tu n: 19
+	tu v: 23
+	tu z: 13
+	tua: 2
+	tud: 4
+	tuj: 58
+	tuje: 36
+	tujú: 23
+	tup: 145
+	tup : 43
+	tupc: 6
+	tupn: 26
+	tupo: 17
+	tupu: 34
+	tupy: 6
+	tupň: 4
+	tur: 19
+	tura: 4
+	tus: 2
+	tus : 2
+	tuá: 47
+	tuác: 45
+	tuľ: 4
+	tuľn: 4
+	tv: 332
+	tva: 81
+	tva : 79
+	tvia: 13
+	tvo: 167
+	tvo : 64
+	tvom: 28
+	tvor: 75
+	tvr: 26
+	tvrd: 19
+	tvrt: 6
+	tvá: 15
+	tvá : 4
+	tvár: 11
+	ty : 122
+	ty a: 24
+	ty s: 13
+	ty v: 17
+	tyro: 4
+	tz: 8
+	tzov: 4
+	tá: 497
+	tá : 45
+	tá k: 4
+	tác: 28
+	tách: 13
+	táci: 15
+	tádi: 4
+	tál: 62
+	tále: 34
+	táln: 17
+	tálu: 9
+	tárn: 8
+	tát: 214
+	táte: 15
+	tátm: 13
+	tátn: 19
+	táto: 111
+	tátu: 17
+	táty: 32
+	táv: 23
+	táva: 21
+	táz: 101
+	tázk: 94
+	tázo: 8
+	té: 205
+	té : 86
+	té a: 13
+	té j: 8
+	té k: 6
+	té p: 17
+	té ú: 4
+	tég: 24
+	tégi: 24
+	téh: 19
+	tého: 19
+	tém: 68
+	tém : 11
+	téme: 11
+	témo: 15
+	tému: 21
+	témy: 6
+	tí: 229
+	tí : 88
+	tí a: 11
+	tí k: 13
+	tí s: 11
+	tí t: 9
+	tíc: 23
+	tích: 9
+	tíci: 13
+	tík: 9
+	tík : 9
+	tím: 26
+	tím : 24
+	tív: 75
+	tívc: 4
+	tívn: 45
+	tívu: 8
+	tívy: 8
+	tóbr: 6
+	tód: 9
+	tódu: 6
+	tú: 175
+	tú : 11
+	tú ú: 4
+	túc: 24
+	túce: 6
+	túci: 19
+	túd: 4
+	túdi: 4
+	túp: 39
+	túpe: 15
+	túpi: 23
+	túr: 32
+	túrn: 8
+	túru: 6
+	túry: 15
+	tút: 64
+	tút : 4
+	túto: 58
+	tüv: 4
+	tüv : 4
+	tý: 267
+	tý : 28
+	tý p: 6
+	tý v: 6
+	tý ž: 6
+	týc: 64
+	tých: 64
+	týk: 71
+	týka: 71
+	tým: 88
+	tým : 60
+	tými: 8
+	týmt: 21
+	týž: 13
+	týžd: 13
+	tň: 13
+	tňo: 9
+	tňov: 9
+	u: 5866
+	u : 1950
+	u a: 265
+	u a : 173
+	u ab: 21
+	u aj: 8
+	u ak: 26
+	u al: 34
+	u b: 47
+	u by: 21
+	u ch: 13
+	u dn: 8
+	u do: 38
+	u eu: 41
+	u eú: 11
+	u hl: 11
+	u je: 39
+	u k: 135
+	u k : 15
+	u kl: 8
+	u kt: 51
+	u m: 71
+	u má: 4
+	u mô: 6
+	u n: 137
+	u na: 92
+	u ná: 9
+	u o: 107
+	u o : 28
+	u od: 15
+	u oh: 4
+	u ot: 15
+	u p: 265
+	u pl: 15
+	u po: 96
+	u pr: 128
+	u pô: 4
+	u r: 51
+	u ro: 24
+	u s: 152
+	u sa: 30
+	u sp: 28
+	u sú: 17
+	u tý: 6
+	u un: 2
+	u uv: 9
+	u v: 167
+	u v : 77
+	u vl: 8
+	u vy: 19
+	u vý: 8
+	u vš: 11
+	u z: 96
+	u za: 32
+	u zm: 8
+	u zn: 8
+	u zo: 9
+	u zv: 6
+	u zá: 9
+	u ú: 28
+	u ún: 15
+	u č: 24
+	u či: 9
+	u čo: 11
+	u ď: 6
+	u ďa: 6
+	u ľ: 4
+	u ľu: 4
+	u ž: 17
+	u že: 11
+	u ži: 6
+	ua: 9
+	ua : 4
+	ual: 2
+	uan: 4
+	ub: 30
+	uc: 45
+	uch : 2
+	ucho: 17
+	uci: 2
+	ud: 436
+	uda: 4
+	udal: 4
+	ude: 145
+	ude : 92
+	udem: 32
+	uden: 2
+	udeľ: 4
+	udia: 17
+	udko: 4
+	udnu: 8
+	udob: 11
+	udov: 13
+	udr: 30
+	udrž: 30
+	uds: 53
+	udsk: 45
+	udí: 32
+	udí : 30
+	udú: 96
+	udú : 41
+	udúc: 54
+	ue: 8
+	ue : 2
+	ue n: 2
+	uer: 4
+	uf: 2
+	ug: 8
+	uge: 2
+	uhej: 6
+	uho: 15
+	uhov: 4
+	uhé: 9
+	uhé : 9
+	uhý: 8
+	uhý : 6
+	ui: 9
+	uid: 2
+	uj: 634
+	uje: 355
+	uje : 216
+	ujem: 128
+	ujet: 11
+	ujm: 32
+	ujme: 13
+	ujmo: 9
+	ujmu: 6
+	ujt: 4
+	ujte: 4
+	ujím: 6
+	ujú: 229
+	ujú : 98
+	ujúc: 131
+	ukaz: 19
+	ukon: 11
+	uktú: 8
+	uká: 30
+	ukáz: 24
+	ukáž: 4
+	ul: 133
+	ul : 13
+	ulač: 6
+	ule: 11
+	ulej: 6
+	ulex: 6
+	ulh: 13
+	ulha: 13
+	uli : 11
+	ulov: 9
+	ult: 23
+	ultu: 2
+	ultú: 15
+	ulu: 2
+	ulác: 9
+	um: 158
+	um : 23
+	uma: 9
+	umit: 9
+	umn: 19
+	umné: 8
+	umný: 6
+	umo: 34
+	umož: 34
+	umy: 6
+	umy : 6
+	un: 73
+	una: 8
+	und: 2
+	ung: 17
+	unge: 2
+	uni: 28
+	unik: 15
+	unk: 4
+	unt: 2
+	unte: 2
+	up: 317
+	up : 43
+	up n: 6
+	up u: 6
+	upa: 2
+	upi: 54
+	upin: 51
+	upl: 23
+	upla: 9
+	upln: 4
+	uply: 6
+	upn: 26
+	upne: 8
+	upné: 9
+	upom: 4
+	upov: 13
+	upoz: 8
+	upr: 66
+	uprá: 53
+	upu: 36
+	upu : 23
+	upuj: 11
+	upá: 8
+	upác: 6
+	upí: 8
+	upín: 8
+	upň: 4
+	upňo: 4
+	ur: 539
+	ur : 19
+	ura: 9
+	ura : 2
+	urd: 2
+	ure: 28
+	urec: 11
+	uro: 43
+	uro : 2
+	urob: 24
+	urop: 4
+	uró: 375
+	uróp: 375
+	urý: 4
+	urýc: 4
+	urč: 38
+	urče: 8
+	urči: 28
+	us: 411
+	us : 11
+	us a: 2
+	us d: 2
+	use: 21
+	usia: 41
+	usie: 17
+	usiu: 9
+	usk: 58
+	usku: 39
+	uss: 2
+	ust: 41
+	uste: 6
+	ustr: 2
+	usí: 176
+	usí : 51
+	usím: 120
+	usít: 6
+	ut: 323
+	uta: 4
+	ute: 11
+	utej: 6
+	utia: 23
+	utie: 30
+	utiu: 6
+	utn: 39
+	utná: 4
+	utné: 28
+	uto: 146
+	utov: 9
+	utoč: 94
+	utr: 2
+	utu: 2
+	utá : 8
+	utéh: 6
+	utí: 11
+	utím: 6
+	utý: 17
+	utý : 9
+	utýc: 6
+	uu: 2
+	uvaž: 8
+	uved: 24
+	uvie: 15
+	uvu : 8
+	uvy: 21
+	uvy : 21
+	uvá: 11
+	uvád: 8
+	uw: 2
+	uzmi: 4
+	uzn: 39
+	uzna: 13
+	uzne: 17
+	uzná: 9
+	uzí: 6
+	uzín: 6
+	uá: 51
+	uác: 45
+	uáci: 45
+	uč: 60
+	uči: 30
+	učil: 8
+	učiť: 13
+	učn: 13
+	učne: 6
+	uď: 9
+	uďo: 8
+	uďom: 6
+	uľ: 8
+	uľa: 4
+	uľah: 4
+	uľn: 4
+	uľní: 4
+	uš: 53
+	ušn: 21
+	ušné: 9
+	ušný: 6
+	ušo: 9
+	ušov: 9
+	uť: 34
+	uť : 34
+	uť a: 9
+	uť d: 4
+	uť p: 4
+	uť t: 4
+	uť v: 4
+	už: 240
+	už : 68
+	už b: 8
+	už d: 6
+	už h: 4
+	už n: 8
+	už v: 9
+	už z: 6
+	užb: 21
+	užby: 15
+	uži: 66
+	užia: 6
+	užie: 15
+	užit: 24
+	užiť: 11
+	užmi: 4
+	užn: 11
+	užné: 4
+	užo: 4
+	užov: 4
+	uží: 62
+	užív: 62
+	v: 9335
+	v : 1532
+	v a: 126
+	v a : 79
+	v ab: 8
+	v ak: 13
+	v au: 6
+	v b: 58
+	v bo: 11
+	v bu: 34
+	v ce: 11
+	v dô: 11
+	v e: 77
+	v eu: 62
+	v eú: 11
+	v g: 15
+	v gr: 8
+	v ic: 4
+	v j: 38
+	v je: 28
+	v jú: 4
+	v k: 99
+	v ka: 11
+	v ko: 19
+	v kt: 54
+	v m: 84
+	v me: 47
+	v mn: 8
+	v mô: 4
+	v n: 98
+	v na: 58
+	v ne: 21
+	v ná: 8
+	v o: 75
+	v ob: 41
+	v od: 11
+	v p: 160
+	v pl: 17
+	v po: 49
+	v pr: 83
+	v r: 92
+	v ro: 32
+	v ru: 9
+	v rá: 30
+	v s: 205
+	v s : 11
+	v sa: 11
+	v sk: 13
+	v sn: 4
+	v sp: 32
+	v st: 19
+	v sú: 90
+	v t: 122
+	v te: 49
+	v to: 47
+	v tý: 6
+	v u: 24
+	v ur: 8
+	v us: 6
+	v uz: 8
+	v v: 60
+	v v : 32
+	v vo: 8
+	v vy: 6
+	v z: 56
+	v z : 8
+	v za: 15
+	v zn: 6
+	v zá: 15
+	v č: 28
+	v ča: 9
+	v či: 6
+	v čo: 4
+	v ľ: 8
+	v ľu: 8
+	v ň: 4
+	v ňo: 4
+	va: 1539
+	va : 248
+	va a: 30
+	va j: 13
+	va n: 24
+	va o: 15
+	va p: 30
+	va v: 24
+	va z: 11
+	vac: 24
+	vach: 6
+	vací: 9
+	vaha: 4
+	vahy: 15
+	vaj: 47
+	vajú: 45
+	val : 32
+	vala: 36
+	vali: 96
+	vam: 69
+	vam : 28
+	vame: 26
+	vami: 15
+	van: 503
+	vane: 15
+	vani: 267
+	vano: 13
+	vaná: 17
+	vané: 54
+	vaní: 99
+	vanú: 6
+	vaný: 26
+	var: 11
+	var : 2
+	vate: 38
+	vač: 6
+	vačn: 6
+	vaľ: 9
+	vaľo: 4
+	vaľu: 6
+	vaš: 32
+	vaša: 4
+	vaše: 11
+	vašu: 9
+	vať: 276
+	vať : 276
+	važ: 41
+	važo: 19
+	važu: 21
+	vc: 11
+	vco: 8
+	vcom: 4
+	vcov: 4
+	vd: 21
+	vde: 9
+	vdep: 8
+	vdu: 6
+	vdu : 6
+	ve: 1081
+	vec: 38
+	veci: 21
+	vecí: 4
+	ved: 252
+	veda: 88
+	vede: 49
+	vedi: 13
+	vedn: 38
+	vedo: 28
+	vedy: 4
+	vedú: 6
+	vedč: 19
+	vej: 75
+	vej : 68
+	vejš: 8
+	vek: 30
+	vek : 24
+	veku: 6
+	vel: 6
+	vel : 2
+	veno: 9
+	vená: 8
+	vené: 11
+	vení: 9
+	vený: 6
+	ver: 131
+	ver : 15
+	vere: 58
+	vert: 2
+	verí: 8
+	vet: 84
+	vete: 21
+	vetl: 6
+	veto: 21
+	vetv: 26
+	vez: 2
+	veď: 6
+	veď : 6
+	veľ: 191
+	veľa: 26
+	veľk: 62
+	veľm: 101
+	veň: 28
+	veň : 28
+	vh: 15
+	vho: 15
+	vhod: 13
+	via: 98
+	via : 36
+	viac: 54
+	viaz: 6
+	vidi: 17
+	vidl: 32
+	viec: 4
+	vied: 26
+	viek: 4
+	viem: 32
+	vil : 4
+	vili: 19
+	vinn: 19
+	vinu: 13
+	viny: 8
+	viná: 13
+	vinú: 4
+	visk: 19
+	visl: 71
+	vite: 23
+	viť: 26
+	viť : 26
+	vk: 43
+	vko: 19
+	vkom: 4
+	vkov: 9
+	vky: 9
+	vky : 9
+	vl: 88
+	vla: 30
+	vlaj: 4
+	vlas: 26
+	vlá: 58
+	vlád: 51
+	vn: 464
+	vna: 47
+	vnak: 30
+	vnan: 9
+	vnať: 4
+	vne: 109
+	vne : 71
+	vneh: 13
+	vnej: 17
+	vnen: 8
+	vni: 39
+	vni : 32
+	vniť: 6
+	vno: 39
+	vnom: 15
+	vnos: 11
+	vnou: 8
+	vnu : 6
+	vny: 54
+	vny : 21
+	vnyc: 19
+	vnym: 15
+	vné: 38
+	vné : 24
+	vnéh: 13
+	vní: 41
+	vník: 19
+	vním: 9
+	vnú: 47
+	vnút: 47
+	vný: 41
+	vný : 9
+	vnýc: 24
+	vným: 8
+	vo: 1081
+	vo : 212
+	vo a: 17
+	vo m: 9
+	vo n: 11
+	vo s: 26
+	vo v: 73
+	vo z: 11
+	vo č: 6
+	voch: 9
+	vod: 131
+	vod : 11
+	voda: 30
+	vodl: 13
+	vodn: 13
+	vodo: 15
+	vodu: 36
+	voj: 220
+	voj : 68
+	voja: 21
+	voje: 39
+	vojh: 8
+	voji: 24
+	vojm: 4
+	vojn: 9
+	vojo: 28
+	voju: 19
+	vok : 11
+	volá: 9
+	volí: 6
+	vom: 81
+	vom : 64
+	vomo: 13
+	von: 11
+	vonk: 11
+	vopr: 4
+	vor: 152
+	vore: 39
+	vori: 71
+	voru: 9
+	vorí: 19
+	vosť: 8
+	vot: 71
+	vot : 13
+	votn: 38
+	voto: 9
+	vou : 19
+	vov: 23
+	vova: 19
+	voz: 19
+	voze: 4
+	vozu: 6
+	voč: 19
+	voči: 19
+	voľ: 30
+	voľb: 9
+	voľn: 13
+	voľt: 8
+	vp: 38
+	vpl: 32
+	vply: 32
+	vpre: 6
+	vr: 229
+	vrat: 6
+	vrc: 6
+	vrch: 6
+	vrd: 19
+	vrde: 4
+	vrdo: 4
+	vrh: 143
+	vrh : 39
+	vrhn: 13
+	vrho: 26
+	vrhu: 38
+	vrhy: 21
+	vrt: 9
+	vrto: 6
+	vrá: 34
+	vrát: 34
+	vsk: 24
+	vské: 8
+	vskú: 4
+	vský: 8
+	vst: 15
+	vstú: 6
+	vte: 6
+	vted: 6
+	vu: 126
+	vu : 83
+	vu f: 4
+	vu n: 8
+	vu o: 9
+	vu p: 23
+	vuj: 41
+	vuje: 34
+	vujú: 8
+	vy: 717
+	vy : 124
+	vy a: 23
+	vy n: 9
+	vy o: 8
+	vy s: 11
+	vy t: 9
+	vy z: 6
+	vy č: 4
+	vyb: 15
+	vybr: 9
+	vyd: 11
+	vyda: 6
+	vyh: 75
+	vyhl: 32
+	vyhn: 36
+	vyhý: 4
+	vyj: 43
+	vyja: 43
+	vyk: 38
+	vyko: 34
+	vyl: 15
+	vylu: 4
+	vylú: 11
+	vyn: 15
+	vyna: 9
+	vyp: 17
+	vypl: 11
+	vyr: 26
+	vyri: 23
+	vys: 75
+	vysi: 6
+	vysl: 13
+	vyso: 30
+	vyst: 19
+	vysv: 6
+	vyt: 51
+	vytv: 47
+	vyu: 58
+	využ: 58
+	vyv: 28
+	vyvi: 6
+	vyvo: 8
+	vyvá: 6
+	vyví: 8
+	vyz: 30
+	vyze: 4
+	vyzv: 6
+	vyzý: 13
+	vyú: 6
+	vyús: 6
+	vyč: 8
+	vyča: 8
+	vyš: 69
+	vyše: 21
+	vyšk: 4
+	vyšu: 9
+	vyšš: 28
+	vyž: 8
+	vyži: 4
+	vz: 135
+	vzd: 51
+	vzda: 4
+	vzde: 36
+	vzdi: 8
+	vzdu: 4
+	vzh: 17
+	vzhľ: 17
+	vzi: 8
+	vzia: 8
+	vzn: 11
+	vzni: 8
+	vzť: 36
+	vzťa: 36
+	vá: 357
+	vá : 45
+	vá n: 8
+	vá p: 8
+	vác: 15
+	váci: 11
+	vád: 30
+	vádz: 30
+	vále: 9
+	váli: 9
+	vám: 26
+	vám : 26
+	vár: 13
+	vára: 13
+	vás: 24
+	vás : 24
+	váts: 4
+	váva: 6
+	váš: 8
+	váš : 4
+	váž: 163
+	váže: 130
+	váži: 8
+	vážn: 26
+	väz: 28
+	väzk: 9
+	väzn: 4
+	väzo: 8
+	väzň: 4
+	väč: 60
+	väčš: 60
+	vé: 120
+	vé : 64
+	vé p: 19
+	véds: 8
+	véh: 45
+	vého: 45
+	ví: 94
+	víj: 15
+	víja: 15
+	vín: 13
+	vín : 11
+	vít: 19
+	víta: 19
+	víz: 11
+	vízi: 6
+	víľ: 6
+	víľo: 4
+	vô: 13
+	vôb: 9
+	vôbe: 9
+	vú: 26
+	vú : 26
+	vú p: 9
+	vú r: 4
+	vý: 486
+	vý : 28
+	vý p: 9
+	výb: 49
+	výbo: 43
+	výbu: 6
+	výc: 94
+	vých: 92
+	výd: 8
+	výda: 8
+	výh: 30
+	výho: 26
+	výhr: 4
+	výkr: 4
+	výl: 6
+	výlu: 6
+	vým: 51
+	vým : 26
+	výme: 8
+	vými: 17
+	výn: 6
+	výni: 6
+	výr: 45
+	výra: 15
+	výro: 30
+	výs: 64
+	výsk: 28
+	výsl: 24
+	výst: 8
+	výv: 19
+	vývo: 19
+	výz: 36
+	význ: 28
+	výš: 49
+	výše: 19
+	výši: 9
+	výšk: 19
+	vč: 11
+	vča: 8
+	včas: 8
+	vď: 19
+	vďa: 19
+	vďak: 11
+	vďač: 8
+	vň: 11
+	vňa: 4
+	vňam: 4
+	vňu: 8
+	vňuj: 8
+	vš: 280
+	vša: 88
+	však: 88
+	vše: 184
+	všeo: 21
+	všet: 163
+	vž: 9
+	vžd: 9
+	vždy: 9
+	w: 26
+	w : 2
+	wa: 9
+	wan: 4
+	we: 4
+	wei: 2
+	wel: 2
+	wi: 6
+	x : 9
+	xi: 75
+	xibi: 11
+	ximá: 13
+	xis: 43
+	xist: 43
+	xn: 8
+	xný: 4
+	xp: 4
+	xte : 11
+	y: 3244
+	y : 1896
+	y a: 231
+	y a : 163
+	y ab: 11
+	y aj: 8
+	y ak: 19
+	y al: 17
+	y b: 68
+	y bo: 51
+	y bá: 4
+	y dô: 4
+	y eu: 21
+	y eú: 8
+	y ho: 11
+	y k: 130
+	y k : 9
+	y ka: 11
+	y ke: 8
+	y ko: 17
+	y kt: 69
+	y m: 109
+	y ma: 49
+	y mo: 23
+	y mô: 4
+	y n: 101
+	y na: 64
+	y ne: 21
+	y ná: 6
+	y o: 51
+	y o : 17
+	y ob: 13
+	y p: 165
+	y po: 43
+	y pp: 8
+	y pr: 84
+	y ro: 17
+	y s: 447
+	y s : 15
+	y sa: 113
+	y sk: 8
+	y sl: 6
+	y sm: 103
+	y so: 126
+	y sp: 13
+	y st: 32
+	y sú: 19
+	y t: 75
+	y ti: 9
+	y tr: 11
+	y tý: 17
+	y u: 24
+	y um: 6
+	y ur: 8
+	y v: 158
+	y v : 69
+	y vn: 4
+	y vo: 13
+	y vy: 17
+	y vô: 4
+	y vý: 13
+	y w: 2
+	y z: 69
+	y z : 15
+	y za: 26
+	y ú: 9
+	y ún: 4
+	y č: 30
+	y ča: 11
+	y čo: 11
+	y š: 11
+	y št: 4
+	y šv: 4
+	y ž: 8
+	y ži: 6
+	yb: 75
+	ybn: 24
+	ybne: 8
+	ybno: 8
+	ybné: 6
+	ybol: 8
+	ybr: 9
+	ybra: 9
+	ybu: 13
+	ybu : 8
+	ybň: 8
+	ybňo: 6
+	ych: 115
+	ych : 111
+	ye: 6
+	yh: 81
+	yhl: 32
+	yhlá: 28
+	yhn: 36
+	yhnu: 34
+	yhý: 4
+	yhýb: 4
+	yi: 2
+	yj: 43
+	yja: 43
+	yjad: 41
+	yko: 38
+	ykon: 26
+	ykov: 4
+	ykoľ: 4
+	ylu: 6
+	yluč: 4
+	ylú: 11
+	ylúč: 11
+	ym f: 6
+	ym v: 6
+	ymi : 24
+	ynal: 8
+	yne : 8
+	ynov: 8
+	ynu: 17
+	ynul: 13
+	ynú: 8
+	ynúc: 4
+	yo: 2
+	ypl: 11
+	yply: 4
+	yri: 23
+	yrie: 23
+	yro: 13
+	yroc: 4
+	ys: 244
+	yse: 32
+	ysel: 30
+	ysie: 6
+	ysl: 86
+	ysla: 11
+	ysli: 9
+	yslo: 6
+	yslu: 8
+	yslí: 45
+	yso: 30
+	ysok: 30
+	yst: 79
+	ystá: 11
+	ysté: 47
+	ystú: 13
+	ysve: 4
+	ytli: 4
+	ytn: 13
+	ytnú: 8
+	yto: 30
+	ytov: 24
+	ytoč: 4
+	ytuj: 6
+	ytv: 47
+	ytvo: 41
+	yu: 58
+	yuž: 58
+	yuži: 24
+	yuží: 34
+	yv: 71
+	yv : 9
+	yv n: 6
+	yvat: 11
+	yvn: 6
+	yvo: 11
+	yvol: 8
+	yvá: 6
+	yváž: 6
+	yví: 8
+	yvíj: 8
+	yvň: 8
+	yvňu: 8
+	yz: 38
+	yzdv: 6
+	yzer: 4
+	yzi: 6
+	yzic: 6
+	yzv: 6
+	yzva: 6
+	yzý: 13
+	yzýv: 13
+	yús: 6
+	yúst: 4
+	yč: 15
+	yča: 11
+	yčaj: 11
+	yň: 6
+	yňa: 6
+	yňa : 6
+	yš: 79
+	yše: 21
+	yše : 9
+	yšet: 11
+	yšku: 4
+	yšl: 9
+	yšli: 9
+	yšu: 9
+	yšuj: 9
+	yšš: 28
+	yšši: 9
+	yššo: 6
+	yšší: 11
+	yť: 81
+	yť : 79
+	yť a: 4
+	yť d: 6
+	yť h: 4
+	yť j: 4
+	yť n: 6
+	yť p: 13
+	yť s: 6
+	yť t: 8
+	yť v: 9
+	yť z: 6
+	yžia: 4
+	z: 4130
+	z : 342
+	z dô: 15
+	z e: 13
+	z h: 17
+	z hľ: 9
+	z n: 39
+	z ná: 9
+	z oh: 6
+	z ro: 11
+	z t: 62
+	z to: 45
+	z tý: 9
+	z vy: 4
+	z ď: 6
+	z ďa: 6
+	za: 775
+	za : 167
+	za j: 11
+	za n: 19
+	za t: 26
+	za v: 15
+	zab: 75
+	zabe: 56
+	zabr: 15
+	zabu: 4
+	zad: 2
+	zah: 30
+	zahr: 19
+	zahy: 4
+	zahŕ: 8
+	zai: 11
+	zais: 11
+	zaj: 64
+	zaj : 15
+	zajt: 13
+	zajú: 26
+	zal: 49
+	zala: 9
+	zali: 15
+	zalo: 19
+	zam: 68
+	zame: 60
+	zané: 8
+	zao: 15
+	zaob: 13
+	zapl: 8
+	zard: 6
+	zaru: 19
+	zas: 47
+	zasa: 21
+	zast: 17
+	zati: 11
+	zatv: 8
+	zauj: 11
+	zav: 36
+	zavi: 9
+	zavá: 11
+	zazn: 8
+	zač: 43
+	zača: 24
+	začl: 8
+	začn: 8
+	zať: 21
+	zať : 21
+	zbav: 8
+	zblí: 4
+	zd: 191
+	zd : 6
+	zde: 43
+	zdel: 43
+	zdi: 28
+	zdia: 8
+	zdie: 19
+	zdr: 54
+	zdra: 30
+	zdro: 23
+	zduš: 4
+	zdvi: 6
+	zdá : 8
+	zdô: 28
+	zdôr: 28
+	ze: 88
+	ze : 11
+	zel: 4
+	zemn: 6
+	zené: 8
+	zený: 8
+	zera: 9
+	zh: 113
+	zho: 81
+	zhod: 77
+	zhr: 15
+	zhra: 8
+	zhrn: 4
+	zhro: 4
+	zhľ: 17
+	zhľa: 17
+	zi : 75
+	zi e: 13
+	zi ú: 4
+	zi č: 8
+	ziať: 8
+	zick: 6
+	zid: 21
+	zide: 17
+	zie: 8
+	ziná: 34
+	zio: 2
+	zist: 9
+	zití: 15
+	zitý: 4
+	zjav: 8
+	zjed: 9
+	zk: 135
+	zka: 24
+	zka : 23
+	zke: 21
+	zke : 15
+	zkej: 4
+	zko: 17
+	zkou: 8
+	zkov: 6
+	zku: 32
+	zku : 30
+	zky: 38
+	zky : 38
+	zl: 71
+	zle: 36
+	zlep: 36
+	zlo: 23
+	zloč: 11
+	zlož: 8
+	zly: 4
+	zlyh: 4
+	zm: 205
+	zme: 96
+	zmen: 45
+	zmer: 15
+	zmeň: 32
+	zmi: 17
+	zmie: 15
+	zml: 47
+	zmlu: 45
+	zmob: 4
+	zmu: 23
+	zmu : 17
+	zmy: 9
+	zmys: 9
+	zn: 383
+	zna: 133
+	znam: 75
+	znač: 30
+	zne: 77
+	znel: 4
+	znen: 8
+	znep: 11
+	znes: 21
+	zni: 58
+	znil: 11
+	znič: 6
+	zniť: 13
+	zniž: 9
+	zno: 21
+	znov: 21
+	zná: 36
+	zná : 4
+	znám: 19
+	znáv: 9
+	zné: 9
+	zné : 8
+	zní: 28
+	zníž: 24
+	zo: 308
+	zo s: 17
+	zod: 45
+	zodp: 43
+	zoh: 11
+	zohr: 6
+	zohľ: 6
+	zok : 13
+	zolá: 8
+	zom: 9
+	zor: 71
+	zor : 15
+	zorn: 24
+	zoro: 9
+	zory: 15
+	zos: 41
+	zost: 34
+	zosú: 8
+	zov: 69
+	zova: 54
+	zovi: 4
+	zoz: 9
+	zozn: 9
+	zp: 203
+	zpe: 115
+	zpeč: 115
+	zpo: 43
+	zpoč: 38
+	zpr: 41
+	zpra: 39
+	zr: 90
+	zra: 24
+	zrae: 15
+	zran: 9
+	zre: 34
+	zrej: 32
+	zri: 11
+	zri : 4
+	zria: 4
+	zroz: 9
+	zru: 8
+	zsah: 8
+	zske: 4
+	zt: 2
+	zuj: 43
+	zuje: 24
+	zujú: 19
+	zumi: 17
+	zumn: 11
+	zv: 223
+	zva: 24
+	zvan: 9
+	zvať: 6
+	zver: 6
+	zvi: 19
+	zvin: 11
+	zvl: 11
+	zvlá: 11
+	zvo: 69
+	zvoj: 62
+	zvy: 26
+	zvyč: 8
+	zvyš: 17
+	zvá: 8
+	zváž: 6
+	zvä: 8
+	zväz: 6
+	zvíj: 8
+	zvý: 34
+	zvýh: 6
+	zvýš: 26
+	zy: 41
+	zy a: 8
+	zyk : 8
+	zz: 2
+	zá: 359
+	zác: 53
+	zách: 6
+	záci: 47
+	zájo: 6
+	zák: 81
+	zákl: 51
+	záko: 24
+	zále: 11
+	záme: 15
+	zár: 28
+	záro: 26
+	zás: 45
+	zása: 32
+	zást: 8
+	záu: 34
+	záuj: 34
+	záv: 68
+	záve: 21
+	závi: 23
+	závä: 19
+	zí: 66
+	zíc: 17
+	zíci: 17
+	zíns: 6
+	zís: 30
+	získ: 30
+	zívn: 6
+	zónn: 6
+	zú: 17
+	zúč: 15
+	zúča: 13
+	zý: 19
+	zým: 4
+	zýmo: 4
+	zýv: 15
+	zýva: 15
+	zňo: 8
+	zňov: 8
+	zš: 24
+	zši: 6
+	zšir: 6
+	zší: 19
+	zšír: 19
+	zť: 36
+	zťa: 36
+	zťah: 36
+	á: 4428
+	á : 490
+	á a: 47
+	á a : 28
+	á ak: 8
+	á b: 17
+	á bo: 6
+	á d: 19
+	á do: 11
+	á is: 4
+	á j: 19
+	á je: 19
+	á k: 13
+	á m: 17
+	á má: 6
+	á n: 47
+	á na: 34
+	á p: 90
+	á pa: 32
+	á po: 17
+	á pr: 38
+	á r: 15
+	á ro: 8
+	á s: 51
+	á sa: 24
+	á sm: 6
+	á sú: 4
+	á t: 19
+	á to: 8
+	á tú: 4
+	á v: 43
+	á v : 9
+	á vl: 8
+	á vä: 6
+	á vý: 6
+	á z: 21
+	á zá: 6
+	á ú: 6
+	á ž: 26
+	á že: 24
+	ác: 449
+	áca: 17
+	áca : 15
+	áce: 36
+	áce : 36
+	ách: 105
+	ách : 96
+	áchr: 6
+	áci: 265
+	áci : 15
+	ácia: 38
+	ácie: 90
+	ácii: 24
+	ácio: 11
+	áciu: 39
+	áciá: 9
+	ácií: 38
+	ácu: 26
+	ácu : 26
+	ád: 190
+	ád : 49
+	ád b: 19
+	ád k: 6
+	ád p: 8
+	ád ž: 8
+	áda: 19
+	áda : 13
+	ádac: 4
+	áde: 9
+	áde : 8
+	ádny: 6
+	ády: 9
+	ády : 9
+	ádz: 79
+	ádza: 69
+	ádzk: 9
+	áh: 21
+	áh : 4
+	áha: 11
+	áhan: 4
+	áhať: 4
+	áj: 26
+	ájo: 6
+	ájom: 6
+	ájs: 11
+	ájsť: 11
+	ák: 105
+	ákl: 69
+	ákla: 69
+	áko: 24
+	ákon: 24
+	ál: 293
+	ále: 60
+	ále : 36
+	álen: 9
+	álež: 13
+	álil: 6
+	áliť: 4
+	áln: 184
+	álne: 86
+	álno: 17
+	álnu: 11
+	álny: 64
+	álo: 15
+	álo : 9
+	álu: 15
+	álu : 15
+	ám: 304
+	ám : 130
+	ám a: 15
+	ám d: 6
+	ám o: 6
+	ám p: 34
+	ám r: 9
+	ám t: 8
+	ám v: 13
+	ámc: 43
+	ámca: 9
+	ámci: 30
+	áme: 66
+	áme : 36
+	ámec: 9
+	ámer: 15
+	ámi: 11
+	ámie: 9
+	ámor: 9
+	ámy: 34
+	ámy : 34
+	án: 390
+	án : 173
+	án g: 4
+	án k: 23
+	án p: 98
+	án ú: 6
+	ána: 26
+	ána : 23
+	áne: 9
+	ánen: 8
+	áni: 62
+	áni : 32
+	ánia: 6
+	ániť: 21
+	ánk: 15
+	ánku: 6
+	áno: 56
+	áno : 13
+	ánom: 9
+	ánov: 32
+	ánu: 21
+	ánu : 19
+	ány : 21
+	áp: 23
+	ápe: 8
+	ápem: 6
+	ár: 375
+	ár : 41
+	ár m: 8
+	ár ž: 4
+	ára: 32
+	áran: 6
+	áras: 8
+	ári : 11
+	árie: 6
+	árk: 8
+	árka: 6
+	árn: 24
+	árne: 13
+	árny: 8
+	áro: 115
+	árob: 6
+	árod: 66
+	árov: 36
+	árs: 130
+	ársk: 84
+	árst: 45
+	ás: 199
+	ás : 68
+	ás n: 8
+	ás v: 11
+	ás č: 4
+	ás ž: 8
+	ása: 32
+	ásad: 23
+	ásah: 9
+	áse: 26
+	ásen: 26
+	ásil: 21
+	ásob: 8
+	ást: 32
+	ástr: 21
+	ástu: 6
+	ásť: 6
+	ásť : 4
+	át: 340
+	át p: 8
+	áta: 23
+	átan: 21
+	áte: 32
+	áte : 30
+	átim: 6
+	átiť: 4
+	átk: 21
+	átko: 15
+	átm: 17
+	átmi: 17
+	átn: 19
+	átne: 8
+	átny: 11
+	áto: 124
+	áto : 47
+	átoc: 17
+	átok: 4
+	átom: 15
+	átor: 8
+	átov: 34
+	átsk: 4
+	átu: 21
+	átu : 21
+	áty: 36
+	áty : 36
+	áu: 34
+	áuj: 34
+	áuje: 4
+	áujm: 30
+	áv: 715
+	áv : 45
+	áv a: 9
+	áv d: 4
+	áv n: 8
+	áv p: 8
+	áva: 237
+	áva : 84
+	ávac: 9
+	ávaj: 24
+	ával: 15
+	ávam: 11
+	ávan: 68
+	ávat: 8
+	ávať: 15
+	áve: 75
+	áve : 54
+	áver: 21
+	ávi: 23
+	ávis: 23
+	ávn: 101
+	ávne: 51
+	ávni: 4
+	ávny: 38
+	ávo: 41
+	ávo : 17
+	ávok: 4
+	ávom: 17
+	ávr: 115
+	ávrh: 111
+	ávu: 17
+	ávu : 17
+	ávy: 38
+	ávy : 36
+	ávä: 19
+	áväz: 19
+	áz: 195
+	áza: 38
+	ázal: 21
+	ázať: 11
+	ázk: 94
+	ázka: 19
+	ázke: 11
+	ázko: 8
+	ázku: 28
+	ázky: 28
+	ázni: 6
+	ázo: 45
+	ázok: 8
+	ázor: 38
+	áď: 4
+	áď : 4
+	áľ: 4
+	áľo: 4
+	áľov: 4
+	áš: 58
+	áš : 21
+	áš n: 8
+	áša: 11
+	áša : 9
+	ášh: 13
+	ášho: 13
+	áť: 4
+	áž: 193
+	áže: 143
+	áže : 11
+	ážen: 130
+	áži: 9
+	ážim: 4
+	ážiť: 4
+	ážk: 8
+	ážku: 4
+	ážn: 26
+	ážne: 15
+	ážno: 4
+	ážny: 8
+	ä: 178
+	ä : 45
+	ä je: 4
+	ä k: 2
+	ä t: 4
+	ä v : 9
+	ä č: 4
+	ä čo: 4
+	äk: 2
+	äs: 2
+	ät: 11
+	äto: 6
+	ätov: 6
+	äz: 28
+	äzk: 9
+	äzky: 8
+	äzn: 4
+	äzo: 8
+	äzok: 6
+	äzň: 4
+	äzňo: 4
+	äč: 60
+	äčš: 60
+	äčše: 4
+	äčši: 38
+	äčšo: 4
+	äčší: 13
+	äť: 26
+	äť : 24
+	äť k: 4
+	äť o: 4
+	äť s: 4
+	äť v: 4
+	ç: 2
+	é: 1943
+	é : 1211
+	é a: 109
+	é a : 53
+	é ab: 28
+	é ak: 13
+	é b: 32
+	é bo: 15
+	é bu: 8
+	é ch: 8
+	é d: 45
+	é do: 24
+	é dô: 8
+	é eš: 4
+	é fi: 6
+	é h: 15
+	é hr: 6
+	é j: 24
+	é je: 21
+	é k: 56
+	é ka: 6
+	é kl: 4
+	é ko: 13
+	é kr: 24
+	é m: 51
+	é ma: 9
+	é me: 8
+	é mn: 6
+	é mô: 6
+	é n: 73
+	é na: 28
+	é ne: 17
+	é ni: 6
+	é ná: 17
+	é o: 60
+	é ob: 19
+	é od: 13
+	é op: 9
+	é p: 223
+	é po: 66
+	é pr: 141
+	é r: 30
+	é re: 13
+	é ri: 6
+	é ro: 11
+	é s: 135
+	é sa: 28
+	é sk: 13
+	é sm: 13
+	é sp: 9
+	é st: 17
+	é sú: 24
+	é t: 26
+	é te: 11
+	é tv: 4
+	é v: 94
+	é ve: 13
+	é vo: 15
+	é vy: 34
+	é vý: 11
+	é z: 83
+	é za: 34
+	é zi: 4
+	é zn: 9
+	é zr: 4
+	é ú: 30
+	é úl: 6
+	é úč: 9
+	é č: 11
+	é čl: 8
+	é š: 32
+	é št: 32
+	é ž: 24
+	é že: 23
+	éck: 9
+	écko: 4
+	écku: 6
+	édi: 17
+	édií: 9
+	éds: 8
+	édsk: 8
+	ég: 26
+	égie: 13
+	égii: 4
+	éh: 396
+	ého: 396
+	ého : 394
+	ék: 4
+	ékoľ: 4
+	ém: 199
+	émam: 4
+	éme : 13
+	émo: 30
+	émom: 9
+	émov: 19
+	ému: 90
+	ému : 90
+	émy: 28
+	émy : 28
+	én: 15
+	én : 4
+	éne : 4
+	énne: 4
+	ér: 30
+	érov: 6
+	éry: 6
+	éry : 6
+	és: 2
+	ési: 2
+	ét: 24
+	étn: 15
+	étne: 11
+	í: 2322
+	í : 726
+	í a: 79
+	í a : 45
+	í aj: 8
+	í ak: 11
+	í al: 9
+	í b: 24
+	í by: 17
+	í d: 32
+	í do: 26
+	í en: 6
+	í k: 64
+	í ko: 19
+	í kt: 30
+	í le: 8
+	í m: 39
+	í ma: 13
+	í me: 13
+	í mô: 4
+	í n: 58
+	í na: 24
+	í ne: 19
+	í o: 28
+	í o : 13
+	í p: 94
+	í po: 41
+	í pr: 39
+	í s: 75
+	í s : 19
+	í sa: 15
+	í si: 6
+	í sú: 6
+	í t: 30
+	í to: 11
+	í tú: 4
+	í tý: 6
+	í v: 53
+	í v : 19
+	í vo: 8
+	í z: 32
+	í z : 13
+	í ún: 4
+	í čo: 4
+	í ď: 4
+	í ďa: 4
+	í ľ: 6
+	í ľu: 6
+	í š: 8
+	í št: 4
+	íc: 197
+	ích: 71
+	ích : 71
+	íci: 51
+	íci : 9
+	ície: 13
+	ícii: 8
+	íciu: 11
+	ícií: 4
+	íck: 11
+	ícky: 11
+	íct: 51
+	íctv: 51
+	íj: 28
+	íja: 15
+	íjaj: 4
+	íjať: 6
+	íjem: 6
+	íjm: 8
+	íjmo: 6
+	ík: 120
+	ík : 21
+	ík k: 4
+	ík v: 4
+	íka: 11
+	íka : 11
+	íkl: 51
+	íkla: 51
+	íkm: 4
+	íkmi: 4
+	íko: 30
+	íkom: 4
+	íkov: 26
+	íl: 54
+	íl v: 4
+	íle: 36
+	ílež: 32
+	ím: 443
+	ím : 250
+	ím a: 15
+	ím b: 8
+	ím n: 23
+	ím p: 26
+	ím s: 49
+	ím t: 21
+	ím v: 13
+	ím z: 11
+	ím ľ: 4
+	ím ž: 28
+	íma: 23
+	íma : 4
+	íman: 6
+	ímať: 8
+	íme: 145
+	íme : 145
+	ímy: 19
+	ímy : 19
+	ín: 122
+	ín : 77
+	ín a: 11
+	ín k: 9
+	ín m: 4
+	ín p: 9
+	ín s: 8
+	ín t: 4
+	ín v: 6
+	ín ž: 6
+	ína: 11
+	ínan: 4
+	íne : 4
+	ínii: 4
+	íno: 9
+	íns: 8
+	ínsk: 8
+	íny: 9
+	íny : 9
+	íp: 75
+	íp : 4
+	ípa: 58
+	ípad: 56
+	ípk: 6
+	ípke: 4
+	ír: 43
+	íre: 9
+	íren: 9
+	íri: 15
+	íril: 6
+	íriť: 8
+	íro: 13
+	írod: 13
+	ís: 167
+	ísa: 9
+	ísal: 6
+	ísk: 30
+	íska: 30
+	ísl: 15
+	íslu: 15
+	ísme: 4
+	ísn: 11
+	ísne: 8
+	íso: 19
+	ísom: 19
+	ísp: 11
+	íspe: 11
+	íst: 56
+	ístu: 53
+	ísť: 11
+	ísť : 11
+	íta: 34
+	ítal: 4
+	ítam: 17
+	ítať: 4
+	íte : 9
+	íti: 2
+	íto: 15
+	ítom: 11
+	ív: 150
+	íva: 69
+	íva : 9
+	ívaj: 9
+	íval: 6
+	ívam: 4
+	ívan: 21
+	ívať: 17
+	ívc: 4
+	ívci: 4
+	ívn: 53
+	ívne: 26
+	ívnu: 4
+	ívny: 17
+	ívu: 8
+	ívu : 8
+	ívy: 8
+	ívy : 8
+	íz: 53
+	íza: 11
+	íza : 9
+	ízi: 6
+	ízk: 11
+	ízke: 6
+	ízo: 8
+	ízov: 8
+	ízy: 13
+	ízy : 13
+	íč: 15
+	íči: 8
+	íčk: 8
+	íčka: 6
+	íľ: 6
+	íľo: 4
+	íľou: 4
+	íši: 6
+	íž: 30
+	íže: 17
+	ížen: 17
+	íži: 13
+	ížil: 6
+	ížiť: 6
+	ó: 574
+	ó : 2
+	óbi: 6
+	óbr: 6
+	óbra: 4
+	ódu: 6
+	ódu : 6
+	óg: 24
+	óg : 6
+	ógi: 15
+	ógie: 8
+	ógií: 6
+	ógu: 4
+	ógu : 4
+	ón : 2
+	óne: 9
+	óne : 9
+	ónn: 6
+	ónny: 4
+	óno: 38
+	ónoc: 13
+	ónov: 24
+	óns: 4
+	ónsk: 4
+	óny: 28
+	óny : 28
+	óp: 383
+	ópan: 6
+	ópe: 36
+	ópe : 32
+	ópi: 4
+	óps: 298
+	ópsk: 298
+	ópu: 8
+	ópu : 8
+	ópy: 23
+	ópy : 23
+	órie: 6
+	óz: 11
+	ózn: 11
+	ózne: 6
+	ózny: 6
+	ô: 636
+	ôb: 17
+	ôb : 8
+	ôbe: 9
+	ôbec: 9
+	ôc: 30
+	ôch: 9
+	ôcho: 9
+	ôcť: 21
+	ôcť : 21
+	ôd: 26
+	ôd : 15
+	ôd o: 4
+	ôdu: 4
+	ôdu : 4
+	ôdz: 4
+	ôj: 11
+	ôjh: 6
+	ôjho: 6
+	ôk: 13
+	ôka: 4
+	ôkaz: 4
+	ôkl: 9
+	ôkla: 9
+	ôl: 118
+	ôle: 116
+	ôlež: 116
+	ôr: 62
+	ôr : 17
+	ôr n: 9
+	ôra: 41
+	ôraz: 41
+	ôro: 4
+	ôrod: 4
+	ôs: 118
+	ôsl: 23
+	ôsle: 23
+	ôso: 92
+	ôsob: 92
+	ôst: 4
+	ôsto: 4
+	ôt : 8
+	ôv: 69
+	ôve: 8
+	ôver: 8
+	ôvo: 62
+	ôvod: 62
+	ôz: 17
+	ôzn: 17
+	ôzny: 13
+	ôž: 145
+	ôže: 115
+	ôže : 64
+	ôžem: 49
+	ôžu: 28
+	ôžu : 28
+	ö: 2
+	ú: 2395
+	ú : 755
+	ú a: 49
+	ú a : 32
+	ú aj: 4
+	ú al: 4
+	ú b: 23
+	ú be: 9
+	ú bu: 6
+	ú by: 6
+	ú c: 9
+	ú ch: 6
+	ú d: 49
+	ú de: 6
+	ú di: 6
+	ú do: 26
+	ú dô: 6
+	ú e: 11
+	ú eu: 6
+	ú h: 9
+	ú hr: 4
+	ú i: 15
+	ú in: 15
+	ú j: 9
+	ú ja: 4
+	ú je: 6
+	ú k: 21
+	ú ko: 8
+	ú kt: 4
+	ú l: 6
+	ú le: 6
+	ú m: 41
+	ú ma: 8
+	ú me: 4
+	ú mi: 6
+	ú mn: 6
+	ú mo: 8
+	ú má: 6
+	ú mô: 4
+	ú n: 45
+	ú na: 23
+	ú ne: 8
+	ú ni: 4
+	ú ná: 11
+	ú o: 34
+	ú ob: 8
+	ú od: 4
+	ú ok: 4
+	ú op: 4
+	ú ot: 4
+	ú p: 113
+	ú pl: 8
+	ú po: 51
+	ú pr: 51
+	ú pô: 4
+	ú r: 36
+	ú re: 9
+	ú ri: 6
+	ú ro: 17
+	ú s: 73
+	ú sa: 13
+	ú sc: 6
+	ú si: 8
+	ú sm: 4
+	ú so: 8
+	ú sp: 19
+	ú st: 9
+	ú sú: 4
+	ú t: 28
+	ú te: 6
+	ú ti: 6
+	ú tu: 4
+	ú u: 8
+	ú v: 73
+	ú v : 26
+	ú ve: 8
+	ú vl: 4
+	ú vo: 4
+	ú vy: 13
+	ú vz: 4
+	ú vý: 4
+	ú vš: 6
+	ú z: 53
+	ú z : 4
+	ú za: 17
+	ú zm: 4
+	ú zo: 8
+	ú zv: 4
+	ú zá: 9
+	ú ú: 19
+	ú úl: 9
+	ú úč: 4
+	ú č: 8
+	ú čl: 4
+	ú š: 9
+	ú št: 4
+	ú ž: 9
+	ú že: 4
+	ú ži: 6
+	úbe: 4
+	úbo: 9
+	úboh: 4
+	úbor: 6
+	úc: 413
+	úca: 41
+	úca : 38
+	úce: 109
+	úce : 75
+	úceh: 9
+	úcej: 23
+	úci: 186
+	úci : 115
+	úcic: 41
+	úcie: 8
+	úcim: 11
+	úcií: 8
+	úcn: 36
+	úcno: 36
+	úco: 21
+	úcom: 13
+	úcou: 8
+	úct: 6
+	úctu: 4
+	úcu: 15
+	úcu : 15
+	úd: 51
+	úda: 13
+	údaj: 13
+	úden: 4
+	údi: 4
+	údn: 11
+	údne: 4
+	údni: 4
+	údny: 4
+	údr: 13
+	údrž: 13
+	úf: 38
+	úfa: 38
+	úfam: 36
+	úh: 49
+	úhl: 45
+	úhla: 45
+	úhr: 4
+	úhrn: 4
+	úk: 21
+	úkn: 4
+	úknu: 4
+	úkor: 4
+	úkr: 8
+	úkro: 8
+	úl: 68
+	úla: 32
+	úla : 8
+	úlad: 24
+	úlo: 34
+	úloh: 32
+	úm: 28
+	úma: 13
+	úmal: 4
+	úman: 6
+	úmy: 13
+	úmys: 13
+	ún: 148
+	úna: 11
+	úna : 8
+	úni: 133
+	únia: 39
+	únie: 54
+	únii: 19
+	únio: 11
+	úniu: 6
+	úp: 77
+	úpa: 4
+	úpe: 15
+	úpen: 15
+	úpi: 24
+	úpi : 6
+	úpia: 6
+	úpil: 6
+	úpiť: 8
+	úpl: 19
+	úpln: 19
+	úpr: 13
+	úpra: 8
+	úpri: 6
+	úr: 120
+	úra: 36
+	úrad: 32
+	úrk: 4
+	úrky: 4
+	úrn: 8
+	úrne: 6
+	úro: 53
+	úrou: 4
+	úrov: 47
+	úru: 6
+	úru : 6
+	úry: 15
+	úry : 15
+	ús: 88
+	úse: 4
+	úsen: 4
+	úsi: 26
+	úsil: 26
+	úsk: 6
+	úsp: 30
+	úspe: 28
+	úst: 21
+	ústa: 6
+	út: 141
+	útn: 6
+	útne: 6
+	úto: 99
+	úto : 62
+	útok: 6
+	útor: 28
+	útr: 19
+	útro: 17
+	útu : 4
+	úv: 98
+	úva: 24
+	úvah: 17
+	úvať: 4
+	úve: 6
+	úver: 6
+	úvi: 62
+	úvis: 62
+	úz: 24
+	úzk: 8
+	úzke: 4
+	úzs: 11
+	úzsk: 11
+	úč: 171
+	úča: 90
+	účan: 6
+	účas: 81
+	úče: 21
+	účel: 11
+	účen: 9
+	úči: 39
+	účin: 38
+	účo: 15
+	účov: 15
+	účt: 4
+	účto: 4
+	úš: 15
+	úša: 8
+	úša : 4
+	úšt: 4
+	úšte: 4
+	úšť: 4
+	úšťa: 4
+	úť: 64
+	úť : 53
+	úť a: 9
+	úť k: 4
+	úť n: 4
+	úť p: 6
+	úť s: 6
+	úť v: 4
+	úťa: 11
+	úťaž: 11
+	úž: 15
+	úži: 13
+	úžia: 4
+	úžil: 6
+	úžiť: 4
+	ü: 8
+	üb: 2
+	üv : 4
+	ý: 2230
+	ý : 539
+	ý a: 47
+	ý a : 28
+	ý aj: 4
+	ý ak: 9
+	ý b: 28
+	ý bo: 6
+	ý bu: 6
+	ý by: 13
+	ý d: 17
+	ý do: 8
+	ý e: 6
+	ý eu: 4
+	ý j: 15
+	ý ja: 6
+	ý je: 9
+	ý k: 8
+	ý m: 17
+	ý mi: 6
+	ý n: 26
+	ý na: 13
+	ý ná: 11
+	ý o: 13
+	ý op: 4
+	ý p: 171
+	ý pl: 11
+	ý po: 24
+	ý pr: 60
+	ý pá: 73
+	ý r: 26
+	ý ra: 4
+	ý ro: 15
+	ý s: 49
+	ý sa: 17
+	ý sm: 6
+	ý sú: 4
+	ý t: 17
+	ý tr: 8
+	ý v: 21
+	ý v : 6
+	ý z: 19
+	ý z : 6
+	ý za: 8
+	ý č: 8
+	ý čl: 4
+	ý š: 6
+	ý št: 6
+	ý ž: 21
+	ý že: 13
+	ý ži: 8
+	ýb: 62
+	ýba: 11
+	ýba : 6
+	ýbo: 43
+	ýbor: 43
+	ýbu: 6
+	ýbuc: 6
+	ýc: 757
+	ých: 755
+	ých : 680
+	ýchl: 24
+	ýcho: 15
+	ýcht: 34
+	ýda: 8
+	ýdav: 8
+	ýh: 30
+	ýho: 26
+	ýhod: 24
+	ýhr: 4
+	ýhra: 4
+	ýk: 77
+	ýka: 71
+	ýka : 30
+	ýkaj: 39
+	ýkr: 6
+	ýkrá: 6
+	ýl: 9
+	ýlu: 6
+	ýluč: 6
+	ým: 464
+	ým : 312
+	ým a: 13
+	ým b: 11
+	ým c: 4
+	ým d: 8
+	ým e: 4
+	ým f: 4
+	ým h: 8
+	ým j: 8
+	ým k: 21
+	ým m: 8
+	ým n: 19
+	ým o: 9
+	ým p: 39
+	ým r: 8
+	ým s: 51
+	ým t: 9
+	ým v: 23
+	ým z: 23
+	ým č: 13
+	ým š: 13
+	ým ž: 9
+	ýme: 8
+	ýmen: 8
+	ými: 115
+	ými : 109
+	ýmit: 6
+	ýmo: 4
+	ýmov: 4
+	ýmt: 24
+	ýmto: 24
+	ýni: 6
+	ýnim: 6
+	ýr: 45
+	ýra: 15
+	ýraz: 15
+	ýro: 30
+	ýrob: 28
+	ýs: 64
+	ýsk: 28
+	ýsku: 26
+	ýsl: 24
+	ýsle: 24
+	ýst: 8
+	ýstr: 4
+	ýta: 8
+	ýtať: 6
+	ýv: 53
+	ýva: 34
+	ýva : 11
+	ývam: 8
+	ývan: 4
+	ývo: 19
+	ývoj: 15
+	ýz: 41
+	ýza: 4
+	ýza : 4
+	ýzn: 28
+	ýzna: 28
+	ýš: 51
+	ýše: 19
+	ýšen: 19
+	ýši: 9
+	ýšiť: 8
+	ýšk: 19
+	ýške: 11
+	ýšky: 6
+	ýž: 13
+	ýžd: 13
+	ýžde: 11
+	č: 1971
+	č n: 11
+	č ne: 9
+	ča: 310
+	čaj: 11
+	čajn: 11
+	čak: 26
+	čaka: 6
+	čaká: 21
+	čal: 17
+	čala: 8
+	čali: 6
+	čan: 54
+	čani: 13
+	čanm: 8
+	čano: 28
+	čaní: 4
+	čas: 188
+	čas : 41
+	čase: 17
+	časn: 62
+	čast: 39
+	časť: 17
+	čať: 8
+	čať : 8
+	če: 186
+	čel: 28
+	čele: 6
+	čeli: 9
+	čen: 105
+	čeni: 30
+	čens: 26
+	čená: 6
+	čené: 11
+	čení: 11
+	čený: 15
+	čer: 13
+	čes: 19
+	česk: 13
+	čet: 19
+	čet : 19
+	či: 325
+	či : 60
+	či b: 9
+	či s: 13
+	čia : 13
+	čian: 15
+	čiar: 4
+	čil: 28
+	čila: 13
+	čin: 94
+	činn: 58
+	čino: 8
+	čisť: 4
+	čit: 36
+	čite: 19
+	čité: 8
+	čitý: 9
+	čiť: 54
+	čiť : 54
+	čk: 38
+	čko: 19
+	čkov: 13
+	čky: 8
+	čky : 8
+	čl: 145
+	čle: 133
+	člen: 133
+	člá: 8
+	člán: 8
+	čn: 479
+	čne: 73
+	čne : 39
+	čnej: 28
+	čnen: 4
+	čnil: 6
+	čniť: 4
+	čno: 139
+	čnom: 9
+	čnos: 122
+	čnou: 8
+	čny: 4
+	čná: 15
+	čná : 15
+	čné: 90
+	čné : 51
+	čnéh: 32
+	čném: 8
+	ční: 26
+	čníc: 11
+	čnú: 28
+	čnú : 28
+	čný: 90
+	čný : 34
+	čnýc: 41
+	čným: 15
+	čo: 268
+	čo : 167
+	čo b: 9
+	čo d: 4
+	čo j: 15
+	čo m: 9
+	čo n: 32
+	čo p: 15
+	čo r: 4
+	čo s: 53
+	čo t: 6
+	čo v: 8
+	čoh: 6
+	čoho: 6
+	čok: 4
+	čoko: 4
+	čom: 17
+	čom : 15
+	čor: 9
+	čora: 9
+	čov: 64
+	čov : 8
+	čova: 38
+	čový: 9
+	čt: 39
+	čte : 4
+	čto: 21
+	čtov: 19
+	čtu: 15
+	čtu : 15
+	ču: 30
+	čuj: 23
+	čuje: 13
+	čujú: 8
+	čul: 6
+	čul : 4
+	čí: 54
+	čí : 15
+	čím: 9
+	čín: 13
+	číny: 6
+	čít: 15
+	číta: 15
+	čú: 6
+	čúv: 6
+	čúva: 6
+	čš: 60
+	čše: 4
+	čšej: 4
+	čši: 38
+	čšia: 6
+	čšin: 19
+	čšiu: 13
+	čšo: 4
+	čší: 13
+	čší : 11
+	ď: 265
+	ď : 77
+	ď b: 8
+	ď bu: 4
+	ď d: 4
+	ď j: 6
+	ď je: 6
+	ď m: 8
+	ď má: 8
+	ď p: 6
+	ď pr: 4
+	ď s: 21
+	ď sa: 17
+	ď t: 6
+	ď v: 4
+	ď z: 4
+	ď zd: 4
+	ďa: 154
+	ďak: 54
+	ďaka: 11
+	ďako: 24
+	ďaku: 19
+	ďal: 84
+	ďale: 24
+	ďalš: 60
+	ďar: 4
+	ďars: 4
+	ďač: 8
+	ďačn: 8
+	ďo: 9
+	ďom: 6
+	ďom : 6
+	ďu: 6
+	ďuj: 6
+	ďuje: 6
+	ďž: 15
+	ďže: 15
+	ďže : 15
+	ĺ: 17
+	ĺň: 9
+	ĺňa: 9
+	ĺňa : 6
+	ľ: 909
+	ľ : 84
+	ľ a: 4
+	ľ a : 4
+	ľ e: 4
+	ľ i: 38
+	ľ id: 38
+	ľ n: 9
+	ľ ne: 8
+	ľ p: 4
+	ľ pr: 4
+	ľ s: 6
+	ľ sa: 6
+	ľ t: 4
+	ľ z: 4
+	ľ č: 8
+	ľ čo: 8
+	ľa: 182
+	ľa : 73
+	ľa a: 6
+	ľa b: 4
+	ľa d: 4
+	ľa k: 4
+	ľa m: 15
+	ľa n: 4
+	ľa o: 6
+	ľa p: 8
+	ľa r: 4
+	ľa v: 6
+	ľa ú: 4
+	ľad: 86
+	ľad : 9
+	ľada: 4
+	ľadi: 21
+	ľadn: 4
+	ľado: 24
+	ľadu: 19
+	ľah: 13
+	ľahl: 6
+	ľahč: 4
+	ľať: 4
+	ľať : 4
+	ľb: 9
+	ľbá: 4
+	ľbác: 4
+	ľk: 86
+	ľka: 4
+	ľka : 4
+	ľke: 15
+	ľkej: 15
+	ľko: 21
+	ľko : 11
+	ľkok: 4
+	ľká: 6
+	ľká : 6
+	ľké: 21
+	ľké : 13
+	ľkéh: 4
+	ľkém: 4
+	ľkú: 4
+	ľkú : 4
+	ľký: 15
+	ľký : 4
+	ľkýc: 4
+	ľkým: 8
+	ľm: 107
+	ľmi: 107
+	ľmi : 107
+	ľn: 103
+	ľne: 9
+	ľne : 4
+	ľnej: 4
+	ľno: 45
+	ľnoh: 28
+	ľnom: 8
+	ľnos: 9
+	ľné: 17
+	ľné : 13
+	ľném: 4
+	ľní: 4
+	ľník: 4
+	ľnú: 6
+	ľnú : 6
+	ľný: 21
+	ľný : 11
+	ľnýc: 6
+	ľným: 4
+	ľo: 143
+	ľom: 53
+	ľom : 53
+	ľou: 4
+	ľou : 4
+	ľov: 86
+	ľov : 66
+	ľova: 15
+	ľovs: 4
+	ľs: 17
+	ľsk: 9
+	ľské: 4
+	ľst: 8
+	ľstv: 6
+	ľt: 8
+	ľte: 8
+	ľte : 8
+	ľu: 126
+	ľub: 4
+	ľud: 101
+	ľudi: 15
+	ľudo: 4
+	ľuds: 49
+	ľudí: 30
+	ľuj: 8
+	ľuje: 8
+	ľut: 4
+	ľuto: 4
+	ľuď: 8
+	ľuďo: 8
+	ľv: 23
+	ľve: 21
+	ľvek: 21
+	ľú: 21
+	ľút: 4
+	ľúto: 4
+	ľúč: 15
+	ľúčo: 15
+	ň: 265
+	ň : 51
+	ň i: 4
+	ň p: 6
+	ň s: 6
+	ň t: 6
+	ňa: 43
+	ňa : 30
+	ňa n: 4
+	ňa s: 6
+	ňa t: 4
+	ňam: 6
+	ňami: 6
+	ňať: 4
+	ňať : 4
+	ňo: 66
+	ňom: 8
+	ňom : 8
+	ňov: 58
+	ňov : 6
+	ňova: 39
+	ňove: 4
+	ňový: 8
+	ňu: 105
+	ňuj: 103
+	ňuje: 30
+	ňujú: 73
+	ő: 2
+	ŕ: 9
+	ŕň: 8
+	ŕňa: 8
+	ŕňa : 6
+	š: 1680
+	š n: 9
+	š ná: 8
+	ša: 128
+	ša : 28
+	ša m: 6
+	ša s: 8
+	šak: 88
+	šak : 88
+	še: 370
+	še : 41
+	še h: 4
+	še o: 6
+	še p: 11
+	še t: 6
+	šej: 32
+	šej : 32
+	šen: 86
+	šeni: 58
+	šená: 6
+	šené: 9
+	šeo: 21
+	šeob: 21
+	šes: 8
+	šesť: 8
+	šet: 176
+	šetc: 23
+	šetk: 139
+	šetr: 13
+	šh: 13
+	šho: 13
+	šho : 13
+	ši: 313
+	šia : 13
+	šic: 24
+	šich: 24
+	šie: 103
+	šie : 75
+	šieh: 9
+	šil: 19
+	šila: 8
+	šili: 8
+	šin: 26
+	šina: 11
+	šino: 9
+	šir: 19
+	širo: 17
+	šiu: 39
+	šiu : 39
+	šiň: 4
+	šiňo: 4
+	šiť: 41
+	šiť : 41
+	šk: 54
+	ške : 11
+	ško: 23
+	škod: 17
+	škol: 6
+	šky: 8
+	šky : 8
+	šká: 8
+	škál: 8
+	šlie: 9
+	šn: 62
+	šne: 9
+	šnej: 4
+	šné: 26
+	šné : 17
+	šnéh: 9
+	šný: 15
+	šný : 6
+	šnýc: 6
+	šo: 54
+	šom: 15
+	šom : 15
+	šou: 9
+	šou : 9
+	šov: 26
+	šova: 26
+	šp: 30
+	špe: 15
+	špec: 4
+	špek: 11
+	špič: 4
+	št: 298
+	šta: 13
+	štan: 6
+	štat: 8
+	šte: 53
+	šte : 53
+	šti: 24
+	štit: 24
+	štne: 4
+	štr: 24
+	štru: 15
+	štud: 4
+	štv: 6
+	štvr: 6
+	šty: 6
+	štyr: 6
+	štá: 160
+	štád: 4
+	štát: 156
+	štú: 4
+	štúd: 4
+	šu: 45
+	šu : 32
+	šu e: 6
+	šu p: 11
+	šuj: 13
+	šujú: 9
+	švé: 8
+	švéd: 8
+	ší: 193
+	ší : 66
+	ší a: 8
+	ší m: 9
+	ší p: 13
+	ší ž: 6
+	šíc: 54
+	ších: 54
+	ším: 43
+	ším : 38
+	šír: 24
+	šíre: 9
+	šíri: 15
+	šš: 28
+	šši: 9
+	ššie: 8
+	ššo: 6
+	ššom: 4
+	šší: 11
+	šť: 17
+	šť : 6
+	šťa: 9
+	šťas: 6
+	ť: 1718
+	ť : 1560
+	ť a: 178
+	ť a : 60
+	ť ab: 49
+	ť aj: 21
+	ť ak: 24
+	ť al: 17
+	ť b: 21
+	ť be: 4
+	ť bo: 9
+	ť c: 17
+	ť ce: 9
+	ť ci: 4
+	ť d: 64
+	ť de: 6
+	ť do: 34
+	ť dô: 11
+	ť e: 28
+	ť eu: 15
+	ť eš: 6
+	ť f: 8
+	ť fa: 4
+	ť h: 17
+	ť ho: 11
+	ť i: 28
+	ť ic: 8
+	ť in: 17
+	ť j: 30
+	ť ja: 8
+	ť je: 23
+	ť k: 69
+	ť k : 17
+	ť ka: 4
+	ť kl: 6
+	ť ko: 23
+	ť kt: 9
+	ť ku: 4
+	ť kv: 4
+	ť l: 21
+	ť le: 17
+	ť m: 39
+	ť ma: 4
+	ť me: 11
+	ť mi: 6
+	ť mo: 8
+	ť mu: 4
+	ť má: 4
+	ť n: 133
+	ť na: 79
+	ť ne: 17
+	ť ni: 11
+	ť no: 13
+	ť ná: 13
+	ť o: 71
+	ť o : 24
+	ť ob: 6
+	ť od: 9
+	ť op: 6
+	ť or: 4
+	ť ot: 9
+	ť ov: 8
+	ť p: 176
+	ť pa: 11
+	ť po: 62
+	ť pr: 90
+	ť pá: 8
+	ť pô: 4
+	ť r: 26
+	ť re: 9
+	ť ro: 13
+	ť s: 158
+	ť s : 17
+	ť sa: 36
+	ť si: 4
+	ť sk: 6
+	ť sl: 4
+	ť so: 6
+	ť sp: 32
+	ť st: 13
+	ť sv: 23
+	ť sy: 4
+	ť sú: 9
+	ť t: 81
+	ť ta: 8
+	ť te: 23
+	ť ti: 13
+	ť to: 11
+	ť tr: 8
+	ť tú: 6
+	ť tý: 9
+	ť u: 11
+	ť v: 158
+	ť v : 62
+	ť ve: 17
+	ť vi: 8
+	ť vo: 4
+	ť vp: 6
+	ť vr: 4
+	ť vy: 13
+	ť vz: 6
+	ť vá: 4
+	ť vä: 4
+	ť vý: 11
+	ť vš: 13
+	ť z: 88
+	ť z : 11
+	ť za: 38
+	ť zm: 4
+	ť zn: 11
+	ť zo: 8
+	ť zv: 4
+	ť zá: 6
+	ť zí: 4
+	ť á: 4
+	ť án: 4
+	ť ú: 23
+	ť úr: 6
+	ť ús: 6
+	ť úč: 6
+	ť č: 17
+	ť či: 8
+	ť čl: 6
+	ť čo: 4
+	ť ď: 6
+	ť ďa: 6
+	ť ž: 81
+	ť že: 77
+	ť ži: 4
+	ťa: 109
+	ťa : 9
+	ťah: 49
+	ťah : 4
+	ťaho: 26
+	ťahu: 8
+	ťahy: 11
+	ťam: 6
+	ťami: 4
+	ťas: 6
+	ťast: 6
+	ťať: 4
+	ťaťa: 4
+	ťaž: 30
+	ťaž : 9
+	ťaži: 6
+	ťažk: 13
+	ťo: 38
+	ťou: 28
+	ťou : 28
+	ťov: 8
+	ťova: 8
+	ťr: 4
+	ťro: 4
+	ťroč: 4
+	ž: 2348
+	ž : 199
+	ž a: 8
+	ž a : 6
+	ž b: 15
+	ž bo: 4
+	ž c: 9
+	ž ch: 6
+	ž d: 13
+	ž ex: 4
+	ž ho: 6
+	ž m: 9
+	ž n: 11
+	ž ne: 8
+	ž ni: 4
+	ž o: 11
+	ž p: 30
+	ž po: 23
+	ž pr: 8
+	ž r: 6
+	ž ri: 4
+	ž s: 13
+	ž sp: 6
+	ž u: 6
+	ž v: 28
+	ž v : 17
+	ž vo: 4
+	ž z: 15
+	ž za: 8
+	ž že: 4
+	žad: 13
+	žadu: 8
+	žat: 17
+	žate: 17
+	žať: 6
+	žať : 6
+	žb: 23
+	žby: 15
+	žby : 15
+	žd: 79
+	žde: 19
+	ždej: 6
+	žden: 6
+	ždeň: 8
+	ždo: 11
+	ždom: 8
+	ždy: 11
+	ždy : 11
+	ždé: 11
+	ždéh: 11
+	ždý: 24
+	ždý : 24
+	že: 1010
+	že : 730
+	že a: 17
+	že b: 38
+	že c: 9
+	že d: 21
+	že e: 21
+	že h: 9
+	že i: 19
+	že j: 43
+	že k: 23
+	že m: 41
+	že n: 39
+	že o: 19
+	že p: 83
+	že r: 17
+	že s: 116
+	že t: 75
+	že u: 9
+	že v: 83
+	že z: 28
+	že ľ: 4
+	žel: 28
+	žela: 9
+	želá: 9
+	žem: 51
+	žem : 19
+	žeme: 32
+	žen: 199
+	ženi: 19
+	žená: 41
+	žené: 21
+	žení: 11
+	žený: 86
+	ži: 554
+	žia: 139
+	žia : 9
+	žiac: 4
+	žiad: 84
+	žiar: 8
+	žiav: 23
+	žiaľ: 11
+	žie: 24
+	žieb: 15
+	žien: 8
+	žij: 13
+	žije: 11
+	žil: 39
+	žil : 13
+	žili: 19
+	žit: 206
+	žite: 30
+	žito: 58
+	žitá: 13
+	žité: 69
+	žití: 13
+	žitú: 6
+	žitý: 11
+	živ: 68
+	živo: 66
+	žiť: 41
+	žiť : 41
+	žk: 24
+	žko: 8
+	žkos: 4
+	žku: 6
+	žku : 6
+	žmi: 4
+	žmi : 4
+	žn: 182
+	žne: 23
+	žne : 17
+	žnej: 4
+	žni: 23
+	žnia: 6
+	žnil: 8
+	žniť: 8
+	žno: 81
+	žno : 24
+	žnos: 54
+	žny: 8
+	žny : 6
+	žné: 38
+	žné : 32
+	žo: 45
+	žov: 43
+	žov : 4
+	žova: 39
+	žs: 24
+	žst: 21
+	žstv: 21
+	žu: 54
+	žu : 30
+	žu m: 4
+	žu p: 6
+	žuj: 24
+	žuje: 19
+	žujú: 6
+	ží: 75
+	žíme: 6
+	žív: 66
+	žíva: 66
+	žň: 11
+	žňu: 11
+	žňuj: 11
+	žš: 11
+	žši: 8
+	žšie: 6
+	žšíc: 4

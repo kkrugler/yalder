@@ -7,10 +7,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.junit.Test;
 import org.krugler.yalder.LanguageLocale;
@@ -23,6 +19,7 @@ public class LanguageModelTest {
     public void testEquality() throws Exception {
         LanguageLocale modelLanguage = LanguageLocale.fromString("eng");
         final int maxNGramLength = 4;
+        final int alpha = 10;
         IntIntMap normalizedCounts1 = new IntIntMap();
         normalizedCounts1.put("abc".hashCode(), 1);
         normalizedCounts1.put("a".hashCode(), 6);
@@ -30,21 +27,21 @@ public class LanguageModelTest {
         normalizedCounts1.put("ad".hashCode(), 2);
         normalizedCounts1.put("abc".hashCode(), 1);
         normalizedCounts1.put("abb".hashCode(), 1);
-        HashLanguageModel model1 = new HashLanguageModel(modelLanguage, maxNGramLength, normalizedCounts1);
+        HashLanguageModel model1 = new HashLanguageModel(modelLanguage, maxNGramLength, alpha, normalizedCounts1);
 
         IntIntMap normalizedCounts2 = new IntIntMap(normalizedCounts1);
-        HashLanguageModel model2 = new HashLanguageModel(modelLanguage, maxNGramLength, normalizedCounts2);
+        HashLanguageModel model2 = new HashLanguageModel(modelLanguage, maxNGramLength, alpha, normalizedCounts2);
         assertEquals(model1, model2);
 
         normalizedCounts2.put("abb".hashCode(), 2);
-        model2 = new HashLanguageModel(modelLanguage, maxNGramLength, normalizedCounts2);
+        model2 = new HashLanguageModel(modelLanguage, maxNGramLength, alpha, normalizedCounts2);
         assertFalse(model1.equals(model2));
         
         normalizedCounts2.put("abb".hashCode(), 1);
-        model2 = new HashLanguageModel(modelLanguage, maxNGramLength, normalizedCounts2);
+        model2 = new HashLanguageModel(modelLanguage, maxNGramLength, alpha, normalizedCounts2);
         assertEquals(model1, model2);
 
-        model2 = new HashLanguageModel(modelLanguage, maxNGramLength-1, normalizedCounts2);
+        model2 = new HashLanguageModel(modelLanguage, maxNGramLength-1, alpha, normalizedCounts2);
         assertFalse(model1.equals(model2));
     }
     
@@ -52,6 +49,7 @@ public class LanguageModelTest {
     public void testSerialization() throws Exception {
         LanguageLocale modelLanguage = LanguageLocale.fromString("eng");
         final int maxNGramLength = 4;
+        final int alpha = 10;
         IntIntMap normalizedCounts = new IntIntMap();
         normalizedCounts.put("abc".hashCode(), 1);
         normalizedCounts.put("a".hashCode(), 6);
@@ -60,7 +58,7 @@ public class LanguageModelTest {
         normalizedCounts.put("abc".hashCode(), 1);
         normalizedCounts.put("abb".hashCode(), 1);
 
-        HashLanguageModel model1 = new HashLanguageModel(modelLanguage, maxNGramLength, normalizedCounts);
+        HashLanguageModel model1 = new HashLanguageModel(modelLanguage, maxNGramLength, alpha, normalizedCounts);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(baos);
         model1.writeAsBinary(dos);

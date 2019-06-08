@@ -1,0 +1,4662 @@
+version: 2
+language: eng
+max ngram length: 4
+alpha: 945
+ngrams:
+	 : 42972
+	 a: 5067
+	 a : 689
+	 a c: 96
+	 a k: 2
+	 a r: 57
+	 a w: 30
+	 ab: 140
+	 abl: 25
+	 abo: 91
+	 ac: 247
+	 acc: 110
+	 ach: 30
+	 act: 93
+	 ad: 110
+	 add: 30
+	 adv: 19
+	 aff: 30
+	 ag: 203
+	 aga: 63
+	 agr: 106
+	 aid: 30
+	 aim: 24
+	 al: 375
+	 al : 2
+	 all: 157
+	 alr: 32
+	 als: 123
+	 alw: 10
+	 am: 186
+	 am : 59
+	 ame: 79
+	 amo: 25
+	 an: 1585
+	 an : 174
+	 and: 1279
+	 any: 54
+	 app: 127
+	 ar: 427
+	 are: 355
+	 aro: 14
+	 as: 498
+	 as : 404
+	 ask: 15
+	 ass: 57
+	 at : 186
+	 att: 46
+	 au: 54
+	 av: 20
+	 aw: 17
+	 awa: 15
+	 az: 5
+	 b: 1794
+	 bac: 17
+	 bas: 52
+	 be: 931
+	 be : 422
+	 bec: 74
+	 bee: 113
+	 bef: 29
+	 bei: 56
+	 bel: 64
+	 bey: 8
+	 bi: 35
+	 bot: 41
+	 bro: 25
+	 bu: 245
+	 bui: 17
+	 but: 154
+	 by: 258
+	 by : 257
+	 c: 2446
+	 ca: 348
+	 cal: 39
+	 can: 164
+	 ce: 63
+	 cel: 2
+	 cha: 78
+	 che: 8
+	 cit: 49
+	 cl: 137
+	 cle: 64
+	 cli: 25
+	 clo: 30
+	 co: 1499
+	 com: 563
+	 con: 473
+	 coo: 46
+	 cou: 318
+	 cov: 15
+	 cr: 120
+	 cri: 57
+	 cru: 15
+	 cur: 30
+	 d: 1115
+	 d : 2
+	 da: 66
+	 dal: 2
+	 dar: 5
+	 day: 14
+	 de: 449
+	 de : 5
+	 dea: 30
+	 dec: 63
+	 del: 20
+	 den: 14
+	 der: 8
+	 des: 29
+	 det: 35
+	 dev: 59
+	 di: 299
+	 die: 2
+	 dif: 73
+	 dis: 110
+	 do: 194
+	 doe: 30
+	 dos: 5
+	 dra: 34
+	 due: 19
+	 e: 1564
+	 e : 14
+	 ea: 61
+	 eac: 14
+	 ear: 17
+	 eas: 27
+	 ec: 79
+	 eco: 63
+	 ef: 81
+	 eff: 81
+	 eg: 2
+	 ei: 12
+	 el: 47
+	 el : 2
+	 emp: 42
+	 en: 240
+	 en : 5
+	 enl: 17
+	 env: 52
+	 eq: 24
+	 equ: 24
+	 er: 7
+	 es: 81
+	 est: 35
+	 et: 10
+	 eu: 475
+	 eve: 86
+	 ex: 252
+	 exa: 46
+	 exc: 27
+	 exp: 103
+	 ext: 47
+	 f: 1563
+	 fa: 184
+	 fac: 78
+	 fea: 20
+	 fee: 17
+	 few: 14
+	 fi: 231
+	 fir: 71
+	 fiv: 12
+	 fo: 650
+	 foc: 12
+	 fol: 34
+	 foo: 14
+	 for: 552
+	 fou: 39
+	 fr: 252
+	 fre: 52
+	 fro: 137
+	 fu: 149
+	 ful: 29
+	 fur: 27
+	 fut: 39
+	 ga: 30
+	 gen: 78
+	 gi: 68
+	 giv: 64
+	 go: 117
+	 goi: 15
+	 goo: 39
+	 gov: 35
+	 gre: 51
+	 gro: 78
+	 gua: 19
+	 h: 1132
+	 ha: 578
+	 had: 25
+	 hap: 15
+	 has: 181
+	 hav: 307
+	 he : 34
+	 hea: 52
+	 hi: 101
+	 hig: 49
+	 his: 39
+	 ho: 220
+	 hop: 41
+	 hou: 30
+	 how: 108
+	 hum: 47
+	 i: 3877
+	 i : 498
+	 i a: 86
+	 i c: 27
+	 i h: 37
+	 i t: 37
+	 i w: 137
+	 ic: 2
+	 if: 74
+	 if : 74
+	 il: 15
+	 im: 206
+	 imp: 176
+	 in: 1698
+	 in : 1036
+	 inc: 98
+	 int: 226
+	 inv: 59
+	 ir: 34
+	 ire: 12
+	 is: 794
+	 is : 716
+	 iss: 51
+	 it: 517
+	 it : 373
+	 ite: 15
+	 its: 115
+	 j: 105
+	 ja: 8
+	 je: 7
+	 jeg: 2
+	 job: 15
+	 k: 117
+	 ka: 7
+	 ke: 19
+	 key: 12
+	 ki: 29
+	 kn: 42
+	 kno: 42
+	 ko: 8
+	 kol: 2
+	 kr: 2
+	 ku: 3
+	 kur: 2
+	 l: 689
+	 la: 174
+	 lad: 24
+	 law: 29
+	 lea: 49
+	 lef: 8
+	 les: 8
+	 lev: 44
+	 li: 220
+	 lif: 14
+	 lik: 93
+	 lon: 30
+	 lu: 7
+	 lä: 2
+	 ma: 463
+	 mad: 71
+	 mak: 76
+	 mat: 61
+	 may: 30
+	 mea: 79
+	 med: 14
+	 mem: 132
+	 mes: 2
+	 met: 8
+	 mi: 152
+	 mit: 2
+	 mo: 314
+	 mor: 128
+	 mos: 32
+	 mov: 37
+	 mr: 199
+	 mr : 154
+	 mrs: 46
+	 muc: 30
+	 mus: 133
+	 my: 83
+	 my : 76
+	 n: 939
+	 na: 73
+	 nat: 68
+	 nee: 108
+	 new: 61
+	 nex: 19
+	 ni: 7
+	 nic: 2
+	 no: 519
+	 not: 329
+	 now: 73
+	 nuc: 19
+	 o: 3002
+	 oc: 10
+	 od: 3
+	 of: 1649
+	 of : 1590
+	 off: 42
+	 oft: 17
+	 ol: 10
+	 om: 5
+	 on: 568
+	 on : 426
+	 onc: 17
+	 one: 63
+	 onl: 59
+	 opp: 56
+	 or: 167
+	 or : 90
+	 os: 2
+	 ot: 90
+	 oth: 88
+	 ou: 243
+	 our: 149
+	 out: 90
+	 ow: 41
+	 own: 41
+	 p: 2110
+	 pa: 338
+	 peo: 88
+	 pi: 14
+	 pie: 2
+	 pla: 84
+	 ple: 34
+	 po: 411
+	 poi: 64
+	 pon: 2
+	 por: 8
+	 pou: 2
+	 poz: 2
+	 pra: 25
+	 pri: 78
+	 pro: 519
+	 pub: 39
+	 put: 39
+	 q: 113
+	 qu: 113
+	 que: 61
+	 r: 1375
+	 rai: 20
+	 re: 1005
+	 rea: 110
+	 ref: 69
+	 reg: 132
+	 rej: 20
+	 rem: 44
+	 rep: 154
+	 req: 37
+	 res: 218
+	 rig: 110
+	 roa: 10
+	 ru: 74
+	 rul: 34
+	 ré: 2
+	 s : 152
+	 s r: 17
+	 saf: 22
+	 sai: 35
+	 say: 59
+	 se: 314
+	 se : 2
+	 sec: 83
+	 set: 37
+	 sh: 242
+	 sha: 27
+	 shi: 14
+	 sho: 193
+	 si: 152
+	 sie: 2
+	 sk: 2
+	 sma: 12
+	 so : 76
+	 soc: 88
+	 spe: 73
+	 spr: 8
+	 st: 395
+	 sta: 209
+	 su: 331
+	 sub: 47
+	 suc: 79
+	 sup: 90
+	 swe: 10
+	 t: 7682
+	 tak: 105
+	 tax: 24
+	 te: 135
+	 tem: 2
+	 th: 5425
+	 tha: 884
+	 the: 3842
+	 thi: 542
+	 tho: 74
+	 thr: 66
+	 thu: 14
+	 ti: 81
+	 tie: 3
+	 til: 2
+	 tim: 71
+	 to: 1591
+	 to : 1433
+	 tog: 12
+	 too: 47
+	 tow: 20
+	 tu: 37
+	 tw: 29
+	 two: 25
+	 u: 576
+	 uk : 8
+	 un : 8
+	 unf: 12
+	 uni: 162
+	 unl: 8
+	 up: 68
+	 up : 51
+	 urg: 20
+	 us: 125
+	 us : 54
+	 use: 66
+	 ut: 5
+	 v: 311
+	 va: 56
+	 val: 25
+	 van: 3
+	 ve: 81
+	 vi: 105
+	 vil: 5
+	 vis: 8
+	 vo: 66
+	 vot: 61
+	 w: 2499
+	 wa: 228
+	 wai: 7
+	 wan: 32
+	 was: 103
+	 way: 49
+	 we: 640
+	 we : 495
+	 wea: 8
+	 wel: 81
+	 wh: 625
+	 wha: 93
+	 whe: 100
+	 whi: 299
+	 who: 100
+	 why: 34
+	 wi: 603
+	 wil: 221
+	 wis: 24
+	 wit: 340
+	 wo: 387
+	 wom: 30
+	 wor: 177
+	 wou: 174
+	 wr: 14
+	 wri: 14
+	 y: 272
+	 ye: 108
+	 yea: 71
+	 yes: 14
+	 yet: 24
+	 yo: 164
+	 you: 164
+	 à: 2
+	 à : 2
+	a: 15928
+	a : 897
+	a a: 42
+	a a : 2
+	a c: 100
+	a d: 30
+	a da: 3
+	a de: 14
+	a di: 12
+	a do: 2
+	a e: 24
+	a i: 29
+	a in: 12
+	a j: 8
+	a je: 2
+	a k: 2
+	a l: 37
+	a li: 2
+	a m: 71
+	a n: 25
+	a ne: 10
+	a no: 2
+	a o: 17
+	a p: 78
+	a pa: 12
+	a po: 20
+	a pr: 29
+	a q: 5
+	a qu: 5
+	a r: 59
+	a s: 78
+	a se: 12
+	a si: 7
+	a t: 51
+	a ta: 3
+	a te: 3
+	a th: 14
+	a u: 8
+	a un: 5
+	a v: 27
+	a va: 2
+	a w: 56
+	a wa: 14
+	a wh: 24
+	aba: 3
+	abe: 3
+	abl: 193
+	able: 150
+	abli: 32
+	ably: 10
+	abo: 101
+	abou: 76
+	abov: 19
+	aby: 3
+	aby : 2
+	ac: 617
+	acc: 117
+	acce: 57
+	acco: 52
+	ace : 51
+	aces: 2
+	ach: 101
+	ach : 54
+	achi: 39
+	aci: 25
+	ack: 51
+	ack : 24
+	ackl: 8
+	ackn: 7
+	act: 216
+	act : 71
+	acti: 103
+	acts: 8
+	ad: 443
+	ada: 35
+	ada : 2
+	add: 32
+	addi: 17
+	addr: 7
+	adie: 24
+	adin: 29
+	ado: 35
+	adop: 34
+	ads : 14
+	adv: 19
+	adva: 8
+	ady: 37
+	ady : 37
+	ael : 15
+	afe: 22
+	afeg: 7
+	affa: 19
+	afte: 17
+	agai: 63
+	age : 63
+	ago : 14
+	agr: 117
+	agre: 86
+	ah: 14
+	ai : 2
+	aid: 76
+	aid : 73
+	ail: 52
+	aila: 10
+	ain: 226
+	ain : 96
+	ainl: 15
+	ains: 54
+	air : 17
+	aire: 2
+	airs: 19
+	ais: 15
+	aj: 22
+	ajor: 22
+	ak: 240
+	ak : 3
+	ake: 179
+	ake : 120
+	aken: 35
+	akes: 15
+	akin: 42
+	ako: 2
+	al: 1809
+	al : 819
+	al a: 90
+	al b: 29
+	al c: 74
+	al d: 54
+	al f: 42
+	al g: 22
+	al i: 68
+	al l: 29
+	al m: 39
+	al o: 37
+	al p: 90
+	al r: 54
+	al s: 42
+	al t: 44
+	al w: 29
+	ala: 25
+	ald: 3
+	ale: 37
+	ale : 19
+	alf: 24
+	alf : 24
+	ali: 110
+	ali : 2
+	alk : 8
+	all: 411
+	all : 174
+	alla: 2
+	allo: 25
+	ally: 147
+	alm: 5
+	alr: 32
+	alre: 32
+	als: 164
+	also: 123
+	alth: 37
+	alw: 10
+	alwa: 10
+	am: 522
+	ama: 17
+	amag: 8
+	amew: 27
+	ami: 20
+	amon: 15
+	amou: 15
+	ampl: 29
+	an: 3136
+	an : 767
+	an a: 90
+	an c: 74
+	an i: 81
+	an p: 79
+	an r: 41
+	an u: 101
+	ana : 2
+	anag: 15
+	anc: 160
+	ance: 125
+	and: 1397
+	and : 1325
+	ande: 7
+	ane: 22
+	ani: 101
+	ani : 3
+	ank : 37
+	anno: 39
+	ano: 24
+	anot: 24
+	answ: 19
+	ant : 98
+	antl: 12
+	any: 122
+	any : 106
+	apab: 12
+	aph : 7
+	apo: 2
+	app: 172
+	appl: 27
+	appr: 83
+	appy: 7
+	ar : 171
+	ar d: 2
+	ar l: 2
+	ara: 57
+	ara : 3
+	arb: 3
+	arch: 24
+	ard: 125
+	ard : 63
+	ards: 46
+	are: 431
+	are : 351
+	ared: 17
+	arg: 51
+	arge: 46
+	arke: 46
+	arli: 113
+	arly: 52
+	arou: 14
+	arry: 8
+	ars: 56
+	ars : 51
+	art: 199
+	art : 56
+	arti: 84
+	ary: 108
+	ary : 106
+	as: 1284
+	as : 733
+	as a: 125
+	as b: 56
+	as f: 34
+	as t: 81
+	as w: 64
+	asa: 3
+	ase: 128
+	ase : 76
+	ased: 37
+	asic: 8
+	asis: 29
+	ask : 14
+	ason: 35
+	assm: 7
+	ast : 68
+	asur: 49
+	at: 2774
+	at : 1127
+	at a: 88
+	at c: 44
+	at i: 166
+	at m: 41
+	at p: 37
+	at r: 22
+	at s: 52
+	at t: 367
+	at w: 127
+	ata: 20
+	ate: 549
+	ate : 221
+	ated: 68
+	ates: 125
+	ath: 41
+	ath : 10
+	athe: 25
+	ati: 799
+	ati : 2
+	atin: 39
+	atio: 620
+	ato: 22
+	ato : 3
+	atte: 78
+	aty : 25
+	au: 157
+	aug: 3
+	ause: 76
+	auth: 34
+	ava: 10
+	ave: 306
+	ave : 301
+	avin: 17
+	avou: 24
+	aw : 29
+	aw a: 7
+	awar: 12
+	awn : 7
+	aws : 7
+	ax: 34
+	ax : 14
+	ax i: 7
+	axp: 7
+	axpa: 7
+	ay: 289
+	ay : 208
+	ay a: 25
+	ay b: 10
+	ay f: 7
+	ay i: 24
+	ay o: 8
+	ay p: 8
+	ay s: 8
+	ay t: 57
+	ay w: 22
+	aye: 19
+	ayer: 17
+	ayi: 15
+	ayin: 15
+	ayme: 7
+	ays: 41
+	ays : 41
+	az: 12
+	b: 2970
+	b : 15
+	ba : 2
+	bac: 19
+	back: 17
+	bal : 22
+	bala: 19
+	bar: 8
+	basi: 30
+	bat: 66
+	bate: 52
+	be: 1149
+	be : 431
+	be a: 79
+	be b: 10
+	be c: 39
+	be d: 32
+	be e: 27
+	be f: 19
+	be g: 15
+	be i: 29
+	be m: 22
+	be p: 30
+	be r: 27
+	be s: 22
+	be t: 35
+	bec: 74
+	beca: 57
+	beco: 15
+	bee: 113
+	been: 108
+	befo: 29
+	bein: 56
+	bel: 68
+	beli: 52
+	ben: 14
+	ber: 208
+	ber : 142
+	bers: 37
+	bett: 25
+	betw: 54
+	bey: 8
+	beyo: 8
+	bi: 142
+	bj: 47
+	bje: 47
+	bjec: 47
+	bl: 404
+	ble: 282
+	ble : 215
+	bled: 12
+	blis: 35
+	bly: 17
+	bly : 17
+	bot: 41
+	both: 39
+	bou: 93
+	bour: 20
+	bout: 66
+	bov: 19
+	bove: 19
+	br: 69
+	bre: 7
+	broa: 17
+	bted: 7
+	bu: 292
+	budg: 35
+	buil: 17
+	busi: 20
+	but: 184
+	but : 154
+	bute: 10
+	buti: 19
+	bvio: 10
+	by: 265
+	by : 260
+	by a: 24
+	by c: 12
+	by f: 7
+	by m: 29
+	by t: 88
+	c: 7003
+	c : 184
+	c a: 39
+	c an: 17
+	c r: 15
+	c re: 10
+	ca: 718
+	ca : 17
+	cal: 188
+	cal : 105
+	call: 68
+	can: 189
+	can : 122
+	cann: 37
+	carr: 17
+	case: 29
+	cat: 98
+	cate: 24
+	cati: 69
+	cau: 81
+	caus: 76
+	cc: 157
+	cce: 79
+	ccep: 27
+	cces: 51
+	cco: 59
+	ccou: 25
+	ce: 934
+	ce : 402
+	ce a: 63
+	ce i: 44
+	ce o: 78
+	ce t: 66
+	ce w: 22
+	ced: 90
+	ced : 49
+	cedu: 39
+	ceed: 14
+	ceiv: 20
+	cept: 41
+	cern: 49
+	ces: 191
+	ces : 88
+	cess: 101
+	cest: 2
+	ch: 725
+	ch a: 84
+	ch c: 29
+	ch d: 3
+	ch i: 88
+	ch t: 47
+	ch w: 47
+	cha: 96
+	chal: 17
+	chan: 56
+	che: 39
+	ched: 8
+	chen: 3
+	cial: 147
+	cide: 24
+	cien: 44
+	cies: 30
+	cif: 29
+	cifi: 27
+	cil: 120
+	cil : 100
+	cing: 34
+	cio: 5
+	cipl: 24
+	cise: 10
+	cit: 73
+	citi: 51
+	city: 14
+	ck : 37
+	ck o: 12
+	ckle: 7
+	ckno: 7
+	cl: 265
+	cle: 108
+	cle : 14
+	clea: 83
+	cles: 12
+	cli: 27
+	clo: 30
+	clos: 27
+	clu: 68
+	clud: 49
+	co: 1806
+	co : 12
+	cogn: 12
+	com: 645
+	come: 74
+	comm: 389
+	comp: 144
+	con: 576
+	conc: 101
+	cond: 49
+	cono: 61
+	cont: 122
+	conv: 47
+	coo: 46
+	coop: 30
+	cou: 362
+	coul: 34
+	coun: 258
+	cour: 63
+	cove: 20
+	cr: 250
+	cre: 96
+	crea: 59
+	cri: 79
+	crit: 34
+	ct: 770
+	ct : 196
+	ct a: 25
+	ct f: 7
+	ct i: 14
+	ct o: 37
+	ct r: 7
+	ct t: 57
+	ct w: 12
+	cted: 27
+	cti: 358
+	ctic: 24
+	ctin: 19
+	ctio: 169
+	ctiv: 144
+	ctl: 12
+	ctly: 12
+	ctor: 47
+	cts: 68
+	cts : 68
+	ctur: 32
+	cu: 279
+	cu : 3
+	cul: 130
+	cula: 47
+	cult: 79
+	cur: 66
+	curr: 37
+	cus: 51
+	cuss: 34
+	cy: 149
+	cy : 144
+	cy a: 25
+	cy i: 27
+	cy o: 10
+	cy t: 17
+	d: 6590
+	d : 3326
+	d a: 358
+	d a : 41
+	d ab: 19
+	d ag: 17
+	d al: 34
+	d an: 90
+	d as: 44
+	d at: 34
+	d b: 240
+	d be: 103
+	d by: 108
+	d c: 130
+	d ca: 19
+	d co: 78
+	d e: 122
+	d ea: 8
+	d em: 17
+	d ex: 22
+	d f: 144
+	d fi: 27
+	d fo: 71
+	d fr: 25
+	d g: 63
+	d ge: 25
+	d gi: 8
+	d h: 84
+	d ha: 34
+	d ho: 22
+	d i: 307
+	d i : 44
+	d if: 7
+	d im: 19
+	d in: 160
+	d is: 27
+	d it: 44
+	d l: 108
+	d li: 76
+	d m: 122
+	d ma: 39
+	d mo: 39
+	d mr: 8
+	d n: 84
+	d no: 59
+	d o: 174
+	d of: 46
+	d on: 59
+	d ou: 37
+	d p: 120
+	d po: 30
+	d pr: 44
+	d pu: 10
+	d r: 84
+	d re: 68
+	d s: 132
+	d so: 27
+	d st: 30
+	d su: 19
+	d t: 737
+	d th: 453
+	d to: 230
+	d tr: 20
+	d up: 8
+	d w: 159
+	d we: 44
+	d wh: 47
+	d wi: 41
+	d wo: 15
+	d yo: 10
+	da: 247
+	da : 17
+	dal: 2
+	dam : 30
+	dan: 27
+	dans: 2
+	dar: 17
+	dati: 15
+	day: 69
+	day : 61
+	days: 8
+	ddit: 15
+	ddl: 10
+	ddle: 8
+	ddre: 7
+	de: 1196
+	de : 150
+	de a: 24
+	de c: 10
+	de d: 2
+	de e: 3
+	de m: 2
+	de p: 2
+	de r: 3
+	de s: 5
+	de v: 3
+	dea: 56
+	deal: 25
+	deav: 7
+	deba: 51
+	ded: 61
+	ded : 57
+	deed: 10
+	del: 39
+	del : 10
+	dem : 2
+	den: 250
+	den : 15
+	denc: 51
+	dent: 172
+	der: 191
+	der : 93
+	dere: 8
+	ders: 41
+	des: 54
+	des : 22
+	det: 35
+	deve: 56
+	dg: 59
+	dge: 54
+	dge : 15
+	dget: 35
+	di : 5
+	die: 41
+	dif: 76
+	diff: 73
+	dig: 5
+	din: 182
+	ding: 159
+	disa: 25
+	disc: 52
+	diti: 25
+	divi: 24
+	dl: 44
+	dly: 32
+	dly : 32
+	dm: 71
+	dme: 63
+	dmen: 63
+	dn: 12
+	do: 280
+	do : 105
+	do n: 52
+	do p: 2
+	doe: 30
+	does: 30
+	doin: 14
+	done: 14
+	dopt: 34
+	dos: 5
+	doub: 10
+	dov: 2
+	down: 10
+	dp: 7
+	dr: 90
+	draf: 8
+	draw: 22
+	dren: 12
+	ds : 184
+	ds a: 20
+	ds i: 14
+	ds o: 24
+	ds t: 59
+	dse: 2
+	dst: 5
+	dt: 2
+	dua: 29
+	dual: 29
+	duc: 101
+	duce: 39
+	duct: 46
+	due: 20
+	due : 20
+	dure: 39
+	e: 26061
+	e : 8812
+	e a: 949
+	e ab: 42
+	e ag: 51
+	e am: 39
+	e an: 225
+	e ar: 154
+	e b: 289
+	e be: 108
+	e bu: 46
+	e by: 30
+	e c: 769
+	e ca: 98
+	e cl: 30
+	e co: 522
+	e d: 306
+	e de: 135
+	e e: 569
+	e ea: 20
+	e ec: 27
+	e ef: 30
+	e et: 2
+	e eu: 282
+	e ex: 76
+	e f: 345
+	e fa: 57
+	e fi: 69
+	e fo: 113
+	e fr: 47
+	e fu: 35
+	e gr: 52
+	e h: 247
+	e ha: 150
+	e i: 622
+	e if: 7
+	e im: 56
+	e in: 324
+	e is: 132
+	e it: 52
+	e j: 29
+	e ja: 2
+	e k: 30
+	e kn: 10
+	e ko: 3
+	e l: 147
+	e la: 41
+	e m: 362
+	e ma: 103
+	e mr: 8
+	e mu: 56
+	e ne: 122
+	e o: 647
+	e of: 363
+	e on: 118
+	e op: 49
+	e ot: 22
+	e ou: 29
+	e r: 331
+	e re: 226
+	e ru: 19
+	e s : 29
+	e sh: 69
+	e t: 1108
+	e th: 546
+	e to: 372
+	e up: 20
+	e us: 30
+	e v: 91
+	e w: 385
+	e wa: 52
+	e we: 76
+	e wh: 91
+	e wi: 93
+	e wo: 69
+	e y: 37
+	e ye: 15
+	e yo: 22
+	ea: 1286
+	ea : 29
+	eac: 46
+	eace: 12
+	each: 30
+	ead: 115
+	ead : 35
+	eadi: 24
+	eads: 10
+	eady: 37
+	eake: 7
+	eal: 101
+	eal : 34
+	eall: 17
+	ealt: 32
+	ean: 323
+	ean : 292
+	eans: 27
+	ear: 245
+	ear : 106
+	earc: 17
+	eard: 7
+	eari: 7
+	earl: 41
+	ears: 46
+	eart: 12
+	eas: 231
+	eas : 24
+	ease: 69
+	easi: 14
+	easo: 35
+	easu: 49
+	eat: 132
+	eat : 29
+	eate: 37
+	eati: 14
+	eatm: 7
+	eaty: 25
+	eb: 64
+	ebat: 51
+	ec: 927
+	eca: 63
+	ecau: 61
+	ecei: 17
+	eci: 123
+	ecia: 44
+	ecif: 29
+	eco: 155
+	ecog: 12
+	ecom: 27
+	econ: 98
+	ect: 407
+	ect : 110
+	ecti: 179
+	ectl: 8
+	ects: 42
+	ecur: 25
+	ed: 1392
+	ed : 1145
+	ed a: 169
+	ed b: 120
+	ed c: 22
+	ed f: 49
+	ed i: 135
+	ed o: 69
+	ed t: 289
+	ed u: 20
+	ed w: 39
+	ede: 24
+	eder: 2
+	edg: 14
+	edge: 14
+	edly: 8
+	edn: 3
+	eds : 30
+	edu: 79
+	educ: 37
+	edur: 39
+	ee: 681
+	ee : 162
+	ee a: 19
+	ee o: 51
+	ee t: 22
+	ee w: 14
+	eed: 167
+	eed : 105
+	eedi: 14
+	eedo: 14
+	eeds: 25
+	eem: 57
+	eeme: 52
+	een: 188
+	een : 184
+	eer: 3
+	eeti: 12
+	ef: 316
+	eff: 83
+	effe: 51
+	effo: 15
+	efit: 12
+	efl: 15
+	efle: 14
+	efo: 83
+	efor: 81
+	efu: 32
+	eful: 19
+	eg: 319
+	egar: 46
+	ege: 5
+	ego: 22
+	egot: 19
+	eh: 56
+	ehal: 17
+	ei: 270
+	eigh: 17
+	eign: 15
+	eil: 3
+	eing: 66
+	eir: 117
+	eir : 113
+	eiro: 2
+	eis: 2
+	eit: 17
+	eive: 15
+	ej: 20
+	ejec: 19
+	ek: 22
+	ek : 14
+	eks: 5
+	el: 742
+	el : 81
+	el p: 3
+	elay: 7
+	elc: 32
+	elco: 32
+	ele: 86
+	elec: 32
+	elf: 34
+	elf : 27
+	elie: 54
+	ell: 76
+	ella: 2
+	elle: 10
+	elm: 3
+	elop: 56
+	elp: 22
+	elp : 17
+	elt: 7
+	elt : 2
+	ely: 120
+	ely : 120
+	em: 781
+	em : 115
+	em s: 2
+	emai: 17
+	emb: 157
+	embe: 150
+	emen: 221
+	emm: 2
+	emph: 8
+	empt: 15
+	ems : 34
+	emse: 12
+	en: 2733
+	en : 532
+	en d: 14
+	en e: 12
+	en h: 10
+	en l: 3
+	en m: 30
+	en n: 5
+	en o: 12
+	en u: 3
+	enab: 10
+	enc: 204
+	ence: 110
+	ency: 63
+	end : 52
+	endm: 63
+	eni: 27
+	enia: 3
+	enk: 3
+	enn: 3
+	enne: 2
+	enou: 14
+	ensh: 12
+	ensi: 56
+	ensu: 19
+	ent: 1292
+	ent : 796
+	ente: 27
+	enti: 142
+	entl: 61
+	ento: 2
+	ents: 128
+	env: 52
+	envi: 49
+	eo: 113
+	eone: 7
+	eop: 88
+	eopl: 88
+	ep: 286
+	ep : 19
+	epar: 27
+	eply: 8
+	epo: 100
+	epor: 100
+	ept : 20
+	eq: 84
+	equ: 84
+	equa: 32
+	eque: 25
+	equi: 27
+	er: 2695
+	er d: 20
+	er e: 17
+	er o: 101
+	er s: 120
+	er t: 162
+	er v: 5
+	er w: 69
+	er y: 14
+	eral: 90
+	erat: 69
+	erd: 15
+	ere: 424
+	ere : 238
+	ered: 37
+	eref: 37
+	ergi: 2
+	ergy: 27
+	erly: 10
+	erm : 19
+	erms: 14
+	ernm: 34
+	ero: 12
+	ero : 2
+	ers: 280
+	ers : 199
+	ersh: 15
+	erth: 12
+	erty: 19
+	eru: 2
+	ery: 105
+	ery : 84
+	eryo: 8
+	es: 2296
+	es : 1074
+	es a: 167
+	es d: 22
+	es e: 5
+	es f: 52
+	es h: 35
+	es i: 110
+	es o: 117
+	es p: 12
+	es t: 174
+	es w: 81
+	esa: 2
+	esc: 8
+	ese: 191
+	ese : 95
+	esea: 15
+	esi: 198
+	esid: 171
+	esou: 19
+	espo: 56
+	ess: 335
+	ess : 171
+	essf: 12
+	essi: 78
+	essm: 7
+	est: 287
+	esta: 37
+	este: 19
+	ests: 39
+	et: 564
+	et : 162
+	et f: 2
+	et s: 2
+	etai: 20
+	etar: 29
+	eted: 8
+	eth: 71
+	ethe: 41
+	ethi: 20
+	ett: 39
+	etta: 2
+	ettl: 7
+	etu: 3
+	etw: 61
+	etwe: 54
+	etwo: 7
+	ety : 19
+	eu c: 15
+	euro: 383
+	ev: 461
+	eva: 12
+	eve: 397
+	eve : 69
+	evel: 100
+	even: 61
+	ever: 157
+	evio: 12
+	ew: 155
+	ew : 110
+	ew c: 8
+	ew d: 7
+	ew f: 7
+	ew i: 8
+	ew m: 12
+	ew o: 14
+	ew t: 17
+	ew w: 7
+	ewor: 29
+	ex: 318
+	exa: 46
+	exam: 34
+	exc: 27
+	exp: 105
+	expe: 41
+	expl: 24
+	expr: 22
+	ext: 98
+	ext : 51
+	exte: 29
+	ey: 160
+	ey : 149
+	ey a: 30
+	ey c: 10
+	ey d: 15
+	ey h: 12
+	ey o: 7
+	ey r: 7
+	ey s: 8
+	ey t: 14
+	ey w: 12
+	eyo: 8
+	eyon: 8
+	ez: 10
+	ez : 7
+	eze: 2
+	f: 4485
+	f : 1735
+	f a: 140
+	f a : 41
+	f ac: 7
+	f ag: 7
+	f al: 15
+	f am: 8
+	f an: 25
+	f b: 30
+	f ba: 7
+	f c: 101
+	f ce: 7
+	f ch: 10
+	f co: 66
+	f cr: 7
+	f e: 74
+	f ec: 8
+	f em: 8
+	f eu: 30
+	f f: 42
+	f fo: 15
+	f fr: 7
+	f fu: 7
+	f g: 22
+	f go: 8
+	f h: 39
+	f hi: 12
+	f ho: 7
+	f hu: 7
+	f i: 66
+	f in: 30
+	f it: 17
+	f l: 32
+	f la: 17
+	f li: 8
+	f m: 71
+	f ma: 14
+	f mi: 17
+	f mo: 12
+	f mr: 14
+	f n: 30
+	f ne: 8
+	f no: 8
+	f nu: 7
+	f o: 74
+	f of: 24
+	f on: 7
+	f or: 10
+	f ou: 24
+	f p: 74
+	f pa: 12
+	f po: 15
+	f pr: 30
+	f q: 8
+	f qu: 8
+	f r: 37
+	f re: 32
+	f s: 86
+	f se: 15
+	f so: 20
+	f su: 14
+	f t: 676
+	f th: 642
+	f u: 24
+	f ur: 7
+	f us: 10
+	f w: 46
+	f we: 17
+	f wh: 12
+	f wo: 12
+	f y: 10
+	f yo: 8
+	fa: 221
+	fac: 86
+	fact: 59
+	fai: 46
+	fail: 14
+	fair: 29
+	far : 14
+	fe: 287
+	fea: 20
+	fear: 15
+	fec: 66
+	fect: 66
+	fee: 17
+	feel: 14
+	fegu: 7
+	fenc: 7
+	fer: 101
+	fer : 17
+	ferr: 19
+	few: 14
+	few : 14
+	ff: 267
+	ffai: 19
+	ffe: 108
+	ffec: 59
+	ffer: 47
+	ffi: 106
+	ffic: 100
+	fi: 512
+	fic: 177
+	fic : 27
+	fice: 22
+	ficu: 44
+	fide: 10
+	fie: 34
+	fied: 20
+	fiel: 10
+	figh: 8
+	fir: 90
+	firm: 27
+	firs: 54
+	fish: 20
+	fit: 24
+	fits: 10
+	fiv: 12
+	five: 12
+	flec: 14
+	floo: 10
+	fo: 813
+	foc: 14
+	focu: 14
+	foll: 34
+	foo: 15
+	food: 14
+	for: 708
+	for : 449
+	forc: 29
+	fore: 83
+	forw: 15
+	fou: 41
+	foun: 22
+	four: 17
+	fr: 279
+	fre: 52
+	free: 39
+	fro: 137
+	from: 128
+	fu: 216
+	fuel: 7
+	fuge: 8
+	ful: 69
+	ful : 30
+	full: 35
+	fund: 42
+	fur: 32
+	furt: 29
+	fut: 41
+	futu: 39
+	fy : 17
+	fy t: 8
+	g : 1194
+	g a: 130
+	g a : 30
+	g ag: 7
+	g an: 56
+	g as: 8
+	g bu: 8
+	g c: 51
+	g co: 35
+	g ex: 10
+	g f: 66
+	g fr: 24
+	g i: 100
+	g in: 64
+	g it: 15
+	g o: 108
+	g of: 47
+	g on: 27
+	g ou: 19
+	g p: 68
+	g pe: 22
+	g r: 32
+	g re: 27
+	g su: 14
+	g t: 311
+	g th: 208
+	g to: 69
+	g v: 10
+	g w: 49
+	g wi: 19
+	ga: 250
+	gai: 69
+	gain: 69
+	gard: 46
+	ge: 495
+	ge o: 25
+	ge t: 22
+	ged : 27
+	gen: 130
+	gen : 12
+	genc: 22
+	ger: 42
+	geta: 15
+	geth: 12
+	gh: 313
+	gh : 79
+	gh p: 7
+	gh t: 22
+	ghb: 7
+	ghbo: 7
+	ghl: 25
+	ghli: 14
+	ghly: 12
+	ghou: 10
+	ght: 184
+	ght : 95
+	ghte: 10
+	ghtl: 7
+	ghts: 66
+	gia: 2
+	gies: 12
+	gisl: 37
+	giv: 66
+	give: 61
+	gl: 56
+	gle : 19
+	gly: 10
+	gly : 10
+	gn : 24
+	go : 25
+	goi: 17
+	goin: 17
+	goo: 39
+	good: 39
+	gos: 3
+	goti: 19
+	gove: 35
+	gr: 390
+	grap: 10
+	grat: 42
+	gre: 179
+	grea: 27
+	gree: 113
+	gro: 81
+	grou: 64
+	grow: 15
+	gt: 17
+	gth: 15
+	gthe: 10
+	guag: 8
+	guar: 24
+	gula: 39
+	gy: 54
+	h: 9625
+	h : 1005
+	h a: 142
+	h a : 30
+	h an: 35
+	h ar: 17
+	h as: 35
+	h c: 63
+	h ca: 10
+	h co: 37
+	h fo: 12
+	h ha: 19
+	h i: 125
+	h is: 56
+	h it: 22
+	h of: 25
+	h ou: 7
+	h r: 49
+	h re: 35
+	h ru: 10
+	h t: 233
+	h th: 196
+	h to: 30
+	h w: 61
+	h we: 22
+	h wh: 8
+	h wo: 12
+	h y: 10
+	h yo: 10
+	ha: 1750
+	had : 25
+	half: 24
+	hall: 29
+	han: 145
+	han : 42
+	hang: 37
+	hank: 29
+	hap: 29
+	har : 2
+	has: 198
+	has : 179
+	hasi: 10
+	hat: 906
+	hat : 900
+	hav: 309
+	have: 292
+	havi: 17
+	hbo: 7
+	hbou: 7
+	he: 4499
+	he : 3321
+	he a: 157
+	he b: 96
+	he c: 510
+	he d: 144
+	he e: 416
+	he f: 172
+	he g: 64
+	he h: 56
+	he i: 155
+	he j: 8
+	he k: 17
+	he l: 86
+	he m: 155
+	he n: 115
+	he o: 103
+	he p: 269
+	he q: 25
+	he r: 196
+	he s: 237
+	he t: 105
+	he u: 93
+	he v: 54
+	he w: 84
+	hea: 61
+	heal: 24
+	hear: 22
+	hei: 115
+	heir: 113
+	help: 22
+	hem: 73
+	hem : 47
+	hems: 12
+	her: 488
+	her : 186
+	here: 238
+	hern: 14
+	hes: 115
+	hese: 88
+	het: 24
+	heth: 22
+	hey: 95
+	hey : 95
+	hi: 1156
+	hic: 291
+	hich: 282
+	hiev: 30
+	hig: 49
+	high: 49
+	hil: 39
+	hild: 20
+	hile: 14
+	him : 8
+	hin: 166
+	hing: 76
+	hink: 49
+	hip: 41
+	hip : 27
+	hir: 17
+	hird: 14
+	his: 503
+	his : 495
+	hlig: 14
+	hly: 14
+	hly : 14
+	ho: 703
+	ho w: 10
+	hod: 3
+	hoic: 7
+	hol: 47
+	hole: 27
+	home: 10
+	hoos: 7
+	hop: 41
+	hope: 41
+	hori: 25
+	hort: 20
+	hos: 71
+	hose: 66
+	hou: 242
+	houg: 20
+	houl: 150
+	hour: 7
+	hous: 25
+	hout: 39
+	how: 127
+	how : 46
+	howe: 68
+	hown: 8
+	hrea: 8
+	hree: 20
+	hro: 39
+	hrou: 35
+	hs : 12
+	ht : 95
+	ht o: 15
+	ht t: 29
+	hte: 10
+	htly: 7
+	hts: 66
+	hts : 66
+	hum: 49
+	huma: 46
+	hus : 10
+	hy : 44
+	hy i: 12
+	hy w: 10
+	i: 16877
+	i : 542
+	i a : 2
+	i am: 59
+	i c: 30
+	i d: 35
+	i de: 3
+	i di: 5
+	i e: 10
+	i g: 3
+	i i: 8
+	i in: 5
+	i k: 7
+	i l: 2
+	i m: 12
+	i me: 2
+	i n: 5
+	i na: 3
+	i ne: 2
+	i o: 7
+	i p: 8
+	i pa: 2
+	i pr: 3
+	i r: 5
+	i s: 46
+	i se: 2
+	i sh: 22
+	i st: 3
+	i t: 44
+	i th: 35
+	i v: 7
+	i w: 137
+	i wa: 20
+	i wo: 93
+	ia : 84
+	ia e: 2
+	ial: 225
+	ial : 164
+	iall: 29
+	iam: 105
+	iame: 105
+	ian : 34
+	iar: 2
+	iat: 103
+	iate: 41
+	iati: 63
+	ib: 169
+	ibl: 76
+	ible: 74
+	ibut: 30
+	ic: 1161
+	ic : 174
+	ic a: 37
+	ic c: 12
+	ic p: 20
+	ic r: 15
+	ic s: 17
+	ic t: 8
+	ica: 233
+	ica : 15
+	ical: 127
+	ican: 24
+	icat: 64
+	ice: 108
+	ice : 71
+	ices: 30
+	ich: 289
+	ich : 284
+	iche: 2
+	icie: 49
+	icl: 22
+	icle: 22
+	ico: 2
+	ics : 12
+	ict : 12
+	icu: 112
+	icul: 112
+	icy: 66
+	icy : 66
+	ida: 17
+	iddl: 7
+	ide: 346
+	ide : 57
+	idea: 19
+	ided: 14
+	iden: 201
+	ido: 3
+	idua: 22
+	ie: 622
+	ie : 3
+	ie d: 2
+	ied : 44
+	iel: 12
+	iem: 2
+	ien: 69
+	ienc: 15
+	ier: 30
+	ies: 314
+	ies : 314
+	iet: 19
+	iev: 81
+	ieve: 78
+	iew: 41
+	iew : 35
+	if: 292
+	if : 74
+	if i: 12
+	if t: 29
+	if w: 17
+	iff: 76
+	iffe: 27
+	iffi: 44
+	ifi: 95
+	ific: 74
+	ifie: 20
+	ify: 19
+	ify : 17
+	ig : 2
+	ige: 5
+	igh: 216
+	igh : 24
+	ighb: 7
+	ighe: 2
+	ighl: 24
+	ight: 160
+	ign: 61
+	ign : 24
+	ih: 2
+	ii: 2
+	ii : 2
+	ij: 2
+	ijo: 2
+	ik: 101
+	ike: 101
+	ike : 98
+	ilab: 8
+	ildi: 12
+	ildr: 12
+	iled: 7
+	ilit: 90
+	ill: 328
+	ill : 245
+	illi: 47
+	ilo: 10
+	im : 22
+	ime : 71
+	imo: 10
+	imo : 2
+	imou: 7
+	imp: 203
+	impl: 74
+	impo: 90
+	impr: 27
+	in: 3899
+	in : 1183
+	in a: 128
+	in c: 34
+	in f: 46
+	in i: 47
+	in m: 63
+	in o: 79
+	in p: 64
+	in r: 46
+	in t: 412
+	in w: 34
+	ina : 5
+	inab: 17
+	inal: 56
+	inat: 49
+	inc: 166
+	ince: 41
+	incl: 46
+	incr: 32
+	ined: 46
+	ines: 49
+	ing: 1223
+	ing : 1139
+	inge: 5
+	ingl: 19
+	ink : 46
+	inly: 15
+	inn: 14
+	ino: 7
+	ins: 150
+	inst: 117
+	int: 333
+	int : 54
+	into: 74
+	ints: 15
+	inue: 20
+	invo: 37
+	io: 1909
+	io : 7
+	iole: 15
+	ion: 1762
+	ion : 1264
+	iona: 117
+	ione: 66
+	ions: 299
+	ios: 3
+	ios : 3
+	iou: 79
+	ious: 78
+	ip a: 12
+	ip o: 8
+	iple: 24
+	ir o: 20
+	ir w: 19
+	irec: 54
+	ired: 12
+	irel: 15
+	irm : 10
+	iron: 46
+	irs: 73
+	irs : 19
+	irst: 54
+	is: 2347
+	is : 1257
+	is a: 191
+	is b: 32
+	is c: 73
+	is h: 27
+	is i: 128
+	is m: 57
+	is n: 106
+	is o: 68
+	is p: 56
+	is r: 68
+	is s: 71
+	is t: 130
+	is w: 73
+	isat: 39
+	isch: 2
+	isea: 10
+	ised: 30
+	ish: 123
+	ish : 69
+	ishe: 37
+	ishi: 10
+	isio: 52
+	isk: 14
+	isla: 41
+	ism : 25
+	isms: 10
+	iss: 284
+	issi: 226
+	issu: 51
+	ist: 172
+	ists: 15
+	it: 1982
+	it : 427
+	it c: 25
+	it i: 150
+	it w: 54
+	ita : 2
+	ited: 39
+	item: 15
+	ith: 351
+	ith : 284
+	ithe: 7
+	ithi: 24
+	itho: 27
+	iti: 412
+	iti : 3
+	itia: 29
+	itic: 83
+	itie: 79
+	itio: 105
+	itiz: 44
+	itme: 17
+	ito : 2
+	its: 142
+	its : 125
+	itte: 73
+	itut: 41
+	ity: 231
+	ity : 231
+	iv: 495
+	iva: 19
+	ive: 409
+	ive : 264
+	ived: 14
+	iven: 46
+	ives: 46
+	iz: 73
+	iza: 10
+	ize: 56
+	izen: 44
+	j: 235
+	ja: 12
+	ja : 2
+	jan: 2
+	je: 95
+	jec: 88
+	ject: 88
+	jeg: 2
+	jo: 73
+	jo : 2
+	job: 15
+	job : 7
+	jobs: 8
+	join: 24
+	jor : 12
+	ju: 54
+	já: 2
+	k: 1007
+	k : 286
+	k an: 17
+	k e: 3
+	k in: 27
+	k of: 19
+	k t: 66
+	k th: 52
+	k y: 12
+	k yo: 12
+	ka: 17
+	ka : 2
+	kan: 5
+	kas: 3
+	ke : 226
+	ke a: 34
+	ke t: 110
+	kel: 5
+	kers: 17
+	kets: 8
+	key: 29
+	key : 27
+	ki: 132
+	kin: 108
+	king: 101
+	kl: 15
+	kli: 2
+	kly : 7
+	kno: 49
+	know: 49
+	ko: 17
+	ko : 2
+	kol: 2
+	kor: 2
+	kos: 5
+	kr: 3
+	kra: 2
+	ks: 54
+	ks w: 7
+	ku: 3
+	kur: 2
+	kus: 2
+	ky: 10
+	ky : 3
+	l : 1537
+	l a: 196
+	l an: 68
+	l as: 44
+	l b: 117
+	l ba: 17
+	l be: 78
+	l bu: 14
+	l c: 105
+	l co: 68
+	l cr: 15
+	l f: 69
+	l fo: 32
+	l i: 120
+	l in: 61
+	l is: 25
+	l it: 12
+	l o: 95
+	l of: 49
+	l po: 34
+	l r: 71
+	l re: 41
+	l sh: 7
+	l t: 147
+	l th: 76
+	l to: 42
+	l w: 54
+	l we: 14
+	l wh: 8
+	l wi: 19
+	l yo: 7
+	la: 655
+	la : 8
+	la p: 2
+	lace: 32
+	ladi: 24
+	lag: 5
+	lam: 12
+	lame: 5
+	lar: 118
+	larg: 32
+	larl: 19
+	las: 44
+	lat: 184
+	late: 44
+	lati: 127
+	law: 30
+	law : 17
+	laws: 7
+	lay: 29
+	lay : 17
+	laye: 8
+	lco: 35
+	lcom: 32
+	ld: 480
+	ld : 427
+	ld a: 37
+	ld b: 83
+	ld c: 15
+	ld h: 19
+	ld l: 78
+	ld n: 30
+	ld p: 15
+	ld r: 15
+	ld s: 20
+	ld t: 25
+	ld w: 12
+	ldin: 14
+	ldre: 12
+	le d: 10
+	le o: 83
+	le p: 7
+	le t: 79
+	le w: 34
+	lea: 179
+	lead: 34
+	leag: 10
+	lear: 83
+	leas: 47
+	lec: 54
+	lect: 51
+	led : 46
+	ledg: 14
+	left: 8
+	lei: 2
+	len: 57
+	len : 2
+	leng: 22
+	ler: 15
+	ler : 7
+	les : 46
+	less: 32
+	leve: 44
+	lf: 63
+	lf : 52
+	lf o: 19
+	lg: 12
+	li : 7
+	lia: 135
+	liam: 105
+	lic: 155
+	lic : 34
+	lich: 3
+	licy: 66
+	lid: 7
+	liev: 51
+	lif: 32
+	life: 10
+	lig: 35
+	like: 98
+	lion: 29
+	lish: 41
+	lity: 95
+	liz: 7
+	lk: 27
+	ll: 912
+	ll : 483
+	ll a: 57
+	ll b: 78
+	ll c: 19
+	ll m: 24
+	ll n: 32
+	ll o: 27
+	ll p: 15
+	ll t: 66
+	ll y: 7
+	lla: 15
+	lla : 3
+	lle: 83
+	llea: 8
+	lled: 17
+	llio: 29
+	llis: 2
+	llo: 69
+	llow: 61
+	lly: 171
+	lly : 171
+	lm: 10
+	ln: 3
+	lo : 2
+	logu: 24
+	logy: 7
+	lon: 49
+	long: 41
+	look: 22
+	lop: 56
+	lopi: 15
+	lopm: 34
+	lor: 7
+	lose: 30
+	low: 68
+	low : 32
+	lowe: 15
+	lowi: 17
+	loy: 35
+	loye: 10
+	loym: 25
+	lp t: 8
+	lr: 32
+	lre: 32
+	lrea: 32
+	ls : 91
+	ls a: 20
+	ls t: 14
+	lse: 2
+	lso: 125
+	lso : 123
+	lst: 2
+	lt: 199
+	lta: 8
+	lted: 7
+	lth: 37
+	lth : 29
+	ltho: 8
+	ltie: 17
+	lty : 8
+	lu: 181
+	lu : 2
+	lud: 49
+	lude: 32
+	ludi: 17
+	lue: 37
+	lues: 19
+	luti: 34
+	lve: 68
+	lve : 17
+	lved: 22
+	lves: 22
+	lwa: 14
+	lway: 14
+	ly: 706
+	ly : 701
+	ly a: 106
+	ly b: 49
+	ly c: 34
+	ly d: 30
+	ly e: 30
+	ly f: 17
+	ly g: 7
+	ly h: 24
+	ly i: 73
+	ly l: 12
+	ly n: 14
+	ly o: 29
+	ly p: 17
+	ly r: 24
+	ly s: 29
+	ly t: 90
+	ly u: 15
+	ly w: 54
+	lä: 2
+	lé: 2
+	m: 5876
+	m : 458
+	m d: 3
+	m de: 2
+	m e: 12
+	m is: 25
+	m m: 7
+	m n: 8
+	m of: 25
+	m pa: 2
+	m s: 19
+	m t: 115
+	m th: 96
+	m v: 8
+	m wh: 10
+	ma : 17
+	mad: 73
+	mada: 29
+	made: 39
+	main: 52
+	majo: 22
+	mak: 78
+	make: 61
+	maki: 17
+	mals: 10
+	many: 57
+	mark: 59
+	mas: 15
+	mas : 10
+	mate: 39
+	matt: 51
+	may: 30
+	may : 29
+	mb: 230
+	mbe: 179
+	mber: 179
+	me: 1610
+	me t: 57
+	me w: 19
+	mea: 79
+	mean: 29
+	meas: 44
+	meet: 19
+	mel: 15
+	mem: 133
+	memb: 132
+	men: 816
+	mend: 76
+	ment: 659
+	meo: 7
+	meon: 7
+	meth: 17
+	mew: 30
+	mewo: 29
+	mi: 718
+	mic: 61
+	mic : 49
+	mie: 3
+	ming: 41
+	misi: 3
+	miss: 228
+	mitt: 69
+	mm: 456
+	mmed: 10
+	mmi: 294
+	mmis: 194
+	mmit: 90
+	mmo: 35
+	mmon: 34
+	mmu: 57
+	mmun: 57
+	mn: 7
+	mo : 3
+	mok: 2
+	mon: 128
+	mon : 34
+	mone: 32
+	mong: 15
+	mor: 152
+	more: 115
+	morn: 10
+	morr: 12
+	mos : 2
+	most: 35
+	mou: 29
+	moun: 12
+	mous: 17
+	mov: 39
+	move: 32
+	mp: 454
+	mpan: 20
+	mph: 8
+	mpha: 8
+	mpl: 181
+	mple: 95
+	mplo: 35
+	mply: 25
+	mpo: 96
+	mpor: 74
+	mpt: 25
+	mpt : 8
+	mr: 199
+	mr : 154
+	mr m: 8
+	mr p: 88
+	mr s: 8
+	mrs: 46
+	mrs : 46
+	ms a: 22
+	ms o: 25
+	ms w: 12
+	msel: 12
+	mu : 2
+	muc: 30
+	much: 30
+	mus: 137
+	must: 132
+	my : 90
+	my f: 8
+	my v: 12
+	mé: 3
+	n: 15492
+	n : 4301
+	n a: 520
+	n a : 69
+	n ag: 29
+	n an: 191
+	n as: 54
+	n b: 154
+	n by: 29
+	n c: 220
+	n cl: 14
+	n co: 123
+	n d: 79
+	n da: 3
+	n de: 44
+	n ea: 8
+	n he: 10
+	n i: 383
+	n in: 188
+	n is: 71
+	n it: 54
+	n j: 14
+	n k: 3
+	n ka: 2
+	n l: 39
+	n mr: 15
+	n my: 27
+	n o: 355
+	n of: 208
+	n or: 41
+	n ot: 24
+	n p: 255
+	n r: 137
+	n re: 81
+	n ri: 32
+	n s : 44
+	n sh: 19
+	n t: 924
+	n th: 748
+	n to: 112
+	n un: 106
+	n v: 14
+	n va: 5
+	n ve: 2
+	n w: 194
+	n wh: 71
+	n wi: 61
+	n wr: 7
+	n ye: 8
+	n yo: 8
+	na: 558
+	na : 10
+	na s: 2
+	nab: 42
+	nabl: 39
+	nac: 7
+	nad: 3
+	nage: 14
+	nal: 220
+	nal : 152
+	nall: 34
+	nam: 3
+	nary: 14
+	nas: 2
+	nas : 2
+	nat: 176
+	nate: 35
+	nati: 117
+	nc: 772
+	nce: 356
+	nce : 228
+	nced: 29
+	ncer: 51
+	nci: 188
+	ncil: 115
+	ncin: 15
+	ncl: 63
+	nclu: 63
+	ncou: 15
+	ncr: 41
+	ncre: 41
+	ncti: 19
+	ncy: 63
+	ncy : 63
+	nd: 2017
+	nd : 1504
+	nd a: 110
+	nd b: 25
+	nd c: 73
+	nd e: 88
+	nd f: 69
+	nd g: 51
+	nd h: 35
+	nd i: 139
+	nd l: 22
+	nd m: 78
+	nd n: 30
+	nd o: 74
+	nd p: 66
+	nd r: 49
+	nd s: 73
+	nd t: 338
+	nd w: 95
+	nd y: 8
+	nde: 150
+	nded: 17
+	ndin: 56
+	ndiv: 22
+	ndly: 14
+	ndm: 63
+	ndme: 63
+	ndo: 15
+	ndo : 2
+	ndr: 8
+	nds: 56
+	nds : 52
+	ne: 914
+	ne : 145
+	ne d: 2
+	ne e: 3
+	ne p: 3
+	ne s: 5
+	ned: 98
+	ned : 98
+	nee: 110
+	need: 108
+	nel: 7
+	nem: 12
+	nemp: 7
+	nen: 20
+	nera: 47
+	ness: 59
+	neth: 7
+	neve: 27
+	new: 64
+	new : 59
+	nex: 20
+	next: 19
+	ney: 22
+	ney : 22
+	nfid: 10
+	ng: 1443
+	ng : 1208
+	ng a: 128
+	ng b: 32
+	ng c: 51
+	ng e: 47
+	ng f: 66
+	ng i: 98
+	ng m: 37
+	ng o: 108
+	ng p: 66
+	ng r: 30
+	ng s: 54
+	ng t: 307
+	ng w: 47
+	ngen: 5
+	nges: 20
+	ngin: 14
+	ngle: 14
+	ngly: 10
+	ngs : 41
+	ngth: 15
+	nh: 14
+	ni: 639
+	ni : 8
+	nia: 29
+	nia : 15
+	nic: 32
+	nie: 12
+	nio: 135
+	nion: 133
+	nish: 12
+	nit: 174
+	nite: 30
+	niti: 61
+	nity: 63
+	nj: 8
+	nje: 2
+	nk: 118
+	nk : 83
+	nk t: 35
+	nk y: 8
+	nka: 2
+	nl: 108
+	nlar: 17
+	nly: 76
+	nly : 76
+	nm: 86
+	nme: 83
+	nmen: 83
+	nn: 100
+	nne: 25
+	nnec: 12
+	nnot: 37
+	no : 69
+	nomy: 10
+	nor: 22
+	nos: 8
+	nos : 5
+	not: 390
+	not : 341
+	noth: 37
+	noug: 14
+	nov: 15
+	now: 122
+	now : 101
+	nowl: 14
+	ns: 955
+	ns : 439
+	ns a: 68
+	ns b: 20
+	ns f: 25
+	ns i: 37
+	ns o: 54
+	ns t: 56
+	ns w: 42
+	nsa: 8
+	nse : 32
+	nsh: 15
+	nshi: 12
+	nsi: 130
+	nsib: 30
+	nsio: 24
+	nsiv: 19
+	nsk: 2
+	nst: 159
+	nst : 44
+	nsu: 63
+	nsur: 12
+	nsw: 19
+	nswe: 19
+	nt: 2151
+	nt : 983
+	nt a: 128
+	nt b: 37
+	nt c: 46
+	nt f: 24
+	nt i: 112
+	nt o: 137
+	nt s: 63
+	nt t: 127
+	nt w: 47
+	ntat: 37
+	nte: 267
+	nted: 42
+	nths: 10
+	nti: 209
+	nti : 5
+	ntia: 44
+	ntio: 63
+	ntl: 74
+	ntle: 25
+	ntly: 49
+	nto: 78
+	ntre: 5
+	ntri: 106
+	ntru: 2
+	ntry: 42
+	nts: 169
+	nts : 169
+	ntu: 7
+	nu: 113
+	nuc: 19
+	nucl: 19
+	nue : 19
+	nuin: 7
+	numb: 27
+	nute: 19
+	nv: 159
+	nvi: 68
+	nvin: 15
+	nvir: 46
+	nvo: 39
+	nvol: 37
+	ny : 115
+	ny c: 10
+	ny o: 15
+	nz: 3
+	o: 16837
+	o ac: 27
+	o an: 39
+	o ar: 20
+	o b: 164
+	o be: 147
+	o d: 81
+	o da: 2
+	o de: 35
+	o e : 2
+	o f: 74
+	o fo: 29
+	o h: 79
+	o ha: 44
+	o he: 19
+	o it: 15
+	o k: 12
+	o kn: 8
+	o la: 2
+	o ma: 46
+	o no: 57
+	o ou: 19
+	o p: 113
+	o pa: 14
+	o po: 12
+	o q: 3
+	o qu: 3
+	o re: 86
+	o sh: 10
+	o t: 348
+	o th: 291
+	o v: 5
+	o w: 76
+	o we: 15
+	o wh: 22
+	o wo: 10
+	o ye: 8
+	o yo: 19
+	oac: 37
+	oach: 34
+	oad: 27
+	oad : 19
+	ob: 176
+	obs : 8
+	ocat: 17
+	oced: 39
+	ocee: 10
+	ocia: 83
+	ocr: 39
+	ocus: 14
+	od: 233
+	oday: 34
+	odn: 2
+	oduc: 59
+	oes: 35
+	oes : 35
+	of: 1673
+	of : 1593
+	of a: 132
+	of b: 25
+	of c: 100
+	of d: 30
+	of e: 71
+	of f: 41
+	of g: 20
+	of h: 35
+	of i: 47
+	of l: 30
+	of m: 61
+	of n: 30
+	of o: 52
+	of p: 73
+	of q: 8
+	of r: 35
+	of s: 79
+	of t: 639
+	of u: 24
+	of v: 14
+	of w: 29
+	of y: 8
+	offi: 20
+	ofte: 17
+	og: 139
+	og : 2
+	ogre: 27
+	ogue: 24
+	ogy: 7
+	ogy : 7
+	oh: 15
+	oho: 2
+	oid : 8
+	oin: 125
+	oing: 30
+	oint: 86
+	oit: 2
+	oj: 20
+	ojec: 20
+	ok: 41
+	oke : 8
+	ol: 497
+	ola: 7
+	old : 19
+	olic: 83
+	ollo: 34
+	olut: 35
+	olv: 56
+	olve: 51
+	om : 154
+	om d: 2
+	om t: 64
+	ome: 220
+	ome : 125
+	omeo: 7
+	omi: 110
+	omic: 49
+	omin: 30
+	omis: 24
+	omm: 389
+	ommi: 270
+	ommo: 35
+	ommu: 54
+	omot: 19
+	omp: 149
+	ompa: 25
+	ompe: 35
+	ompl: 42
+	omy : 10
+	on: 3436
+	on : 1820
+	on a: 218
+	on b: 68
+	on c: 68
+	on f: 56
+	on h: 49
+	on i: 159
+	on m: 52
+	on o: 221
+	on p: 69
+	on r: 32
+	on s: 117
+	on t: 346
+	on w: 118
+	onab: 10
+	onal: 123
+	onc: 118
+	once: 79
+	ond : 29
+	ondl: 12
+	oned: 15
+	onen: 3
+	oner: 56
+	oney: 22
+	ong: 79
+	ong : 49
+	oni : 3
+	onk: 2
+	onl: 59
+	only: 59
+	onm: 47
+	onme: 47
+	ons: 509
+	ons : 309
+	onth: 12
+	onv: 47
+	oo : 37
+	ood: 68
+	ood : 49
+	oods: 12
+	oope: 30
+	oor: 24
+	oor : 7
+	op: 890
+	opa: 2
+	ope: 498
+	ope : 132
+	opea: 280
+	oper: 54
+	opl: 88
+	ople: 88
+	opm: 34
+	opme: 34
+	opp: 59
+	oppo: 52
+	ops: 5
+	opt: 44
+	opt : 10
+	opte: 22
+	or: 1987
+	or : 612
+	or a: 71
+	or i: 35
+	or r: 25
+	or t: 139
+	or w: 22
+	ora: 24
+	orc: 29
+	orce: 27
+	ords: 22
+	ore: 211
+	ore : 182
+	ork: 145
+	ork : 95
+	orke: 17
+	orki: 17
+	orks: 12
+	orl: 37
+	orld: 37
+	orm : 30
+	orms: 7
+	orro: 12
+	orry: 10
+	ort: 427
+	ort : 196
+	orta: 78
+	orth: 14
+	orts: 32
+	ortu: 52
+	oru: 2
+	orw: 15
+	orwa: 15
+	ory: 27
+	ory : 27
+	os: 446
+	os : 14
+	os a: 8
+	os i: 2
+	osal: 41
+	ose: 149
+	ose : 96
+	osed: 29
+	osit: 63
+	osp: 8
+	ossi: 59
+	ost: 68
+	osta: 2
+	osti: 5
+	ot: 752
+	ot : 355
+	ot a: 27
+	ot b: 59
+	ot c: 25
+	ot f: 17
+	ot h: 17
+	ot o: 24
+	ot s: 29
+	ot t: 39
+	ot w: 10
+	ot y: 10
+	ote: 135
+	ote : 41
+	otec: 37
+	oted: 30
+	oth: 171
+	oth : 37
+	othe: 118
+	othi: 15
+	otia: 19
+	otio: 15
+	oto: 12
+	ott: 5
+	ou: 1718
+	ou h: 14
+	oubt: 10
+	oug: 90
+	ough: 90
+	oul: 362
+	ould: 358
+	oun: 351
+	ounc: 103
+	ound: 63
+	oung: 17
+	ount: 169
+	oup: 64
+	oup : 39
+	oupl: 7
+	oups: 17
+	our: 353
+	our : 215
+	oura: 19
+	ourc: 29
+	ouri: 10
+	ours: 47
+	ourt: 19
+	ous: 145
+	ous : 96
+	ouse: 27
+	ousl: 20
+	out: 216
+	out : 176
+	outc: 7
+	outh: 12
+	outs: 8
+	ova: 20
+	ovan: 2
+	ove: 221
+	ove : 44
+	ovem: 27
+	over: 117
+	ovid: 37
+	ovo: 7
+	ow: 456
+	ow : 198
+	ow a: 19
+	ow b: 10
+	ow c: 15
+	ow f: 8
+	ow h: 10
+	ow i: 17
+	ow m: 24
+	ow s: 8
+	ow t: 44
+	ow u: 7
+	ow w: 8
+	owar: 15
+	owe: 117
+	owed: 12
+	ower: 35
+	owev: 68
+	owl: 14
+	owle: 14
+	own: 71
+	own : 66
+	ows : 8
+	owt: 10
+	owth: 10
+	oym: 25
+	oyme: 25
+	oz: 2
+	p : 189
+	p a: 35
+	p an: 12
+	p o: 19
+	p of: 14
+	p t: 46
+	p th: 25
+	p to: 20
+	pa: 488
+	pa : 2
+	pabl: 12
+	pak: 2
+	pany: 10
+	para: 17
+	part: 135
+	pas: 24
+	pay: 30
+	pay : 8
+	paye: 8
+	paym: 7
+	pe: 1027
+	pe : 140
+	pe a: 24
+	pe t: 35
+	pe w: 12
+	pea: 321
+	peac: 12
+	pean: 280
+	pec: 142
+	peci: 68
+	pect: 74
+	ped : 10
+	pel: 3
+	peo: 88
+	peop: 88
+	ph: 42
+	pha: 15
+	phas: 15
+	pi: 108
+	pie: 3
+	ping: 34
+	pl: 507
+	pla: 110
+	plac: 32
+	plai: 17
+	play: 19
+	ple: 258
+	ple : 137
+	plea: 29
+	plem: 56
+	plie: 17
+	plo: 46
+	ploy: 35
+	ply: 41
+	ply : 41
+	pm: 35
+	pme: 35
+	pmen: 35
+	poi: 71
+	poin: 71
+	pom: 2
+	pon : 12
+	pons: 51
+	por: 355
+	port: 348
+	posa: 41
+	pose: 42
+	poss: 54
+	pot: 12
+	pou: 2
+	powe: 32
+	poz: 2
+	pp: 323
+	ppea: 10
+	ppin: 12
+	ppl: 46
+	pple: 10
+	ppli: 27
+	pply: 7
+	ppo: 133
+	ppor: 113
+	ppr: 86
+	ppro: 74
+	ppy: 7
+	ppy : 7
+	pra: 27
+	pred: 2
+	preh: 17
+	pres: 284
+	pri: 113
+	pria: 17
+	pro: 637
+	proa: 34
+	prop: 103
+	prov: 110
+	ps : 39
+	pt: 133
+	pt : 41
+	pt t: 17
+	pte: 34
+	pted: 25
+	ptin: 7
+	ptio: 22
+	publ: 41
+	pun: 3
+	put : 35
+	q: 221
+	qu: 220
+	qual: 39
+	que: 95
+	que : 3
+	quir: 25
+	quit: 24
+	r: 12829
+	r : 2176
+	r an: 68
+	r as: 25
+	r at: 10
+	r c: 112
+	r co: 66
+	r d: 63
+	r de: 34
+	r ex: 27
+	r in: 71
+	r it: 22
+	r k: 8
+	r l: 37
+	r le: 7
+	r mr: 10
+	r o: 174
+	r of: 96
+	r on: 22
+	r ow: 19
+	r p: 203
+	r pr: 120
+	r r: 81
+	r re: 54
+	r sh: 12
+	r st: 103
+	r t: 346
+	r th: 260
+	r to: 61
+	r u: 10
+	r un: 3
+	r v: 22
+	r w: 132
+	r wh: 30
+	r wi: 30
+	r wo: 42
+	r y: 29
+	r ye: 14
+	r yo: 15
+	ra: 948
+	ra : 10
+	ract: 30
+	ral: 181
+	ral : 147
+	rall: 17
+	rand: 2
+	raph: 10
+	rar: 7
+	rary: 7
+	ras: 24
+	ras : 3
+	rat: 247
+	rate: 78
+	rath: 17
+	rati: 130
+	rau: 2
+	rav: 3
+	rb: 19
+	rbi: 2
+	rce: 66
+	rce : 29
+	rces: 25
+	rcum: 7
+	rd t: 30
+	rday: 10
+	rder: 42
+	rdin: 42
+	rds: 68
+	rds : 68
+	re: 3392
+	re : 946
+	re a: 125
+	re i: 132
+	re o: 52
+	re t: 167
+	re w: 46
+	rea: 341
+	reac: 15
+	read: 59
+	reas: 91
+	reat: 105
+	reb: 2
+	reco: 37
+	rect: 61
+	red : 93
+	redu: 32
+	ree: 179
+	ree : 68
+	reed: 27
+	reem: 52
+	ref: 115
+	refl: 14
+	refo: 54
+	refu: 19
+	rega: 46
+	regu: 41
+	rehe: 17
+	reig: 17
+	rely: 19
+	rema: 27
+	ren : 14
+	rend: 5
+	rent: 57
+	rep: 174
+	repo: 98
+	req: 41
+	requ: 41
+	rer: 5
+	rer : 2
+	res: 691
+	rese: 91
+	resi: 174
+	reso: 52
+	resp: 86
+	ress: 100
+	rest: 76
+	ret: 35
+	rge : 20
+	rgem: 15
+	rgi: 5
+	rgy: 27
+	rgy : 27
+	rh: 12
+	rhap: 7
+	ri : 2
+	riat: 17
+	rict: 17
+	ricu: 22
+	ries: 96
+	rify: 7
+	rig: 125
+	righ: 106
+	rio : 2
+	riou: 35
+	rish: 10
+	riti: 71
+	rity: 44
+	rk: 228
+	rk : 103
+	rk a: 19
+	rk f: 7
+	rk i: 14
+	rk t: 12
+	rk w: 8
+	rke: 79
+	rker: 17
+	rket: 46
+	rkey: 17
+	rks : 17
+	rla: 5
+	rld: 37
+	rld : 35
+	rle: 2
+	rli: 123
+	rlia: 105
+	rly: 64
+	rly : 64
+	rm : 63
+	rm o: 10
+	rm t: 8
+	rmor: 8
+	rms: 39
+	rms : 39
+	rnal: 22
+	rne : 3
+	rned: 15
+	rnin: 27
+	rnm: 35
+	rnme: 35
+	rns : 12
+	ro: 1586
+	ro : 20
+	roa: 63
+	roac: 34
+	road: 27
+	rok: 3
+	role: 30
+	rom: 186
+	rom : 128
+	rong: 15
+	ronm: 46
+	roop: 3
+	rop: 483
+	ropa: 2
+	rope: 389
+	rops: 2
+	ros: 15
+	rou: 150
+	roug: 44
+	roun: 29
+	roup: 56
+	rous: 12
+	rov: 112
+	rove: 44
+	rovi: 61
+	row : 14
+	rowt: 10
+	rred: 17
+	rren: 34
+	rrie: 12
+	rrow: 12
+	rry: 19
+	rry : 12
+	rryi: 7
+	rs: 547
+	rs : 356
+	rs a: 71
+	rs b: 17
+	rs f: 14
+	rs i: 24
+	rs m: 15
+	rs o: 41
+	rs t: 42
+	rs w: 24
+	rse : 35
+	rsh: 17
+	rshi: 15
+	rst : 42
+	rstl: 14
+	rt: 767
+	rt : 265
+	rt a: 32
+	rt o: 59
+	rt r: 12
+	rt t: 41
+	rta: 113
+	rtai: 29
+	rtak: 7
+	rtan: 69
+	rted: 15
+	rth: 63
+	rth : 8
+	rthe: 44
+	rtic: 68
+	rts: 51
+	rts : 49
+	rtun: 49
+	rty: 29
+	rty : 29
+	ru: 203
+	ruc: 51
+	ruct: 39
+	rul: 39
+	rule: 30
+	run: 8
+	rvic: 27
+	rwar: 15
+	ry: 335
+	ry : 301
+	ry a: 29
+	ry c: 19
+	ry d: 10
+	ry f: 8
+	ry g: 8
+	ry h: 7
+	ry i: 32
+	ry o: 20
+	ry p: 35
+	ry r: 15
+	ry s: 27
+	ry t: 24
+	ry w: 20
+	ryi: 12
+	ryin: 12
+	ryon: 8
+	rz: 2
+	ré: 5
+	ré : 2
+	s: 12911
+	s : 5208
+	s a: 895
+	s a : 179
+	s ab: 22
+	s al: 63
+	s an: 341
+	s ar: 83
+	s as: 54
+	s b: 211
+	s be: 110
+	s bo: 17
+	s bu: 42
+	s by: 25
+	s c: 213
+	s ca: 35
+	s cl: 24
+	s co: 115
+	s d: 123
+	s da: 5
+	s de: 46
+	s e: 108
+	s et: 2
+	s ev: 17
+	s f: 191
+	s fo: 101
+	s fr: 35
+	s h: 115
+	s ha: 66
+	s i: 470
+	s i : 30
+	s if: 10
+	s in: 250
+	s ir: 3
+	s is: 96
+	s it: 42
+	s j: 14
+	s k: 7
+	s ka: 2
+	s mi: 2
+	s mo: 46
+	s mr: 15
+	s my: 12
+	s na: 2
+	s no: 149
+	s o: 522
+	s of: 350
+	s on: 78
+	s or: 34
+	s ow: 15
+	s p: 191
+	s pa: 42
+	s q: 19
+	s qu: 19
+	s r: 154
+	s re: 128
+	s sh: 41
+	s t: 775
+	s th: 411
+	s to: 301
+	s us: 12
+	s v: 47
+	s va: 3
+	s w: 407
+	s wa: 29
+	s we: 83
+	s wh: 160
+	s wi: 110
+	s wo: 24
+	s ye: 14
+	s yo: 7
+	sa: 351
+	sa : 5
+	saf: 22
+	safe: 22
+	said: 35
+	sal : 32
+	sals: 12
+	sam: 20
+	sary: 24
+	sast: 14
+	sati: 52
+	say: 59
+	say : 46
+	sayi: 12
+	sbon: 14
+	sc: 130
+	sch: 22
+	sche: 14
+	scus: 32
+	se : 534
+	se i: 51
+	se o: 83
+	se t: 103
+	se w: 37
+	sear: 17
+	seas: 12
+	sec: 84
+	seco: 29
+	secu: 25
+	sed: 150
+	sed : 150
+	sefu: 8
+	sei: 2
+	self: 29
+	sell: 2
+	sem: 8
+	sen: 120
+	sen : 5
+	ser : 7
+	serv: 71
+	seve: 19
+	sful: 12
+	sh: 424
+	sh : 78
+	sh c: 10
+	sh p: 8
+	sh t: 17
+	sha: 30
+	shar: 10
+	she: 47
+	shed: 17
+	shes: 10
+	shi: 57
+	shin: 12
+	ship: 37
+	sho: 194
+	shor: 20
+	shou: 152
+	show: 19
+	sib: 90
+	sibl: 66
+	sic : 12
+	sid: 221
+	side: 220
+	sie: 8
+	simp: 27
+	sin: 133
+	sinc: 22
+	sine: 20
+	sing: 83
+	sio: 399
+	sion: 399
+	sis : 37
+	siti: 69
+	siv: 44
+	sive: 44
+	six : 8
+	sk: 39
+	ske: 3
+	sl: 79
+	slat: 37
+	sly: 20
+	sly : 20
+	sm : 27
+	smal: 12
+	sms: 10
+	sms : 10
+	sn: 2
+	so : 201
+	so a: 30
+	so b: 20
+	so h: 14
+	so t: 27
+	so w: 17
+	soc: 100
+	soci: 96
+	solv: 17
+	some: 86
+	soun: 7
+	sour: 29
+	spe: 160
+	spea: 10
+	spec: 123
+	spon: 57
+	spr: 10
+	ss: 843
+	ss : 191
+	ss a: 24
+	ss o: 27
+	ss t: 49
+	ssa: 29
+	ssed: 29
+	sses: 22
+	ssf: 12
+	ssfu: 12
+	ssi: 431
+	ssia: 22
+	ssib: 56
+	ssio: 289
+	ssiv: 19
+	ssm: 14
+	ssme: 14
+	ssu: 69
+	ssue: 51
+	st: 1566
+	st : 478
+	st a: 54
+	st b: 66
+	st i: 32
+	st t: 64
+	st w: 24
+	st y: 10
+	stat: 152
+	ste: 142
+	ste : 5
+	step: 17
+	stil: 34
+	stio: 69
+	stly: 19
+	stme: 8
+	sto: 47
+	stry: 19
+	sts: 59
+	sts : 59
+	stu: 10
+	su: 554
+	sub: 47
+	subj: 20
+	suc: 79
+	succ: 22
+	such: 57
+	sue: 54
+	sue : 32
+	sues: 17
+	suff: 22
+	sum: 59
+	sume: 32
+	summ: 14
+	sump: 7
+	sun: 2
+	sup: 90
+	supp: 79
+	sur: 105
+	sure: 84
+	swe: 29
+	swed: 10
+	swer: 19
+	t: 20449
+	t : 4435
+	t a: 490
+	t a : 66
+	t ac: 24
+	t ag: 15
+	t an: 164
+	t as: 52
+	t b: 215
+	t be: 145
+	t by: 29
+	t c: 184
+	t ca: 34
+	t co: 108
+	t d: 73
+	t de: 22
+	t ex: 22
+	t fo: 59
+	t g: 15
+	t ge: 2
+	t ha: 74
+	t i: 610
+	t i : 79
+	t if: 17
+	t in: 157
+	t is: 255
+	t it: 91
+	t j: 5
+	t k: 3
+	t mr: 15
+	t mu: 27
+	t no: 44
+	t o: 394
+	t of: 240
+	t on: 95
+	t ou: 34
+	t pr: 68
+	t r: 112
+	t re: 81
+	t s : 24
+	t sh: 25
+	t t: 906
+	t th: 696
+	t to: 159
+	t us: 19
+	t v: 12
+	t w: 348
+	t wa: 34
+	t we: 117
+	t wh: 64
+	t wi: 90
+	t wo: 44
+	t y: 44
+	t ye: 27
+	t yo: 17
+	ta: 1002
+	ta : 24
+	ta s: 2
+	tab: 84
+	tabl: 64
+	tail: 19
+	tain: 64
+	tak: 125
+	take: 101
+	tal : 74
+	talk: 15
+	taly: 8
+	tanc: 56
+	tar : 2
+	tary: 54
+	tas: 8
+	tas : 3
+	tate: 135
+	tati: 74
+	tax: 24
+	tax : 12
+	taxp: 7
+	tco: 10
+	tcom: 10
+	te: 1841
+	te : 345
+	te d: 7
+	te e: 7
+	te p: 7
+	te t: 61
+	te w: 22
+	tect: 37
+	ted: 306
+	ted : 297
+	tedl: 7
+	tee: 78
+	tee : 64
+	tegy: 19
+	tei: 2
+	tel: 68
+	tely: 51
+	ten: 152
+	ten : 32
+	tent: 63
+	tep : 12
+	ter : 152
+	tes: 154
+	tes : 135
+	th: 6261
+	th : 407
+	th a: 47
+	th c: 22
+	th d: 8
+	th e: 12
+	th i: 27
+	th m: 10
+	th o: 19
+	th p: 17
+	th r: 29
+	th s: 19
+	th t: 147
+	th w: 12
+	th y: 7
+	tha: 884
+	than: 71
+	that: 811
+	the: 4090
+	the : 3286
+	thei: 113
+	thel: 15
+	them: 61
+	then: 42
+	ther: 385
+	thes: 88
+	they: 95
+	thi: 615
+	thin: 130
+	thir: 15
+	this: 465
+	tho: 145
+	thor: 37
+	thos: 57
+	thou: 49
+	thr: 68
+	thre: 29
+	thro: 37
+	ths: 14
+	ths : 12
+	thu: 19
+	thus: 10
+	ti: 2512
+	ti : 10
+	tia: 98
+	tial: 44
+	tiat: 49
+	tic: 238
+	tic : 32
+	tica: 91
+	tice: 27
+	ticl: 19
+	tics: 7
+	ticu: 44
+	tie : 2
+	ties: 115
+	tig: 12
+	til: 41
+	til : 5
+	tim: 101
+	time: 74
+	tin: 245
+	ting: 189
+	tio: 1169
+	tion: 1157
+	tiou: 12
+	tish: 14
+	tity: 8
+	tiv: 257
+	tiva: 2
+	tive: 245
+	tiz: 46
+	tize: 46
+	tj: 2
+	tk: 2
+	tl: 133
+	tlem: 29
+	tli: 3
+	tly: 91
+	tly : 91
+	tme: 37
+	tmen: 37
+	tn: 22
+	to: 1845
+	to : 1515
+	to a: 125
+	to b: 132
+	to c: 106
+	to e: 74
+	to f: 46
+	to g: 29
+	to h: 42
+	to i: 73
+	to m: 63
+	to p: 101
+	to r: 78
+	to s: 113
+	to t: 307
+	to w: 27
+	toda: 34
+	toge: 12
+	too: 51
+	too : 37
+	tors: 19
+	tory: 22
+	tot: 10
+	tre: 88
+	tre : 3
+	trea: 51
+	tri: 162
+	trie: 84
+	truc: 41
+	trus: 10
+	try: 68
+	try : 64
+	ts: 635
+	ts : 600
+	ts a: 91
+	ts b: 19
+	ts c: 29
+	ts h: 14
+	ts i: 46
+	ts o: 93
+	ts t: 76
+	ts w: 49
+	tsel: 14
+	tt: 240
+	tta: 14
+	tted: 12
+	ttee: 57
+	tter: 86
+	tti: 24
+	ttl: 12
+	ttle: 12
+	tto: 3
+	tu: 372
+	tu : 2
+	tuat: 30
+	tud: 12
+	tul: 8
+	tuna: 15
+	tuni: 37
+	tur: 179
+	ture: 91
+	tus: 3
+	tuti: 41
+	twe: 56
+	twee: 54
+	two : 25
+	ty: 329
+	ty : 318
+	ty a: 51
+	ty b: 19
+	ty f: 15
+	ty i: 39
+	ty l: 10
+	ty o: 56
+	ty p: 17
+	ty t: 24
+	ty w: 14
+	tí: 2
+	u : 206
+	u a: 29
+	u d: 3
+	u i: 12
+	u k: 7
+	u n: 5
+	u p: 5
+	u pa: 2
+	u s: 22
+	u sh: 8
+	u th: 7
+	u v: 2
+	uag: 8
+	uage: 8
+	ual: 100
+	ual : 46
+	uall: 22
+	uara: 17
+	uat: 42
+	uati: 30
+	ubj: 20
+	ubje: 20
+	ubl: 46
+	ubt: 10
+	uc: 289
+	ucce: 22
+	uce: 39
+	uce : 20
+	uced: 10
+	uch: 90
+	uch : 90
+	ucl: 19
+	ucle: 19
+	uct: 84
+	ucti: 44
+	ucts: 14
+	ud: 118
+	ud : 2
+	uded: 10
+	udg: 41
+	udge: 39
+	udin: 17
+	ue: 287
+	ue : 108
+	ue e: 2
+	ue s: 2
+	ues: 128
+	ues : 52
+	uff: 27
+	ugee: 7
+	ugg: 14
+	ugh: 93
+	ugh : 56
+	ugho: 10
+	ught: 24
+	uh: 2
+	ui: 115
+	ui : 2
+	uild: 14
+	uing: 7
+	uire: 24
+	uj: 2
+	uk: 14
+	ul: 738
+	ul : 30
+	ula: 118
+	ular: 47
+	ulat: 66
+	uld: 358
+	uld : 353
+	ules: 19
+	ully: 24
+	ult: 130
+	ult : 47
+	ults: 7
+	ulu: 2
+	uly : 8
+	um: 186
+	uma : 3
+	uman: 46
+	umb: 30
+	umbe: 29
+	umer: 27
+	umi: 2
+	ummi: 14
+	umpt: 7
+	un : 14
+	una : 2
+	unac: 7
+	unat: 14
+	unc: 123
+	unci: 101
+	unde: 74
+	unds: 19
+	une: 14
+	une : 2
+	unfo: 12
+	ung: 25
+	uni: 262
+	unio: 122
+	unit: 110
+	unl: 8
+	unt: 181
+	untr: 122
+	uo: 15
+	up: 233
+	up : 90
+	up a: 12
+	up i: 12
+	up s: 10
+	up t: 24
+	upon: 12
+	upp: 79
+	uppl: 19
+	uppo: 61
+	ups: 19
+	ups : 17
+	ur: 1286
+	ur : 240
+	ur c: 25
+	ur g: 15
+	ur l: 5
+	ur m: 22
+	ur o: 20
+	ur r: 22
+	ur y: 10
+	urag: 15
+	ural: 59
+	urce: 29
+	ure: 240
+	ure : 147
+	ures: 71
+	urin: 22
+	urit: 24
+	urke: 17
+	urn : 8
+	uro: 383
+	urop: 372
+	urr: 42
+	urre: 37
+	urs: 63
+	urse: 39
+	urt: 47
+	urth: 32
+	us t: 37
+	us w: 14
+	use: 184
+	use : 142
+	usef: 8
+	usin: 29
+	usly: 20
+	ust: 223
+	ust : 159
+	uste: 2
+	ut: 664
+	ut : 368
+	ut a: 51
+	ut f: 12
+	ut h: 12
+	ut i: 59
+	ut o: 32
+	ut t: 96
+	ut w: 25
+	uta: 3
+	utco: 7
+	uth: 46
+	uth : 8
+	utho: 34
+	uti: 108
+	utio: 96
+	uto: 5
+	utur: 39
+	uu: 5
+	ux : 2
+	uz: 2
+	v: 2306
+	va: 149
+	vad: 2
+	vai: 8
+	val: 42
+	vali: 2
+	valu: 30
+	van: 24
+	van : 5
+	var: 24
+	vas: 2
+	vat : 2
+	ve: 1559
+	ve : 704
+	ve a: 120
+	ve b: 46
+	ve c: 19
+	ve h: 19
+	ve i: 42
+	ve m: 27
+	ve n: 20
+	ve o: 34
+	ve p: 25
+	ve r: 30
+	ve s: 41
+	ve t: 150
+	ve w: 14
+	ve y: 12
+	ved : 74
+	vel: 120
+	velo: 56
+	vely: 19
+	veme: 27
+	ven : 63
+	vent: 59
+	ver: 382
+	ver : 125
+	very: 105
+	ves: 86
+	ves : 74
+	vet: 2
+	vi: 429
+	vice: 30
+	vien: 2
+	view: 41
+	vil: 24
+	vinc: 17
+	ving: 56
+	vio: 41
+	viou: 24
+	viro: 46
+	vis: 42
+	vo: 162
+	vo : 5
+	volv: 39
+	vote: 57
+	vour: 24
+	vu: 3
+	vy: 3
+	w: 3355
+	w : 326
+	w a: 30
+	w an: 10
+	w at: 10
+	w be: 10
+	w ca: 10
+	w f: 17
+	w fa: 7
+	w h: 14
+	w i: 27
+	w in: 15
+	w it: 7
+	w m: 35
+	w me: 20
+	w of: 12
+	w t: 66
+	w th: 47
+	w to: 12
+	w wh: 7
+	wa: 306
+	wait: 7
+	want: 32
+	war: 52
+	ward: 35
+	was: 103
+	was : 96
+	way: 68
+	way : 47
+	ways: 20
+	we: 843
+	we : 495
+	we a: 100
+	we c: 37
+	we f: 10
+	we h: 84
+	we m: 39
+	we n: 42
+	we s: 54
+	we t: 14
+	we w: 47
+	wea: 8
+	wed: 24
+	wed : 14
+	wee: 61
+	ween: 54
+	wel: 81
+	welc: 32
+	well: 44
+	wer: 93
+	wer : 42
+	were: 41
+	wev: 68
+	weve: 68
+	wh: 634
+	wha: 95
+	what: 95
+	whe: 106
+	when: 44
+	wher: 35
+	whet: 22
+	whi: 299
+	whic: 280
+	whil: 15
+	who: 100
+	who : 61
+	whol: 27
+	whos: 8
+	why: 34
+	why : 34
+	wi: 644
+	wide: 15
+	wil: 223
+	will: 223
+	win: 29
+	wing: 24
+	wish: 24
+	wit: 341
+	with: 336
+	wl: 15
+	wle: 14
+	wled: 14
+	wn: 78
+	wn : 73
+	wn i: 8
+	wn o: 7
+	wn t: 10
+	wo: 454
+	wo : 25
+	wo y: 8
+	wom: 30
+	wome: 30
+	wor: 216
+	work: 145
+	worl: 37
+	worr: 7
+	wou: 174
+	woul: 174
+	wri: 15
+	writ: 15
+	ws : 19
+	wth: 10
+	wth : 10
+	wy: 3
+	x: 378
+	xa: 49
+	xam: 34
+	xamp: 27
+	xc: 27
+	xp: 112
+	xpa: 10
+	xpay: 7
+	xpe: 41
+	xpec: 19
+	xpen: 8
+	xpl: 24
+	xpla: 15
+	xpre: 22
+	xt: 98
+	xt : 51
+	xt a: 7
+	xt i: 15
+	xte: 29
+	xten: 22
+	y: 2879
+	y : 2336
+	y a: 333
+	y ac: 15
+	y af: 7
+	y ag: 10
+	y an: 142
+	y ar: 30
+	y as: 39
+	y at: 8
+	y b: 101
+	y be: 57
+	y bu: 17
+	y c: 117
+	y ca: 19
+	y cl: 15
+	y co: 64
+	y d: 78
+	y di: 25
+	y e: 68
+	y ex: 17
+	y f: 74
+	y fo: 34
+	y fr: 19
+	y g: 41
+	y gr: 12
+	y h: 56
+	y ha: 32
+	y i: 238
+	y i : 30
+	y im: 25
+	y in: 98
+	y is: 37
+	y it: 32
+	y l: 42
+	y li: 15
+	y m: 81
+	y mr: 19
+	y no: 19
+	y o: 169
+	y of: 98
+	y on: 32
+	y ou: 17
+	y p: 123
+	y pe: 17
+	y pl: 12
+	y r: 71
+	y re: 51
+	y ri: 10
+	y s: 127
+	y sh: 8
+	y su: 30
+	y t: 348
+	y th: 240
+	y to: 83
+	y un: 19
+	y vi: 15
+	y w: 160
+	y we: 46
+	y wh: 39
+	y wi: 54
+	y wo: 12
+	ya: 3
+	yb: 3
+	yc: 2
+	ych: 2
+	yd: 3
+	ye: 140
+	yea: 71
+	year: 71
+	yed : 7
+	yer: 20
+	yers: 15
+	yet : 24
+	yin: 37
+	ying: 37
+	ym: 32
+	yme: 32
+	ymen: 32
+	yo: 188
+	yond: 8
+	yone: 12
+	you: 164
+	you : 118
+	youn: 17
+	your: 25
+	yr: 7
+	ys : 44
+	ys a: 12
+	yt: 12
+	yth: 12
+	ythi: 12
+	z: 101
+	z : 7
+	za: 17
+	za : 2
+	ze: 59
+	ze : 10
+	zens: 39
+	zi: 5
+	zl: 2
+	zn: 2
+	zna: 2
+	zo: 5
+	zon: 2
+	zá: 2
+	à: 2
+	à : 2
+	á: 3
+	ál: 2
+	ä: 2
+	än: 2
+	änd: 2
+	é: 12
+	é : 3
+	én: 3
+	í: 2
+	ö: 5
+	ön: 2
+	ör: 2
+	öt: 2
+	ü: 5
+	ń: 2

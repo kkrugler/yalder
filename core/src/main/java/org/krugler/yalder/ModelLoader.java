@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,16 +23,21 @@ public class ModelLoader {
     }
     
     public static Collection<BaseLanguageModel> loadModelsFromResources() throws IOException {
-        Set<LanguageLocale> languages = new HashSet<>();
-        for (LanguageLocale lang : CoreModels.CORE_LANGUAGES) {
-            languages.add(lang);
-        }
         
         // TODO use reflection to see if yalder-extras jar is on classpath, add those languages
         
-        return loadModelsFromResources(languages);
+        return loadModelsFromResources(makeLanguageSet(CoreModels.CORE_LANGUAGES));
     }
     
+    public static Set<LanguageLocale> makeLanguageSet(List<LanguageLocale> languages) {
+        Set<LanguageLocale> result = new HashSet<>();
+        for (LanguageLocale language : languages) {
+            result.add(language);
+        }
+        
+        return result;
+    }
+
     public static Collection<BaseLanguageModel> loadModelsFromResources(Set<LanguageLocale> languages) throws IOException {
         Set<BaseLanguageModel> result = new HashSet<>();
         for (LanguageLocale lang : languages) {

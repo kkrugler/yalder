@@ -12,6 +12,7 @@ public class TextTokenizer extends BaseTokenizer {
 
     public TextTokenizer(char[] buffer, int offset, int length, int maxNGramLength) {
         super(maxNGramLength);
+        
         addText(buffer, offset, length);
         complete();
     }

@@ -20,12 +20,16 @@ import java.util.Random;
 import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.krugler.yalder.BaseLanguageDetector;
 import org.krugler.yalder.BaseLanguageModel;
+import org.krugler.yalder.CoreModels;
 import org.krugler.yalder.DetectionResult;
 import org.krugler.yalder.EuroParlUtils;
+import org.krugler.yalder.ExtraModels;
 import org.krugler.yalder.IntCounter;
 import org.krugler.yalder.LanguageLocale;
 import org.krugler.yalder.ModelBuilder;
@@ -37,7 +41,27 @@ import org.slf4j.LoggerFactory;
 public class HashLanguageDetectorTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(HashLanguageDetectorTest.class);
 
-    // TODO set up detector we can use in multiple tests with @before
+    private HashLanguageDetector _detector;
+    
+    @Before
+    public void setUp() throws IOException {
+        File modelDir = new File("src/main/resources/org/krugler/yalder/models/");
+        Collection<BaseLanguageModel> models = ModelLoader.loadModelsFromDirectory(modelDir, true);
+        _detector = new HashLanguageDetector(models);
+    }
+    
+    // TODO re-enable test
+    @Ignore
+    @Test
+    public void testTikaShortSnippets() throws Exception {
+        String chinese = "太初，道已經存在，道與上帝同在，道就是上帝。 2 太初，道就與上帝同在。 3 萬物都是藉著祂造的[a]，受造之物沒有一樣不是藉著祂造的。 4 祂裡面有生命，這生命是人類的光。 5 光照進黑暗裡，黑暗不能勝過[b]光。";
+        _detector.reset();
+        _detector.addText(chinese);
+        Collection<DetectionResult> result = _detector.detect();
+        Assert.assertTrue(result.size() > 0);
+        DetectionResult dr = result.iterator().next();
+        Assert.assertEquals(LanguageLocale.fromString("zh-CN"), dr.getLanguage());
+    }
     
     @Test
     public void testApriorProbabilities() throws Exception {
@@ -58,15 +82,12 @@ public class HashLanguageDetectorTest {
         String cebuano = "Ang tanang katawhan gipakatawo nga may kagawasan ug managsama sa kabililhon. Sila gigasahan "
                         + " sa salabutan ug tanlag og mag-ilhanay isip managsoon sa usa'g-usa diha sa diwa sa ospiritu.";
         
-        File modelDir = new File("src/main/resources/org/krugler/yalder/models/");
-        Collection<BaseLanguageModel> models = ModelLoader.loadModelsFromDirectory(modelDir, true);
-        BaseLanguageDetector detector = new HashLanguageDetector(models)
-                        .setRenormalizeInterval(1);
+        _detector.setRenormalizeInterval(1);
         // detector.setDampening(detector.getDampening() * 10.0);
         // detector.setAlpha(detector.getAlpha() * 10.0);
         
-        detector.addText(dzongkha);
-        Collection<DetectionResult> results = detector.detect();
+        _detector.addText(dzongkha);
+        Collection<DetectionResult> results = _detector.detect();
         for (DetectionResult result : results) {
             System.out.println(result);
         }
@@ -348,6 +369,24 @@ public class HashLanguageDetectorTest {
         return missRatio;
     }
 
+    // TODO re-enable
+    @Ignore
+    @Test
+    public void testChineseWithSpaces() throws Exception {
+        File modelDir = new File("src/main/resources/org/krugler/yalder/models/core/");
+        Collection<BaseLanguageModel> models = ModelLoader.loadModelsFromDirectory(modelDir, true);
+        HashLanguageDetector detector = new HashLanguageDetector(models);
+        detector.reset();
+        detector.addText("下 载 mac 清 理 工 具");
+        Collection<DetectionResult> results = detector.detect();
+        
+        assertTrue(results.size() > 0);
+        
+        DetectionResult topResult = results.iterator().next();
+        assertEquals("zho", topResult.getLanguage().getISO3LetterName());
+        assertTrue(topResult.getScore() > 0.8);
+    }
+    
     @Ignore
     @Test
     public void testShortJapanese() throws Exception {
@@ -363,6 +402,70 @@ public class HashLanguageDetectorTest {
         DetectionResult topResult = results.iterator().next();
         assertEquals("jpn", topResult.getLanguage().getISO3LetterName());
         assertTrue(topResult.getScore() > 0.8);
+    }
+    
+    private static class LangDistanceResult implements Comparable<LangDistanceResult> {
+        private LanguageLocale _l1;
+        private LanguageLocale _l2;
+        private double _distance;
+        
+        public LangDistanceResult(LanguageLocale l1, LanguageLocale l2, double distance) {
+            _l1 = l1;
+            _l2 = l2;
+            _distance = distance;
+        }
+
+        public LanguageLocale getL1() {
+            return _l1;
+        }
+
+        public LanguageLocale getL2() {
+            return _l2;
+        }
+
+        public double getDistance() {
+            return _distance;
+        }
+
+        @Override
+        public int compareTo(LangDistanceResult o) {
+            if (_distance > o._distance) {
+                return -1;
+            } else if (_distance < o._distance) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+    }
+    
+    @Test
+    public void testCloseLanguages() throws Exception {
+        List<LanguageLocale> languages = ExtraModels.EXTRA_LANGUAGES;
+        languages.addAll(CoreModels.CORE_LANGUAGES);
+        Collection<BaseLanguageModel> models = loadModels(languages);
+        HashLanguageDetector detector = new HashLanguageDetector(models);
+
+        List<LangDistanceResult> results = new ArrayList<>();
+        for (int i = 0; i < languages.size(); i++) {
+            LanguageLocale ll1 = languages.get(i);
+            for (int j = i + 1; j < languages.size(); j++) {
+                LanguageLocale ll2 = languages.get(j);
+                double distance = detector.calcDistance(ll1, ll2);
+                results.add(new LangDistanceResult(ll1, ll2, distance));
+            }
+        }
+        
+        Collections.sort(results);
+        
+        for (LangDistanceResult result : results) {
+            double distance = result.getDistance();
+            if (distance < 0.04) {
+                break;
+            }
+            
+            System.out.format("%s to %s: %f\n", result.getL1(), result.getL2(), distance);
+        }
     }
     
     // With default alpha, results are OK (error rate of 0.13%) until
@@ -445,10 +548,17 @@ public class HashLanguageDetectorTest {
     }
 
     private Collection<BaseLanguageModel> loadModels(String[] targetLanguages) throws IOException {
+        List<LanguageLocale> languages = new ArrayList<>(targetLanguages.length);
+        for (String language : targetLanguages) {
+            languages.add(LanguageLocale.fromString(language));
+        }
+        
+        return loadModels(languages);
+    }
+    
+    private Collection<BaseLanguageModel> loadModels(List<LanguageLocale> targetLanguages) throws IOException {
         Collection<BaseLanguageModel> result = new ArrayList<>();
-        for (String languageTag : targetLanguages) {
-            LanguageLocale ll = LanguageLocale.fromString(languageTag);
-            
+        for (LanguageLocale ll : targetLanguages) {
             HashLanguageModel model = new HashLanguageModel();
             String modelName = String.format("/org/krugler/yalder/models/core/yalder_model_%s.bin", ll.getName());
             InputStream is = HashLanguageDetectorTest.class.getResourceAsStream(modelName);
