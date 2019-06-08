@@ -175,7 +175,8 @@ public class ModelBuilder {
         List<BaseLanguageModel> models = new ArrayList<>();
         for (LanguageLocale language : languages) {
             Map<String, Integer> ngramCounts = _perLangTextCounts.get(language);
-            TextLanguageModel model = new TextLanguageModel(language, _maxNGramLength, ngramCounts);
+            Integer alpha = ngramCounts.remove("");
+            TextLanguageModel model = new TextLanguageModel(language, _maxNGramLength, alpha, ngramCounts);
             models.add(model);
         }
 
@@ -230,7 +231,10 @@ public class ModelBuilder {
         
         List<BaseLanguageModel> models = new ArrayList<>();
         for (LanguageLocale language : languages) {
-            BaseLanguageModel model = new HashLanguageModel(language, _maxNGramLength, _perLangHashCounts.get(language));
+            IntIntMap ngramMap = _perLangHashCounts.get(language);
+            // TODO figure out real alpha to pass. We can't store it in the IntIntMap, as it's
+            // not something we can remove.
+            BaseLanguageModel model = new HashLanguageModel(language, _maxNGramLength, 1, ngramMap);
             models.add(model);
         }
 

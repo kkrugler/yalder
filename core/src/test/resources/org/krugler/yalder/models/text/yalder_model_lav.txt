@@ -1,0 +1,5792 @@
+version: 2
+language: lav
+max ngram length: 4
+alpha: 342
+ngrams:
+	 : 35292
+	 a : 5
+	 a p: 2
+	 ac: 7
+	 af: 7
+	 ai: 178
+	 aic: 40
+	 aiz: 133
+	 akt: 65
+	 al: 22
+	 all: 2
+	 am: 16
+	 an: 31
+	 and: 4
+	 ap: 311
+	 apd: 15
+	 apg: 18
+	 apj: 18
+	 apk: 22
+	 apm: 35
+	 aps: 85
+	 apv: 16
+	 apz: 11
+	 apņ: 15
+	 ar: 669
+	 ar : 356
+	 arī: 294
+	 as: 51
+	 asv: 16
+	 at: 702
+	 atb: 160
+	 atc: 20
+	 atg: 18
+	 atj: 22
+	 atk: 60
+	 atr: 31
+	 att: 233
+	 atz: 44
+	 atļ: 11
+	 atš: 16
+	 aug: 45
+	 av: 24
+	 az: 5
+	 aģ: 11
+	 aģe: 11
+	 bal: 96
+	 be: 167
+	 bet: 115
+	 bij: 76
+	 bo: 9
+	 brī: 58
+	 bē: 44
+	 bēg: 11
+	 bēr: 29
+	 bū: 225
+	 būs: 62
+	 būt: 164
+	 c: 514
+	 ca: 5
+	 car: 2
+	 ceļ: 22
+	 ch: 2
+	 ci: 320
+	 cie: 56
+	 cik: 33
+	 cil: 122
+	 cit: 89
+	 co: 16
+	 com: 2
+	 cu: 7
+	 cī: 20
+	 cīņ: 11
+	 d: 1372
+	 da: 613
+	 dal: 127
+	 dar: 202
+	 dau: 107
+	 daļ: 51
+	 daž: 80
+	 de: 227
+	 de : 27
+	 del: 7
+	 den: 2
+	 des: 5
+	 di: 184
+	 die: 47
+	 div: 44
+	 do: 100
+	 dro: 62
+	 drī: 11
+	 du: 7
+	 dz: 80
+	 dzī: 55
+	 dā: 42
+	 dām: 22
+	 dār: 16
+	 dē: 29
+	 dēļ: 29
+	 e: 1363
+	 e : 2
+	 ee: 2
+	 ei: 451
+	 eir: 447
+	 ek: 111
+	 eko: 84
+	 el: 15
+	 el : 4
+	 en: 44
+	 er: 7
+	 es: 633
+	 es : 514
+	 esa: 60
+	 esm: 40
+	 et: 7
+	 eu: 25
+	 eur: 25
+	 ev: 4
+	 evr: 2
+	 f: 207
+	 fa: 36
+	 fo: 42
+	 for: 18
+	 fr: 24
+	 g: 776
+	 ga: 482
+	 gad: 236
+	 gai: 40
+	 gan: 89
+	 gat: 25
+	 ge: 5
+	 gr: 187
+	 gri: 53
+	 grū: 18
+	 gā: 20
+	 gāz: 15
+	 gū: 15
+	 h: 56
+	 ha: 22
+	 he: 9
+	 hi: 4
+	 ho: 9
+	 i: 2747
+	 i : 2
+	 ie: 740
+	 ieb: 11
+	 ied: 53
+	 ieg: 49
+	 iek: 53
+	 iem: 31
+	 ien: 13
+	 iep: 42
+	 ier: 82
+	 ies: 220
+	 iet: 91
+	 iev: 67
+	 ilg: 55
+	 im: 24
+	 imp: 5
+	 in: 195
+	 in : 2
+	 ir: 1122
+	 ir : 1100
+	 irā: 20
+	 itā: 11
+	 iz: 529
+	 iza: 20
+	 izd: 55
+	 izm: 120
+	 izn: 15
+	 izp: 31
+	 izr: 42
+	 izs: 53
+	 izt: 36
+	 izv: 80
+	 j: 1185
+	 ja: 433
+	 jau: 322
+	 je: 25
+	 jeb: 20
+	 jo: 224
+	 jo : 116
+	 jom: 75
+	 jop: 29
+	 jum: 31
+	 jā: 324
+	 jāa: 38
+	 jāb: 36
+	 jād: 16
+	 jāi: 40
+	 jām: 11
+	 jān: 22
+	 jāp: 40
+	 jār: 13
+	 jās: 29
+	 jāu: 22
+	 jāv: 11
+	 jē: 13
+	 jū: 100
+	 jūs: 75
+	 k: 3110
+	 ka: 1187
+	 ka : 584
+	 kam: 36
+	 kan: 5
+	 kas: 376
+	 ki: 9
+	 ko: 787
+	 ko : 127
+	 kom: 311
+	 kon: 156
+	 kop: 116
+	 krā: 15
+	 krī: 35
+	 ku: 545
+	 kun: 229
+	 kur: 287
+	 kā: 362
+	 kā : 251
+	 kād: 56
+	 kāp: 20
+	 kār: 35
+	 kļ: 29
+	 kļū: 22
+	 l : 2
+	 lab: 105
+	 lai: 362
+	 lau: 40
+	 le: 13
+	 li: 320
+	 lie: 209
+	 lik: 55
+	 lo: 38
+	 lom: 18
+	 lu: 5
+	 lē: 33
+	 lēm: 31
+	 lī: 260
+	 līd: 145
+	 līg: 65
+	 līm: 44
+	 lū: 22
+	 lūd: 13
+	 man: 156
+	 maz: 75
+	 me: 73
+	 med: 5
+	 mež: 16
+	 mi: 145
+	 mo: 25
+	 mu: 244
+	 mum: 214
+	 mā: 29
+	 māj: 13
+	 mē: 431
+	 mēn: 20
+	 mēr: 65
+	 mēs: 329
+	 mēģ: 16
+	 mū: 165
+	 mūs: 158
+	 n: 2132
+	 na: 196
+	 nav: 142
+	 ne: 773
+	 nea: 51
+	 ned: 56
+	 nek: 89
+	 nep: 109
+	 nev: 129
+	 ni: 7
+	 no: 1027
+	 no : 267
+	 nod: 147
+	 nol: 38
+	 nop: 36
+	 not: 151
+	 nov: 84
+	 noz: 116
+	 nu: 13
+	 nā: 76
+	 nāk: 64
+	 nē: 13
+	 nē : 13
+	 o: 113
+	 ob: 9
+	 of: 9
+	 og: 5
+	 ol: 4
+	 op: 15
+	 os: 5
+	 p: 4439
+	 pa: 1916
+	 pad: 104
+	 pak: 64
+	 pal: 111
+	 pam: 85
+	 pap: 38
+	 par: 845
+	 pas: 131
+	 pat: 229
+	 pau: 24
+	 paz: 36
+	 paš: 98
+	 pe: 95
+	 pen: 2
+	 pi: 842
+	 pie: 585
+	 pil: 171
+	 pir: 78
+	 plā: 35
+	 po: 211
+	 pos: 7
+	 pou: 2
+	 pri: 304
+	 pus: 29
+	 pā: 329
+	 pār: 329
+	 pē: 93
+	 pēc: 44
+	 pēd: 33
+	 pēt: 13
+	 rad: 73
+	 rak: 42
+	 raž: 49
+	 res: 15
+	 rez: 60
+	 reā: 11
+	 reģ: 91
+	 run: 58
+	 rī: 76
+	 rīc: 35
+	 rīk: 31
+	 rū: 33
+	 rūp: 33
+	 s: 2172
+	 s : 2
+	 sa: 954
+	 sab: 55
+	 sad: 45
+	 sag: 51
+	 sai: 87
+	 sak: 38
+	 sap: 49
+	 sar: 44
+	 sas: 120
+	 sat: 36
+	 sav: 289
+	 saņ: 22
+	 sc: 2
+	 se: 111
+	 sel: 2
+	 si: 160
+	 ska: 93
+	 sli: 18
+	 sn: 44
+	 sni: 44
+	 so: 91
+	 som: 4
+	 spā: 15
+	 spē: 65
+	 stā: 25
+	 su: 15
+	 sva: 95
+	 sā: 29
+	 sāk: 20
+	 t: 2401
+	 ta: 445
+	 tad: 44
+	 taj: 27
+	 tas: 211
+	 tau: 22
+	 tač: 40
+	 te: 169
+	 th: 2
+	 ti: 663
+	 tie: 300
+	 tik: 227
+	 tir: 120
+	 to : 245
+	 tom: 85
+	 tos: 24
+	 trī: 11
+	 trū: 18
+	 tur: 96
+	 tā: 464
+	 tā : 153
+	 tād: 144
+	 tāl: 16
+	 tām: 16
+	 tāp: 71
+	 tās: 62
+	 tē: 13
+	 tī: 27
+	 tīr: 16
+	 tū: 20
+	 u: 2020
+	 un: 1303
+	 un : 1289
+	 uni: 7
+	 us: 4
+	 uz: 691
+	 uz : 340
+	 uzl: 44
+	 uzm: 38
+	 uzr: 15
+	 uzs: 122
+	 uzt: 31
+	 uzņ: 62
+	 v: 2407
+	 va: 878
+	 vai: 242
+	 vaj: 56
+	 val: 318
+	 van: 5
+	 var: 227
+	 vei: 151
+	 ver: 4
+	 ves: 38
+	 vi: 807
+	 vid: 58
+	 vie: 316
+	 vir: 42
+	 vis: 258
+	 viņ: 116
+	 vo: 4
+	 vā: 56
+	 vār: 40
+	 vē: 389
+	 vēl: 273
+	 vēr: 96
+	 vī: 25
+	 vīr: 11
+	 w: 5
+	 we: 2
+	 wo: 2
+	 y: 2
+	 z: 269
+	 za: 16
+	 zi: 204
+	 zin: 65
+	 ziņ: 113
+	 ā: 80
+	 ār: 47
+	 ārk: 11
+	 ārē: 11
+	 āt: 18
+	 ātr: 18
+	 ē: 13
+	 ģ: 24
+	 ģe: 18
+	 ģen: 13
+	 ī: 185
+	 īp: 85
+	 īpa: 85
+	 īr: 16
+	 īri: 16
+	 īs: 84
+	 īst: 76
+	 ķ: 25
+	 ķī: 22
+	 ķīn: 20
+	 ļ: 145
+	 ļa: 35
+	 ļau: 35
+	 ļo: 107
+	 ļot: 107
+	 ņ: 45
+	 ņe: 35
+	 ņem: 35
+	 ņē: 11
+	 ņēm: 11
+	 š: 723
+	 ša: 115
+	 šaj: 95
+	 šau: 13
+	 šei: 24
+	 ši: 105
+	 šie: 38
+	 šim: 20
+	 šis: 47
+	 šo: 233
+	 šo : 155
+	 šob: 13
+	 šod: 36
+	 šos: 13
+	 šā: 84
+	 šā : 13
+	 šād: 71
+	 šī: 122
+	 šī : 58
+	 šīs: 56
+	 šķ: 31
+	 šķi: 24
+	 ž: 16
+	 žē: 13
+	 žēl: 13
+	a: 22817
+	a bū: 20
+	a c: 42
+	a co: 2
+	a d: 118
+	a de: 31
+	a e: 107
+	a ei: 67
+	a f: 24
+	a ga: 40
+	a h: 5
+	a i: 282
+	a ie: 80
+	a ir: 124
+	a iz: 53
+	a jū: 20
+	a k: 364
+	a ka: 100
+	a ku: 120
+	a kā: 31
+	a lī: 22
+	a mē: 69
+	a no: 105
+	a o: 13
+	a pa: 175
+	a pi: 82
+	a po: 20
+	a pā: 44
+	a s: 173
+	a sa: 78
+	a se: 9
+	a so: 2
+	a ti: 76
+	a tā: 55
+	a un: 122
+	a uz: 42
+	a vi: 76
+	a vē: 25
+	a zi: 20
+	a ī: 22
+	a īs: 11
+	a ļ: 15
+	a ļo: 11
+	a ņ: 11
+	a š: 78
+	a šo: 15
+	a šā: 13
+	a šī: 24
+	aa: 15
+	aau: 13
+	abas: 20
+	abi: 115
+	abi : 25
+	abie: 56
+	aboj: 18
+	abā: 53
+	abāk: 24
+	abāt: 11
+	ac: 56
+	ace: 5
+	ach: 2
+	aci: 25
+	act: 2
+	acī: 18
+	acīj: 15
+	adar: 51
+	ade: 15
+	ade : 2
+	ado : 2
+	adom: 95
+	adz: 78
+	adzē: 24
+	adzī: 51
+	adā: 25
+	adā : 18
+	adī: 111
+	adīj: 67
+	adīt: 35
+	af: 27
+	ag: 135
+	agad: 29
+	agat: 24
+	agla: 20
+	agā: 24
+	agāj: 20
+	ah: 4
+	ai: 1943
+	ai : 858
+	ai a: 67
+	ai i: 85
+	ai j: 27
+	ai k: 60
+	ai n: 76
+	ai p: 116
+	ai t: 49
+	ai u: 49
+	ai v: 58
+	aic: 58
+	aici: 47
+	aid: 107
+	aidr: 58
+	aidā: 13
+	aidī: 20
+	aik: 122
+	aik : 20
+	aiks: 16
+	aikā: 45
+	aim: 60
+	aimi: 15
+	aimn: 38
+	ainī: 18
+	air: 111
+	airā: 87
+	ais: 316
+	ais : 140
+	aisn: 22
+	aist: 116
+	aisī: 15
+	aitā: 13
+	aitī: 15
+	aiz: 149
+	aizl: 16
+	aizs: 76
+	aizv: 18
+	aiņ: 29
+	aiņa: 13
+	aiņu: 15
+	aj: 513
+	aja: 129
+	ajad: 62
+	ajai: 36
+	ajam: 27
+	aji: 89
+	ajie: 89
+	ajā: 278
+	ajā : 182
+	ajām: 55
+	ajās: 40
+	aka: 85
+	akal: 31
+	ako: 7
+	aks: 109
+	akst: 58
+	aksā: 29
+	akt: 120
+	aktu: 44
+	aktī: 22
+	akā: 20
+	al : 7
+	ala: 9
+	ald: 95
+	aldi: 18
+	aldī: 58
+	ale: 13
+	ali: 104
+	ali : 4
+	all: 4
+	alod: 15
+	alp: 36
+	alpo: 36
+	als: 536
+	also: 67
+	alst: 460
+	altk: 15
+	alv: 47
+	alve: 38
+	alā: 18
+	alī: 224
+	alīb: 125
+	alīd: 75
+	am: 1227
+	am : 533
+	am i: 64
+	am k: 49
+	am l: 22
+	am p: 93
+	am u: 24
+	ama: 204
+	amaj: 22
+	amat: 82
+	amaz: 42
+	amie: 42
+	ams: 80
+	ams : 80
+	amā: 16
+	amī: 20
+	amīb: 20
+	an: 1431
+	an : 155
+	ana: 324
+	ana : 105
+	anai: 58
+	anas: 145
+	and: 42
+	ande: 2
+	ane: 2
+	ang: 9
+	ani: 58
+	anie: 2
+	ann: 4
+	ansē: 29
+	ante: 4
+	anto: 95
+	antē: 11
+	anu: 225
+	anu : 191
+	anup: 29
+	anā: 195
+	anā : 51
+	anāk: 60
+	anām: 11
+	anās: 67
+	anī: 42
+	anīb: 33
+	anš: 33
+	anšu: 33
+	ap: 449
+	apd: 15
+	apdr: 15
+	apg: 22
+	apil: 22
+	apjo: 18
+	apk: 22
+	apka: 16
+	apm: 35
+	apmi: 16
+	aprā: 13
+	aprū: 15
+	aps: 98
+	apsp: 42
+	apst: 35
+	apsv: 16
+	apvi: 15
+	apz: 15
+	apzi: 15
+	apņ: 16
+	ar: 2861
+	ar : 992
+	ar k: 85
+	ar n: 60
+	ar p: 107
+	ar s: 71
+	ar t: 120
+	ar v: 60
+	ar š: 60
+	aram: 60
+	aras: 35
+	arb: 249
+	arba: 71
+	arbs: 15
+	arbī: 80
+	ardz: 56
+	are: 109
+	are : 2
+	ared: 31
+	arei: 49
+	argā: 25
+	arot: 20
+	arp: 125
+	arp : 56
+	arpt: 40
+	arpē: 11
+	aru: 67
+	aru : 45
+	arā: 49
+	arād: 27
+	arē: 111
+	arēs: 15
+	arēt: 80
+	arī: 505
+	arī : 294
+	arīb: 22
+	arīg: 109
+	arīj: 25
+	arīt: 45
+	as: 3845
+	as : 3368
+	as a: 227
+	as b: 84
+	as d: 160
+	as g: 53
+	as i: 311
+	as j: 93
+	as k: 211
+	as l: 135
+	as n: 213
+	as p: 516
+	as r: 102
+	as s: 300
+	as t: 116
+	as u: 224
+	as v: 229
+	as ā: 11
+	as ī: 15
+	asau: 42
+	ase: 4
+	asi: 7
+	ask: 78
+	aska: 75
+	asni: 36
+	ass: 2
+	astā: 25
+	asv : 16
+	asā: 58
+	asāk: 55
+	asī: 49
+	asīb: 16
+	asīj: 15
+	asīt: 13
+	at: 1714
+	at : 73
+	at d: 2
+	atav: 49
+	atb: 185
+	atba: 67
+	atbi: 105
+	atbr: 13
+	atc: 24
+	atce: 24
+	ate: 96
+	atei: 56
+	atg: 20
+	atgr: 11
+	ati: 111
+	atie: 73
+	ativ: 2
+	atja: 22
+	atk: 67
+	atkl: 18
+	atkā: 20
+	ato : 2
+	atoj: 15
+	atr: 78
+	atti: 196
+	attī: 35
+	atu : 87
+	atv: 44
+	atvē: 22
+	atz: 53
+	atzi: 31
+	atzī: 20
+	atā: 27
+	atā : 11
+	atām: 13
+	atē: 113
+	atēr: 45
+	atēģ: 42
+	atī: 113
+	atīt: 16
+	atīv: 60
+	atīš: 16
+	atļ: 11
+	atļa: 11
+	atš: 18
+	atšķ: 16
+	au: 1131
+	aubā: 16
+	aud: 204
+	audz: 138
+	audē: 15
+	aug: 95
+	augs: 69
+	auj : 11
+	auk: 76
+	auks: 33
+	auku: 13
+	aul: 58
+	aule: 22
+	aulē: 18
+	aun: 133
+	auna: 36
+	auni: 16
+	auno: 35
+	aunu: 18
+	aunā: 18
+	aust: 55
+	aut: 311
+	aut : 35
+	auti: 55
+	autā: 149
+	av : 144
+	av p: 35
+	ave: 7
+	avi: 196
+	avie: 169
+	aviā: 15
+	avoš: 15
+	avu: 62
+	avu : 44
+	avā: 31
+	avā : 15
+	avē: 24
+	az : 20
+	azin: 44
+	aziņ: 29
+	azā: 44
+	azāk: 35
+	azī: 15
+	aču: 40
+	aču : 40
+	aē: 11
+	aēl: 11
+	aģ: 24
+	aģe: 11
+	aģen: 11
+	aģē: 11
+	aļ: 84
+	aļa: 33
+	aļa : 22
+	aļu: 24
+	aļu : 22
+	aņ: 82
+	aņe: 24
+	aņem: 24
+	aņo: 24
+	aņot: 18
+	aņā: 22
+	aņā : 22
+	aš: 233
+	aši: 85
+	aši : 64
+	ašin: 13
+	ašl: 20
+	ašla: 20
+	ašr: 27
+	ašre: 27
+	ašu: 27
+	ašum: 13
+	ašī: 15
+	ašīn: 13
+	až: 147
+	ažas: 13
+	ažie: 25
+	ažo: 55
+	ažoj: 13
+	ažot: 22
+	ažoš: 16
+	ažā: 27
+	ažād: 22
+	b: 3910
+	b : 13
+	ba: 1192
+	ba : 260
+	ba i: 44
+	ba k: 40
+	ba u: 22
+	badz: 13
+	bai: 53
+	bai : 45
+	bal: 182
+	bals: 149
+	bas: 540
+	bas : 536
+	batē: 18
+	be: 289
+	be : 5
+	beig: 38
+	ber: 20
+	bes: 2
+	bet : 115
+	bež: 56
+	bežo: 27
+	bežu: 15
+	bied: 53
+	biež: 15
+	bij: 98
+	bija: 65
+	biju: 24
+	bild: 76
+	bils: 45
+	binā: 24
+	bkur: 13
+	ble: 4
+	blē: 67
+	blēm: 65
+	bona: 25
+	bre: 4
+	brī: 98
+	brī : 11
+	brīd: 31
+	brīv: 45
+	bu: 553
+	bu : 474
+	bu a: 76
+	bu e: 16
+	bu i: 25
+	bu k: 24
+	bu l: 13
+	bu n: 25
+	bu p: 42
+	bu s: 24
+	bu t: 16
+	bu u: 62
+	bu v: 27
+	budž: 38
+	bv: 115
+	bva: 107
+	bval: 107
+	bā: 411
+	bā : 256
+	bā a: 55
+	bā p: 11
+	bā u: 102
+	bāk: 24
+	bāl: 11
+	bām: 71
+	bām : 65
+	bās: 16
+	bās : 15
+	bāt: 11
+	bāt : 11
+	bē: 67
+	bēg: 11
+	bēgļ: 11
+	bēr: 31
+	bērn: 29
+	bēt: 20
+	bētu: 18
+	bī: 91
+	bīb: 80
+	bība: 55
+	bību: 15
+	bībā: 11
+	bū: 305
+	būs: 80
+	būs : 78
+	būt: 224
+	būt : 85
+	būti: 42
+	būtu: 85
+	c: 2232
+	ca: 87
+	car: 2
+	cc: 5
+	ce: 307
+	ce : 4
+	cedū: 20
+	cek: 13
+	cenš: 11
+	ceru: 25
+	ceļ: 35
+	ceļu: 11
+	ch: 11
+	cha: 2
+	che: 7
+	che : 2
+	ci: 1085
+	cia: 22
+	cia : 2
+	ciet: 31
+	cieš: 65
+	cij: 333
+	cija: 171
+	ciju: 107
+	cijā: 53
+	cik: 33
+	cik : 29
+	cil: 127
+	cilv: 124
+	cin: 147
+	cina: 22
+	cinu: 13
+	cinā: 96
+	cit: 89
+	citā: 27
+	ciā: 80
+	ciāl: 76
+	ck: 5
+	cl: 4
+	co: 55
+	com: 2
+	con: 2
+	cor: 2
+	cr: 2
+	ct: 2
+	cu: 36
+	cā: 29
+	cē: 29
+	cī: 420
+	cīb: 291
+	cība: 116
+	cību: 58
+	cībā: 116
+	cīg: 69
+	cīga: 18
+	cīgi: 18
+	cīgs: 11
+	cīgā: 15
+	cīj: 15
+	cīju: 13
+	cīn: 16
+	cīnā: 13
+	cīņ: 11
+	d: 5542
+	d : 200
+	d a: 4
+	d d: 7
+	d e: 9
+	d s: 4
+	dad: 2
+	dal: 147
+	dalī: 138
+	dar: 360
+	darb: 240
+	darī: 78
+	dau: 111
+	daud: 111
+	daļ: 56
+	daļa: 31
+	daļu: 20
+	daž: 80
+	daži: 25
+	dažā: 27
+	de: 480
+	de : 62
+	de d: 2
+	de m: 2
+	de s: 2
+	de t: 2
+	de v: 5
+	degv: 18
+	del: 7
+	den: 60
+	der: 20
+	der : 2
+	des: 73
+	devu: 18
+	di: 502
+	diem: 60
+	dien: 105
+	dinā: 25
+	divu: 16
+	dn: 9
+	dni: 5
+	do: 425
+	do : 16
+	dod : 11
+	dok: 73
+	dokl: 18
+	dokļ: 29
+	dom: 145
+	dome: 71
+	domā: 44
+	dot : 42
+	doš: 31
+	doša: 25
+	dp: 2
+	dr: 358
+	drau: 24
+	dri : 15
+	dris: 16
+	dro: 180
+	droš: 158
+	drs : 11
+	drī: 85
+	drīb: 40
+	drīk: 20
+	drīz: 25
+	du : 158
+	du i: 22
+	dus : 51
+	dusj: 18
+	dv: 2
+	dz: 960
+	dz : 156
+	dz a: 18
+	dz g: 16
+	dz p: 16
+	dz s: 11
+	dz t: 16
+	dz v: 15
+	dz š: 13
+	dza: 58
+	dzam: 36
+	dze: 105
+	dze : 42
+	dzek: 38
+	dzes: 18
+	dzn: 44
+	dzni: 44
+	dzot: 22
+	dzs: 27
+	dzsv: 22
+	dzu: 24
+	dzu : 13
+	dzā: 13
+	dzās: 11
+	dzē: 98
+	dzēj: 11
+	dzēt: 76
+	dzī: 298
+	dzīb: 98
+	dzīg: 82
+	dzīv: 109
+	dá: 2
+	dā: 269
+	dā : 95
+	dā v: 15
+	dāj: 27
+	dāju: 11
+	dām: 56
+	dām : 31
+	dāma: 24
+	dār: 16
+	dārg: 15
+	dās: 20
+	dās : 18
+	dāt: 20
+	dāt : 11
+	dāv: 24
+	dāvā: 22
+	dē: 391
+	dē : 13
+	dēj: 73
+	dēja: 11
+	dējo: 18
+	dēju: 11
+	dējā: 24
+	dēm: 13
+	dēm : 13
+	dēt: 165
+	dēt : 11
+	dētā: 147
+	dēļ: 120
+	dēļ : 96
+	dēļā: 15
+	dī: 411
+	dī : 13
+	dīb: 93
+	dība: 53
+	dību: 35
+	dīg: 51
+	dīga: 13
+	dīgi: 15
+	dīj: 147
+	dīja: 33
+	dīju: 102
+	dīs: 15
+	dīs : 11
+	dīt: 78
+	dīt : 35
+	dītā: 18
+	dū: 22
+	dūr: 20
+	dže: 38
+	džet: 38
+	e: 13637
+	e : 489
+	e a: 25
+	e an: 2
+	e b: 16
+	e be: 4
+	e c: 9
+	e d: 25
+	e de: 11
+	e di: 4
+	e e: 24
+	e en: 2
+	e eu: 2
+	e g: 15
+	e i: 42
+	e in: 2
+	e j: 16
+	e k: 47
+	e l: 13
+	e la: 7
+	e m: 9
+	e ma: 4
+	e me: 4
+	e n: 36
+	e na: 2
+	e o: 2
+	e p: 51
+	e pr: 25
+	e r: 5
+	e re: 4
+	e s: 24
+	e se: 2
+	e so: 2
+	e t: 53
+	e te: 4
+	e to: 2
+	e tr: 2
+	e u: 31
+	e v: 29
+	e z: 2
+	ea: 95
+	eaug: 11
+	ebij: 16
+	ebil: 16
+	ebk: 16
+	ebku: 13
+	ebū: 29
+	ebūs: 18
+	ecas: 38
+	ecie: 44
+	ecin: 45
+	ecā: 16
+	ecī: 273
+	ecīb: 240
+	ecīg: 27
+	ed: 467
+	ed : 4
+	ede: 13
+	edok: 22
+	edr: 76
+	edrī: 51
+	edz: 200
+	edz : 35
+	edza: 36
+	edzē: 36
+	edzī: 65
+	edā: 27
+	edāv: 22
+	edē: 33
+	edēļ: 25
+	edī: 13
+	edū: 20
+	edūr: 20
+	ee: 60
+	eej: 36
+	eeja: 25
+	efe: 80
+	efek: 45
+	eg: 320
+	ega: 15
+	egrā: 11
+	egt: 62
+	egu: 115
+	egul: 87
+	egum: 20
+	egvi: 18
+	egā: 25
+	egū: 11
+	eh: 55
+	ehno: 25
+	ehā: 15
+	ehān: 15
+	ei: 1325
+	eic: 111
+	eic : 11
+	eica: 13
+	eici: 44
+	eico: 15
+	eicu: 11
+	eicī: 13
+	eid: 145
+	eido: 55
+	eidz: 29
+	eidā: 11
+	eigt: 20
+	eigā: 13
+	eik: 278
+	eikt: 149
+	eiku: 89
+	ein: 9
+	eir: 456
+	eiro: 456
+	eis: 4
+	eiz: 156
+	eiz : 47
+	eiza: 16
+	eize: 15
+	eizi: 27
+	eizē: 31
+	ej: 124
+	eja: 76
+	ejas: 36
+	eju: 27
+	eju : 27
+	ejā: 11
+	ek: 1122
+	eka: 69
+	ekam: 20
+	ekas: 25
+	ekl: 53
+	eklē: 25
+	ekm: 44
+	ekme: 15
+	ekmē: 15
+	eko: 115
+	ekon: 91
+	ekr: 44
+	ekri: 13
+	ekrī: 20
+	ektī: 75
+	ekā: 58
+	ekā : 31
+	ekād: 16
+	ekļ: 76
+	ekļa: 22
+	ekļi: 18
+	ekļu: 27
+	ekš: 304
+	ekš : 11
+	ekšl: 76
+	ekšs: 145
+	ekšu: 11
+	ekšē: 36
+	el: 404
+	el : 11
+	ele: 33
+	eli: 44
+	ell: 2
+	elnī: 11
+	elā: 87
+	elāk: 71
+	elām: 13
+	elī: 40
+	elīb: 35
+	elš: 13
+	elša: 11
+	em: 1461
+	em : 958
+	em i: 78
+	em j: 36
+	em k: 89
+	em p: 109
+	em u: 75
+	em v: 62
+	em š: 13
+	emb: 15
+	eme: 55
+	emen: 11
+	emes: 42
+	emj: 13
+	emot: 31
+	emt: 62
+	emā: 11
+	emē: 113
+	emēr: 109
+	emš: 24
+	emša: 24
+	emžē: 11
+	en: 1532
+	en : 84
+	en a: 2
+	en d: 2
+	en e: 5
+	en g: 2
+	en i: 9
+	en k: 5
+	en m: 13
+	en s: 2
+	en t: 2
+	en u: 4
+	en v: 7
+	ena: 136
+	enas: 58
+	end: 9
+	ende: 2
+	eni: 53
+	enkā: 15
+	enmē: 16
+	enn: 2
+	eno: 184
+	enoj: 20
+	enot: 89
+	enoš: 38
+	ent: 382
+	ente: 9
+	ento: 2
+	entā: 53
+	entē: 11
+	entū: 38
+	enu : 36
+	enā: 107
+	enā : 29
+	enāc: 13
+	enād: 11
+	enāk: 36
+	enās: 11
+	enē: 11
+	enī: 182
+	enī : 16
+	enīb: 140
+	enīg: 24
+	epi: 69
+	epie: 65
+	epri: 36
+	er: 791
+	er : 44
+	er a: 4
+	er d: 4
+	er e: 2
+	er s: 4
+	era: 51
+	erd: 4
+	ere: 115
+	ere : 2
+	erk: 2
+	ern: 20
+	erob: 25
+	eros: 45
+	ert: 22
+	eru : 42
+	erā: 29
+	erāl: 11
+	erģ: 44
+	erģi: 29
+	erģē: 13
+	erī: 31
+	erīb: 22
+	es: 2298
+	es : 1311
+	es a: 131
+	es g: 44
+	es k: 56
+	es n: 87
+	es p: 187
+	es u: 120
+	es v: 105
+	es ī: 13
+	es ļ: 11
+	esa: 158
+	esai: 33
+	esam: 71
+	esel: 36
+	esi: 36
+	esmu: 44
+	esni: 31
+	esoš: 18
+	esp: 149
+	espē: 133
+	ess: 9
+	est: 129
+	est : 24
+	esta: 11
+	esti: 15
+	estā: 42
+	estī: 15
+	esā: 16
+	esē: 22
+	esī: 207
+	esīb: 198
+	et: 765
+	et : 238
+	etei: 25
+	etie: 33
+	etot: 11
+	ett: 2
+	etu: 80
+	etu : 45
+	etve: 20
+	etā: 47
+	etā : 27
+	etē: 29
+	etēj: 20
+	etī: 11
+	eu: 29
+	eur: 25
+	euro: 15
+	evar: 55
+	eve: 7
+	evi: 200
+	evie: 93
+	evij: 29
+	evis: 38
+	eviš: 24
+	evr: 2
+	evro: 2
+	evum: 15
+	evē: 80
+	evēl: 13
+	evēr: 65
+	evī: 15
+	ex: 5
+	eze: 5
+	ezid: 42
+	ezul: 29
+	eā: 15
+	eāl: 13
+	eģ: 93
+	eģi: 93
+	eģio: 78
+	eģis: 13
+	eķ: 15
+	eķi: 11
+	eķij: 11
+	eļ: 64
+	eļa: 22
+	eļau: 15
+	eļo: 13
+	eļu: 15
+	eļu : 15
+	eņ: 131
+	eņa: 15
+	eņa : 15
+	eņe: 73
+	eņem: 73
+	eņē: 29
+	eņēm: 29
+	eš: 294
+	eša: 78
+	ešam: 38
+	ešan: 29
+	eši: 75
+	eši : 44
+	ešie: 31
+	ešu: 44
+	ešu : 40
+	ešā: 45
+	ešām: 25
+	ešķ: 25
+	ešķi: 24
+	ež: 131
+	eži : 15
+	ežo: 29
+	ežot: 15
+	ežu: 27
+	ežu : 27
+	ežī: 11
+	ežīm: 11
+	f: 484
+	f : 7
+	fa: 36
+	fek: 45
+	fekt: 45
+	fi: 133
+	fo: 102
+	for: 75
+	fr: 44
+	ft: 11
+	g : 11
+	g v: 2
+	ga: 853
+	gad: 276
+	gad : 33
+	gada: 96
+	gadi: 18
+	gadu: 35
+	gadā: 16
+	gadī: 51
+	gai: 80
+	gaid: 31
+	gais: 31
+	gajā: 13
+	galv: 45
+	gan : 67
+	gas : 47
+	gata: 49
+	ge: 20
+	gel: 2
+	gen: 13
+	gen : 2
+	ger: 5
+	gi : 247
+	gi a: 25
+	gi i: 22
+	gi n: 29
+	gi p: 24
+	gi u: 16
+	giem: 29
+	glab: 20
+	gli: 4
+	glī: 15
+	glīt: 15
+	gn: 11
+	go: 124
+	godī: 24
+	gri: 78
+	grib: 44
+	grie: 25
+	groz: 35
+	grā: 47
+	grāc: 24
+	grē: 13
+	grū: 18
+	grūt: 18
+	gs: 298
+	gs : 225
+	gs d: 16
+	gs e: 27
+	gs k: 29
+	gs m: 16
+	gs p: 15
+	gst: 53
+	gsto: 13
+	gstā: 13
+	gts: 22
+	gtsp: 13
+	gtu: 18
+	gtu : 18
+	gu: 438
+	gu : 109
+	gul: 87
+	guld: 38
+	gulā: 15
+	gulē: 11
+	gum: 147
+	guma: 31
+	gumi: 15
+	gums: 38
+	gumu: 42
+	gus : 47
+	gvie: 18
+	gā: 260
+	gā : 29
+	gād: 22
+	gāde: 13
+	gāj: 29
+	gāju: 22
+	gāk: 42
+	gāka: 25
+	gāl: 22
+	gāle: 11
+	gām: 22
+	gām : 22
+	gār: 16
+	gāri: 15
+	gās: 18
+	gās : 18
+	gāt: 27
+	gāz: 20
+	gāze: 11
+	gļ: 16
+	gļu: 15
+	gļu : 15
+	gš: 24
+	gša: 22
+	gšan: 22
+	gū: 40
+	gū : 11
+	gūt: 16
+	h: 165
+	h : 9
+	h d: 2
+	ha: 27
+	ha : 2
+	han: 2
+	har: 11
+	hat: 2
+	he: 20
+	he : 2
+	hei: 2
+	hen: 2
+	her: 4
+	het: 2
+	het : 2
+	hi: 9
+	hl: 2
+	ho: 13
+	ho : 2
+	hr: 4
+	ht: 2
+	hu: 5
+	hā: 16
+	hān: 15
+	hāni: 15
+	hē: 18
+	hēz: 13
+	hēzi: 13
+	i: 20582
+	i : 2861
+	i ap: 42
+	i ar: 56
+	i at: 73
+	i de: 11
+	i ga: 44
+	i i: 273
+	i ie: 55
+	i ir: 149
+	i iz: 42
+	i jā: 33
+	i k: 234
+	i ka: 91
+	i ku: 45
+	i kā: 27
+	i lī: 22
+	i mē: 31
+	i mū: 15
+	i n: 253
+	i ne: 87
+	i no: 133
+	i o: 4
+	i p: 338
+	i pa: 167
+	i pi: 56
+	i pā: 27
+	i sa: 96
+	i ti: 44
+	i tā: 35
+	i u: 253
+	i un: 189
+	i uz: 58
+	i v: 185
+	i va: 65
+	i vē: 49
+	i zi: 24
+	i ī: 13
+	i š: 44
+	i šo: 20
+	ia: 44
+	ia : 4
+	ial: 15
+	ian: 2
+	iatī: 20
+	ibu : 16
+	ibē: 20
+	ibēt: 18
+	ic: 273
+	ica: 27
+	ice: 4
+	ich: 4
+	icin: 91
+	icu : 15
+	icē: 11
+	icī: 36
+	icīb: 11
+	icīg: 16
+	ida: 25
+	ide: 78
+	idot: 35
+	idr: 58
+	idri: 16
+	idro: 16
+	idrs: 11
+	idz: 29
+	idza: 13
+	idzo: 15
+	idā: 27
+	idā : 11
+	idām: 11
+	idē: 20
+	idēj: 13
+	idī: 24
+	ie: 5753
+	ie : 176
+	ieau: 11
+	iebi: 16
+	iec: 411
+	ieca: 38
+	ieci: 85
+	iecī: 267
+	ied: 240
+	iedr: 58
+	iedz: 98
+	iedā: 27
+	iee: 36
+	ieej: 36
+	ieg: 180
+	iegl: 13
+	iegt: 62
+	iegu: 65
+	iegā: 11
+	iegū: 11
+	iek: 569
+	iek : 96
+	iekr: 35
+	ieks: 15
+	ieku: 18
+	iekļ: 33
+	iekš: 304
+	iel: 202
+	iela: 44
+	ielu: 25
+	ielā: 87
+	iem: 1107
+	iem : 936
+	ieme: 31
+	iemē: 109
+	iemž: 11
+	ien: 725
+	iena: 96
+	ienm: 16
+	ieno: 89
+	iens: 69
+	ienu: 29
+	ienv: 15
+	ienā: 93
+	ienī: 165
+	iep: 62
+	iepr: 53
+	iero: 75
+	ies: 883
+	ies : 336
+	iesa: 53
+	iesn: 33
+	iesp: 129
+	iest: 75
+	iesu: 13
+	iesā: 11
+	iesī: 200
+	iet: 414
+	iet : 75
+	ieta: 33
+	iete: 64
+	ieti: 38
+	ietn: 36
+	ietu: 56
+	ietv: 25
+	ietā: 24
+	ietē: 24
+	iev: 167
+	ievi: 96
+	ievē: 69
+	ieķ: 15
+	ieķi: 11
+	ieļ: 11
+	ieļa: 11
+	ieņ: 102
+	ieņe: 67
+	ieņē: 29
+	ieš: 209
+	ieša: 67
+	ieši: 56
+	iešu: 22
+	iešā: 27
+	iešķ: 24
+	if: 24
+	ig: 113
+	igrā: 13
+	igā: 24
+	ii: 4
+	ii : 2
+	ij: 1060
+	ija: 663
+	ija : 260
+	ijai: 51
+	ijas: 347
+	iju: 245
+	iju : 225
+	ijā: 125
+	ijā : 84
+	ijām: 31
+	ijās: 11
+	ik: 1100
+	ika: 287
+	ika : 69
+	ikai: 96
+	ikas: 120
+	iks: 82
+	iks : 49
+	ikt: 213
+	ikt : 69
+	ikts: 15
+	iktu: 33
+	iktā: 15
+	iku: 258
+	iku : 56
+	ikum: 175
+	ikuš: 11
+	ikā: 80
+	ikā : 55
+	ikāc: 13
+	ikša: 15
+	il : 2
+	ild: 120
+	ildu: 20
+	ildē: 11
+	ildī: 49
+	ile: 2
+	ilg: 55
+	ilgt: 31
+	ili: 36
+	iln: 93
+	ilnv: 20
+	ilnī: 62
+	ils: 127
+	ilso: 67
+	ilst: 45
+	ilsē: 13
+	ilv: 125
+	ilvē: 124
+	ilz: 18
+	ilzī: 18
+	ilā: 11
+	im: 289
+	ima: 22
+	ime: 11
+	imiņ: 13
+	imn: 44
+	imni: 38
+	imp: 9
+	imā: 11
+	imāl: 11
+	imī: 15
+	in: 1347
+	in : 7
+	in d: 2
+	ina : 100
+	ind: 20
+	ine: 11
+	ing: 31
+	ing : 5
+	inge: 2
+	inot: 38
+	inoš: 13
+	int: 93
+	inā: 629
+	ināj: 125
+	inām: 58
+	inās: 47
+	ināt: 293
+	ināš: 84
+	inē: 60
+	inēj: 25
+	inēt: 31
+	inī: 42
+	inīg: 22
+	io: 184
+	io : 4
+	ion: 127
+	ions: 7
+	ionā: 47
+	ipr: 51
+	ipri: 45
+	ir: 2103
+	ir : 1111
+	ir a: 82
+	ir b: 45
+	ir g: 29
+	ir i: 65
+	ir j: 145
+	ir l: 45
+	ir m: 44
+	ir n: 84
+	ir p: 155
+	ir s: 100
+	ir t: 73
+	ir v: 65
+	ir ā: 11
+	ir ļ: 36
+	ird: 67
+	irdz: 44
+	irg: 82
+	irgu: 62
+	irgū: 11
+	irm: 87
+	irmk: 18
+	irms: 51
+	iro: 467
+	irop: 436
+	irz: 55
+	irzi: 22
+	irzī: 31
+	irā: 107
+	irāk: 98
+	irī: 20
+	is: 1912
+	is p: 75
+	isc: 2
+	ise: 4
+	isi: 316
+	isij: 184
+	isin: 67
+	isk: 471
+	iska: 100
+	iski: 73
+	isko: 65
+	isku: 71
+	iskā: 142
+	isma: 29
+	isnī: 18
+	ispā: 16
+	iss: 13
+	ista: 5
+	iste: 7
+	istā: 11
+	istē: 51
+	istī: 107
+	isu : 35
+	isā: 67
+	isā : 18
+	isār: 45
+	isī: 16
+	isīj: 11
+	it: 685
+	it : 51
+	ita: 36
+	itej: 49
+	itis: 60
+	ituā: 45
+	itā: 176
+	itāl: 18
+	itām: 15
+	itār: 11
+	itās: 15
+	itāt: 104
+	itē: 18
+	itī: 33
+	itīv: 16
+	iv: 115
+	iva: 13
+	ive: 7
+	ivā: 16
+	ivāt: 15
+	iz: 929
+	iz : 51
+	iz a: 18
+	izai: 11
+	izau: 15
+	izbe: 15
+	izd: 62
+	izda: 27
+	izde: 22
+	izgl: 15
+	izi : 27
+	izl: 27
+	izli: 24
+	izm: 136
+	izma: 105
+	izp: 35
+	izpi: 16
+	izr: 44
+	izra: 33
+	izs: 140
+	izsa: 71
+	izsk: 20
+	izsl: 13
+	izst: 27
+	izt: 40
+	izte: 29
+	izv: 104
+	izve: 45
+	izvi: 31
+	izvē: 20
+	izā: 42
+	izāc: 40
+	izē: 65
+	izēj: 36
+	izēt: 15
+	iā: 113
+	iāc: 18
+	iāci: 18
+	iāl: 91
+	iāla: 24
+	iāli: 13
+	iālo: 24
+	iālā: 22
+	iļ: 22
+	iņ: 358
+	iņa: 67
+	iņa : 29
+	iņas: 20
+	iņi: 44
+	iņi : 31
+	iņie: 13
+	iņo: 127
+	iņoj: 118
+	iņu: 58
+	iņu : 58
+	iņā: 31
+	iņā : 25
+	iņš: 20
+	iņš : 20
+	išķ: 27
+	j: 5308
+	j : 49
+	ja: 1867
+	ja : 660
+	ja i: 55
+	ja k: 131
+	ja p: 64
+	ja u: 35
+	ja v: 49
+	jad: 62
+	jadz: 62
+	jai: 124
+	jai : 104
+	jais: 20
+	jam: 173
+	jam : 78
+	jams: 25
+	jas: 476
+	jas : 476
+	jau: 351
+	jau : 64
+	jaun: 125
+	jaut: 149
+	je: 62
+	jeb: 20
+	jebk: 16
+	jen: 2
+	ji: 293
+	jie: 209
+	jiem: 175
+	jiet: 13
+	jis : 29
+	jn: 2
+	jo: 471
+	jo : 167
+	jo t: 31
+	jo ī: 24
+	jom: 93
+	joma: 11
+	jomu: 13
+	jomā: 65
+	jop: 29
+	jopr: 29
+	jot: 76
+	jot : 62
+	joti: 15
+	još: 36
+	joši: 11
+	js : 31
+	ju: 1416
+	ju : 471
+	ju a: 36
+	ju k: 84
+	ju l: 15
+	ju p: 76
+	ju s: 27
+	ju u: 47
+	jum: 733
+	juma: 62
+	jumi: 127
+	jums: 165
+	jumu: 291
+	jumā: 78
+	jus: 87
+	jusi: 75
+	juš: 105
+	juša: 22
+	juši: 69
+	jā: 927
+	jā : 333
+	jā d: 15
+	jā g: 13
+	jā i: 16
+	jā j: 25
+	jā k: 29
+	jā l: 16
+	jā n: 22
+	jā p: 25
+	jā s: 33
+	jā t: 20
+	jā u: 24
+	jā v: 33
+	jāa: 38
+	jāap: 13
+	jāat: 24
+	jāb: 36
+	jābū: 36
+	jād: 27
+	jāda: 11
+	jādi: 11
+	jāi: 40
+	jāie: 22
+	jāiz: 16
+	jāk: 11
+	jām: 167
+	jām : 156
+	jān: 22
+	jāno: 22
+	jāp: 40
+	jāpa: 16
+	jāpi: 22
+	jār: 13
+	jās: 131
+	jās : 102
+	jāsa: 18
+	jāt: 11
+	jāu: 22
+	jāuz: 20
+	jāv: 11
+	jāve: 11
+	jē: 18
+	jī: 33
+	jīb: 11
+	jīg: 22
+	jīgu: 11
+	jū: 122
+	jūr: 29
+	jūra: 27
+	jūs: 75
+	jūs : 47
+	jūsu: 27
+	k: 8356
+	k pa: 22
+	ka: 2316
+	ka : 754
+	ka a: 44
+	ka d: 31
+	ka e: 36
+	ka i: 42
+	ka k: 53
+	ka l: 27
+	ka m: 75
+	ka p: 98
+	ka t: 96
+	ka v: 44
+	ka š: 44
+	kai: 254
+	kai : 102
+	kaid: 58
+	kait: 55
+	kaj: 89
+	kaja: 25
+	kaji: 24
+	kajā: 35
+	kalp: 36
+	kam: 91
+	kam : 35
+	kan: 13
+	kar: 109
+	kara: 31
+	karo: 18
+	karī: 29
+	kas: 587
+	kas : 582
+	kat: 191
+	katr: 25
+	katu: 71
+	katā: 18
+	katī: 33
+	kaut: 20
+	kavē: 16
+	kaņ: 47
+	kaņo: 24
+	kaņā: 22
+	ke: 24
+	kel: 2
+	ker: 5
+	ki: 200
+	kiem: 45
+	kin: 4
+	kk: 15
+	kli : 20
+	klis: 18
+	klā: 56
+	klāj: 13
+	klāt: 38
+	klē: 27
+	kmē: 15
+	ko: 1143
+	ko : 222
+	ko i: 24
+	ko m: 31
+	kohē: 13
+	kolē: 20
+	kom: 316
+	komi: 254
+	kon: 254
+	kono: 85
+	kop: 118
+	kopi: 25
+	kopu: 16
+	kopā: 11
+	kopē: 35
+	kopī: 18
+	kot: 65
+	kotn: 29
+	krie: 29
+	krā: 64
+	krāt: 44
+	krē: 24
+	krēt: 24
+	krī: 56
+	krīt: 22
+	krīz: 33
+	ks: 371
+	ksai: 27
+	ksm: 47
+	ksme: 24
+	ksmī: 13
+	kst: 113
+	ksti: 27
+	kstī: 13
+	ksā: 31
+	ksāj: 11
+	kt: 649
+	kt k: 22
+	kte: 4
+	kti: 140
+	ktie: 93
+	kts: 47
+	kts : 45
+	ktu: 122
+	ktu : 87
+	ktā: 18
+	ktī: 107
+	ktīv: 102
+	ktū: 18
+	ktūr: 18
+	ku: 1303
+	ku : 242
+	ku u: 29
+	kum: 362
+	kuma: 38
+	kumi: 84
+	kums: 44
+	kumu: 138
+	kumā: 13
+	kun: 229
+	kund: 49
+	kung: 180
+	kur: 342
+	kur : 16
+	kura: 76
+	kuri: 76
+	kuru: 56
+	kurā: 65
+	kurš: 13
+	kuš: 27
+	kuši: 20
+	kā: 849
+	kā : 414
+	kā a: 71
+	kā d: 13
+	kā e: 27
+	kā g: 11
+	kā i: 16
+	kā j: 22
+	kā k: 18
+	kā l: 20
+	kā m: 29
+	kā n: 27
+	kā p: 36
+	kā s: 11
+	kā t: 38
+	kā u: 11
+	kā v: 11
+	kāc: 13
+	kāci: 13
+	kād: 76
+	kāda: 11
+	kādu: 31
+	kādā: 11
+	kāk: 15
+	kām: 31
+	kām : 24
+	kāp: 53
+	kāpu: 22
+	kāpē: 15
+	kār: 127
+	kārt: 105
+	kārš: 16
+	kās: 89
+	kās : 89
+	kļ: 162
+	kļa: 33
+	kļau: 24
+	kļi: 33
+	kļi : 22
+	kļie: 11
+	kļu: 55
+	kļu : 27
+	kļuv: 20
+	kļū: 33
+	kļūs: 13
+	kļūt: 16
+	kš: 338
+	kš : 11
+	kša: 31
+	kšan: 31
+	kšl: 76
+	kšli: 73
+	kšs: 145
+	kšsē: 144
+	kšu: 15
+	kšu : 15
+	kšē: 36
+	kšēj: 36
+	l: 5935
+	l : 155
+	l a: 16
+	l d: 2
+	l e: 7
+	l p: 16
+	l s: 5
+	la : 64
+	la p: 2
+	lab: 180
+	labi: 25
+	labo: 45
+	labu: 18
+	labā: 49
+	lai: 424
+	lai : 267
+	laik: 120
+	laj: 33
+	laja: 15
+	lajā: 15
+	lan: 16
+	lar: 5
+	latī: 16
+	lauk: 35
+	laš: 27
+	laši: 13
+	ld: 258
+	ldie: 13
+	ldē: 15
+	ldēt: 11
+	ldī: 138
+	ldīb: 73
+	ldīg: 18
+	ldīj: 29
+	ldīt: 11
+	le: 171
+	le : 13
+	le p: 5
+	leg: 11
+	lem: 15
+	len: 15
+	ler: 4
+	lgt: 31
+	lgte: 18
+	lgts: 13
+	lic: 11
+	lie: 362
+	liec: 42
+	liek: 27
+	liel: 167
+	liem: 22
+	liet: 80
+	lig: 9
+	lik: 164
+	likt: 36
+	liku: 100
+	linā: 20
+	litā: 55
+	lizā: 20
+	lizē: 15
+	lj: 31
+	ll: 15
+	ll : 2
+	lla: 4
+	lle: 2
+	lli: 7
+	lm: 5
+	lnv: 20
+	lnva: 18
+	lnī: 73
+	lnīb: 22
+	lnīg: 40
+	lnīj: 11
+	lo: 267
+	lobā: 11
+	loce: 13
+	loģ: 33
+	loģi: 33
+	lpo: 38
+	lpoj: 31
+	lre: 35
+	lrei: 29
+	ls: 720
+	lse: 2
+	lso: 136
+	lsoj: 47
+	lsoņ: 55
+	lst: 507
+	lsti: 89
+	lsts: 69
+	lstu: 129
+	lstī: 176
+	lsē: 13
+	lsēt: 13
+	lt: 122
+	lt : 4
+	lta: 5
+	ltk: 15
+	ltkr: 15
+	ltā: 35
+	ltāt: 29
+	lu: 144
+	lu : 105
+	lv: 178
+	lven: 38
+	lvē: 124
+	lvēk: 118
+	lzī: 18
+	lzīg: 18
+	lā: 338
+	lā : 55
+	lāj: 13
+	lājī: 11
+	lāk: 102
+	lāk : 15
+	lāka: 38
+	lāko: 13
+	lāku: 18
+	lām: 18
+	lām : 16
+	lān: 36
+	lānu: 18
+	lās: 36
+	lās : 36
+	lāt: 49
+	lāt : 20
+	lē: 311
+	lē : 29
+	lēg: 20
+	lēj: 20
+	lēju: 13
+	lēm: 107
+	lēma: 38
+	lēmu: 51
+	lēmā: 13
+	lēt: 62
+	lēto: 33
+	lētā: 11
+	lēģ: 22
+	lēģi: 16
+	lēš: 29
+	lēša: 29
+	lī: 616
+	līb: 165
+	lība: 36
+	lību: 11
+	lībv: 107
+	līd: 242
+	līdz: 240
+	līg: 109
+	līgu: 98
+	līm: 44
+	līme: 44
+	līt: 24
+	lša: 11
+	lšan: 11
+	lū: 78
+	lūc: 29
+	lūci: 29
+	lūd: 18
+	lūdz: 13
+	lūk: 15
+	lūko: 11
+	m: 8918
+	m : 2060
+	m ar: 25
+	m b: 78
+	m bū: 13
+	m ci: 20
+	m ei: 31
+	m ga: 24
+	m i: 222
+	m ie: 25
+	m ir: 138
+	m iz: 31
+	m j: 75
+	m ja: 33
+	m jā: 24
+	m k: 231
+	m ka: 115
+	m ko: 45
+	m ku: 40
+	m kā: 22
+	m l: 64
+	m la: 31
+	m lī: 20
+	m mē: 29
+	m n: 102
+	m ne: 40
+	m no: 45
+	m p: 289
+	m pa: 129
+	m pi: 42
+	m pā: 16
+	m tā: 15
+	m u: 176
+	m un: 151
+	m uz: 25
+	m v: 147
+	m va: 64
+	m vē: 24
+	m š: 31
+	ma: 1245
+	ma : 274
+	ma p: 58
+	maiņ: 27
+	maji: 11
+	majā: 13
+	maks: 45
+	mam : 33
+	man: 302
+	mant: 93
+	manu: 31
+	manī: 42
+	mas: 140
+	mas : 129
+	maz: 133
+	maz : 18
+	mazi: 44
+	mazā: 38
+	maš: 13
+	mašī: 13
+	mb: 33
+	mbrī: 11
+	me: 633
+	me : 65
+	med: 5
+	mehā: 15
+	mekl: 27
+	men: 278
+	menī: 15
+	mer: 24
+	mes : 78
+	mesl: 29
+	meņ: 15
+	meņa: 13
+	mež: 18
+	mežu: 11
+	mi : 225
+	mi u: 29
+	mie: 253
+	miem: 155
+	mies: 53
+	mika: 33
+	milz: 18
+	minā: 16
+	minē: 45
+	misi: 191
+	misk: 51
+	miss: 2
+	misā: 45
+	mite: 49
+	miņ: 49
+	miņa: 27
+	mj: 24
+	mje: 13
+	mjer: 13
+	mkā: 18
+	mkār: 18
+	mm: 51
+	mmi: 2
+	mmu : 18
+	mnie: 38
+	mo: 180
+	mo : 22
+	mp: 56
+	mpl: 4
+	mpo: 5
+	ms: 673
+	ms : 667
+	ms a: 42
+	ms b: 25
+	ms d: 16
+	ms e: 18
+	ms i: 135
+	ms j: 33
+	ms k: 71
+	ms n: 53
+	ms p: 76
+	ms t: 31
+	ms v: 40
+	ms š: 16
+	mtie: 20
+	mtu : 13
+	mu: 1142
+	mu : 585
+	mu a: 36
+	mu i: 45
+	mu k: 47
+	mu l: 22
+	mu m: 20
+	mu n: 27
+	mu p: 93
+	mu s: 31
+	mu u: 36
+	mu v: 36
+	mum: 309
+	mumi: 27
+	mums: 229
+	mumu: 42
+	mus: 185
+	mus : 176
+	mé: 2
+	mā: 420
+	mā : 213
+	mā a: 16
+	mā e: 15
+	mā i: 15
+	mā k: 20
+	mā n: 13
+	mā p: 29
+	mā u: 11
+	māc: 29
+	māci: 22
+	māj: 44
+	māju: 22
+	māk: 42
+	māka: 16
+	māl: 15
+	mām: 29
+	mām : 29
+	mās: 20
+	mās : 20
+	māt: 15
+	mē: 765
+	mē : 45
+	mē k: 11
+	mēj: 29
+	mēji: 11
+	mēn: 22
+	mēne: 22
+	mēr: 296
+	mēr : 105
+	mēra: 55
+	mēro: 51
+	mērķ: 53
+	mēs: 334
+	mēs : 334
+	mēt: 18
+	mēģ: 16
+	mēģi: 16
+	mī: 109
+	mīb: 35
+	mība: 18
+	mību: 15
+	mīg: 73
+	mīga: 11
+	mīgi: 25
+	mīgu: 13
+	mīgā: 15
+	mš: 24
+	mša: 24
+	mšan: 24
+	mū: 165
+	mūs: 158
+	mūs : 18
+	mūsu: 136
+	mžē: 11
+	mžēl: 11
+	n: 9832
+	n : 1551
+	n a: 80
+	n be: 2
+	n ci: 33
+	n d: 60
+	n de: 7
+	n di: 4
+	n e: 96
+	n en: 2
+	n f: 5
+	n h: 11
+	n he: 2
+	n ie: 31
+	n ir: 33
+	n iz: 22
+	n jā: 11
+	n kā: 16
+	n me: 2
+	n mē: 11
+	n o: 11
+	n pi: 40
+	n pā: 13
+	n tā: 51
+	n u: 27
+	n un: 5
+	n uz: 20
+	n vē: 20
+	n š: 18
+	naba: 13
+	nai: 93
+	nai : 78
+	najā: 11
+	nal: 13
+	nanš: 33
+	nas: 293
+	nas : 293
+	nav: 145
+	nav : 142
+	nc: 104
+	nciā: 13
+	nd: 149
+	nda: 25
+	nde: 5
+	nden: 2
+	nder: 2
+	ndi: 13
+	ndo : 2
+	ndrī: 16
+	ndz: 49
+	ndze: 49
+	ne: 982
+	ne : 65
+	ne d: 2
+	ne p: 2
+	neat: 29
+	nebi: 16
+	nebū: 29
+	nedr: 18
+	nedē: 25
+	neie: 16
+	neiz: 13
+	neka: 33
+	nekā: 47
+	nem: 20
+	nen: 11
+	nep: 109
+	nepa: 35
+	nepi: 65
+	ner : 2
+	nerģ: 42
+	nerī: 16
+	nesa: 16
+	nev: 129
+	neva: 64
+	nevi: 55
+	ng: 245
+	ng : 5
+	nge: 11
+	ngen: 7
+	ngs: 133
+	ngs : 133
+	nh: 2
+	ni: 687
+	nie : 11
+	niec: 118
+	nied: 36
+	nieg: 75
+	niek: 42
+	niem: 45
+	nin: 4
+	nio: 2
+	nion: 2
+	nisk: 51
+	nit: 7
+	nizā: 13
+	nk: 104
+	nkrē: 22
+	nkā: 15
+	nkār: 15
+	nmē: 16
+	nmēr: 16
+	nn: 11
+	nne: 2
+	no: 1543
+	no š: 27
+	nod: 160
+	noda: 27
+	nodo: 25
+	nodr: 100
+	noj: 36
+	noju: 16
+	nol: 67
+	nolī: 33
+	nop: 40
+	nopi: 31
+	norā: 42
+	nosa: 22
+	nosl: 13
+	not: 293
+	not : 71
+	note: 111
+	noti: 47
+	notā: 11
+	novē: 58
+	noz: 124
+	noza: 38
+	nozi: 15
+	nozī: 64
+	noš: 71
+	noša: 55
+	ns: 318
+	nse: 11
+	nsi: 13
+	nsk: 2
+	nsē: 29
+	nsēj: 22
+	nt: 687
+	nta : 67
+	ntam: 33
+	nte: 111
+	nte : 5
+	nto : 9
+	ntot: 31
+	ntoš: 25
+	ntr: 45
+	ntu : 58
+	ntus: 22
+	ntā: 60
+	ntā : 33
+	ntār: 20
+	ntē: 22
+	ntēt: 15
+	ntū: 38
+	ntūr: 38
+	nu: 445
+	nu : 374
+	nu k: 45
+	nu u: 51
+	nup: 35
+	nupr: 29
+	nvar: 18
+	nvid: 15
+	nz: 5
+	nā: 1216
+	nā : 129
+	nā u: 16
+	nāc: 27
+	nāci: 16
+	nād: 13
+	nāj: 153
+	nāja: 31
+	nāju: 104
+	nāk: 185
+	nāk : 11
+	nāka: 31
+	nāko: 27
+	nāks: 16
+	nākt: 42
+	nāku: 53
+	nāl: 55
+	nāli: 11
+	nālo: 11
+	nālā: 15
+	nām: 98
+	nām : 58
+	nās: 145
+	nās : 135
+	nāsi: 11
+	nāt: 311
+	nāt : 135
+	nāta: 33
+	nāti: 22
+	nāto: 11
+	nāts: 16
+	nātu: 65
+	nātā: 11
+	nātī: 13
+	nāš: 84
+	nāša: 84
+	nē: 124
+	nē : 35
+	nēj: 31
+	nēt: 36
+	nēš: 13
+	nēša: 13
+	nī: 398
+	nī : 16
+	nīb: 213
+	nība: 129
+	nību: 31
+	nībā: 53
+	nīc: 31
+	nīci: 13
+	nīg: 109
+	nīga: 18
+	nīgi: 58
+	nīgu: 18
+	nīj: 16
+	nīt: 13
+	nš: 45
+	nšas: 11
+	nšu: 33
+	nšu : 33
+	o: 8780
+	o : 1520
+	o c: 35
+	o ci: 29
+	o co: 2
+	o d: 82
+	o de: 11
+	o ei: 18
+	o ie: 35
+	o k: 158
+	o ka: 58
+	o ku: 27
+	o kā: 15
+	o lī: 22
+	o mē: 36
+	o o: 13
+	o pā: 18
+	o tā: 22
+	o va: 42
+	o ī: 27
+	o īp: 25
+	o š: 40
+	oa: 4
+	obe: 60
+	obež: 56
+	oblē: 65
+	obrī: 15
+	obā: 11
+	obāl: 11
+	oc: 129
+	ocek: 13
+	ociā: 53
+	odas: 29
+	odie: 38
+	odok: 25
+	odr: 100
+	odro: 100
+	odā: 13
+	odī: 27
+	odīg: 24
+	oe: 11
+	of: 29
+	og: 120
+	og : 2
+	oh: 16
+	ohē: 13
+	ohēz: 13
+	oi: 4
+	oj: 511
+	oja: 75
+	ojam: 35
+	ojas: 24
+	ojo: 67
+	ojot: 45
+	ojoš: 15
+	oju: 293
+	ojum: 234
+	ojus: 18
+	ojuš: 13
+	ojā: 53
+	ojām: 38
+	ok : 2
+	okl: 33
+	okli: 31
+	okrā: 44
+	okā: 15
+	okļ: 33
+	okļi: 13
+	okļu: 16
+	ol: 402
+	ole: 20
+	oll: 4
+	oloģ: 31
+	olu: 7
+	olē: 24
+	olēģ: 20
+	olī: 40
+	olīg: 35
+	olū: 38
+	olūc: 29
+	om : 2
+	omaš: 11
+	omei: 13
+	omes: 31
+	omi: 378
+	omik: 38
+	omis: 273
+	omit: 49
+	omā: 115
+	omā : 58
+	omāj: 31
+	omē: 96
+	omēr: 85
+	on: 614
+	on : 7
+	onal: 4
+	onas: 33
+	ond: 22
+	one: 11
+	ons: 55
+	ons : 7
+	ont: 49
+	onu : 33
+	onā: 75
+	onāl: 40
+	onām: 13
+	onē: 16
+	onī: 11
+	oo: 13
+	oor: 11
+	opa: 385
+	opas: 342
+	ope: 11
+	opie: 65
+	opro: 33
+	opu : 18
+	opum: 15
+	opā: 33
+	opā : 33
+	opē: 35
+	opēj: 35
+	opī: 18
+	opīg: 18
+	or: 380
+	ora: 18
+	ord: 11
+	ore: 5
+	orij: 20
+	ormā: 25
+	ormē: 16
+	ors: 5
+	orā: 47
+	orād: 44
+	os: 658
+	os e: 2
+	os u: 42
+	osin: 45
+	oslē: 13
+	ost: 47
+	ostā: 20
+	ot: 1178
+	ot : 356
+	ot k: 27
+	ot p: 51
+	ot t: 31
+	ot v: 51
+	ot š: 20
+	ota: 116
+	otaj: 15
+	otam: 40
+	ote: 131
+	otei: 111
+	oti: 260
+	oti : 140
+	otie: 98
+	otik: 18
+	otnē: 15
+	ott: 2
+	otu: 67
+	otu : 62
+	otā: 95
+	otāj: 75
+	ou: 7
+	ov: 111
+	ova: 9
+	ove: 25
+	ovā: 11
+	ovē: 60
+	ovēr: 56
+	oza: 38
+	ozar: 38
+	ozie: 15
+	ozī: 107
+	ozīj: 22
+	ozīm: 64
+	ozīt: 11
+	oč: 5
+	oģ: 35
+	oģi: 35
+	oģij: 27
+	oņ: 65
+	oņi: 35
+	oņi : 13
+	oņie: 22
+	oņu: 31
+	oņu : 27
+	oš: 518
+	oša: 247
+	oša : 15
+	ošan: 214
+	oši: 135
+	oši : 20
+	ošie: 15
+	ošin: 100
+	ošo: 31
+	ošo : 27
+	ošu: 25
+	ošu : 22
+	ošā: 18
+	ošī: 47
+	ošīb: 47
+	p: 7207
+	pa: 2530
+	paau: 13
+	pad: 116
+	pado: 96
+	pagā: 20
+	pak: 73
+	paka: 36
+	pal: 120
+	pald: 13
+	pali: 35
+	palī: 60
+	pam: 93
+	pama: 84
+	panā: 49
+	papi: 22
+	par: 862
+	par : 531
+	pare: 73
+	parā: 27
+	pas: 507
+	pas : 371
+	pasa: 53
+	pasā: 53
+	pat: 260
+	pat : 58
+	pate: 56
+	pati: 58
+	patē: 45
+	paus: 20
+	paz: 40
+	pazi: 27
+	paš: 184
+	paša: 22
+	paši: 73
+	pašl: 20
+	pašr: 27
+	pašu: 22
+	pdr: 15
+	pdra: 15
+	pe: 191
+	pe : 2
+	pea: 4
+	pen: 16
+	per : 2
+	pi: 1156
+	pie: 778
+	piea: 11
+	piec: 45
+	pied: 45
+	piee: 36
+	piek: 47
+	piem: 129
+	pien: 80
+	piep: 20
+	pies: 35
+	piet: 71
+	piev: 38
+	pieļ: 11
+	pieņ: 89
+	pieš: 31
+	pil: 218
+	pild: 44
+	piln: 93
+	pils: 80
+	pinā: 27
+	pir: 98
+	pirm: 87
+	pjo: 18
+	pjom: 18
+	pka: 18
+	pkar: 13
+	plaš: 27
+	plā: 36
+	plān: 36
+	plū: 11
+	pm: 58
+	pmi: 16
+	pmie: 16
+	pmā: 24
+	pmāk: 24
+	pnie: 27
+	po: 340
+	po : 2
+	poju: 31
+	por: 71
+	pos: 11
+	pou: 2
+	pp: 2
+	pras: 78
+	pre: 151
+	pres: 4
+	pret: 75
+	pri: 436
+	prie: 338
+	prop: 4
+	prā: 58
+	prāt: 58
+	prū: 15
+	prūp: 15
+	psp: 42
+	pspr: 40
+	pst: 38
+	psti: 20
+	pstā: 13
+	psv: 16
+	ptau: 44
+	pum: 36
+	pumu: 11
+	pumā: 13
+	pus: 56
+	puse: 27
+	pusē: 20
+	putā: 35
+	pvie: 15
+	pzin: 13
+	pā: 429
+	pā : 49
+	pān: 13
+	pāni: 13
+	pār: 358
+	pārd: 13
+	pārk: 20
+	pārl: 24
+	pārm: 22
+	pārr: 27
+	pārs: 82
+	pārt: 29
+	pārv: 62
+	pārā: 11
+	pārē: 25
+	pē: 460
+	pēc: 136
+	pēc : 115
+	pēcī: 18
+	pēd: 33
+	pēdē: 33
+	pēj: 224
+	pēja: 115
+	pējo: 11
+	pēju: 51
+	pējā: 18
+	pējī: 22
+	pēk: 33
+	pēkā: 11
+	pēt: 20
+	pī: 55
+	pīg: 35
+	pīgi: 15
+	pņ: 16
+	pša: 13
+	q: 2
+	qu: 2
+	qui: 2
+	r: 12432
+	r : 2336
+	r bū: 33
+	r ci: 25
+	r de: 16
+	r f: 13
+	r ga: 38
+	r h: 2
+	r ie: 56
+	r iz: 42
+	r j: 171
+	r jā: 136
+	r k: 138
+	r ku: 38
+	r li: 40
+	r mē: 13
+	r mū: 16
+	r n: 149
+	r ne: 64
+	r no: 75
+	r o: 5
+	r p: 289
+	r pa: 111
+	r pi: 65
+	r pā: 22
+	r sa: 47
+	r sv: 40
+	r t: 204
+	r to: 73
+	r tā: 24
+	r uz: 15
+	r vē: 15
+	r ā: 15
+	r ī: 11
+	r ļ: 40
+	r ļo: 36
+	r š: 78
+	r šo: 47
+	rac: 2
+	radī: 42
+	rai : 29
+	raks: 64
+	ral: 15
+	ram: 180
+	ram : 129
+	ran: 80
+	ras: 271
+	ras : 160
+	rasī: 42
+	ratē: 42
+	ratī: 11
+	rau: 96
+	raud: 42
+	raug: 13
+	rav: 7
+	raz: 7
+	raē: 11
+	raēl: 11
+	raž: 53
+	ražo: 51
+	rb: 267
+	rba: 78
+	rba : 58
+	rbav: 11
+	rbe: 2
+	rbī: 80
+	rbīb: 80
+	rc: 24
+	rd : 2
+	rde: 2
+	rdz: 102
+	rdzn: 44
+	rdzī: 56
+	rdā: 22
+	rdā : 22
+	re: 1029
+	re : 7
+	re a: 2
+	re d: 2
+	rea: 25
+	reb: 2
+	rec: 15
+	redz: 98
+	rei: 156
+	reiz: 144
+	rel: 7
+	rem: 11
+	ren: 69
+	res: 96
+	resē: 20
+	rez: 102
+	rezi: 42
+	reā: 11
+	reāl: 11
+	reģ: 91
+	reģi: 91
+	reš: 38
+	rešā: 16
+	režī: 11
+	rge: 4
+	rgu: 65
+	rgus: 38
+	rgā: 29
+	rgāt: 16
+	rgū: 11
+	rgū : 11
+	ria: 2
+	ribē: 18
+	ric: 4
+	rie: 494
+	riek: 284
+	riem: 62
+	riev: 29
+	rieķ: 13
+	rija: 44
+	rijā: 13
+	ril: 2
+	ring: 4
+	rinā: 55
+	risi: 67
+	ritā: 38
+	rivā: 15
+	rklā: 18
+	rkā: 35
+	rkāp: 18
+	rkār: 16
+	rlie: 33
+	rmai: 20
+	rme: 4
+	rmiņ: 31
+	rmk: 18
+	rmkā: 18
+	rms: 53
+	rms : 49
+	rmā: 33
+	rmāc: 22
+	rmē: 22
+	rn: 51
+	rna: 11
+	rne: 5
+	robe: 56
+	roda: 25
+	roj: 96
+	roja: 20
+	rojā: 29
+	ropa: 384
+	rope: 7
+	ropā: 22
+	rosi: 47
+	rot: 160
+	rot : 27
+	rota: 51
+	rotu: 20
+	rozī: 35
+	roš: 191
+	roša: 31
+	roši: 102
+	rošī: 47
+	rp: 205
+	rp : 58
+	rpi: 33
+	rpin: 33
+	rpm: 24
+	rpmā: 24
+	rpt: 40
+	rpta: 40
+	rpē: 11
+	rpēj: 11
+	rr: 45
+	rrob: 13
+	rson: 56
+	rstā: 42
+	rte: 4
+	rtā: 20
+	rtā : 15
+	rtē: 51
+	rtēj: 29
+	rtī: 55
+	rtīb: 42
+	ru: 547
+	ru : 193
+	ru k: 47
+	ruku: 13
+	rum: 95
+	rumu: 27
+	rumā: 13
+	runa: 15
+	runā: 64
+	rupa: 33
+	rupā: 13
+	rus : 36
+	ry: 2
+	rz: 58
+	rze: 2
+	rzī: 31
+	rzīt: 18
+	rā: 663
+	rā : 118
+	rā a: 13
+	rā i: 13
+	rā t: 18
+	rāc: 40
+	rāci: 40
+	rād: 147
+	rāda: 13
+	rādā: 55
+	rādī: 67
+	rāk: 136
+	rāk : 67
+	rāka: 18
+	rāki: 15
+	rāku: 24
+	rāl: 18
+	rām: 35
+	rām : 22
+	rān: 13
+	rās: 24
+	rās : 22
+	rāt: 104
+	rāt : 33
+	rāti: 42
+	rātī: 20
+	rē: 325
+	rē : 16
+	rēj: 55
+	rēja: 11
+	rējo: 18
+	rējā: 13
+	rēs: 18
+	rēs : 11
+	rēt: 191
+	rēt : 18
+	rēta: 16
+	rēti: 15
+	rēts: 11
+	rētu: 82
+	rētā: 42
+	rēš: 27
+	rēša: 27
+	rģ: 44
+	rģi: 29
+	rģij: 29
+	rģē: 13
+	rģēt: 13
+	rī: 934
+	rī : 314
+	rī a: 22
+	rī c: 11
+	rī e: 20
+	rī j: 13
+	rī k: 13
+	rī l: 11
+	rī m: 18
+	rī n: 18
+	rī p: 31
+	rī r: 11
+	rī s: 18
+	rī t: 33
+	rī u: 16
+	rī v: 24
+	rīb: 96
+	rība: 62
+	rību: 24
+	rībā: 11
+	rīc: 35
+	rīcī: 35
+	rīd: 36
+	rīd : 13
+	rīdī: 13
+	rīg: 133
+	rīga: 42
+	rīgi: 45
+	rīgs: 24
+	rīgu: 11
+	rīj: 25
+	rīju: 16
+	rīk: 62
+	rīko: 40
+	rīks: 20
+	rīs: 20
+	rīs : 15
+	rīt: 85
+	rīt : 47
+	rītu: 16
+	rīv: 45
+	rīvī: 20
+	rīz: 60
+	rīz : 22
+	rīze: 18
+	rīzi: 11
+	rķ: 55
+	rķi: 42
+	rķi : 18
+	rķis: 18
+	rņ: 13
+	rš: 62
+	rš : 20
+	rša: 22
+	ršan: 18
+	rū: 89
+	rūk: 22
+	rūp: 47
+	rūpe: 11
+	rūpn: 18
+	rūpī: 11
+	rūt: 18
+	s: 17001
+	s : 8778
+	s a: 634
+	s a : 2
+	s ai: 64
+	s ap: 84
+	s ar: 176
+	s at: 207
+	s b: 225
+	s ba: 58
+	s bū: 67
+	s ce: 42
+	s ci: 64
+	s co: 4
+	s da: 162
+	s de: 60
+	s dz: 25
+	s dā: 16
+	s ei: 65
+	s es: 120
+	s g: 178
+	s ga: 102
+	s gr: 55
+	s i: 831
+	s ie: 224
+	s ir: 384
+	s iz: 151
+	s j: 273
+	s ja: 105
+	s jo: 73
+	s jā: 47
+	s jū: 16
+	s k: 642
+	s ka: 265
+	s ko: 173
+	s ku: 100
+	s kā: 64
+	s l: 291
+	s la: 111
+	s li: 53
+	s lē: 13
+	s lī: 91
+	s m: 222
+	s ma: 73
+	s mē: 38
+	s mū: 29
+	s n: 609
+	s ne: 234
+	s no: 278
+	s nā: 29
+	s o: 20
+	s p: 1245
+	s pa: 549
+	s pi: 225
+	s pr: 224
+	s pā: 71
+	s pē: 20
+	s r: 269
+	s ra: 51
+	s re: 135
+	s rī: 22
+	s s: 593
+	s sa: 329
+	s st: 78
+	s t: 384
+	s ti: 149
+	s tā: 42
+	s u: 585
+	s un: 347
+	s uz: 233
+	s v: 685
+	s va: 307
+	s ve: 73
+	s vi: 156
+	s vā: 22
+	s vē: 122
+	s z: 62
+	s zi: 45
+	s ā: 13
+	s ī: 42
+	s īp: 13
+	s īs: 27
+	s ļ: 36
+	s ļa: 16
+	s ļo: 20
+	s š: 95
+	s ša: 29
+	s šo: 24
+	s šī: 16
+	sa: 1463
+	sa : 51
+	sab: 87
+	sabi: 51
+	sacī: 15
+	sada: 44
+	saga: 29
+	sagl: 20
+	sai: 162
+	saim: 38
+	sais: 118
+	saka: 35
+	sakā: 11
+	salī: 16
+	sam : 76
+	sanā: 13
+	sap: 62
+	sapr: 49
+	sar: 133
+	sard: 56
+	sarg: 25
+	saru: 20
+	sas: 160
+	sask: 75
+	sasn: 36
+	satr: 16
+	sau: 69
+	sauc: 11
+	sauk: 16
+	saul: 42
+	sav: 289
+	sava: 29
+	savi: 156
+	savs: 15
+	savu: 60
+	savā: 27
+	saņ: 25
+	saņe: 22
+	sc: 4
+	sch: 2
+	se: 245
+	se : 7
+	see: 2
+	selī: 35
+	sem: 2
+	sen: 22
+	sen : 13
+	ser: 13
+	set: 2
+	sevi: 33
+	seš: 13
+	si: 856
+	sid: 2
+	siem: 35
+	sies: 47
+	siev: 24
+	sig: 4
+	sij: 213
+	sija: 167
+	siju: 38
+	sim : 49
+	simt: 15
+	sinā: 98
+	sio: 2
+	sion: 2
+	sird: 13
+	sjū: 18
+	sjūr: 18
+	sk: 833
+	ska: 431
+	skai: 107
+	skaj: 36
+	skar: 33
+	skas: 18
+	skat: 142
+	skaņ: 47
+	ske: 2
+	ski : 67
+	sko : 51
+	sku : 40
+	skā: 147
+	skā : 42
+	skāk: 13
+	skās: 78
+	slie: 16
+	slē: 31
+	slēg: 20
+	smes: 25
+	smu: 64
+	smu : 62
+	smē: 11
+	smī: 18
+	smīg: 18
+	sn: 153
+	sni: 115
+	snie: 111
+	snī: 24
+	snīb: 11
+	so: 354
+	so : 15
+	soj: 47
+	soju: 35
+	som: 4
+	sonu: 13
+	sonā: 13
+	sonī: 11
+	soņ: 55
+	soņi: 27
+	soņu: 27
+	soš: 29
+	soša: 11
+	sošo: 11
+	spri: 49
+	spā: 31
+	spān: 11
+	spār: 18
+	spē: 238
+	spēc: 18
+	spēj: 176
+	spēk: 31
+	ss: 29
+	ssi: 2
+	sta: 285
+	sta : 42
+	stan: 11
+	star: 127
+	stat: 18
+	ste: 102
+	ste : 2
+	sti : 25
+	stip: 47
+	stis: 104
+	stoš: 35
+	strā: 71
+	strē: 16
+	sts: 85
+	sts : 84
+	stu: 205
+	stu : 185
+	stā: 224
+	stā : 13
+	stād: 33
+	stāj: 22
+	stāk: 24
+	stās: 11
+	stāt: 11
+	stāv: 85
+	stē: 56
+	stēm: 47
+	stī: 356
+	stī : 24
+	stīb: 98
+	stīg: 22
+	stīj: 16
+	stīm: 65
+	stīs: 49
+	stīt: 65
+	su : 251
+	su i: 25
+	su k: 25
+	su p: 38
+	su v: 25
+	sv: 200
+	sva: 131
+	svar: 122
+	svē: 20
+	svēr: 16
+	sz: 2
+	sā: 218
+	sā : 36
+	sā p: 11
+	sāj: 11
+	sāk: 80
+	sāku: 67
+	sār: 53
+	sār : 11
+	sāra: 20
+	sē: 240
+	sēd: 149
+	sēdē: 145
+	sēj: 38
+	sēju: 24
+	sēm: 11
+	sēm : 11
+	sēt: 20
+	sī: 307
+	sīb: 220
+	sība: 69
+	sību: 113
+	sībā: 38
+	sīj: 25
+	sīju: 24
+	sīt: 20
+	sīv: 11
+	sū: 11
+	t: 13879
+	t : 1691
+	t ar: 60
+	t ci: 29
+	t d: 65
+	t de: 7
+	t e: 58
+	t f: 5
+	t h: 4
+	t ie: 29
+	t ir: 24
+	t k: 209
+	t ka: 93
+	t kā: 35
+	t mū: 16
+	t o: 9
+	t p: 234
+	t pa: 113
+	t pi: 47
+	t pā: 16
+	t tā: 29
+	t uz: 33
+	t vē: 38
+	t ī: 15
+	t š: 78
+	t šo: 42
+	t šī: 15
+	tad : 44
+	taj: 95
+	taji: 27
+	tajā: 58
+	tak: 5
+	tal: 5
+	tam : 98
+	tams: 33
+	tan: 15
+	tant: 2
+	tarp: 125
+	tas: 360
+	tas : 349
+	tat: 27
+	tau: 75
+	taut: 56
+	tavo: 33
+	tač: 40
+	taču: 40
+	tb: 185
+	tba: 67
+	tbal: 67
+	tbi: 105
+	tbil: 105
+	tbrī: 13
+	tce: 25
+	tcel: 11
+	tcer: 13
+	te: 893
+	te : 44
+	te a: 4
+	te p: 2
+	te s: 2
+	tehn: 36
+	tei: 305
+	teic: 45
+	teik: 231
+	teja: 36
+	tekm: 33
+	tel: 15
+	tem: 25
+	ten: 96
+	teno: 64
+	ter: 144
+	ter : 4
+	tgri: 11
+	th: 2
+	ti: 2458
+	ti u: 47
+	tic: 29
+	tie: 976
+	tiec: 184
+	tiek: 113
+	tiem: 120
+	ties: 429
+	tieš: 55
+	tij: 56
+	tija: 42
+	tik: 371
+	tika: 214
+	tiks: 35
+	tikt: 24
+	til: 9
+	tinā: 15
+	tio: 2
+	tip: 49
+	tipr: 47
+	tir: 124
+	tird: 44
+	tirg: 80
+	tis: 309
+	tis : 76
+	tisk: 227
+	tiv: 9
+	tjau: 22
+	tkar: 22
+	tkl: 18
+	tklā: 18
+	tkri: 16
+	tkā: 22
+	tkār: 15
+	tnes: 15
+	tnē: 16
+	tnē : 15
+	to k: 89
+	tojo: 22
+	toju: 24
+	tom: 107
+	tomē: 85
+	tor: 58
+	toš: 75
+	toša: 49
+	trau: 33
+	tre: 33
+	tre : 2
+	treš: 29
+	trs: 15
+	trs : 15
+	trum: 60
+	trā: 87
+	trā : 11
+	trād: 60
+	trē: 22
+	trī: 20
+	trīs: 11
+	trū: 20
+	trūk: 20
+	ts: 440
+	ts : 364
+	ts i: 40
+	ts k: 51
+	ts n: 27
+	ts u: 31
+	tspē: 31
+	tt: 265
+	tt : 4
+	tta: 4
+	tte: 11
+	tti: 198
+	ttie: 196
+	ttī: 35
+	ttīs: 35
+	tu: 1396
+	tu : 973
+	tu a: 60
+	tu b: 25
+	tu d: 27
+	tu g: 22
+	tu i: 51
+	tu j: 35
+	tu k: 138
+	tu l: 42
+	tu p: 124
+	tu r: 24
+	tu s: 82
+	tu t: 49
+	tu u: 65
+	tu v: 62
+	tu š: 20
+	tud: 2
+	tugā: 16
+	turp: 56
+	turē: 42
+	tus : 75
+	tuā: 55
+	tuāc: 45
+	tver: 35
+	tvē: 24
+	tvēr: 24
+	tzi: 31
+	tzin: 29
+	tzī: 20
+	tā: 1652
+	tā : 316
+	tā a: 13
+	tā b: 15
+	tā d: 13
+	tā i: 42
+	tā k: 27
+	tā l: 13
+	tā m: 13
+	tā n: 31
+	tā p: 31
+	tā s: 24
+	tā t: 13
+	tā u: 13
+	tā v: 16
+	tāc: 15
+	tāci: 15
+	tād: 178
+	tāda: 24
+	tāde: 16
+	tādu: 24
+	tādā: 15
+	tādē: 80
+	tāj: 462
+	tāja: 135
+	tāji: 80
+	tājs: 22
+	tāju: 218
+	tāk: 36
+	tākļ: 13
+	tāl: 53
+	tāli: 16
+	tālā: 16
+	tām: 65
+	tām : 55
+	tāp: 71
+	tāpa: 11
+	tāpē: 60
+	tār: 38
+	tāra: 13
+	tās: 129
+	tās : 124
+	tāt: 180
+	tāte: 55
+	tāti: 69
+	tātu: 16
+	tātā: 11
+	tātē: 13
+	tāv: 85
+	tāv : 11
+	tāvj: 24
+	tāvo: 20
+	tē: 329
+	tē : 18
+	tēj: 65
+	tēja: 11
+	tēji: 13
+	tēju: 24
+	tēm: 75
+	tēm : 25
+	tēma: 22
+	tēmu: 20
+	tēr: 60
+	tēri: 11
+	tērē: 44
+	tēs: 13
+	tēs : 13
+	tēt: 36
+	tēt : 15
+	tēģ: 42
+	tēģi: 42
+	tēš: 13
+	tēša: 13
+	tī: 840
+	tī : 25
+	tīb: 211
+	tība: 111
+	tību: 38
+	tībā: 62
+	tīg: 64
+	tīga: 11
+	tīgi: 31
+	tīj: 29
+	tīju: 18
+	tīk: 16
+	tīm: 67
+	tīm : 65
+	tīr: 16
+	tīs: 93
+	tīs : 53
+	tīst: 35
+	tīt: 96
+	tīt : 35
+	tīta: 18
+	tīti: 16
+	tīv: 180
+	tīva: 62
+	tīvi: 22
+	tīvo: 15
+	tīvu: 29
+	tīvā: 51
+	tīš: 25
+	tīša: 24
+	tļ: 15
+	tļa: 11
+	tļau: 11
+	tšķ: 16
+	tšķi: 16
+	tū: 104
+	tūr: 84
+	tūra: 62
+	u: 11906
+	u : 4275
+	u a: 340
+	u ai: 49
+	u ak: 45
+	u ap: 51
+	u ar: 44
+	u at: 115
+	u b: 78
+	u ci: 29
+	u d: 135
+	u da: 53
+	u e: 142
+	u ei: 60
+	u es: 36
+	u g: 87
+	u ga: 62
+	u i: 294
+	u ie: 89
+	u ir: 51
+	u iz: 96
+	u j: 127
+	u ja: 36
+	u jo: 45
+	u jā: 18
+	u k: 531
+	u ka: 274
+	u ko: 118
+	u kr: 25
+	u ku: 45
+	u kā: 51
+	u l: 167
+	u la: 100
+	u li: 36
+	u lī: 27
+	u m: 131
+	u mu: 29
+	u mē: 31
+	u mū: 13
+	u n: 193
+	u ne: 53
+	u no: 122
+	u p: 545
+	u pa: 242
+	u pi: 122
+	u pā: 60
+	u r: 138
+	u re: 69
+	u s: 314
+	u sa: 136
+	u si: 33
+	u st: 60
+	u t: 220
+	u ti: 95
+	u tā: 24
+	u u: 365
+	u un: 289
+	u uz: 75
+	u v: 251
+	u va: 102
+	u ve: 45
+	u vi: 73
+	u vē: 25
+	u ī: 25
+	u īs: 20
+	u š: 62
+	u ša: 15
+	u šo: 25
+	ua: 5
+	ubā: 20
+	ubām: 13
+	uc: 42
+	ud : 7
+	udz: 138
+	udz : 49
+	udzu: 16
+	udzā: 11
+	udzī: 18
+	udē: 15
+	udēj: 11
+	udž: 38
+	udže: 38
+	ue: 4
+	ue : 4
+	uf: 2
+	ugs: 69
+	ugsm: 15
+	ugst: 45
+	ugā: 20
+	ugāl: 15
+	uh: 2
+	ui: 4
+	uit: 2
+	ujie: 11
+	uksa: 27
+	uktū: 18
+	ukum: 16
+	ul : 2
+	uldī: 31
+	ules: 22
+	ultā: 33
+	ulu : 16
+	ulā: 22
+	ulē: 40
+	ulē : 18
+	ulēt: 13
+	um: 1814
+	um : 7
+	uma: 182
+	uma : 151
+	umam: 25
+	umi: 273
+	umi : 122
+	umie: 147
+	umos: 25
+	ums: 505
+	ums : 505
+	umu: 584
+	umu : 416
+	umus: 165
+	umā: 133
+	umā : 122
+	un: 1805
+	un : 1291
+	un a: 65
+	un b: 35
+	un d: 55
+	un e: 82
+	un i: 89
+	un j: 24
+	un k: 129
+	un l: 25
+	un m: 73
+	un n: 51
+	un p: 149
+	un r: 35
+	un s: 95
+	un t: 145
+	un u: 22
+	un v: 102
+	una : 5
+	undz: 49
+	une: 2
+	ungi: 22
+	ungs: 131
+	uni: 35
+	unoš: 13
+	unu : 25
+	unā: 82
+	unā : 22
+	unāj: 27
+	unāt: 18
+	upas: 27
+	uprā: 29
+	upā: 13
+	uras: 27
+	urkl: 18
+	uro: 20
+	urop: 5
+	urp: 58
+	urpi: 33
+	urpm: 24
+	uru: 67
+	uru : 42
+	urus: 24
+	urā: 71
+	urā : 42
+	urās: 16
+	urē: 53
+	urēt: 29
+	urēš: 16
+	urš: 13
+	urš : 13
+	us: 885
+	us : 587
+	us k: 42
+	us p: 89
+	us u: 49
+	us š: 16
+	usi : 102
+	usjū: 18
+	usē: 20
+	usēj: 16
+	utis: 47
+	utt: 2
+	utā: 187
+	utāj: 145
+	utāt: 35
+	uz: 736
+	uz : 342
+	uz a: 24
+	uz b: 13
+	uz d: 27
+	uz e: 22
+	uz i: 20
+	uz j: 11
+	uz k: 25
+	uz l: 18
+	uz n: 13
+	uz p: 35
+	uz s: 24
+	uz t: 38
+	uz v: 27
+	uzl: 49
+	uzla: 44
+	uzm: 38
+	uzma: 38
+	uzr: 16
+	uzra: 15
+	uzs: 129
+	uzsk: 93
+	uzsv: 22
+	uzt: 33
+	uzti: 11
+	uztu: 15
+	uzņ: 73
+	uzņe: 18
+	uzņē: 55
+	uā: 67
+	uāc: 45
+	uāci: 45
+	uāl: 18
+	uš: 178
+	uša: 42
+	ušaj: 16
+	ušas: 24
+	uši: 113
+	uši : 91
+	ušie: 22
+	ušā: 11
+	v: 5148
+	v ie: 11
+	v pi: 18
+	va: 1463
+	vadī: 18
+	vai: 273
+	vai : 145
+	vair: 109
+	vaj: 71
+	vaja: 64
+	val: 489
+	vald: 67
+	vals: 387
+	van: 16
+	van : 5
+	var: 442
+	var : 89
+	vara: 73
+	varu: 44
+	varē: 102
+	varī: 93
+	vas : 78
+	vat: 5
+	ve: 531
+	ve : 5
+	vecā: 11
+	vei: 233
+	veic: 65
+	veid: 116
+	veik: 47
+	ver: 64
+	vese: 40
+	vi: 1451
+	vidu: 31
+	vidē: 15
+	vie: 674
+	vied: 27
+	vieg: 13
+	vien: 464
+	vies: 25
+	viet: 75
+	vieš: 22
+	vij: 36
+	vija: 18
+	vijā: 11
+	virz: 55
+	vis: 314
+	visa: 42
+	visb: 13
+	visi: 56
+	visp: 36
+	visu: 53
+	visā: 20
+	vitā: 13
+	viā: 15
+	viāc: 15
+	viņ: 118
+	viņa: 22
+	viņi: 40
+	viņu: 38
+	viņš: 16
+	viš: 24
+	višķ: 24
+	vj: 33
+	vji: 18
+	vji : 13
+	vn: 11
+	vo: 180
+	vokl: 15
+	vol: 4
+	vot: 85
+	votā: 55
+	voš: 22
+	voša: 20
+	vr: 4
+	vro: 2
+	vrop: 2
+	vu: 162
+	vu : 78
+	vum: 22
+	vums: 11
+	vus : 31
+	vy: 2
+	vá: 2
+	vā: 214
+	vā : 42
+	vāj: 18
+	vāk: 27
+	vām: 13
+	vām : 13
+	vār: 51
+	vārd: 42
+	vās: 29
+	vās : 29
+	vāt: 24
+	vē: 773
+	vēj: 15
+	vēk: 118
+	vēki: 29
+	vēkt: 42
+	vēku: 44
+	vēl: 302
+	vēl : 84
+	vēla: 56
+	vēlo: 47
+	vēlr: 29
+	vēlā: 11
+	vēlē: 67
+	vēr: 282
+	vēro: 53
+	vērs: 60
+	vērt: 85
+	vēru: 15
+	vērā: 40
+	vērš: 20
+	vēs: 11
+	vēt: 16
+	vī: 91
+	vīb: 40
+	vība: 16
+	vību: 24
+	vīg: 13
+	vīr: 15
+	vīri: 15
+	vīz: 13
+	w: 15
+	wa: 4
+	we: 2
+	wi: 5
+	wie: 2
+	wo: 2
+	x: 5
+	y: 16
+	y : 5
+	y s: 2
+	ys: 2
+	z: 3761
+	z : 611
+	z at: 18
+	z da: 20
+	z ei: 16
+	z g: 25
+	z ga: 18
+	z ie: 13
+	z ku: 16
+	z l: 33
+	z p: 60
+	z s: 40
+	z t: 58
+	z tā: 11
+	z v: 53
+	z va: 20
+	z vi: 22
+	z š: 27
+	z ši: 16
+	za: 176
+	za : 24
+	zaug: 15
+	zbei: 15
+	zdar: 27
+	zdev: 31
+	zekļ: 33
+	zen: 2
+	zes: 55
+	zes : 53
+	zglī: 15
+	zi: 614
+	zid: 42
+	zide: 38
+	zija: 29
+	zin: 184
+	zinu: 16
+	zinā: 131
+	zinī: 20
+	zitī: 16
+	ziņ: 147
+	ziņo: 125
+	ziņā: 16
+	zl: 84
+	zla: 45
+	zlab: 44
+	zli: 35
+	zlie: 29
+	zm: 178
+	zma: 145
+	zmak: 13
+	zman: 127
+	zmek: 11
+	znie: 44
+	znī: 11
+	znīc: 11
+	zolū: 27
+	zot : 22
+	zpil: 18
+	zr: 62
+	zra: 47
+	zrai: 22
+	zrau: 15
+	zraē: 11
+	zs: 300
+	zsa: 71
+	zsar: 69
+	zsk: 113
+	zska: 113
+	zsl: 16
+	zslē: 13
+	zst: 36
+	zstr: 27
+	zsv: 44
+	zsva: 25
+	ztei: 29
+	ztic: 11
+	ztu: 22
+	ztur: 22
+	zv: 135
+	zve: 64
+	zvei: 45
+	zvej: 13
+	zvi: 36
+	zvie: 20
+	zvir: 16
+	zvē: 24
+	zvēl: 11
+	zvēr: 13
+	zy: 4
+	zā: 111
+	zāc: 40
+	zāci: 40
+	zāk: 42
+	zāk : 27
+	zās: 13
+	zās : 11
+	zē: 173
+	zēj: 47
+	zēja: 13
+	zējā: 13
+	zēm: 13
+	zēm : 13
+	zēt: 91
+	zēt : 33
+	zētu: 31
+	zēš: 11
+	zī: 511
+	zīb: 104
+	zība: 58
+	zību: 42
+	zīg: 100
+	zīga: 38
+	zīgi: 20
+	zīgu: 11
+	zīgā: 16
+	zīj: 27
+	zīju: 24
+	zīm: 85
+	zīme: 18
+	zīmē: 25
+	zīmī: 27
+	zīs: 20
+	zīst: 13
+	zīt: 44
+	zīt : 15
+	zīv: 111
+	zīve: 15
+	zīvo: 67
+	zīvī: 13
+	zņ: 82
+	zņe: 18
+	zņem: 18
+	zņē: 64
+	zņēm: 64
+	á: 4
+	ác: 2
+	è: 2
+	é: 2
+	én: 2
+	í: 2
+	ó: 2
+	ö: 2
+	ø: 2
+	ü: 2
+	ā: 8434
+	ā : 2027
+	ā a: 218
+	ā ar: 162
+	ā at: 24
+	ā b: 67
+	ā be: 13
+	ā bi: 13
+	ā br: 13
+	ā bū: 22
+	ā c: 24
+	ā d: 65
+	ā da: 35
+	ā e: 89
+	ā ei: 33
+	ā es: 44
+	ā f: 15
+	ā g: 67
+	ā ga: 49
+	ā gr: 11
+	ā i: 149
+	ā ie: 31
+	ā ir: 85
+	ā iz: 15
+	ā j: 93
+	ā ja: 42
+	ā jo: 33
+	ā k: 138
+	ā ka: 33
+	ā ko: 36
+	ā ku: 22
+	ā kā: 36
+	ā l: 80
+	ā la: 36
+	ā li: 18
+	ā lī: 18
+	ā m: 78
+	ā mē: 42
+	ā n: 133
+	ā na: 11
+	ā ne: 51
+	ā no: 64
+	ā p: 176
+	ā pa: 82
+	ā pi: 44
+	ā pr: 29
+	ā pā: 11
+	ā r: 36
+	ā re: 16
+	ā s: 98
+	ā sa: 45
+	ā si: 15
+	ā t: 124
+	ā ta: 22
+	ā ti: 40
+	ā to: 29
+	ā tā: 13
+	ā u: 200
+	ā un: 89
+	ā uz: 109
+	ā v: 96
+	ā va: 29
+	ā ve: 16
+	ā vi: 38
+	ā vē: 13
+	ā z: 20
+	ā zi: 16
+	ā ī: 11
+	ā š: 18
+	āa: 38
+	āap: 13
+	āat: 24
+	āb: 40
+	ābū: 36
+	ābūt: 36
+	āc: 267
+	āci: 240
+	ācij: 231
+	ācī: 16
+	ād: 558
+	āda: 89
+	āda : 49
+	ādar: 11
+	ādas: 22
+	āde: 29
+	ādes: 25
+	ādi: 60
+	ādi : 31
+	ādie: 20
+	ādo: 15
+	āds: 18
+	āds : 18
+	ādu: 67
+	ādu : 49
+	ādus: 18
+	ādā: 109
+	ādā : 38
+	ādāj: 22
+	ādām: 13
+	ādās: 15
+	ādāt: 18
+	ādē: 87
+	ādēj: 11
+	ādēm: 11
+	ādēļ: 65
+	ādī: 67
+	ādīj: 42
+	ādīt: 18
+	āf: 18
+	āfr: 13
+	āfri: 13
+	āi: 40
+	āie: 22
+	āiz: 16
+	āj: 774
+	āja: 196
+	āja : 135
+	ājam: 33
+	ājas: 27
+	āji: 89
+	āji : 25
+	ājie: 60
+	ājo: 29
+	ājot: 15
+	ājs: 22
+	ājs : 22
+	āju: 400
+	āju : 93
+	ājum: 258
+	ājus: 15
+	ājuš: 35
+	ājā: 16
+	ājī: 11
+	ājīb: 11
+	āk: 767
+	āk : 147
+	āk j: 11
+	āk l: 13
+	āk n: 16
+	āk p: 11
+	āk u: 11
+	āka: 165
+	āka : 31
+	ākai: 24
+	ākaj: 53
+	ākam: 20
+	ākas: 36
+	āki: 44
+	āki : 20
+	ākie: 22
+	āko: 64
+	āko : 20
+	ākot: 35
+	āks: 38
+	āks : 16
+	āksm: 13
+	ākt: 44
+	ākt : 24
+	āku: 202
+	āku : 58
+	ākum: 120
+	ākus: 13
+	ākuš: 11
+	ākā: 36
+	ākā : 24
+	ākļ: 15
+	āl: 318
+	āla: 56
+	āla : 18
+	ālaj: 22
+	āle: 20
+	āles: 13
+	āli: 67
+	āli : 25
+	ālie: 18
+	ālij: 11
+	ālo: 45
+	ālo : 36
+	ālu: 24
+	ālu : 18
+	ālā: 80
+	ālā : 29
+	ālāk: 20
+	ālās: 29
+	ām: 687
+	ām : 567
+	ām a: 29
+	ām d: 24
+	ām e: 18
+	ām g: 11
+	ām i: 56
+	ām j: 11
+	ām k: 62
+	ām l: 15
+	ām n: 22
+	ām p: 69
+	ām r: 15
+	ām s: 24
+	ām t: 24
+	ām u: 47
+	ām v: 45
+	āma: 53
+	āmas: 27
+	āmi: 25
+	āmie: 15
+	āms: 15
+	āms : 15
+	āmā: 11
+	ān: 140
+	āna: 24
+	ānas: 13
+	āni: 49
+	ānij: 24
+	ānis: 16
+	āno: 29
+	ānu: 25
+	ānu : 18
+	āp: 175
+	āpa: 27
+	āpat: 13
+	āpi: 24
+	āpie: 20
+	āpu: 22
+	āpum: 22
+	āpē: 75
+	āpēc: 75
+	ār: 742
+	ār : 16
+	āra: 38
+	āra : 24
+	ārd: 56
+	ārdo: 15
+	ārdā: 22
+	ārg: 15
+	āri: 42
+	ārie: 13
+	ārij: 15
+	ārk: 31
+	ārkā: 31
+	ārl: 33
+	ārli: 33
+	ārm: 22
+	ārma: 16
+	āro: 11
+	ārp: 15
+	ārr: 27
+	ārre: 13
+	ārro: 13
+	ārs: 102
+	ārs : 11
+	ārsk: 24
+	ārst: 60
+	ārt: 135
+	ārt : 40
+	ārti: 18
+	ārto: 18
+	ārtī: 31
+	āru: 13
+	ārv: 64
+	ārva: 47
+	ārā: 18
+	ārāk: 13
+	ārē: 38
+	ārēj: 35
+	ārī: 15
+	ārņ: 11
+	ārš: 16
+	ās: 714
+	ās : 662
+	ās a: 49
+	ās d: 56
+	ās e: 13
+	ās i: 62
+	ās j: 15
+	ās k: 40
+	ās l: 15
+	ās n: 38
+	ās p: 98
+	ās r: 18
+	ās s: 47
+	ās t: 36
+	ās u: 31
+	ās v: 71
+	āsa: 18
+	āsi: 16
+	āt: 782
+	āt : 234
+	āt d: 15
+	āt e: 11
+	āt i: 18
+	āt k: 24
+	āt l: 13
+	āt m: 13
+	āt p: 25
+	āt s: 18
+	āt t: 15
+	āt š: 13
+	āta: 56
+	āta : 22
+	ātaj: 13
+	ātas: 11
+	āte: 58
+	āte : 24
+	ātes: 31
+	āti: 156
+	āti : 91
+	ātie: 24
+	ātij: 20
+	ātis: 22
+	āto: 24
+	āto : 16
+	ātr: 20
+	ātri: 15
+	āts: 33
+	āts : 33
+	ātu: 105
+	ātu : 89
+	ātā: 38
+	ātā : 18
+	ātāj: 11
+	ātē: 15
+	ātēm: 11
+	ātī: 33
+	ātīb: 16
+	ātīg: 16
+	āu: 22
+	āuz: 20
+	āv: 140
+	āv : 11
+	āve: 18
+	āvi: 15
+	āvi : 11
+	āvj: 24
+	āvji: 16
+	āvo: 20
+	āvok: 15
+	āvā: 22
+	āvāj: 11
+	āz: 36
+	āze: 15
+	āzes: 15
+	āļ: 11
+	āš: 115
+	āša: 115
+	āšan: 113
+	āž: 11
+	āžu: 11
+	āžu : 11
+	č: 75
+	či: 5
+	ču: 51
+	ču : 51
+	ē: 4254
+	ē : 160
+	ē k: 18
+	ē ka: 15
+	ē p: 20
+	ē t: 15
+	ē u: 16
+	ē un: 11
+	ē v: 11
+	ēc: 142
+	ēc : 115
+	ēc e: 16
+	ēc i: 16
+	ēc k: 13
+	ēc m: 13
+	ēc s: 13
+	ēc t: 15
+	ēcī: 18
+	ēcīg: 18
+	ēd: 202
+	ēdz: 13
+	ēdē: 178
+	ēdēj: 33
+	ēdēt: 145
+	ēg: 38
+	ēgļ: 11
+	ēgļu: 11
+	ēj: 653
+	ēja: 193
+	ēja : 75
+	ējai: 25
+	ējam: 55
+	ējas: 36
+	ēji: 55
+	ēji : 15
+	ējie: 33
+	ējo: 91
+	ējo : 51
+	ējos: 16
+	ējot: 13
+	ējoš: 11
+	ēju: 167
+	ēju : 69
+	ējum: 64
+	ējus: 11
+	ējuš: 24
+	ējā: 111
+	ējā : 45
+	ējād: 11
+	ējām: 22
+	ējās: 33
+	ējī: 22
+	ējīg: 22
+	ēk: 158
+	ēki: 36
+	ēki : 16
+	ēkie: 20
+	ēkt: 42
+	ēkti: 42
+	ēku: 53
+	ēku : 47
+	ēkā: 11
+	ēkā : 11
+	ēl: 356
+	ēl : 104
+	ēl a: 13
+	ēl n: 18
+	ēl v: 22
+	ēla: 64
+	ēlam: 22
+	ēlas: 36
+	ēlo: 56
+	ēlos: 44
+	ēlr: 29
+	ēlre: 29
+	ēlu: 11
+	ēlu : 11
+	ēlā: 11
+	ēlē: 69
+	ēlēt: 42
+	ēlēš: 18
+	ēm: 356
+	ēm : 82
+	ēm u: 16
+	ēma: 75
+	ēma : 25
+	ēmas: 47
+	ēmu: 138
+	ēmu : 35
+	ēmum: 93
+	ēmā: 25
+	ēmām: 18
+	ēmē: 22
+	ēmēj: 22
+	ēn: 38
+	ēne: 22
+	ēneš: 20
+	ēr: 680
+	ēr : 105
+	ēr e: 22
+	ēr i: 13
+	ēr m: 16
+	ēr p: 11
+	ēra: 64
+	ēram: 53
+	ēri: 18
+	ērn: 29
+	ērni: 16
+	ērnu: 11
+	ēro: 104
+	ēro : 15
+	ēroj: 31
+	ērot: 35
+	ēroš: 16
+	ērs: 67
+	ērst: 53
+	ērt: 85
+	ērtē: 44
+	ērtī: 22
+	ēru: 20
+	ērā: 49
+	ērā : 49
+	ērē: 44
+	ērēt: 42
+	ērķ: 53
+	ērķi: 42
+	ērš: 25
+	ērša: 11
+	ēs: 411
+	ēs : 380
+	ēs a: 25
+	ēs b: 13
+	ēs d: 13
+	ēs e: 36
+	ēs i: 22
+	ēs n: 35
+	ēs p: 24
+	ēs r: 13
+	ēs s: 20
+	ēs t: 31
+	ēs v: 80
+	ēsi: 16
+	ēsim: 15
+	ēst: 13
+	ēt: 703
+	ēt : 113
+	ēt k: 18
+	ēt p: 15
+	ēta: 58
+	ēta : 25
+	ētaj: 15
+	ētas: 18
+	ēti: 56
+	ēti : 16
+	ētie: 24
+	ētik: 13
+	ēto: 51
+	ēto : 15
+	ētos: 36
+	ēts: 29
+	ēts : 20
+	ētu: 149
+	ētu : 142
+	ētā: 224
+	ētā : 11
+	ētāj: 196
+	ētās: 11
+	ēz: 20
+	ēzi: 20
+	ēzij: 15
+	ēģ: 80
+	ēģi: 75
+	ēģi : 11
+	ēģij: 35
+	ēģin: 16
+	ēģis: 11
+	ēķ: 11
+	ēļ: 122
+	ēļ : 96
+	ēļ e: 16
+	ēļ k: 11
+	ēļ m: 22
+	ēļā: 15
+	ēļā : 13
+	ēš: 111
+	ēša: 109
+	ēšan: 109
+	ė: 4
+	ģ: 320
+	ģe: 31
+	ģen: 25
+	ģene: 11
+	ģent: 11
+	ģi: 247
+	ģi : 13
+	ģij: 96
+	ģija: 60
+	ģiju: 25
+	ģijā: 11
+	ģin: 16
+	ģinā: 13
+	ģio: 78
+	ģion: 78
+	ģis: 35
+	ģisk: 22
+	ģist: 13
+	ģē: 25
+	ģēt: 16
+	ģēti: 13
+	ī: 5224
+	ī : 418
+	ī a: 22
+	ī c: 11
+	ī d: 15
+	ī e: 22
+	ī es: 11
+	ī g: 16
+	ī ga: 11
+	ī i: 24
+	ī j: 13
+	ī k: 22
+	ī ko: 11
+	ī l: 13
+	ī m: 22
+	ī n: 20
+	ī no: 15
+	ī p: 56
+	ī pa: 29
+	ī r: 18
+	ī s: 20
+	ī t: 45
+	ī ti: 16
+	ī to: 13
+	ī u: 20
+	ī uz: 15
+	ī v: 29
+	ī vi: 13
+	īb: 1607
+	ība: 758
+	ība : 195
+	ībai: 45
+	ības: 518
+	ību: 425
+	ību : 425
+	ībv: 107
+	ībva: 107
+	ībā: 311
+	ībā : 245
+	ībām: 55
+	ībās: 11
+	īc: 87
+	īci: 35
+	īcij: 25
+	īcī: 35
+	īcīb: 35
+	īd: 293
+	īd : 13
+	īdi: 11
+	īdz: 245
+	īdz : 67
+	īdze: 38
+	īdzi: 27
+	īdzs: 25
+	īdzē: 27
+	īdzī: 44
+	īdī: 13
+	īdī : 13
+	īg: 793
+	īga: 169
+	īga : 87
+	īgai: 24
+	īgaj: 20
+	īgas: 36
+	īgi: 245
+	īgi : 209
+	īgie: 36
+	īgo: 38
+	īgo : 36
+	īgs: 69
+	īgs : 69
+	īgu: 193
+	īgu : 80
+	īgum: 104
+	īgā: 76
+	īgā : 13
+	īgāk: 40
+	īgās: 15
+	īj: 298
+	īja: 58
+	īja : 56
+	īji: 16
+	ījis: 11
+	īju: 214
+	īju : 11
+	ījum: 145
+	ījus: 31
+	ījuš: 27
+	īk: 84
+	īko: 40
+	īkoj: 16
+	īkot: 15
+	īks: 22
+	īkst: 22
+	īl: 16
+	īm: 225
+	īm : 76
+	īm k: 13
+	īma: 11
+	īme: 64
+	īme : 15
+	īmen: 29
+	īmeņ: 15
+	īmi: 11
+	īmē: 25
+	īmē : 15
+	īmī: 27
+	īmīg: 27
+	īn: 71
+	īna: 22
+	īnas: 16
+	īni: 13
+	īnu: 18
+	īnu : 16
+	īnā: 15
+	īnās: 13
+	īp: 85
+	īpa: 85
+	īpaš: 85
+	īr: 56
+	īri: 36
+	īrie: 11
+	īrij: 16
+	īs: 307
+	īs : 144
+	īs d: 13
+	īs i: 11
+	īs k: 13
+	īs m: 13
+	īs s: 13
+	īs v: 11
+	īsi: 22
+	īsim: 11
+	īst: 133
+	īsta: 15
+	īste: 71
+	īstī: 35
+	īt: 380
+	īt : 155
+	īt k: 16
+	īt l: 11
+	īt p: 13
+	īt s: 11
+	īt t: 13
+	īt v: 11
+	īt š: 13
+	īta: 40
+	īta : 20
+	ītaj: 11
+	īti: 38
+	īti : 22
+	ītie: 16
+	īto: 40
+	īto : 20
+	ītos: 15
+	īts: 27
+	īts : 27
+	ītu: 40
+	ītu : 38
+	ītā: 22
+	ītāj: 13
+	īv: 349
+	īva: 75
+	īva : 24
+	īvas: 35
+	īve: 15
+	īves: 11
+	īvi: 35
+	īvi : 22
+	īvo: 91
+	īvo : 15
+	īvoj: 11
+	īvot: 58
+	īvu: 31
+	īvu : 25
+	īvā: 58
+	īvā : 16
+	īvāk: 16
+	īvās: 16
+	īvī: 33
+	īvīb: 29
+	īz: 84
+	īz : 22
+	īze: 18
+	īzes: 13
+	īzi: 24
+	īzi : 16
+	īņ: 15
+	īš: 51
+	īša: 49
+	īšan: 49
+	ķ: 229
+	ķi: 151
+	ķi : 31
+	ķie: 22
+	ķiet: 16
+	ķij: 11
+	ķir: 56
+	ķir : 11
+	ķirt: 15
+	ķirī: 13
+	ķis: 20
+	ķis : 18
+	ķu: 15
+	ķē: 11
+	ķī: 31
+	ķīn: 20
+	ķīna: 13
+	ļ: 658
+	ļ : 98
+	ļ e: 16
+	ļ es: 15
+	ļ k: 11
+	ļ m: 22
+	ļa: 145
+	ļa : 42
+	ļa n: 15
+	ļas: 11
+	ļas : 11
+	ļau: 87
+	ļauj: 31
+	ļaut: 44
+	ļi: 56
+	ļi : 35
+	ļie: 16
+	ļiem: 16
+	ļo: 142
+	ļoj: 11
+	ļot: 111
+	ļoti: 107
+	ļu: 136
+	ļu : 102
+	ļu n: 20
+	ļu s: 11
+	ļus: 13
+	ļus : 13
+	ļuv: 20
+	ļuvi: 11
+	ļā: 31
+	ļā : 22
+	ļū: 33
+	ļūs: 13
+	ļūt: 16
+	ļūt : 11
+	ņ: 834
+	ņa: 96
+	ņa : 45
+	ņa s: 11
+	ņam: 11
+	ņas: 31
+	ņas : 31
+	ņe: 167
+	ņem: 165
+	ņem : 22
+	ņema: 15
+	ņemo: 31
+	ņems: 11
+	ņemt: 62
+	ņemš: 24
+	ņi: 87
+	ņi : 49
+	ņie: 38
+	ņiem: 38
+	ņo: 160
+	ņoj: 124
+	ņoju: 122
+	ņot: 25
+	ņu: 116
+	ņu : 109
+	ņu p: 13
+	ņu v: 11
+	ņā: 62
+	ņā : 56
+	ņā a: 22
+	ņē: 113
+	ņēm: 113
+	ņēma: 11
+	ņēmu: 67
+	ņēmē: 22
+	ņš: 20
+	ņš : 20
+	š: 2839
+	š : 73
+	ša: 933
+	ša : 35
+	šai: 18
+	šai : 16
+	šaj: 122
+	šajā: 115
+	šam: 40
+	šama: 13
+	šams: 15
+	šan: 645
+	šana: 296
+	šano: 38
+	šanu: 191
+	šanā: 118
+	šas: 45
+	šas : 44
+	šau: 27
+	šaub: 24
+	šei: 24
+	šeit: 24
+	ši: 529
+	ši : 225
+	ši a: 18
+	ši k: 18
+	ši n: 16
+	ši p: 36
+	ši s: 16
+	ši t: 25
+	ši u: 13
+	ši v: 20
+	šie: 118
+	šiem: 84
+	šies: 18
+	šim : 20
+	šin: 116
+	šina: 20
+	šinā: 82
+	šis: 47
+	šis : 47
+	šl: 96
+	šla: 24
+	šlai: 24
+	šli: 73
+	šlik: 65
+	šo: 293
+	šo : 195
+	šo d: 15
+	šo j: 16
+	šo n: 13
+	šo p: 36
+	šo s: 15
+	šo v: 16
+	šo z: 13
+	šob: 13
+	šobr: 13
+	šod: 36
+	šodi: 36
+	šos: 22
+	šos : 22
+	šr: 29
+	šre: 27
+	šrei: 27
+	šs: 160
+	šsē: 144
+	šsēd: 144
+	šu: 153
+	šu : 131
+	šu k: 20
+	šu s: 13
+	šu t: 15
+	šum: 16
+	šā: 173
+	šā : 35
+	šād: 71
+	šāda: 31
+	šādi: 15
+	šāk: 13
+	šām: 31
+	šām : 31
+	šās: 24
+	šās : 24
+	šē: 36
+	šēj: 36
+	šējo: 11
+	šējā: 22
+	šī: 184
+	šī : 58
+	šī i: 11
+	šī p: 20
+	šīb: 49
+	šība: 29
+	šību: 16
+	šīn: 13
+	šīs: 56
+	šīs : 55
+	šķ: 113
+	šķi: 84
+	šķie: 16
+	šķir: 56
+	ū: 1003
+	ūc: 35
+	ūci: 35
+	ūcij: 35
+	ūd: 36
+	ūdz: 16
+	ūk: 44
+	ūko: 13
+	ūks: 20
+	ūkst: 16
+	ūp: 47
+	ūpe: 11
+	ūpn: 18
+	ūpni: 16
+	ūpī: 11
+	ūpīg: 11
+	ūr: 140
+	ūra: 107
+	ūrai: 15
+	ūras: 75
+	ūru : 11
+	ūrā: 11
+	ūs: 331
+	ūs : 151
+	ūs a: 16
+	ūs i: 22
+	ūs n: 15
+	ūs v: 18
+	ūst : 11
+	ūsu: 164
+	ūsu : 164
+	ūt: 311
+	ūt : 102
+	ūt p: 25
+	ūti: 58
+	ūtis: 42
+	ūtu: 100
+	ūtu : 98
+	ūtī: 24
+	ūtīb: 18
+	žas: 24
+	žas : 24
+	že: 38
+	žet: 38
+	žeta: 20
+	ži : 29
+	žie: 25
+	žiem: 18
+	žo: 91
+	žoj: 18
+	žoju: 15
+	žot: 38
+	žot : 11
+	žotā: 15
+	žoš: 18
+	žoša: 18
+	žu: 51
+	žu : 49
+	žā: 36
+	žād: 22
+	žādā: 16
+	žē: 33
+	žēl: 33
+	žēl : 20
+	žī: 15
+	žīm: 11

@@ -37,6 +37,14 @@ public class LanguageLocaleTest {
     }
 
     @Test
+    public void test2letterTo3letterConversion() {
+        assertEquals("deu", LanguageLocale.convertISO2LetterNameTo3Letters("de"));
+        assertEquals("swe", LanguageLocale.convertISO2LetterNameTo3Letters("sv"));
+        assertEquals("eng", LanguageLocale.convertISO2LetterNameTo3Letters("en"));
+        assertNull(LanguageLocale.convertISO2LetterNameTo3Letters("xx"));
+    }
+    
+    @Test
     public void testBiblioCodes() {
         LanguageLocale threeLetterBiblio = LanguageLocale.fromString("ger");
         LanguageLocale threeLetterTech = LanguageLocale.fromString("deu");

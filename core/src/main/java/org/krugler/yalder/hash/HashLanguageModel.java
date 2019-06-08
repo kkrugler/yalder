@@ -27,8 +27,8 @@ public class HashLanguageModel extends BaseLanguageModel {
         super();
     }
     
-    public HashLanguageModel(LanguageLocale modelLanguage, int maxNGramLength, IntIntMap normalizedCounts) {
-        super(modelLanguage, maxNGramLength);
+    public HashLanguageModel(LanguageLocale modelLanguage, int maxNGramLength, int alpha, IntIntMap normalizedCounts) {
+        super(modelLanguage, maxNGramLength, alpha);
         _normalizedCounts = normalizedCounts;
     }
     
@@ -90,12 +90,19 @@ public class HashLanguageModel extends BaseLanguageModel {
 
     public void readAsBinary(DataInput in) throws IOException {
         int version = in.readInt();
-        if (version != MODEL_VERSION) {
+        if ((version != MODEL_VERSION) && (version != NO_ALPHA_MODEL_VERSION)) {
             throw new IllegalArgumentException("Version doesn't match supported values, got " + version);
         }
         
+        boolean noAlpha = version == NO_ALPHA_MODEL_VERSION;
+
         _modelLanguage = LanguageLocale.fromString(in.readUTF());
         _maxNGramLength = in.readInt();
+        if (noAlpha) {
+            _alpha = 1;
+        } else {
+            _alpha = in.readInt();
+        }
         
         int numNGrams = in.readInt();
         _normalizedCounts = new IntIntMap(numNGrams);
@@ -110,6 +117,7 @@ public class HashLanguageModel extends BaseLanguageModel {
         out.writeInt(MODEL_VERSION);
         out.writeUTF(_modelLanguage.getName());
         out.writeInt(_maxNGramLength);
+        out.writeInt(_alpha);
         out.writeInt(_normalizedCounts.size());;
         
         for (int ngramHash : _normalizedCounts.keySet()) {

@@ -140,7 +140,7 @@ Copyright (c) 2015 Ken Krugler
 		       printsummary="yes"
 		       haltonfailure="no"
 		       fork="yes"
-		       maxmemory="756m"
+		       maxmemory="1024m"
 		       dir="${basedir}"
 		       errorProperty="tests.failed"
 		       failureProperty="tests.failed">

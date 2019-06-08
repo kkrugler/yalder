@@ -1,0 +1,5692 @@
+version: 2
+language: ron
+max ngram length: 4
+alpha: 1694
+ngrams:
+	 : 39543
+	 a: 5164
+	 a : 988
+	 a a: 110
+	 a c: 102
+	 a d: 80
+	 a f: 133
+	 a p: 118
+	 a s: 93
+	 a u: 43
+	 a î: 37
+	 a ş: 10
+	 a ţ: 7
+	 ac: 1190
+	 ace: 831
+	 aco: 127
+	 act: 68
+	 acu: 62
+	 acţ: 37
+	 ad: 190
+	 ade: 77
+	 ado: 43
+	 adr: 17
+	 adu: 23
+	 adă: 7
+	 afa: 28
+	 afe: 22
+	 afi: 18
+	 afl: 27
+	 aib: 18
+	 aic: 27
+	 aju: 47
+	 al: 437
+	 al : 163
+	 ale: 130
+	 alt: 78
+	 am: 240
+	 am : 158
+	 amâ: 7
+	 and: 2
+	 ang: 42
+	 ani: 53
+	 anu: 57
+	 ap: 158
+	 apl: 52
+	 apr: 47
+	 apă: 20
+	 ar: 278
+	 ar : 153
+	 ară: 10
+	 as: 400
+	 ase: 107
+	 asi: 92
+	 ast: 85
+	 asu: 55
+	 at: 135
+	 ata: 17
+	 ate: 23
+	 atu: 23
+	 atâ: 43
+	 au: 252
+	 au : 175
+	 av: 167
+	 ave: 92
+	 avu: 22
+	 avâ: 30
+	 az: 18
+	 aş: 140
+	 aş : 75
+	 aşa: 33
+	 aşt: 32
+	 aţ: 22
+	 aţi: 22
+	 b: 388
+	 baz: 43
+	 be: 40
+	 bin: 47
+	 bo: 15
+	 buc: 10
+	 bug: 33
+	 bun: 68
+	 bă: 22
+	 băn: 8
+	 băr: 8
+	 c: 4679
+	 ca: 1010
+	 ca : 155
+	 cad: 47
+	 cal: 68
+	 car: 582
+	 caz: 60
+	 ce: 552
+	 ce : 137
+	 cea: 33
+	 cee: 77
+	 ceh: 22
+	 cei: 27
+	 cel: 118
+	 cer: 52
+	 cet: 58
+	 cl: 78
+	 cla: 48
+	 cli: 27
+	 co: 1351
+	 col: 52
+	 com: 442
+	 con: 675
+	 coo: 45
+	 cop: 27
+	 cor: 53
+	 cot: 18
+	 cr: 218
+	 cre: 135
+	 cri: 73
+	 cu: 590
+	 cu : 417
+	 cum: 70
+	 cun: 12
+	 cup: 8
+	 cur: 53
+	 cuv: 18
+	 câ: 130
+	 cân: 48
+	 cât: 75
+	 că: 580
+	 că : 482
+	 căl: 17
+	 căr: 22
+	 căt: 52
+	 d: 4324
+	 da: 195
+	 da : 7
+	 dac: 93
+	 dan: 2
+	 de: 2626
+	 de : 1909
+	 deb: 2
+	 dec: 97
+	 del: 18
+	 den: 2
+	 deo: 50
+	 dep: 70
+	 der: 5
+	 det: 15
+	 dez: 137
+	 deş: 13
+	 deţ: 8
+	 di: 676
+	 dif: 57
+	 din: 435
+	 dl: 97
+	 dl : 37
+	 dle: 50
+	 dlu: 8
+	 dn: 33
+	 dna: 15
+	 dnă: 12
+	 do: 433
+	 doa: 92
+	 dom: 130
+	 dor: 140
+	 dos: 2
+	 dou: 23
+	 dr: 142
+	 dre: 133
+	 du: 112
+	 dum: 30
+	 dup: 38
+	 e: 1756
+	 e : 5
+	 ec: 122
+	 eco: 98
+	 ef: 85
+	 efi: 32
+	 efo: 28
+	 ega: 15
+	 ei: 5
+	 el: 88
+	 el : 5
+	 ela: 23
+	 em: 13
+	 en: 40
+	 ent: 2
+	 er: 18
+	 es: 507
+	 es : 2
+	 est: 483
+	 et: 17
+	 eur: 432
+	 eva: 22
+	 evi: 35
+	 ex: 290
+	 exe: 57
+	 exi: 72
+	 exp: 57
+	 ext: 77
+	 ez: 2
+	 eş: 10
+	 eşe: 7
+	 f: 1278
+	 fa: 290
+	 fac: 100
+	 fap: 72
+	 faţ: 63
+	 fe: 112
+	 fem: 38
+	 fi: 390
+	 fi : 172
+	 fie: 97
+	 fii: 15
+	 fo: 308
+	 foa: 73
+	 for: 47
+	 fos: 123
+	 fr: 47
+	 fă: 60
+	 făc: 28
+	 făr: 32
+	 g: 388
+	 ge: 80
+	 go: 13
+	 gu: 52
+	 guv: 45
+	 gâ: 18
+	 gân: 18
+	 gă: 17
+	 găs: 13
+	 h: 68
+	 ha: 37
+	 har: 5
+	 he: 8
+	 hi: 3
+	 ho: 18
+	 hot: 17
+	 i: 1033
+	 i : 12
+	 ia: 65
+	 ian: 7
+	 iar: 47
+	 ic: 2
+	 il: 27
+	 ile: 23
+	 im: 220
+	 imi: 23
+	 imp: 175
+	 in : 3
+	 inc: 60
+	 ir: 33
+	 is: 28
+	 iz: 2
+	 j: 95
+	 ja: 5
+	 je: 2
+	 jo: 22
+	 joc: 8
+	 juc: 18
+	 k: 32
+	 ka: 7
+	 ki: 2
+	 kl: 5
+	 ko: 8
+	 kr: 2
+	 ku: 3
+	 kun: 2
+	 kur: 2
+	 l: 1358
+	 l : 33
+	 la: 538
+	 la : 487
+	 las: 7
+	 leg: 110
+	 lip: 12
+	 loc: 75
+	 lor: 42
+	 lu: 295
+	 lua: 43
+	 luc: 123
+	 lum: 32
+	 lun: 47
+	 lup: 22
+	 luă: 15
+	 lă: 13
+	 lăs: 10
+	 ma: 473
+	 mai: 280
+	 man: 17
+	 mar: 102
+	 mea: 28
+	 mei: 2
+	 mem: 118
+	 met: 7
+	 meu: 23
+	 mi: 170
+	 mie: 3
+	 mit: 3
+	 mod: 103
+	 mor: 3
+	 mu: 248
+	 mul: 172
+	 mun: 72
+	 mâ: 8
+	 mă: 100
+	 mă : 27
+	 măr: 7
+	 măs: 65
+	 na: 82
+	 naţ: 48
+	 ne : 108
+	 nec: 85
+	 nem: 2
+	 nev: 67
+	 niv: 57
+	 noa: 67
+	 noi: 65
+	 non: 3
+	 not: 5
+	 noş: 18
+	 nu: 483
+	 nu : 370
+	 num: 98
+	 o: 948
+	 o : 457
+	 o a: 38
+	 o c: 47
+	 o i: 22
+	 o l: 17
+	 o m: 30
+	 o p: 85
+	 o s: 68
+	 o ţ: 10
+	 oa: 35
+	 oam: 27
+	 oar: 8
+	 obi: 53
+	 obţ: 22
+	 oc: 32
+	 oca: 13
+	 och: 2
+	 od: 8
+	 oda: 8
+	 of: 50
+	 ofe: 45
+	 ol: 7
+	 om: 42
+	 omu: 35
+	 on: 13
+	 on : 2
+	 opţ: 7
+	 ori: 38
+	 ov: 2
+	 p: 3841
+	 pa: 315
+	 pac: 30
+	 pas: 15
+	 pe: 1008
+	 pe : 305
+	 pen: 532
+	 pes: 32
+	 pia: 22
+	 plă: 15
+	 po: 417
+	 poa: 65
+	 por: 12
+	 pr: 1525
+	 pra: 23
+	 pre: 410
+	 pri: 503
+	 pro: 587
+	 pu: 283
+	 pub: 45
+	 pun: 72
+	 put: 122
+	 puţ: 22
+	 pâ: 37
+	 pân: 37
+	 pă: 70
+	 păc: 10
+	 păr: 38
+	 păs: 15
+	 r: 1211
+	 rap: 127
+	 re: 801
+	 red: 45
+	 ref: 93
+	 rep: 103
+	 reu: 18
+	 rez: 93
+	 reţ: 12
+	 ri: 38
+	 rid: 23
+	 rol: 38
+	 râ: 40
+	 rân: 40
+	 ră: 75
+	 răm: 23
+	 răs: 40
+	 răz: 7
+	 s: 3164
+	 s a: 62
+	 sal: 47
+	 sau: 75
+	 sc: 133
+	 sco: 22
+	 scr: 28
+	 scu: 13
+	 scă: 12
+	 se : 232
+	 sec: 70
+	 si: 187
+	 sk: 2
+	 so: 165
+	 sol: 98
+	 sp: 268
+	 spe: 125
+	 spo: 13
+	 spu: 52
+	 sta: 228
+	 stă: 7
+	 su: 447
+	 sub: 85
+	 suf: 27
+	 sun: 192
+	 sus: 62
+	 sv: 5
+	 să: 910
+	 să : 840
+	 săn: 22
+	 săp: 22
+	 săr: 13
+	 său: 8
+	 t: 1008
+	 ta: 23
+	 tai: 2
+	 te: 118
+	 te : 2
+	 ten: 3
+	 th: 2
+	 the: 2
+	 ti: 102
+	 tim: 62
+	 to: 187
+	 toa: 80
+	 toţ: 35
+	 tr: 515
+	 tra: 163
+	 tre: 332
+	 tră: 10
+	 tu: 40
+	 ty: 2
+	 târ: 7
+	 u: 1081
+	 ucr: 12
+	 ue: 98
+	 ue : 98
+	 ul: 50
+	 ult: 43
+	 um: 18
+	 un: 710
+	 un : 305
+	 und: 15
+	 une: 92
+	 uni: 160
+	 uno: 45
+	 unu: 70
+	 ur: 142
+	 urm: 122
+	 uz: 2
+	 v: 923
+	 v : 3
+	 va: 208
+	 va : 168
+	 val: 23
+	 var: 7
+	 ve: 143
+	 ved: 63
+	 ver: 40
+	 veţ: 7
+	 vi: 178
+	 vi : 2
+	 vic: 23
+	 vii: 45
+	 viz: 33
+	 vom: 52
+	 vor: 118
+	 vot: 68
+	 vre: 28
+	 vá: 2
+	 vâ: 13
+	 vâr: 8
+	 vă: 65
+	 vă : 55
+	 văz: 7
+	 w: 12
+	 wa: 5
+	 we: 2
+	 wi: 3
+	 wo: 2
+	 wor: 2
+	 y: 5
+	 z: 60
+	 ze: 5
+	 zi : 20
+	 î: 2354
+	 îi: 32
+	 îi : 32
+	 îl: 28
+	 îl : 28
+	 îm: 118
+	 îmb: 32
+	 îmi: 7
+	 împ: 80
+	 în: 2141
+	 în : 1506
+	 îna: 22
+	 înc: 177
+	 înd: 52
+	 înf: 17
+	 îng: 25
+	 înr: 12
+	 îns: 65
+	 înt: 227
+	 înv: 17
+	 înţ: 17
+	 îş: 32
+	 îşi: 32
+	 ş: 1376
+	 şa: 20
+	 şan: 12
+	 şc: 7
+	 şco: 7
+	 şe: 22
+	 şed: 17
+	 şi: 1276
+	 şi : 1276
+	 şo: 15
+	 şom: 8
+	 şt: 37
+	 şti: 37
+	 ţ: 135
+	 ţa: 32
+	 ţar: 32
+	 ţi: 22
+	 ţin: 22
+	 ţă: 82
+	 ţăr: 82
+	 ș: 30
+	 și: 30
+	 și : 30
+	a: 20305
+	a : 5174
+	a a: 555
+	a ac: 160
+	a ar: 47
+	a av: 37
+	a aş: 10
+	a c: 665
+	a ca: 80
+	a ce: 167
+	a co: 227
+	a cr: 40
+	a cu: 63
+	a câ: 8
+	a că: 48
+	a d: 523
+	a de: 315
+	a dr: 32
+	a du: 22
+	a ec: 25
+	a es: 87
+	a eu: 87
+	a ex: 35
+	a f: 277
+	a fa: 47
+	a fe: 30
+	a fi: 67
+	a fo: 93
+	a fă: 17
+	a gu: 20
+	a h: 12
+	a ia: 8
+	a j: 10
+	a k: 3
+	a ko: 2
+	a lu: 40
+	a mă: 17
+	a na: 8
+	a ni: 52
+	a o : 63
+	a pe: 90
+	a po: 40
+	a pr: 218
+	a pă: 10
+	a r: 207
+	a re: 130
+	a râ: 12
+	a ră: 15
+	a să: 65
+	a ta: 7
+	a tr: 88
+	a u: 223
+	a un: 185
+	a v: 90
+	a z: 3
+	a î: 238
+	a îm: 15
+	a în: 217
+	a ş: 147
+	a şi: 138
+	a ţ: 12
+	a ţă: 7
+	a ș: 7
+	a și: 7
+	aa: 3
+	aar: 3
+	abi: 182
+	abil: 180
+	abl: 2
+	abo: 93
+	abor: 67
+	abuz: 7
+	abă: 12
+	abă : 12
+	ac: 1606
+	ac : 27
+	acce: 50
+	ace: 928
+	ace : 50
+	acea: 200
+	acee: 32
+	acel: 48
+	acem: 13
+	aces: 545
+	aceş: 10
+	ach: 15
+	aci: 40
+	aco: 137
+	acol: 18
+	acor: 115
+	act: 150
+	acte: 18
+	acti: 55
+	actu: 47
+	acu: 73
+	acum: 60
+	acur: 7
+	acă: 118
+	acă : 118
+	acţ: 40
+	acţi: 40
+	ad: 320
+	ad : 12
+	ada: 25
+	ada : 5
+	ade : 8
+	adev: 45
+	adiţ: 7
+	ado: 43
+	adop: 43
+	adr: 65
+	adru: 43
+	aduc: 12
+	adă: 18
+	adă : 10
+	af : 2
+	afa: 30
+	afac: 22
+	afar: 8
+	afe: 25
+	afec: 22
+	afir: 17
+	afl: 27
+	află: 15
+	ag: 123
+	ag : 7
+	age: 25
+	ah: 8
+	ai: 425
+	ai : 325
+	ai b: 35
+	ai m: 78
+	ai î: 10
+	aib: 20
+	aibă: 18
+	aic: 28
+	aici: 27
+	ain: 23
+	air: 5
+	ait: 5
+	aj c: 8
+	ajea: 7
+	aju: 67
+	ajul: 18
+	ajun: 15
+	ajut: 30
+	ak: 8
+	ake: 2
+	al : 392
+	al a: 48
+	al c: 67
+	al u: 27
+	al î: 37
+	al ş: 13
+	ala: 27
+	ale: 375
+	ale : 307
+	alea: 13
+	aleg: 15
+	alel: 15
+	alit: 78
+	aliz: 70
+	aliş: 7
+	all: 2
+	alla: 2
+	aloa: 12
+	aloc: 7
+	als: 2
+	alte: 45
+	altă: 17
+	alul: 10
+	alut: 23
+	ală: 180
+	ală : 177
+	alţ: 8
+	alţi: 8
+	am : 175
+	am a: 33
+	am v: 32
+	am î: 7
+	ama: 17
+	ami: 43
+	ami : 2
+	amis: 2
+	amm: 2
+	amn: 68
+	amne: 27
+	amnă: 33
+	amo: 3
+	amo : 3
+	amul: 17
+	amâ: 7
+	amân: 7
+	amă: 8
+	an: 1305
+	an : 148
+	an d: 17
+	an e: 2
+	an h: 2
+	an î: 13
+	an ş: 13
+	and: 67
+	and : 2
+	ande: 18
+	andă: 7
+	anel: 12
+	anga: 40
+	ange: 2
+	anie: 8
+	anii: 23
+	aniţ: 8
+	anj: 3
+	anje: 2
+	ank: 2
+	ann: 7
+	ans : 3
+	ansf: 22
+	antă: 20
+	anu: 90
+	anul: 35
+	anum: 23
+	anur: 10
+	ană: 105
+	ană : 105
+	anţ: 143
+	anţa: 52
+	anţe: 20
+	anţi: 37
+	anţă: 33
+	ap: 453
+	ape : 15
+	apel: 18
+	apid: 20
+	apl: 52
+	apli: 52
+	apo: 120
+	apor: 107
+	apro: 38
+	apt: 107
+	apt : 18
+	apte: 17
+	aptu: 52
+	aptă: 15
+	apă: 27
+	apă : 8
+	apăr: 18
+	ar: 3132
+	ar : 475
+	ar c: 45
+	ar f: 58
+	ar p: 53
+	ar t: 65
+	ar î: 23
+	ar ş: 23
+	araţ: 22
+	arb: 5
+	arct: 8
+	are: 1780
+	are : 1255
+	area: 457
+	arec: 37
+	arel: 17
+	arhi: 8
+	ark: 5
+	art: 207
+	arte: 150
+	arul: 15
+	ară: 125
+	ară : 115
+	arăt: 10
+	as: 885
+	as : 20
+	as a: 5
+	as i: 3
+	as s: 3
+	asc: 45
+	ască: 40
+	ase: 142
+	asem: 107
+	asig: 62
+	asis: 27
+	ass: 7
+	ast: 398
+	astf: 43
+	astr: 107
+	astă: 180
+	asu: 57
+	asup: 52
+	asă: 23
+	asă : 23
+	at: 2243
+	at : 473
+	at c: 53
+	at d: 80
+	at î: 68
+	at ş: 22
+	atat: 47
+	ate: 1013
+	ate : 567
+	atea: 153
+	atel: 127
+	ater: 92
+	ati: 165
+	atic: 47
+	atio: 2
+	ato : 5
+	atoa: 7
+	ator: 73
+	att: 2
+	atu: 118
+	atul: 73
+	atun: 23
+	atâ: 43
+	atât: 43
+	ată: 213
+	ată : 205
+	au : 275
+	au a: 17
+	au c: 35
+	au d: 32
+	au f: 50
+	au s: 25
+	au î: 17
+	aus: 8
+	auto: 62
+	auz: 25
+	auza: 12
+	auză: 8
+	av: 267
+	av : 5
+	ava: 23
+	avea: 33
+	aveg: 8
+	avem: 52
+	avi: 18
+	avoa: 45
+	avâ: 30
+	avân: 30
+	axel: 7
+	ay: 3
+	az : 27
+	aza : 18
+	azu: 38
+	azul: 30
+	azur: 8
+	ază: 148
+	ază : 148
+	aş: 197
+	aş : 75
+	aş d: 60
+	aş v: 7
+	aşa: 33
+	aşa : 25
+	aşad: 8
+	aşi: 35
+	aşi : 33
+	aşt: 48
+	aşte: 48
+	aţ: 623
+	aţa: 50
+	aţa : 48
+	aţi: 513
+	aţi : 95
+	aţia: 83
+	aţie: 108
+	aţii: 118
+	aţil: 8
+	aţio: 73
+	aţiu: 25
+	aţă: 60
+	aţă : 60
+	aț: 15
+	ați: 10
+	b: 2104
+	bală: 8
+	ban : 3
+	bare: 28
+	bas: 2
+	bat: 85
+	bate: 77
+	baz: 43
+	baza: 20
+	bază: 13
+	baţ: 7
+	baţi: 7
+	be: 123
+	be : 3
+	ben: 28
+	bert: 30
+	bes: 5
+	bet: 8
+	bi: 488
+	biec: 60
+	bil: 282
+	bil : 63
+	bile: 42
+	bili: 117
+	bilă: 42
+	bim : 10
+	bin: 57
+	bine: 48
+	bit : 13
+	biţ: 15
+	biţi: 15
+	ble : 2
+	blem: 90
+	bli: 107
+	blic: 58
+	blin: 27
+	bona: 25
+	bora: 30
+	bord: 30
+	bre : 83
+	brie: 15
+	brii: 7
+	bro: 2
+	bru : 18
+	bu: 473
+	bucu: 10
+	bud: 3
+	bug: 33
+	buge: 33
+	bui: 275
+	bui : 77
+	buie: 180
+	bun: 103
+	bun : 8
+	bune: 22
+	bună: 63
+	buţ: 7
+	buţi: 7
+	bă: 93
+	bă : 33
+	bă l: 7
+	băn: 8
+	bănc: 8
+	băr: 37
+	bărb: 7
+	bări: 28
+	băt: 10
+	bţ: 23
+	bţi: 23
+	bţin: 23
+	c: 11027
+	c : 258
+	c a: 33
+	c c: 23
+	c d: 27
+	c de: 18
+	c p: 28
+	c pe: 17
+	c s: 35
+	c să: 33
+	c î: 17
+	c în: 13
+	c ş: 18
+	c şi: 18
+	ca: 1501
+	ca : 243
+	ca a: 27
+	ca o: 22
+	ca p: 30
+	ca s: 25
+	ca u: 15
+	ca î: 8
+	cad: 50
+	cadr: 43
+	cal: 108
+	cale: 32
+	cali: 45
+	cală: 12
+	cap : 10
+	car: 715
+	care: 670
+	cat: 145
+	cat : 48
+	cate: 52
+	cată: 18
+	cauz: 20
+	caz: 75
+	caz : 20
+	cazu: 38
+	caţ: 30
+	caţi: 30
+	cce: 68
+	cces: 40
+	ce: 2253
+	ce : 465
+	ce a: 70
+	ce c: 47
+	ce l: 23
+	ce p: 85
+	ce î: 18
+	ce ş: 25
+	cea: 242
+	cea : 35
+	ceas: 198
+	cedu: 30
+	cee: 108
+	ceea: 108
+	ceh: 22
+	cehi: 8
+	cehă: 8
+	cei: 32
+	cei : 28
+	cel: 185
+	cel : 35
+	cela: 32
+	cele: 82
+	celo: 35
+	cent: 68
+	cep: 75
+	cepe: 12
+	cepu: 18
+	cepâ: 7
+	cer: 142
+	cerc: 25
+	cere: 55
+	ceri: 45
+	ces: 720
+	cesa: 53
+	cesi: 27
+	cest: 545
+	cesu: 52
+	cet: 87
+	ceta: 20
+	cetă: 60
+	ceze: 7
+	ceş: 15
+	ceşt: 15
+	ch: 200
+	ch : 2
+	ch d: 2
+	cha: 5
+	che: 75
+	che : 2
+	chen: 8
+	ches: 22
+	chi: 115
+	chim: 32
+	chit: 12
+	chiz: 7
+	ci: 993
+	ci : 137
+	ci c: 30
+	ci î: 17
+	ci ş: 13
+	cia: 222
+	cial: 127
+	ciar: 52
+	ciaţ: 7
+	cie: 118
+	ciei: 15
+	cien: 50
+	cii: 72
+	cii : 57
+	ciil: 15
+	cil: 60
+	cile: 20
+	cilo: 15
+	cină: 7
+	cinţ: 13
+	ciod: 8
+	cip: 70
+	cipi: 27
+	cit: 92
+	cit : 18
+	cita: 32
+	cită: 27
+	ciu: 42
+	ciul: 8
+	ciun: 22
+	ciz: 22
+	cizi: 20
+	ciţ: 10
+	ciţi: 10
+	ck: 10
+	cl: 187
+	cla: 75
+	clar: 62
+	cli: 28
+	clim: 22
+	clu: 67
+	clud: 28
+	cluz: 13
+	cm: 15
+	cma: 12
+	cmai: 12
+	co: 1736
+	co : 3
+	coez: 7
+	col: 145
+	col : 15
+	cole: 35
+	colo: 27
+	colu: 35
+	colă: 7
+	com: 465
+	comb: 25
+	comi: 213
+	comp: 85
+	comu: 92
+	con: 781
+	cond: 63
+	conf: 85
+	cono: 93
+	cons: 285
+	cont: 148
+	conş: 8
+	conţ: 7
+	coo: 48
+	coop: 33
+	cop: 50
+	copi: 22
+	copu: 12
+	cor: 175
+	cord: 117
+	core: 50
+	cot: 20
+	cote: 17
+	cr: 497
+	cra: 72
+	crai: 12
+	crar: 8
+	craţ: 33
+	cre: 165
+	cred: 72
+	creş: 38
+	cri: 125
+	cris: 32
+	criz: 55
+	cru: 108
+	cru : 87
+	crur: 15
+	cră: 13
+	crăt: 10
+	cs: 5
+	ct: 626
+	ct : 92
+	ct c: 10
+	ct d: 18
+	ct p: 18
+	cta: 43
+	ctar: 10
+	ctat: 23
+	cte: 110
+	cte : 53
+	ctea: 7
+	ctel: 32
+	ctez: 7
+	cti: 175
+	ctic: 30
+	ctim: 17
+	ctiv: 123
+	ctoa: 10
+	ctor: 43
+	ctu: 110
+	ctua: 43
+	ctul: 42
+	ctă: 28
+	ctă : 23
+	cu: 1145
+	cu : 418
+	cu a: 47
+	cu c: 62
+	cu d: 22
+	cu f: 10
+	cu g: 10
+	cu i: 15
+	cu m: 17
+	cu o: 22
+	cu p: 43
+	cu r: 8
+	cu s: 38
+	cu t: 55
+	cu u: 17
+	cu î: 7
+	cu ţ: 8
+	cuit: 12
+	cul: 98
+	cul : 25
+	culu: 12
+	cum: 197
+	cum : 168
+	cun: 38
+	cuno: 37
+	cup: 37
+	cupr: 7
+	cupă: 12
+	cur: 188
+	cura: 25
+	curi: 72
+	curs: 32
+	curt: 17
+	curâ: 17
+	cut: 98
+	cut : 47
+	cuta: 17
+	cute: 13
+	cută: 17
+	cuv: 18
+	cuvâ: 13
+	cuţ: 20
+	cuţi: 20
+	cv: 20
+	cva: 15
+	cvat: 13
+	cz: 2
+	câ: 193
+	cân: 57
+	când: 53
+	cât: 130
+	cât : 103
+	câte: 25
+	că: 1121
+	că : 908
+	că a: 178
+	că c: 27
+	că d: 60
+	că e: 75
+	că f: 15
+	că g: 7
+	că i: 17
+	că l: 10
+	că m: 22
+	că n: 70
+	că o: 38
+	că p: 78
+	că r: 27
+	că s: 68
+	că t: 28
+	că u: 22
+	că v: 30
+	că î: 63
+	că ş: 47
+	căl: 33
+	călc: 13
+	călă: 15
+	căr: 75
+	căre: 7
+	cări: 45
+	căro: 8
+	căt: 80
+	căto: 28
+	cătr: 52
+	cţ: 177
+	cţi: 177
+	cţia: 40
+	cţie: 35
+	cţii: 17
+	cţio: 48
+	cţiu: 37
+	d : 595
+	d c: 137
+	d co: 37
+	d cu: 23
+	d că: 53
+	d k: 2
+	d m: 8
+	d să: 8
+	d t: 8
+	d î: 52
+	d în: 48
+	d ş: 15
+	d şi: 13
+	da: 428
+	da : 48
+	dac: 95
+	dacă: 93
+	dal: 5
+	dan: 5
+	dar : 52
+	dare: 32
+	dată: 38
+	daţ: 8
+	daţi: 8
+	de: 3252
+	de : 1999
+	de a: 467
+	de c: 192
+	de d: 117
+	de i: 70
+	de m: 118
+	de p: 163
+	de r: 75
+	de s: 112
+	de î: 30
+	de ş: 12
+	de ţ: 7
+	dea: 30
+	deaz: 7
+	deb: 2
+	dec: 122
+	decl: 20
+	decv: 13
+	decâ: 23
+	deea: 10
+	deja: 23
+	del: 33
+	del : 3
+	den: 68
+	denţ: 28
+	deo: 52
+	deoa: 35
+	deos: 17
+	dep: 100
+	depl: 35
+	depă: 8
+	der : 40
+	dera: 45
+	dere: 102
+	deră: 13
+	des : 2
+	desc: 17
+	desf: 17
+	desp: 40
+	det: 17
+	devă: 45
+	dez: 157
+	deza: 18
+	dezb: 57
+	dezv: 57
+	deş: 13
+	deşi: 12
+	deţ: 22
+	deţi: 22
+	di: 1228
+	di : 2
+	dic: 103
+	dic : 8
+	dica: 55
+	dică: 13
+	die: 5
+	dif: 82
+	dife: 40
+	difi: 42
+	dig: 3
+	dim : 8
+	din: 636
+	din : 353
+	dint: 198
+	dinţ: 43
+	disc: 60
+	diu: 43
+	diu : 18
+	diul: 25
+	diţ: 47
+	diţi: 47
+	dl : 37
+	dl c: 7
+	dle : 50
+	dlui: 8
+	dn: 33
+	dnei: 7
+	dnă: 12
+	dnă : 12
+	do : 3
+	doa: 92
+	doam: 47
+	doar: 45
+	doia: 10
+	doil: 12
+	dom: 130
+	dome: 58
+	domn: 70
+	dopt: 43
+	dor: 145
+	dore: 43
+	dori: 98
+	dos: 2
+	două: 22
+	dra: 7
+	dre: 165
+	drep: 138
+	dres: 20
+	dro: 2
+	dru : 8
+	drul: 35
+	ds: 5
+	dst: 2
+	dt: 2
+	du: 457
+	du : 5
+	duc: 120
+	duc : 8
+	duca: 15
+	duce: 50
+	ducă: 27
+	ducţ: 12
+	dul: 55
+	dul : 38
+	dulu: 15
+	dum: 37
+	dumn: 30
+	dună: 7
+	dup: 38
+	după: 38
+	dur: 87
+	dura: 28
+	duri: 47
+	dură: 7
+	duse: 37
+	dv: 3
+	dă: 90
+	dă : 45
+	dă c: 8
+	dă p: 8
+	dă î: 7
+	dăm: 15
+	dăm : 15
+	dăr: 23
+	dări: 22
+	e: 27304
+	e : 9744
+	e a: 1443
+	e a : 388
+	e ac: 275
+	e ad: 48
+	e al: 103
+	e am: 63
+	e as: 178
+	e au: 90
+	e aş: 28
+	e aţ: 7
+	e be: 3
+	e c: 1123
+	e ca: 297
+	e ce: 85
+	e ci: 33
+	e cl: 30
+	e co: 343
+	e cr: 45
+	e cu: 137
+	e câ: 28
+	e că: 107
+	e d: 1046
+	e de: 666
+	e di: 167
+	e dl: 35
+	e dr: 38
+	e en: 7
+	e ex: 82
+	e f: 217
+	e fa: 85
+	e fi: 52
+	e fă: 13
+	e gr: 52
+	e gâ: 12
+	e h: 10
+	e ha: 5
+	e i : 3
+	e ia: 12
+	e im: 82
+	e j: 30
+	e ja: 3
+	e k: 5
+	e l: 430
+	e la: 222
+	e lu: 53
+	e m: 418
+	e ma: 100
+	e mu: 98
+	e mă: 30
+	e ne: 103
+	e nu: 98
+	e o : 127
+	e oa: 10
+	e ob: 45
+	e on: 3
+	e or: 38
+	e p: 968
+	e pe: 243
+	e pr: 408
+	e pu: 55
+	e pâ: 12
+	e pă: 18
+	e r: 252
+	e re: 192
+	e ră: 12
+	e s: 776
+	e st: 108
+	e su: 102
+	e să: 280
+	e tr: 100
+	e u: 222
+	e ue: 27
+	e un: 147
+	e ur: 30
+	e z: 23
+	e î: 520
+	e îi: 7
+	e îl: 13
+	e îm: 18
+	e în: 470
+	e îş: 10
+	e ş: 363
+	e şi: 345
+	e ţ: 35
+	e ţă: 28
+	e ș: 8
+	e și: 8
+	ea: 2259
+	ea : 1521
+	ea a: 140
+	ea b: 25
+	ea c: 237
+	ea d: 152
+	ea e: 100
+	ea f: 40
+	ea g: 17
+	ea i: 45
+	ea l: 57
+	ea m: 73
+	ea n: 47
+	ea o: 28
+	ea p: 127
+	ea r: 77
+	ea s: 93
+	ea t: 37
+	ea u: 82
+	ea v: 23
+	ea î: 52
+	ea ş: 53
+	eaga: 10
+	eamn: 13
+	ean: 172
+	ean : 80
+	eană: 85
+	eap: 22
+	eapt: 15
+	eare: 20
+	eas: 235
+	easc: 32
+	east: 198
+	eaun: 7
+	eav: 25
+	eavo: 25
+	eaz: 123
+	ează: 123
+	eaş: 10
+	eaşi: 10
+	eaţ: 8
+	eb: 317
+	ebar: 13
+	ebu: 260
+	ebui: 257
+	ebă: 12
+	ebăr: 12
+	ec: 1205
+	eca: 42
+	ecar: 28
+	ece: 173
+	ece : 43
+	ecen: 25
+	eces: 87
+	echi: 28
+	eci: 177
+	ecia: 83
+	ecin: 22
+	eciz: 22
+	ecl: 22
+	ecla: 22
+	eco: 137
+	ecol: 15
+	econ: 103
+	ect: 343
+	ect : 52
+	ecta: 35
+	ecte: 70
+	ecti: 80
+	ectu: 27
+	ectă: 23
+	ecu: 148
+	ecul: 10
+	ecum: 45
+	ecun: 25
+	ecur: 23
+	ecut: 38
+	ecv: 18
+	ecva: 13
+	ecâ: 23
+	ecât: 23
+	ecţ: 75
+	ecţi: 75
+	ed : 42
+	ed c: 38
+	eda: 7
+	edea: 12
+	eden: 3
+	eder: 75
+	edi: 292
+	edic: 25
+	edin: 172
+	ediu: 37
+	edo: 3
+	edu: 80
+	educ: 43
+	edur: 30
+	ee: 135
+	ee : 2
+	eea: 128
+	eea : 117
+	eeaş: 7
+	een: 3
+	ef: 257
+	efe: 100
+	efec: 25
+	efer: 75
+	efi: 90
+	efic: 65
+	eft: 2
+	eg : 7
+	egal: 48
+	egat: 40
+	egaţ: 12
+	eghe: 8
+	egi: 165
+	egii: 18
+	egiu: 48
+	egoc: 23
+	egă: 22
+	egăt: 22
+	eh: 57
+	ehă: 8
+	ehă : 8
+	ei : 598
+	ei a: 32
+	ei c: 65
+	ei d: 60
+	ei e: 23
+	ei f: 15
+	ei i: 28
+	ei l: 15
+	ei n: 25
+	ei p: 103
+	ei s: 37
+	ei î: 22
+	ei ş: 18
+	eilo: 22
+	ein: 7
+	eine: 2
+	eir: 5
+	eit: 5
+	ej: 45
+	eja : 27
+	el : 163
+	el î: 20
+	elab: 23
+	elaş: 23
+	elaţ: 22
+	ele: 610
+	ele : 517
+	ell: 7
+	ell : 2
+	elle: 5
+	elo: 268
+	elor: 258
+	els: 2
+	elt: 8
+	elu: 75
+	elul: 45
+	em d: 52
+	em î: 17
+	ema: 33
+	emb: 135
+	embr: 133
+	emei: 48
+	emn: 48
+	emna: 12
+	emni: 17
+	emoc: 45
+	emul: 22
+	emă: 28
+	emă : 28
+	en: 2321
+	en : 50
+	en a: 2
+	en d: 2
+	en e: 2
+	en f: 2
+	en g: 2
+	en m: 3
+	en p: 2
+	en r: 2
+	en s: 3
+	en u: 2
+	ena: 17
+	enc: 3
+	end: 55
+	ende: 18
+	ene: 337
+	ene : 120
+	enea: 107
+	enef: 25
+	eni: 248
+	eni : 58
+	enie: 3
+	enii: 48
+	enil: 32
+	enit: 23
+	eniu: 43
+	eno: 13
+	ens: 55
+	ent: 1200
+	ente: 83
+	enti: 20
+	entr: 563
+	entu: 153
+	entă: 48
+	enţ: 303
+	enţa: 40
+	enţe: 45
+	enţi: 163
+	enţă: 55
+	eoa: 37
+	eoar: 35
+	eose: 17
+	ep: 480
+	epe: 47
+	eped: 7
+	epl: 35
+	epli: 30
+	epr: 92
+	epre: 68
+	ept: 192
+	ept : 43
+	epta: 32
+	eptu: 92
+	eptă: 12
+	epu: 68
+	epus: 22
+	epă: 8
+	epăş: 7
+	er: 2071
+	er : 110
+	er a: 3
+	er c: 62
+	er d: 5
+	er e: 5
+	er h: 2
+	er l: 3
+	er m: 3
+	er s: 7
+	er î: 7
+	erab: 18
+	erar: 70
+	eraţ: 7
+	ere: 483
+	ere : 200
+	erea: 183
+	erez: 8
+	eri: 517
+	eri : 90
+	erii: 68
+	eril: 70
+	erio: 43
+	erit: 105
+	erk: 2
+	erm: 108
+	ernu: 20
+	ernă: 15
+	ero : 2
+	eroa: 8
+	err: 5
+	ers: 72
+	ers : 3
+	ertă: 12
+	erul: 17
+	ervă: 8
+	eră: 68
+	eră : 47
+	erăm: 8
+	erăr: 10
+	erţ: 30
+	erţ : 10
+	erţe: 7
+	erţu: 8
+	es : 88
+	es a: 8
+	es d: 12
+	es e: 3
+	es n: 2
+	es p: 2
+	es s: 5
+	es î: 8
+	esa: 90
+	esar: 58
+	esat: 13
+	esc: 125
+	esc : 83
+	escu: 17
+	escă: 8
+	esfă: 17
+	esig: 17
+	esiu: 18
+	esp: 130
+	espr: 38
+	espu: 17
+	ess: 7
+	est: 1178
+	est : 265
+	este: 668
+	estu: 55
+	esu: 97
+	esul: 62
+	et: 337
+	et : 22
+	et a: 2
+	et d: 5
+	et i: 2
+	etar: 50
+	eto: 5
+	ett: 2
+	ett : 2
+	etul: 25
+	etă: 87
+	etă : 12
+	etăţ: 73
+	eu î: 7
+	eun: 28
+	eună: 17
+	euro: 428
+	euş: 10
+	euşi: 10
+	evid: 27
+	eviz: 15
+	evo: 80
+	evoi: 67
+	evr: 10
+	evă: 52
+	evăr: 45
+	ew: 3
+	ex: 340
+	exe: 57
+	exem: 35
+	exi: 75
+	exis: 72
+	exp: 57
+	expr: 23
+	ext: 110
+	exte: 33
+	exti: 13
+	extr: 32
+	extu: 13
+	ez: 527
+	ez c: 17
+	ezb: 57
+	ezba: 55
+	eze: 180
+	eze : 90
+	ezen: 85
+	ezi: 65
+	ezin: 37
+	eziu: 7
+	ezo: 52
+	ezol: 48
+	ezu: 35
+	ezul: 30
+	ezv: 57
+	ezvo: 57
+	eză: 7
+	eză : 7
+	eî: 18
+	eîn: 18
+	eînţ: 15
+	eş: 293
+	eşe: 150
+	eşec: 7
+	eşed: 138
+	eşi: 18
+	eşi : 13
+	eşt: 123
+	eşte: 108
+	eşti: 15
+	eţ: 133
+	eţe: 37
+	eţe : 7
+	eţei: 20
+	eţel: 7
+	eţi: 67
+	eţi : 47
+	eţin: 13
+	eţu: 25
+	eţul: 7
+	eţur: 15
+	eș: 17
+	eșe: 12
+	eșed: 12
+	f: 2284
+	f : 5
+	fa: 333
+	fac: 127
+	fac : 18
+	face: 75
+	facă: 18
+	fap: 72
+	fapt: 72
+	faţ: 63
+	faţa: 20
+	faţă: 43
+	fe: 445
+	fec: 55
+	fect: 48
+	fecţ: 7
+	fel: 93
+	fel : 77
+	felu: 7
+	fem: 42
+	feme: 38
+	fer: 222
+	feri: 137
+	feră: 23
+	ff: 2
+	fi: 721
+	fi : 172
+	fi a: 20
+	fi c: 28
+	fi d: 12
+	fi f: 15
+	fi i: 8
+	fi p: 20
+	fi r: 15
+	fi î: 12
+	fic: 250
+	fica: 97
+	fici: 93
+	fică: 22
+	fie: 98
+	fie : 73
+	fiec: 23
+	fii: 27
+	fiin: 25
+	flă: 15
+	flă : 15
+	fo: 437
+	foa: 73
+	foar: 70
+	folo: 22
+	forţ: 18
+	fos: 123
+	fost: 123
+	fru: 33
+	frun: 30
+	ft: 3
+	ft : 2
+	fun: 63
+	func: 33
+	furn: 13
+	fă: 78
+	făc: 30
+	făcu: 23
+	făr: 32
+	fără: 32
+	făş: 15
+	făşo: 7
+	făşu: 8
+	g: 1670
+	g : 43
+	g a: 10
+	g d: 7
+	g de: 3
+	g i: 2
+	g s: 5
+	ga: 305
+	ga : 25
+	gaj: 40
+	gaja: 33
+	gală: 10
+	gate: 20
+	gată: 10
+	gaţ: 28
+	gaţi: 27
+	ge: 247
+	ge : 27
+	gen: 87
+	gen : 10
+	genţ: 20
+	ger: 43
+	germ: 13
+	gice: 8
+	gică: 8
+	giei: 18
+	gii: 30
+	gii : 25
+	gioa: 7
+	giu: 48
+	giun: 45
+	gl: 57
+	gli: 5
+	gn: 8
+	go: 68
+	go : 2
+	goa: 10
+	goar: 8
+	goc: 23
+	goci: 23
+	gos: 8
+	grab: 8
+	grec: 17
+	grij: 23
+	gră: 8
+	grăr: 7
+	gul: 48
+	gul : 13
+	gur: 130
+	gur : 25
+	gura: 55
+	gură: 35
+	guv: 45
+	guve: 45
+	gy: 2
+	gâ: 22
+	gân: 20
+	gând: 20
+	gă: 58
+	gă : 13
+	găs: 13
+	găsi: 10
+	găt: 25
+	găti: 13
+	gătu: 7
+	h: 415
+	h : 10
+	h d: 2
+	h s: 2
+	ha: 58
+	ha : 3
+	haga: 12
+	haid: 8
+	hal: 3
+	han: 8
+	har: 7
+	has: 2
+	hat: 2
+	hav: 2
+	he: 113
+	he : 5
+	hen: 13
+	her: 8
+	hest: 22
+	het: 13
+	het : 2
+	hia: 28
+	hiar: 20
+	him: 32
+	himb: 30
+	his: 7
+	his : 2
+	hizi: 7
+	hl: 5
+	ho: 27
+	ho : 2
+	hor: 2
+	hotă: 13
+	hr: 5
+	ht: 7
+	hu: 2
+	hă: 8
+	hă : 8
+	i: 21543
+	i : 5330
+	i a: 608
+	i a : 118
+	i ac: 72
+	i ad: 22
+	i al: 102
+	i am: 27
+	i an: 52
+	i ar: 35
+	i as: 30
+	i au: 45
+	i aş: 13
+	i bu: 33
+	i bă: 7
+	i c: 553
+	i ca: 123
+	i ce: 73
+	i cl: 12
+	i co: 152
+	i cr: 22
+	i cu: 62
+	i câ: 33
+	i că: 47
+	i d: 626
+	i de: 393
+	i di: 113
+	i du: 17
+	i e: 313
+	i ec: 37
+	i ef: 17
+	i es: 58
+	i eu: 128
+	i ex: 37
+	i f: 128
+	i fa: 27
+	i fi: 35
+	i fă: 7
+	i h: 7
+	i i: 168
+	i ia: 7
+	i im: 35
+	i in: 85
+	i k: 3
+	i ko: 2
+	i l: 127
+	i la: 55
+	i lu: 22
+	i m: 247
+	i ma: 90
+	i mu: 60
+	i n: 175
+	i nu: 63
+	i o : 35
+	i p: 543
+	i pe: 178
+	i pr: 182
+	i pu: 43
+	i pă: 12
+	i r: 163
+	i re: 110
+	i s: 560
+	i sc: 18
+	i su: 60
+	i să: 250
+	i tr: 47
+	i un: 77
+	i vo: 37
+	i vă: 12
+	i z: 3
+	i î: 347
+	i îm: 23
+	i în: 312
+	i ş: 187
+	i şi: 180
+	i ţ: 18
+	i ţă: 13
+	ia: 1118
+	ia : 542
+	ia a: 58
+	ia c: 57
+	ia d: 72
+	ia î: 25
+	ia ş: 25
+	ial: 218
+	ial : 98
+	ială: 48
+	iam: 2
+	ianu: 10
+	iar: 143
+	iar : 83
+	iară: 15
+	iat: 88
+	iat : 33
+	iaz: 12
+	iază: 12
+	iaţ: 55
+	iaţa: 28
+	iaţi: 15
+	iaţă: 12
+	ib: 197
+	ibe: 57
+	iber: 48
+	ibi: 77
+	ibil: 75
+	ibuţ: 7
+	ibă: 18
+	ibă : 18
+	ic: 1346
+	ic : 105
+	ic p: 17
+	ic ş: 13
+	ica: 285
+	icar: 73
+	icat: 90
+	icaţ: 17
+	ice: 218
+	ice : 200
+	ich: 7
+	ici: 377
+	ici : 80
+	icie: 45
+	icii: 58
+	icil: 35
+	icit: 60
+	iciu: 27
+	icol: 43
+	ict: 45
+	icte: 12
+	icti: 20
+	ică: 203
+	ică : 173
+	icăr: 25
+	icţ: 8
+	icţi: 8
+	id: 313
+	id : 18
+	ida: 42
+	iden: 47
+	ider: 88
+	ideţ: 8
+	idic: 37
+	ido: 3
+	idă: 12
+	idă : 7
+	ie : 656
+	ie a: 55
+	ie c: 53
+	ie d: 97
+	ie s: 170
+	ie î: 33
+	ie ş: 23
+	iec: 118
+	ieca: 23
+	iect: 92
+	ied: 5
+	iei: 232
+	iei : 230
+	iel: 12
+	iem: 8
+	iem : 3
+	ien: 90
+	ienţ: 33
+	ieri: 40
+	ieră: 7
+	ies: 13
+	ies : 2
+	iesc: 10
+	iet: 27
+	ietă: 15
+	iez : 18
+	ieş: 7
+	ieţ: 33
+	ieţe: 25
+	if: 222
+	ife: 55
+	ifer: 42
+	ifi: 160
+	ific: 160
+	ig: 217
+	ig : 2
+	igaţ: 15
+	ige: 5
+	igoa: 8
+	igu: 115
+	igur: 115
+	ih: 2
+	ii: 1158
+	ii : 858
+	ii a: 82
+	ii c: 68
+	ii d: 108
+	ii e: 93
+	ii f: 20
+	ii i: 27
+	ii l: 18
+	ii m: 18
+	ii n: 42
+	ii p: 82
+	ii r: 23
+	ii s: 77
+	ii t: 17
+	ii u: 20
+	ii v: 13
+	ii î: 37
+	ii ş: 38
+	iil: 217
+	iile: 135
+	iilo: 82
+	iind: 12
+	iinţ: 23
+	iito: 43
+	ij: 95
+	iji: 62
+	ijin: 53
+	ijir: 7
+	ijl: 13
+	ijlo: 13
+	ijo: 12
+	ijor: 12
+	il: 1618
+	il : 83
+	ile: 607
+	ile : 548
+	ilea: 20
+	ileg: 27
+	ili: 305
+	ilio: 23
+	ilir: 8
+	ilit: 100
+	iliu: 72
+	iliz: 35
+	ilo: 533
+	ilor: 530
+	ilul: 13
+	ilă: 47
+	ilă : 47
+	im: 825
+	im : 110
+	im c: 17
+	im î: 10
+	im ş: 7
+	imb: 42
+	imbă: 15
+	imea: 7
+	imed: 13
+	imi: 147
+	imic: 8
+	imig: 22
+	imit: 43
+	imo: 3
+	imp: 250
+	imp : 42
+	impl: 38
+	impo: 122
+	impu: 27
+	imul: 40
+	imă: 25
+	imă : 18
+	imţ: 7
+	in: 2668
+	in : 530
+	in a: 77
+	in c: 50
+	in p: 72
+	in u: 57
+	in î: 15
+	in ţ: 10
+	inar: 28
+	inaţ: 10
+	inc: 132
+	inci: 57
+	incl: 48
+	ind: 262
+	ind : 162
+	indă: 7
+	ine: 255
+	inea: 28
+	iner: 48
+	ineî: 13
+	ing: 32
+	ing : 5
+	inge: 10
+	ini: 222
+	inia: 30
+	inii: 8
+	iniş: 8
+	iniţ: 48
+	inn: 2
+	inor: 18
+	int: 480
+	inte: 295
+	intr: 117
+	intă: 45
+	inu: 95
+	inua: 25
+	inut: 23
+	inuă: 8
+	inâ: 8
+	inân: 8
+	ină: 50
+	ină : 37
+	inăt: 7
+	inţ: 167
+	inţa: 42
+	inţe: 48
+	inţi: 33
+	inţă: 43
+	io: 365
+	io : 15
+	ioa: 68
+	ioad: 15
+	ioan: 22
+	ioar: 12
+	ioas: 18
+	ioda: 8
+	ion: 205
+	ion : 3
+	iona: 167
+	ione: 30
+	ioni: 3
+	ios: 7
+	ipii: 8
+	ipiu: 18
+	ipsa: 7
+	ir: 325
+	ir : 8
+	ire: 195
+	ire : 80
+	irea: 65
+	irec: 47
+	irii: 15
+	iril: 8
+	is: 815
+	is : 52
+	isab: 25
+	isar: 48
+	isch: 2
+	iscu: 48
+	ise: 18
+	isia: 62
+	isie: 90
+	ismu: 25
+	ispu: 13
+	istă: 68
+	isu: 2
+	isă: 10
+	isă : 10
+	it: 1560
+	it c: 18
+	it î: 15
+	it ş: 10
+	ita: 402
+	itar: 58
+	itat: 283
+	itaţ: 8
+	ite : 113
+	iteţ: 8
+	itic: 138
+	ito: 137
+	itoa: 42
+	itor: 95
+	itt: 2
+	itte: 2
+	itu: 162
+	itua: 57
+	itui: 27
+	itul: 17
+	ituţ: 33
+	ită: 250
+	ită : 73
+	ităm: 17
+	ităţ: 148
+	ităț: 7
+	iu: 598
+	iu : 85
+	iu c: 13
+	iu î: 10
+	iul: 165
+	iul : 93
+	iulu: 70
+	iun: 332
+	iun : 17
+	iune: 158
+	iuni: 150
+	iv: 690
+	iv : 70
+	iv c: 12
+	iv î: 13
+	iva : 60
+	ive: 213
+	ivel: 78
+	iveş: 43
+	ivi: 265
+	ivin: 157
+	ivir: 32
+	ivit: 43
+	ivu: 18
+	ivul: 18
+	ivă: 52
+	ivă : 52
+	iz: 358
+	iza: 172
+	iza : 40
+	izar: 70
+	izat: 47
+	izaţ: 15
+	izea: 12
+	izii: 7
+	izit: 20
+	iziţ: 7
+	izui: 13
+	iză: 62
+	iză : 28
+	izăm: 7
+	izăr: 27
+	iş: 25
+	işt: 18
+	işti: 10
+	iştr: 7
+	iţ: 220
+	iţi: 210
+	iţi : 37
+	iţia: 67
+	iţie: 27
+	iţii: 53
+	iţio: 17
+	iţiu: 10
+	j: 410
+	j : 13
+	ja: 92
+	ja : 30
+	jame: 20
+	jan: 2
+	jare: 13
+	jd: 2
+	je: 28
+	je : 3
+	je p: 2
+	jea: 13
+	jeaz: 10
+	jen: 2
+	ji: 63
+	jin: 53
+	jin : 13
+	jini: 18
+	jinu: 15
+	jir: 7
+	jire: 7
+	jlo: 13
+	jloa: 7
+	jloc: 7
+	jo: 52
+	joac: 7
+	joc: 8
+	jocu: 7
+	juc: 18
+	juca: 13
+	jul : 15
+	jum: 2
+	juns: 7
+	jut: 30
+	juto: 22
+	jă: 8
+	k: 83
+	k : 3
+	k a: 2
+	k s: 2
+	ka: 15
+	ka : 2
+	kal: 3
+	kar: 2
+	kas: 3
+	ke: 7
+	ke : 2
+	kel: 2
+	ket: 2
+	ki: 13
+	ki : 3
+	kin: 2
+	kl: 5
+	kla: 5
+	ko: 20
+	ko : 10
+	koh: 2
+	kos: 2
+	kov: 2
+	kr: 2
+	kre: 2
+	ku: 5
+	kul: 2
+	kun: 2
+	kur: 2
+	ky: 2
+	ky : 2
+	l: 9746
+	l : 1863
+	l c: 222
+	l ce: 18
+	l co: 87
+	l cu: 27
+	l că: 47
+	l d: 333
+	l de: 218
+	l di: 57
+	l dl: 7
+	l do: 30
+	l eu: 48
+	l l: 52
+	l la: 32
+	l p: 183
+	l pe: 67
+	l r: 82
+	l râ: 22
+	l s: 140
+	l să: 50
+	l u: 77
+	l un: 53
+	l î: 120
+	l în: 108
+	l ş: 38
+	l şi: 33
+	la a: 53
+	la î: 20
+	labo: 38
+	lad: 2
+	lag: 2
+	lai: 3
+	lanu: 15
+	lar: 108
+	lară: 7
+	las: 23
+	las : 2
+	last: 2
+	lat: 33
+	laş: 23
+	laşi: 23
+	laţ: 67
+	laţi: 67
+	lcă: 7
+	ld: 17
+	ld : 7
+	le: 2121
+	le : 1550
+	le a: 142
+	le c: 172
+	le d: 193
+	le l: 53
+	le m: 103
+	le n: 57
+	le p: 210
+	le s: 97
+	le u: 42
+	le î: 75
+	le ş: 72
+	lea: 60
+	lea : 32
+	leg: 192
+	lega: 80
+	legi: 63
+	legă: 8
+	lei: 3
+	lelo: 15
+	lemă: 27
+	len: 43
+	len : 10
+	lenţ: 15
+	ler: 8
+	ler : 2
+	les: 43
+	les : 38
+	lg: 17
+	lh: 3
+	li : 60
+	li ş: 8
+	lib: 60
+	libe: 48
+	lic: 210
+	lica: 75
+	lice: 30
+	lici: 58
+	lică: 27
+	lig: 37
+	liil: 8
+	lij: 5
+	lime: 27
+	ling: 3
+	lini: 50
+	lioa: 22
+	lips: 10
+	lire: 10
+	lis: 42
+	lit: 332
+	lita: 130
+	lită: 38
+	liu: 72
+	liul: 68
+	liz: 107
+	liza: 72
+	liză: 25
+	liş: 7
+	lişt: 7
+	ll: 8
+	ll : 2
+	lla: 2
+	lle: 5
+	lm: 17
+	lma: 2
+	ln: 13
+	lo: 1145
+	lo : 18
+	loa: 32
+	loac: 7
+	loar: 8
+	loat: 12
+	loc: 105
+	loc : 32
+	locu: 43
+	lor: 840
+	lor : 826
+	los: 22
+	losi: 17
+	ls: 5
+	ls : 2
+	lt: 415
+	lta: 103
+	ltar: 43
+	ltat: 37
+	ltaţ: 8
+	lte: 93
+	lte : 83
+	ltim: 42
+	ltor: 27
+	ltui: 8
+	ltă: 45
+	ltă : 25
+	ltăţ: 10
+	lu: 1233
+	lu î: 7
+	lua: 65
+	lua : 23
+	luar: 15
+	luat: 27
+	luc: 128
+	lucr: 127
+	lui: 512
+	lui : 512
+	lul: 130
+	lul : 102
+	lulu: 28
+	lum: 40
+	lume: 18
+	lumi: 13
+	lun: 53
+	luni: 18
+	lupt: 18
+	luri: 12
+	lută: 8
+	luă: 18
+	luăm: 13
+	luţ: 73
+	luţi: 73
+	ly: 3
+	lă: 312
+	lă : 250
+	lă a: 37
+	lă c: 17
+	lă d: 32
+	lă e: 17
+	lă i: 8
+	lă p: 15
+	lă s: 7
+	lă î: 25
+	lă ş: 30
+	lăr: 7
+	lăs: 10
+	lăt: 25
+	lăto: 17
+	lătu: 7
+	lăţ: 10
+	lăţi: 10
+	lţ: 60
+	lţi: 27
+	lţi : 22
+	lţu: 32
+	lţum: 32
+	m a: 127
+	m ac: 28
+	m av: 18
+	m c: 120
+	m ca: 17
+	m cr: 7
+	m cu: 28
+	m că: 37
+	m de: 78
+	m h: 2
+	m mă: 7
+	m pe: 20
+	m pu: 18
+	m să: 27
+	m vo: 30
+	m vă: 7
+	m z: 2
+	m î: 77
+	m în: 75
+	m ş: 58
+	m şi: 53
+	ma : 72
+	mai: 315
+	mai : 313
+	mar: 172
+	mare: 110
+	mari: 27
+	mas: 17
+	mas : 7
+	mată: 12
+	maţ: 25
+	maţi: 25
+	mb: 273
+	mbat: 20
+	mbel: 8
+	mbiţ: 13
+	mbr: 133
+	mbre: 85
+	mbri: 28
+	mbru: 17
+	mbu: 40
+	mbun: 30
+	mbă: 18
+	mbăr: 15
+	me : 107
+	me c: 23
+	me ş: 8
+	mea: 47
+	mea : 37
+	meaz: 8
+	medi: 85
+	mei : 23
+	meil: 30
+	mel: 110
+	mele: 80
+	melo: 25
+	mem: 123
+	memb: 118
+	mene: 107
+	meni: 103
+	menţ: 35
+	mer : 2
+	meră: 7
+	merţ: 18
+	mesc: 22
+	met: 12
+	meu: 23
+	meu : 23
+	mi : 35
+	mic: 105
+	mice: 33
+	mici: 13
+	mică: 35
+	mie: 27
+	miei: 10
+	mii: 30
+	mii : 27
+	mijl: 13
+	mili: 53
+	mină: 7
+	misa: 48
+	mise: 5
+	misi: 173
+	mist: 2
+	mita: 22
+	mite: 48
+	mită: 12
+	mm: 7
+	mma: 2
+	mmi: 5
+	mn: 220
+	mnat: 8
+	mne: 60
+	mnea: 30
+	mnel: 22
+	mni: 48
+	mnif: 15
+	mnil: 22
+	mnu: 47
+	mnul: 47
+	mnă: 38
+	mnă : 32
+	mo: 335
+	mo : 3
+	mocr: 45
+	mod: 107
+	mod : 67
+	mor: 7
+	mos: 5
+	mp: 493
+	mp : 43
+	mp c: 13
+	mpl: 103
+	mplu: 37
+	mplă: 7
+	mpo: 182
+	mpor: 122
+	mpot: 45
+	mpu: 28
+	mpul: 18
+	mpă: 18
+	mpăr: 15
+	ms: 7
+	ms : 2
+	mt: 2
+	mu: 505
+	mul: 323
+	mul : 70
+	mult: 125
+	mulu: 63
+	mulţ: 48
+	mun: 163
+	munc: 65
+	mună: 22
+	muri: 7
+	mus: 2
+	mâ: 72
+	mân: 67
+	mâna: 12
+	mâne: 15
+	mâni: 22
+	mânt: 8
+	mé: 3
+	mă: 278
+	mă : 110
+	mă a: 20
+	mă c: 10
+	mă d: 8
+	mă s: 8
+	mă î: 17
+	măg: 7
+	măm: 7
+	măm : 7
+	măr: 55
+	măr : 13
+	mări: 17
+	măru: 15
+	măs: 65
+	măsu: 65
+	măt: 33
+	măto: 32
+	mţ: 7
+	n : 2614
+	n a: 385
+	n ac: 207
+	n ap: 35
+	n b: 28
+	n be: 7
+	n c: 430
+	n ca: 162
+	n ce: 80
+	n co: 118
+	n cu: 28
+	n câ: 8
+	n că: 13
+	n d: 128
+	n da: 5
+	n de: 58
+	n e: 85
+	n fa: 40
+	n h: 10
+	n i: 62
+	n j: 5
+	n k: 2
+	n ko: 2
+	n lu: 43
+	n mo: 75
+	n nu: 43
+	n o: 35
+	n p: 267
+	n pr: 112
+	n pă: 7
+	n ră: 8
+	n sc: 28
+	n sp: 58
+	n să: 22
+	n t: 87
+	n th: 2
+	n tr: 35
+	n ue: 10
+	n ul: 25
+	n ur: 63
+	n v: 90
+	n va: 5
+	n w: 2
+	n z: 8
+	n î: 42
+	n îm: 7
+	n în: 35
+	n ş: 40
+	n şi: 35
+	n ţ: 15
+	n ţă: 10
+	na: 716
+	na : 165
+	na p: 5
+	na s: 3
+	na î: 13
+	na ş: 8
+	nac: 3
+	nad: 2
+	nain: 12
+	nal: 170
+	nală: 33
+	nanţ: 25
+	nare: 52
+	nas: 2
+	nat : 40
+	nată: 12
+	naţ: 88
+	naţi: 88
+	nc: 622
+	ncep: 45
+	ncet: 13
+	ncez: 8
+	nchi: 10
+	nci : 30
+	ncii: 10
+	ncl: 65
+	nclu: 60
+	nct: 42
+	nct : 23
+	ncte: 7
+	nctu: 12
+	ncu: 30
+	ncur: 28
+	ncâ: 22
+	ncât: 18
+	ncă: 88
+	ncă : 73
+	ncăl: 15
+	ncţ: 38
+	ncţi: 38
+	nd : 365
+	nd a: 47
+	nd c: 47
+	nd p: 40
+	nd u: 27
+	nd î: 40
+	nde: 130
+	nde : 25
+	ndep: 30
+	nder: 32
+	ndic: 23
+	ndiţ: 40
+	ndo: 17
+	ndoi: 13
+	ndu: 92
+	nduc: 13
+	ndul: 20
+	ndur: 20
+	ndă: 22
+	ndă : 17
+	ne: 1650
+	ne : 592
+	ne a: 75
+	ne c: 77
+	ne î: 35
+	ne ş: 33
+	nea: 275
+	nea : 205
+	neav: 25
+	neaz: 23
+	nec: 95
+	nece: 77
+	nef: 32
+	nefi: 25
+	nei: 97
+	nei : 97
+	nej: 2
+	nele: 27
+	nelo: 40
+	nem: 27
+	nen: 22
+	ner: 212
+	ner : 3
+	nere: 78
+	neri: 55
+	nes: 13
+	nev: 77
+	nevo: 67
+	neze: 15
+	neî: 15
+	neîn: 15
+	nf: 160
+	nfii: 10
+	nfr: 38
+	nfru: 28
+	ng: 153
+	ng : 23
+	ngaj: 40
+	nge: 27
+	ngen: 7
+	ngur: 10
+	ngă: 7
+	ngă : 7
+	nh: 8
+	ni î: 15
+	ni ş: 18
+	niat: 8
+	nici: 62
+	nică: 15
+	nie: 53
+	nie : 10
+	niei: 17
+	nif: 37
+	nifi: 30
+	nii: 150
+	nii : 130
+	niil: 18
+	nil: 105
+	nile: 17
+	nilo: 87
+	nin: 12
+	ninţ: 10
+	nio: 2
+	nit: 158
+	nit : 25
+	nita: 45
+	nită: 30
+	niu: 167
+	niul: 23
+	niun: 122
+	niv: 60
+	nive: 60
+	niza: 33
+	niză: 12
+	niş: 10
+	nişt: 10
+	niţ: 57
+	niţi: 48
+	nj: 3
+	nje: 2
+	nk: 12
+	nk : 2
+	nka: 2
+	nn: 12
+	nna: 2
+	nne: 3
+	no: 500
+	no : 8
+	noa: 85
+	noas: 68
+	noaş: 15
+	noi: 68
+	noi : 47
+	noil: 12
+	nomi: 100
+	non: 3
+	nor : 45
+	nos: 33
+	nost: 18
+	not: 7
+	noul: 7
+	nouă: 7
+	nov: 10
+	noş: 23
+	noşt: 23
+	nreg: 12
+	ns : 63
+	ns î: 10
+	nsab: 28
+	nsea: 12
+	nsec: 17
+	nsi: 180
+	nsid: 78
+	nsil: 72
+	nsol: 18
+	nst: 150
+	nsti: 72
+	nstr: 58
+	nsu: 55
+	nsul: 27
+	nsă: 53
+	nsă : 50
+	nt: 2533
+	nt : 443
+	nt c: 60
+	nt p: 48
+	nt î: 32
+	nt ş: 18
+	nta: 208
+	ntaj: 15
+	ntar: 63
+	ntat: 38
+	ntel: 58
+	ntem: 33
+	ntex: 25
+	ntez: 8
+	nti : 2
+	nto: 10
+	ntr: 928
+	ntr : 68
+	ntre: 200
+	ntru: 548
+	ntră: 10
+	ntu: 173
+	ntul: 167
+	ntâ: 25
+	ntâm: 10
+	ntă: 148
+	ntă : 113
+	ntăm: 12
+	ntăr: 23
+	nu: 850
+	nu : 375
+	nu a: 75
+	nu c: 20
+	nu e: 45
+	nu m: 18
+	nu n: 23
+	nu p: 30
+	nu s: 43
+	nu t: 17
+	nu v: 37
+	nu î: 18
+	nua: 38
+	nuar: 20
+	nui: 60
+	nui : 53
+	nul: 155
+	nul : 93
+	nule: 33
+	nulu: 28
+	num: 125
+	numa: 25
+	nume: 50
+	numi: 17
+	numă: 33
+	nunţ: 15
+	nuri: 17
+	nuă: 8
+	nvă: 12
+	nvăţ: 12
+	ny: 3
+	ny : 3
+	nz: 27
+	nză: 17
+	nzăt: 17
+	nâ: 10
+	nân: 10
+	nând: 10
+	nă: 412
+	nă : 315
+	nă a: 30
+	nă c: 52
+	nă d: 20
+	nă e: 8
+	nă f: 12
+	nă l: 15
+	nă m: 8
+	nă n: 7
+	nă o: 7
+	nă p: 38
+	nă r: 7
+	nă s: 10
+	nă î: 30
+	nă ş: 25
+	năr: 23
+	nări: 22
+	năt: 62
+	năta: 17
+	năto: 8
+	nătă: 37
+	nş: 15
+	nşt: 8
+	nşti: 8
+	nţ: 668
+	nţa: 140
+	nţa : 100
+	nţar: 27
+	nţat: 12
+	nţe: 145
+	nţe : 30
+	nţei: 43
+	nţel: 72
+	nţi: 242
+	nţi : 37
+	nţia: 77
+	nţie: 27
+	nţii: 30
+	nţil: 18
+	nţin: 22
+	nţio: 27
+	nţă: 138
+	nţă : 132
+	nţăr: 7
+	nț: 8
+	o: 10287
+	o : 555
+	o a: 63
+	o a : 3
+	o b: 5
+	o c: 52
+	o d: 45
+	o da: 3
+	o de: 28
+	o di: 7
+	o do: 5
+	o e: 20
+	o f: 3
+	o g: 2
+	o h: 2
+	o i: 22
+	o j: 2
+	o k: 2
+	o n: 13
+	o ne: 2
+	o o: 10
+	o p: 90
+	o po: 17
+	o s: 72
+	o se: 8
+	o t: 7
+	o u: 8
+	o v: 12
+	o z: 7
+	o î: 12
+	o în: 10
+	o ş: 10
+	o şi: 7
+	o ţ: 12
+	o ţa: 12
+	oa: 826
+	oace: 8
+	oad: 17
+	oade: 10
+	oam: 75
+	oame: 28
+	oamn: 47
+	oan: 58
+	oane: 45
+	oană: 12
+	oap: 10
+	oape: 10
+	oar: 332
+	oar : 45
+	oare: 198
+	oart: 77
+	oară: 12
+	oas: 132
+	oase: 20
+	oast: 95
+	oasă: 12
+	oat: 160
+	oate: 135
+	oată: 20
+	oaş: 15
+	oaşt: 15
+	obi: 72
+	obie: 47
+	oble: 88
+	obţ: 22
+	obţi: 22
+	oc: 487
+	oc : 38
+	oca: 60
+	ocar: 17
+	ocaz: 13
+	oce: 95
+	och: 5
+	ocie: 42
+	ocm: 15
+	ocma: 12
+	ocr: 50
+	ocra: 50
+	ocu: 98
+	ocui: 10
+	ocul: 10
+	ocup: 27
+	ocur: 35
+	ocă: 13
+	ocăr: 10
+	od: 238
+	od c: 20
+	odo: 2
+	odu: 95
+	oduc: 45
+	odus: 38
+	odă: 7
+	oe: 18
+	ofe: 55
+	ofer: 47
+	og: 110
+	og : 7
+	oh: 8
+	oi : 80
+	oia: 25
+	oia : 13
+	oial: 12
+	oie: 88
+	oie : 45
+	oiec: 35
+	oil: 32
+	oile: 22
+	oilo: 10
+	oinţ: 7
+	ois: 2
+	oit: 2
+	olab: 15
+	olic: 45
+	olid: 40
+	olos: 22
+	olta: 53
+	olu: 160
+	olul: 57
+	oluţ: 73
+	olva: 13
+	olă: 8
+	olă : 7
+	om : 52
+	om î: 7
+	omba: 20
+	ome : 2
+	omen: 93
+	omer: 28
+	omi: 338
+	omic: 68
+	omis: 233
+	omn: 73
+	omni: 32
+	omnu: 42
+	omu: 127
+	omul: 35
+	omun: 92
+	on: 1321
+	on : 18
+	on a: 2
+	on d: 2
+	on e: 2
+	on s: 2
+	ona: 228
+	ona : 45
+	onal: 122
+	onar: 27
+	onat: 28
+	ondi: 57
+	ondu: 47
+	one: 78
+	one : 8
+	onea: 18
+	onen: 3
+	onez: 15
+	onf: 85
+	onfo: 28
+	onfr: 23
+	oni : 2
+	onom: 97
+	ons: 335
+	onsi: 150
+	onst: 75
+	onti: 52
+	onul: 8
+	onă: 7
+	onş: 8
+	onşt: 8
+	onţ: 7
+	onţi: 7
+	oo: 60
+	oope: 33
+	oor: 12
+	op: 730
+	op : 3
+	ope: 372
+	opea: 158
+	open: 137
+	oper: 48
+	opii: 15
+	opt: 45
+	opta: 37
+	opu: 102
+	opul: 25
+	opun: 63
+	opă: 18
+	opă : 18
+	opţ: 7
+	opţi: 7
+	or: 2681
+	or : 1156
+	or a: 95
+	or c: 123
+	or d: 133
+	or e: 55
+	or f: 48
+	or i: 35
+	or l: 62
+	or m: 40
+	or n: 53
+	or p: 85
+	or r: 35
+	or s: 60
+	or u: 25
+	or î: 60
+	or ş: 85
+	or ţ: 7
+	orar: 43
+	orb: 45
+	orbi: 28
+	ord: 187
+	ord : 63
+	orda: 35
+	ordu: 23
+	ordă: 22
+	orec: 27
+	oreş: 8
+	ori: 442
+	ori : 117
+	oric: 27
+	orii: 43
+	oril: 38
+	orit: 100
+	oriz: 30
+	ormă: 20
+	oro: 7
+	ors: 3
+	ort: 297
+	orta: 110
+	ortu: 102
+	oru: 77
+	orul: 73
+	orţ: 30
+	orţe: 13
+	orţi: 12
+	os: 327
+	os : 20
+	os a: 3
+	os d: 2
+	os p: 2
+	os s: 5
+	osa: 2
+	oscu: 12
+	oseb: 17
+	osib: 57
+	ost : 130
+	osti: 2
+	otat: 27
+	otde: 7
+	otec: 43
+	otej: 18
+	otel: 12
+	otri: 60
+	otu: 43
+	otul: 18
+	otuş: 20
+	otă: 18
+	otăr: 13
+	ou: 73
+	ou : 17
+	our: 7
+	out: 2
+	ouă: 28
+	ouă : 28
+	ov: 115
+	ova: 28
+	ove: 27
+	over: 3
+	ovoc: 27
+	ow: 3
+	oz: 68
+	ozi: 62
+	ozit: 25
+	oziţ: 35
+	oş: 38
+	oşt: 27
+	oşti: 8
+	oştr: 18
+	oţ: 43
+	oţi: 40
+	oţi : 27
+	oţii: 12
+	p: 7051
+	p c: 18
+	p î: 7
+	pa: 527
+	pa î: 8
+	pa ş: 12
+	pac: 55
+	pach: 8
+	pad: 2
+	pai: 2
+	pan: 27
+	par : 3
+	para: 15
+	pas: 17
+	pas : 8
+	pe: 1760
+	pe : 342
+	pe a: 17
+	pe b: 12
+	pe c: 120
+	pe d: 43
+	pe m: 17
+	pe o: 15
+	pe p: 30
+	pe t: 27
+	pea: 160
+	pean: 158
+	pec: 163
+	peci: 82
+	pect: 77
+	pede: 10
+	pei : 27
+	pen: 700
+	pene: 108
+	peni: 20
+	pent: 527
+	per: 257
+	peri: 48
+	perm: 40
+	peră: 8
+	piaţ: 22
+	pid : 12
+	pieţ: 25
+	pii : 7
+	piil: 13
+	piu: 18
+	piul: 13
+	pl: 320
+	plan: 45
+	pli: 125
+	plic: 85
+	plin: 30
+	ploa: 12
+	plu: 52
+	plu : 35
+	plă: 22
+	plăţ: 10
+	poa: 70
+	poat: 65
+	pod: 5
+	por: 313
+	por : 5
+	port: 262
+	porţ: 10
+	pos: 63
+	pot: 102
+	pot : 33
+	potr: 60
+	pozi: 55
+	pp: 8
+	pr: 1939
+	pra : 52
+	prav: 12
+	pre: 565
+	pre : 50
+	prea: 20
+	prec: 62
+	pred: 7
+	prel: 13
+	pres: 32
+	prez: 125
+	preş: 137
+	preţ: 23
+	preș: 12
+	pri: 622
+	prie: 3
+	prij: 53
+	prim: 97
+	prin: 182
+	priv: 252
+	pro: 653
+	prob: 112
+	proc: 90
+	proi: 35
+	prop: 103
+	ps: 18
+	psa : 8
+	pt: 387
+	pt : 65
+	pt c: 8
+	pta: 82
+	pta : 17
+	ptat: 43
+	pte: 33
+	pte : 23
+	ptu: 143
+	ptul: 72
+	ptur: 72
+	ptă: 55
+	ptă : 20
+	ptăm: 33
+	pu: 676
+	pub: 58
+	publ: 58
+	pul: 77
+	pul : 43
+	pulu: 18
+	pun: 257
+	pun : 30
+	punc: 42
+	pund: 20
+	pune: 123
+	puns: 20
+	punz: 15
+	pur: 25
+	puri: 22
+	pus: 78
+	pus : 33
+	puse: 35
+	pusă: 10
+	put: 153
+	pute: 118
+	putu: 8
+	puţ: 22
+	puţi: 22
+	pâ: 43
+	pân: 43
+	pând: 7
+	până: 37
+	pă: 207
+	pă : 73
+	pă c: 20
+	pă d: 7
+	pă p: 8
+	pă s: 7
+	păc: 10
+	păca: 7
+	păm: 7
+	păr: 85
+	păra: 8
+	păre: 20
+	pări: 12
+	părt: 8
+	păru: 7
+	pără: 8
+	părţ: 20
+	păs: 15
+	păst: 15
+	păş: 8
+	păşi: 8
+	pţ: 18
+	pţi: 18
+	pţie: 7
+	pţiu: 7
+	q: 3
+	qu: 3
+	que: 2
+	ques: 2
+	qui: 2
+	r: 16814
+	r ac: 28
+	r at: 2
+	r aş: 10
+	r b: 2
+	r c: 242
+	r ca: 53
+	r cu: 20
+	r că: 78
+	r dl: 7
+	r fi: 80
+	r g: 7
+	r h: 7
+	r i: 45
+	r i : 2
+	r j: 3
+	r k: 3
+	r nu: 25
+	r o : 35
+	r pe: 65
+	r pu: 30
+	r să: 17
+	r tr: 70
+	r î: 93
+	r îm: 7
+	r în: 85
+	r ş: 113
+	r şi: 105
+	r ţ: 7
+	r ţă: 7
+	ra î: 12
+	rabi: 40
+	rabă: 8
+	ract: 43
+	rad: 25
+	rak: 3
+	rală: 23
+	ramu: 15
+	rand: 2
+	ranţ: 60
+	rap: 128
+	rapi: 17
+	rapo: 110
+	rar: 172
+	rare: 157
+	ras: 13
+	ras : 2
+	rat: 262
+	rat : 65
+	rata: 58
+	rate: 68
+	rată: 28
+	rav: 28
+	raz: 2
+	raţ: 80
+	raţi: 80
+	rbal: 17
+	rbaţ: 7
+	rbim: 8
+	rbă: 7
+	rcet: 15
+	rciţ: 10
+	rct: 8
+	rcti: 8
+	rcu: 23
+	rcur: 8
+	rcă: 8
+	rd c: 25
+	rd î: 10
+	rdat: 18
+	rdu: 28
+	rdul: 20
+	rdă: 22
+	rdăm: 12
+	re: 5199
+	re : 1906
+	re a: 333
+	re c: 188
+	re d: 132
+	re e: 83
+	re l: 112
+	re m: 43
+	re n: 85
+	re o: 62
+	re p: 128
+	re r: 37
+	re s: 180
+	re u: 47
+	re v: 52
+	re î: 112
+	re ş: 72
+	rea: 863
+	rea : 746
+	reaz: 22
+	reb: 293
+	rebu: 258
+	rebă: 12
+	rec: 307
+	rece: 67
+	rect: 60
+	recu: 100
+	recţ: 13
+	red : 42
+	redu: 35
+	reea: 7
+	ref: 97
+	refe: 70
+	regă: 13
+	rei : 28
+	rele: 22
+	relo: 10
+	relu: 12
+	ren: 70
+	ren : 3
+	renţ: 27
+	rep: 263
+	repr: 85
+	rept: 138
+	rer : 2
+	reri: 12
+	res : 5
+	resc: 38
+	resp: 90
+	ress: 2
+	resu: 43
+	ret: 23
+	reu: 47
+	reu : 10
+	reun: 27
+	reuş: 10
+	revă: 7
+	rez: 238
+	reze: 102
+	rezi: 47
+	rezo: 50
+	rezu: 32
+	reş: 193
+	reşe: 142
+	reşt: 50
+	reţ: 40
+	reţe: 8
+	reţi: 10
+	reţu: 20
+	reș: 13
+	reșe: 12
+	rh: 8
+	ri: 3024
+	ri : 530
+	ri a: 55
+	ri c: 40
+	ri d: 77
+	ri e: 20
+	ri m: 23
+	ri p: 38
+	ri s: 82
+	ri î: 25
+	ri ş: 25
+	ric: 122
+	rici: 15
+	rică: 7
+	ridi: 37
+	rie : 52
+	rifi: 18
+	rii: 307
+	rii : 283
+	riil: 23
+	rij: 77
+	riji: 62
+	ril: 480
+	rile: 253
+	rilo: 220
+	rim: 145
+	rim : 27
+	rimu: 25
+	rimă: 12
+	rin: 227
+	rin : 97
+	rinţ: 40
+	rio : 2
+	rioa: 28
+	rit: 287
+	rit : 28
+	rita: 80
+	rito: 48
+	rită: 78
+	riul: 8
+	riv: 312
+	riva: 48
+	rive: 50
+	rivi: 208
+	riz: 90
+	riza: 50
+	riză: 22
+	riţ: 7
+	riţi: 7
+	rj: 3
+	rk: 10
+	rke: 5
+	rli: 2
+	rm: 408
+	rm c: 10
+	rma: 155
+	rmar: 58
+	rmaţ: 22
+	rmea: 7
+	rmit: 40
+	rmă: 78
+	rmă : 32
+	rmăr: 12
+	rmăt: 32
+	rnaţ: 30
+	rnel: 13
+	rniz: 17
+	rnu: 20
+	rnul: 20
+	rnă: 15
+	rnă : 12
+	ro : 32
+	roa: 33
+	roap: 10
+	roas: 13
+	roba: 20
+	roc: 102
+	roce: 87
+	rodu: 82
+	roie: 35
+	rolu: 25
+	roo: 2
+	rop: 507
+	rope: 315
+	ropo: 12
+	ropu: 70
+	ropă: 18
+	ror : 28
+	ros: 23
+	ros : 5
+	rote: 62
+	rovo: 27
+	roz: 2
+	roş: 8
+	rr: 18
+	rre: 2
+	rs: 145
+	rs : 22
+	rsel: 18
+	rsoa: 28
+	rst: 8
+	rsul: 15
+	rt: 577
+	rt ş: 10
+	rta: 133
+	rtan: 103
+	rtat: 18
+	rte: 168
+	rte : 117
+	rtea: 35
+	rtor: 22
+	rtu: 108
+	rtul: 63
+	rtur: 33
+	rtă: 22
+	rtăş: 7
+	rtăţ: 10
+	ru: 1118
+	ru : 676
+	ru a: 207
+	ru c: 117
+	ru d: 40
+	ru e: 40
+	ru i: 18
+	ru m: 20
+	ru n: 18
+	ru p: 50
+	ru r: 22
+	ru s: 20
+	ru t: 25
+	ru v: 22
+	ru î: 13
+	ru ş: 18
+	ruc: 50
+	rucâ: 13
+	rul: 168
+	rul : 127
+	rulu: 37
+	runt: 30
+	rup: 63
+	rupu: 47
+	rupţ: 7
+	rur: 22
+	ruri: 17
+	rut : 8
+	rvă: 8
+	rvăm: 7
+	ry: 2
+	ry : 2
+	rz: 22
+	râ: 83
+	rân: 68
+	rând: 60
+	râr: 10
+	râri: 7
+	ră: 532
+	ră : 323
+	ră a: 32
+	ră c: 35
+	ră d: 33
+	ră e: 15
+	ră l: 10
+	ră m: 13
+	ră n: 8
+	ră o: 12
+	ră p: 52
+	ră s: 15
+	ră î: 22
+	ră ş: 12
+	răc: 13
+	răci: 13
+	răi: 12
+	răm: 73
+	răm : 50
+	rămâ: 20
+	răr: 27
+	rări: 27
+	răs: 40
+	răsp: 38
+	răt: 22
+	răta: 8
+	răto: 12
+	răz: 8
+	răzb: 7
+	rş: 10
+	rşi: 8
+	rşit: 7
+	rţ: 92
+	rţ : 10
+	rţe: 20
+	rţe : 8
+	rţei: 10
+	rţi: 47
+	rţi : 12
+	rţii: 10
+	rţil: 10
+	rţu: 8
+	rţul: 8
+	s: 8489
+	s : 400
+	s a: 103
+	s c: 38
+	s co: 5
+	s că: 13
+	s d: 43
+	s da: 2
+	s de: 33
+	s di: 5
+	s e: 10
+	s es: 5
+	s f: 3
+	s g: 10
+	s h: 2
+	s i: 8
+	s l: 30
+	s le: 3
+	s m: 8
+	s me: 2
+	s n: 3
+	s o: 17
+	s p: 20
+	s pr: 3
+	s r: 7
+	s re: 3
+	s s: 28
+	s se: 2
+	s su: 2
+	s să: 15
+	s t: 8
+	s u: 8
+	s un: 5
+	s v: 3
+	s va: 3
+	s î: 43
+	s în: 38
+	sa: 420
+	sa : 53
+	saa: 2
+	sabi: 32
+	sale: 20
+	salu: 22
+	sam: 2
+	san: 7
+	sar: 122
+	sar : 50
+	sarc: 8
+	sare: 30
+	sară: 18
+	sau: 75
+	sau : 75
+	saţ: 7
+	saţi: 7
+	sb: 2
+	sc: 410
+	sc : 90
+	sc a: 8
+	sc c: 15
+	sc d: 8
+	sc s: 30
+	sc î: 8
+	sch: 45
+	sche: 10
+	scop: 20
+	scr: 52
+	scri: 48
+	scu: 93
+	scui: 8
+	scur: 23
+	scut: 35
+	scuţ: 15
+	scă: 63
+	scă : 42
+	scăr: 8
+	se: 876
+	se t: 2
+	se î: 40
+	se ş: 12
+	seam: 15
+	sebi: 17
+	sec: 92
+	seci: 13
+	sect: 37
+	secu: 27
+	sed: 3
+	sei: 2
+	sele: 33
+	selo: 23
+	sem: 153
+	seme: 107
+	semn: 45
+	sen: 53
+	sent: 2
+	senţ: 23
+	ses: 15
+	set: 2
+	sfă: 18
+	sfăş: 15
+	si: 880
+	si : 3
+	sia : 83
+	sib: 62
+	sibi: 62
+	siei: 75
+	sig: 113
+	sigu: 113
+	siil: 8
+	sil: 73
+	sili: 72
+	simţ: 7
+	sio: 12
+	sion: 12
+	sist: 77
+	sită: 17
+	siu: 27
+	siun: 27
+	siv : 20
+	sk: 5
+	ska: 2
+	ski: 2
+	sl: 55
+	slaţ: 18
+	sm: 60
+	sme: 8
+	smul: 25
+	so: 268
+	so : 5
+	soa: 33
+	soan: 28
+	sol: 125
+	soli: 78
+	son: 13
+	sou: 2
+	sp: 573
+	spe: 217
+	spec: 163
+	sper: 47
+	spri: 53
+	spu: 128
+	spun: 107
+	spus: 17
+	spă: 10
+	ss: 17
+	ss : 8
+	ssa: 3
+	ssi: 3
+	sso: 2
+	st: 2591
+	st : 410
+	st a: 50
+	st c: 37
+	st d: 48
+	st l: 68
+	st r: 25
+	st s: 45
+	st î: 12
+	stat: 173
+	ste: 775
+	ste : 565
+	stea: 67
+	stei: 45
+	stf: 43
+	stfe: 43
+	stiu: 27
+	stiţ: 15
+	sto: 57
+	sto : 2
+	str: 350
+	stru: 92
+	stră: 62
+	stui: 35
+	stul: 22
+	sty: 2
+	stă: 268
+	stă : 218
+	stăr: 7
+	stăz: 37
+	su: 755
+	sub: 85
+	sub : 18
+	subi: 13
+	subl: 27
+	suf: 28
+	sufe: 13
+	sul: 115
+	sul : 72
+	sulu: 22
+	suma: 23
+	sun: 193
+	sunt: 190
+	sup: 87
+	supr: 65
+	sur: 97
+	suri: 48
+	surs: 23
+	sură: 22
+	susţ: 47
+	sv: 5
+	să: 1023
+	să : 941
+	să a: 110
+	să c: 57
+	să d: 43
+	să e: 27
+	să f: 110
+	să g: 17
+	să i: 23
+	să l: 62
+	să m: 18
+	să n: 67
+	să o: 28
+	să p: 65
+	să r: 58
+	să s: 110
+	să t: 15
+	să u: 7
+	să v: 35
+	să î: 53
+	să ş: 20
+	săm: 8
+	săm : 8
+	săn: 23
+	sănă: 23
+	săp: 22
+	săpt: 22
+	săr: 13
+	sără: 10
+	său: 8
+	său : 8
+	sţ: 47
+	sţi: 47
+	sţin: 47
+	t: 13931
+	t ac: 55
+	t as: 23
+	t b: 13
+	t c: 228
+	t ca: 73
+	t co: 55
+	t cu: 33
+	t că: 35
+	t d: 305
+	t de: 212
+	t e: 60
+	t en: 3
+	t g: 10
+	t h: 3
+	t ha: 2
+	t i: 47
+	t ia: 7
+	t is: 3
+	t j: 5
+	t lu: 75
+	t o : 42
+	t p: 205
+	t pe: 77
+	t pr: 70
+	t să: 57
+	t t: 43
+	t v: 37
+	t î: 162
+	t îm: 13
+	t în: 148
+	t ş: 108
+	t şi: 103
+	ta î: 25
+	tabi: 70
+	taco: 8
+	tacu: 10
+	tai: 3
+	tală: 10
+	tam: 12
+	tant: 98
+	tanţ: 43
+	tar: 277
+	tare: 198
+	tară: 25
+	tas: 5
+	tat: 735
+	tat : 147
+	tate: 490
+	tatu: 63
+	tată: 20
+	taţ: 45
+	taţi: 45
+	tdea: 7
+	te: 3532
+	te : 1838
+	te a: 187
+	te c: 172
+	te d: 287
+	te f: 65
+	te i: 63
+	te m: 82
+	te o: 62
+	te p: 165
+	te r: 48
+	te s: 110
+	te u: 50
+	te î: 127
+	te ş: 77
+	te ţ: 18
+	tea: 335
+	tea : 298
+	teap: 10
+	teaz: 22
+	tecţ: 43
+	tei : 48
+	teia: 8
+	tel: 277
+	tele: 192
+	telo: 73
+	tem : 93
+	ten: 138
+	tenţ: 87
+	tept: 23
+	ter : 10
+	tere: 127
+	teri: 92
+	tern: 108
+	terţ: 8
+	tes: 15
+	tes : 3
+	text: 33
+	tez: 22
+	teze: 18
+	teţ: 20
+	teţi: 17
+	tf: 47
+	tfe: 45
+	tfel: 45
+	th: 5
+	the: 2
+	thi: 2
+	ti: 1271
+	ti : 20
+	ti s: 2
+	tic: 320
+	tic : 42
+	tice: 70
+	tici: 83
+	tică: 70
+	tie: 22
+	tig: 7
+	til: 48
+	til : 5
+	tilo: 10
+	tim: 163
+	tim : 15
+	time: 33
+	timp: 62
+	timă: 7
+	tind: 13
+	tinu: 43
+	tinţ: 7
+	tio: 7
+	tion: 7
+	tis: 13
+	tit: 113
+	titu: 78
+	tiu: 35
+	tiun: 27
+	tiv: 260
+	tiv : 50
+	tive: 95
+	tivu: 18
+	tivă: 45
+	tiţ: 27
+	tiţi: 27
+	tk: 3
+	tl: 10
+	tn: 15
+	tni: 8
+	to: 813
+	to : 10
+	to a: 2
+	toa: 182
+	toar: 100
+	toat: 80
+	toc: 30
+	tocm: 15
+	tod: 7
+	tom: 7
+	tor: 453
+	tor : 152
+	tora: 28
+	tori: 207
+	toru: 58
+	tos: 5
+	tos : 3
+	totu: 23
+	tov: 5
+	toţ: 35
+	toţi: 35
+	tr: 2008
+	tr : 68
+	tr a: 12
+	tr o: 28
+	tr u: 28
+	tra: 318
+	trat: 118
+	tre: 663
+	tre : 210
+	trea: 28
+	treb: 292
+	trec: 40
+	trei: 25
+	trep: 18
+	tri: 188
+	tric: 30
+	trii: 10
+	triv: 60
+	tro: 33
+	tru: 645
+	tru : 555
+	truc: 42
+	trul: 10
+	tră: 83
+	tră : 57
+	trăi: 12
+	trăm: 8
+	ts: 3
+	ts : 3
+	tt: 5
+	tt : 2
+	tte: 2
+	tter: 2
+	tu: 1096
+	tua: 102
+	tual: 38
+	tuaţ: 53
+	tui: 70
+	tui : 35
+	tuie: 13
+	tul: 530
+	tul : 378
+	tulu: 152
+	tunc: 23
+	tur: 238
+	turi: 152
+	tură: 22
+	tutu: 28
+	tuş: 20
+	tuşi: 20
+	tuţ: 33
+	tuţi: 33
+	tv: 5
+	ty: 3
+	ty : 2
+	tz: 2
+	tâ: 95
+	tâm: 10
+	tâmp: 10
+	tân: 22
+	tând: 17
+	târ: 12
+	târz: 12
+	tât: 43
+	tât : 38
+	tă: 1211
+	tă : 728
+	tă a: 70
+	tă c: 93
+	tă d: 100
+	tă e: 18
+	tă f: 25
+	tă i: 13
+	tă l: 25
+	tă m: 20
+	tă n: 8
+	tă o: 17
+	tă p: 107
+	tă r: 12
+	tă s: 37
+	tă t: 7
+	tă u: 23
+	tă î: 60
+	tă ş: 27
+	tăm: 83
+	tăm : 62
+	tămâ: 22
+	tăr: 60
+	tări: 45
+	tărâ: 13
+	tăz: 37
+	tăzi: 37
+	tăş: 7
+	tăţ: 280
+	tăţe: 62
+	tăţi: 218
+	tăț: 10
+	tăți: 8
+	u: 11734
+	u : 1921
+	u a: 363
+	u a : 157
+	u ac: 40
+	u ad: 22
+	u af: 13
+	u ar: 35
+	u aş: 7
+	u c: 253
+	u ca: 67
+	u ce: 28
+	u co: 68
+	u cr: 17
+	u cu: 17
+	u câ: 7
+	u că: 45
+	u d: 132
+	u de: 62
+	u e: 112
+	u es: 53
+	u ex: 28
+	u f: 75
+	u fo: 48
+	u fă: 7
+	u lu: 13
+	u nu: 27
+	u pr: 88
+	u pu: 20
+	u s: 148
+	u su: 40
+	u să: 17
+	u t: 102
+	u to: 53
+	u tr: 30
+	u vo: 20
+	u î: 83
+	u îm: 7
+	u în: 68
+	u ş: 35
+	u şi: 30
+	u ţ: 12
+	u ţă: 12
+	ua: 245
+	ua î: 13
+	uale: 23
+	uală: 17
+	uare: 28
+	uat : 17
+	uate: 15
+	uaţ: 53
+	uaţi: 53
+	ub: 155
+	ubie: 13
+	ubl: 88
+	ubli: 85
+	uc: 373
+	uca: 30
+	ucat: 13
+	ucaţ: 13
+	ucce: 18
+	uce: 50
+	uce : 22
+	ucer: 27
+	ucr: 138
+	ucra: 20
+	ucru: 102
+	ucră: 12
+	ucur: 10
+	ucâ: 13
+	ucât: 13
+	ucă: 32
+	ucă : 8
+	ucăt: 22
+	ucţ: 15
+	ucţi: 15
+	ud: 83
+	ud : 15
+	ue: 138
+	ue : 107
+	ue î: 17
+	ue ş: 12
+	uenţ: 10
+	ues: 2
+	ufe: 13
+	ufer: 13
+	uge: 43
+	uget: 33
+	ui: 1000
+	ui : 688
+	ui a: 50
+	ui c: 65
+	ui d: 85
+	ui e: 48
+	ui f: 18
+	ui l: 17
+	ui m: 22
+	ui p: 70
+	ui r: 33
+	ui s: 87
+	ui î: 30
+	ui ş: 38
+	uie: 202
+	uie : 188
+	uiel: 7
+	uită: 10
+	uj: 2
+	uk: 5
+	ul: 2081
+	ul : 1140
+	ul a: 83
+	ul b: 10
+	ul c: 110
+	ul d: 212
+	ul e: 77
+	ul f: 18
+	ul g: 12
+	ul i: 22
+	ul l: 37
+	ul m: 45
+	ul n: 30
+	ul p: 118
+	ul r: 48
+	ul s: 85
+	ul t: 37
+	ul u: 50
+	ul v: 35
+	ul î: 53
+	ul ş: 17
+	ulam: 23
+	ulaţ: 27
+	ule : 35
+	ult: 250
+	ult : 57
+	ulta: 47
+	ulte: 48
+	ulti: 48
+	ulto: 17
+	ultă: 23
+	ulu: 483
+	ului: 482
+	ulţ: 48
+	ulţi: 17
+	ulţu: 32
+	um: 520
+	um : 177
+	um a: 32
+	um s: 22
+	um î: 12
+	um ş: 37
+	umai: 23
+	ume: 130
+	ume : 27
+	umel: 32
+	umes: 20
+	umii: 10
+	umit: 12
+	umn: 30
+	umne: 30
+	umpă: 8
+	ums: 2
+	umă: 37
+	umăr: 33
+	un: 2071
+	un : 375
+	un a: 50
+	un c: 33
+	un f: 18
+	un r: 35
+	un ş: 8
+	unc: 163
+	unci: 37
+	unct: 42
+	uncă: 42
+	uncţ: 33
+	und: 67
+	und : 8
+	une: 412
+	une : 143
+	unea: 87
+	unei: 82
+	unel: 10
+	uner: 73
+	ung: 32
+	ung : 15
+	uni: 400
+	uni : 62
+	unii: 65
+	unil: 43
+	unit: 72
+	uniu: 122
+	unk: 2
+	uno: 82
+	unoa: 17
+	unor: 45
+	unt: 228
+	unt : 153
+	unte: 43
+	untă: 25
+	unu: 78
+	unui: 52
+	unul: 20
+	unz: 17
+	unză: 15
+	ună: 120
+	ună : 75
+	unăr: 7
+	unăt: 32
+	unţ: 17
+	unţa: 7
+	unţă: 7
+	uo: 2
+	up: 247
+	upr: 72
+	upra: 65
+	upt: 20
+	upta: 12
+	upu: 58
+	upul: 32
+	upun: 8
+	upur: 15
+	upă: 52
+	upă : 45
+	upţ: 8
+	upţi: 8
+	ur: 1500
+	ur : 40
+	ura: 148
+	urab: 15
+	uraj: 23
+	uran: 35
+	uri: 452
+	uri : 165
+	urii: 12
+	uril: 233
+	urm: 122
+	urma: 60
+	urmă: 55
+	uro: 457
+	urop: 400
+	uror: 22
+	urse: 23
+	ursu: 18
+	urâ: 18
+	urân: 18
+	ură: 90
+	ură : 63
+	urăm: 25
+	us: 338
+	us : 87
+	us î: 7
+	usiv: 20
+	uss: 2
+	ust: 58
+	ust : 2
+	usta: 3
+	usă: 12
+	usă : 12
+	usţ: 47
+	usţi: 47
+	ut: 552
+	ut : 150
+	ut î: 8
+	ut ş: 8
+	utaţ: 10
+	ute: 148
+	utea: 50
+	utem: 38
+	uter: 25
+	util: 32
+	utor: 60
+	utul: 13
+	ută: 35
+	ută : 28
+	utăm: 7
+	uu: 2
+	uver: 48
+	uvâ: 13
+	uvân: 13
+	ux : 2
+	uza : 10
+	uză: 13
+	uză : 13
+	uă: 57
+	uă : 33
+	uă e: 7
+	uă s: 8
+	uăm: 17
+	uăm : 17
+	uăr: 7
+	uări: 7
+	uş: 43
+	uşi: 38
+	uşi : 32
+	uţ: 162
+	uţi: 160
+	uţia: 20
+	uţie: 58
+	uţii: 47
+	uţin: 22
+	uţio: 12
+	v: 2613
+	v : 83
+	v î: 13
+	v în: 13
+	va: 432
+	va : 278
+	va a: 35
+	va c: 33
+	va f: 38
+	va t: 23
+	va î: 10
+	vad: 3
+	val: 45
+	vali: 3
+	van: 18
+	var: 23
+	vas: 3
+	vast: 2
+	vată: 7
+	vaţ: 7
+	vaţi: 7
+	ve: 643
+	vea: 38
+	vea : 33
+	vede: 68
+	vegh: 8
+	vele: 22
+	velu: 33
+	vem: 52
+	vem : 52
+	veni: 47
+	venţ: 13
+	ver: 110
+	vern: 45
+	veş: 47
+	veşt: 47
+	veţ: 10
+	veţi: 10
+	vi : 10
+	viaţ: 22
+	vici: 20
+	vict: 18
+	vie: 23
+	vien: 2
+	vieţ: 8
+	vii: 45
+	viit: 43
+	vil: 17
+	vin: 213
+	vind: 138
+	vină: 13
+	vinţ: 18
+	vire: 35
+	vis: 5
+	vită: 18
+	viz: 55
+	vize: 8
+	vizi: 23
+	vizu: 15
+	vl: 2
+	vn: 2
+	vo : 2
+	voa: 47
+	voar: 20
+	voas: 27
+	voc: 35
+	voca: 20
+	vocă: 10
+	voi: 87
+	voia: 13
+	voie: 45
+	volt: 58
+	vom: 52
+	vom : 52
+	vor: 127
+	vor : 78
+	vorb: 40
+	vot: 70
+	vota: 38
+	votu: 20
+	vr: 38
+	vrea: 10
+	vrem: 18
+	vs: 5
+	vul: 27
+	vul : 12
+	vut : 22
+	vá: 2
+	vâ: 58
+	vân: 48
+	vând: 33
+	vânt: 13
+	vâr: 10
+	vârs: 8
+	vă: 195
+	vă : 110
+	vă a: 22
+	vă d: 7
+	vă m: 7
+	vă p: 13
+	vă r: 8
+	vă s: 7
+	văm: 10
+	văm : 10
+	văr: 47
+	văr : 13
+	văra: 32
+	văz: 12
+	văzu: 12
+	văţ: 12
+	văţă: 7
+	w: 25
+	w : 3
+	wa: 7
+	wan: 2
+	we: 3
+	we : 2
+	wi: 5
+	wo: 3
+	wor: 2
+	x: 377
+	xe: 70
+	xelo: 7
+	xem: 35
+	xemp: 35
+	xi: 78
+	xis: 72
+	xist: 72
+	xp: 57
+	xpr: 23
+	xpri: 20
+	xt: 110
+	xte: 33
+	xter: 30
+	xti: 13
+	xtin: 13
+	xtr: 32
+	xtre: 23
+	xtu: 13
+	xtul: 13
+	xu: 15
+	y: 37
+	y : 15
+	y a: 2
+	y a : 2
+	y d: 2
+	y e: 2
+	y i: 2
+	y p: 2
+	ya: 5
+	yc: 2
+	ych: 2
+	ye: 2
+	ym: 3
+	yo: 7
+	z: 1495
+	z : 85
+	z c: 23
+	z că: 12
+	za: 240
+	zar: 77
+	zare: 72
+	zat: 60
+	zate: 17
+	zată: 25
+	zaţ: 17
+	zaţi: 17
+	zb: 63
+	zba: 55
+	zbat: 55
+	zboi: 7
+	zd: 2
+	ze î: 12
+	zea: 17
+	zeaz: 17
+	zent: 77
+	zenţ: 7
+	zi î: 8
+	zii: 17
+	zii : 10
+	ziil: 7
+	zil: 25
+	zint: 35
+	zio: 2
+	zion: 2
+	zit: 53
+	zita: 12
+	zite: 15
+	ziti: 15
+	ziu: 27
+	ziun: 18
+	ziţ: 42
+	ziţi: 42
+	zm: 2
+	zn: 5
+	zna: 3
+	zol: 50
+	zolu: 30
+	zolv: 18
+	zui: 15
+	zuir: 7
+	zul: 62
+	zul : 28
+	zult: 30
+	zuri: 12
+	zut: 17
+	zut : 12
+	zvo: 57
+	zvol: 57
+	ză: 247
+	ză : 197
+	ză a: 17
+	ză c: 20
+	ză d: 20
+	ză e: 8
+	ză i: 8
+	ză p: 22
+	ză r: 8
+	ză s: 25
+	ză î: 17
+	ză ş: 15
+	zăm: 7
+	zăm : 7
+	zăr: 27
+	zări: 27
+	zăt: 17
+	zăto: 17
+	á: 2
+	ác: 2
+	â: 607
+	âi: 8
+	âmp: 10
+	âmpl: 8
+	ân: 357
+	âna: 12
+	âna : 8
+	ând: 218
+	ând : 182
+	ândi: 13
+	ându: 15
+	âne: 15
+	âne : 10
+	âng: 10
+	âni: 23
+	âni : 13
+	ânt: 25
+	ânt : 8
+	ântu: 13
+	ână: 40
+	ână : 38
+	âr: 38
+	âri: 7
+	ârs: 8
+	ârst: 8
+	ârz: 12
+	ârzi: 12
+	ârş: 7
+	ârşi: 7
+	ât: 177
+	ât : 143
+	ât a: 18
+	ât d: 20
+	ât e: 8
+	ât m: 15
+	ât p: 8
+	ât r: 8
+	ât s: 13
+	ât t: 7
+	ât î: 8
+	ât ş: 23
+	âte: 28
+	âte : 10
+	âtev: 17
+	ä: 2
+	är: 2
+	è: 2
+	é: 2
+	én: 2
+	î: 2373
+	îi: 32
+	îi : 32
+	îi a: 7
+	îi v: 7
+	îl: 28
+	îl : 28
+	îm: 118
+	îmb: 32
+	îmbu: 30
+	îmi: 7
+	îmi : 7
+	împ: 80
+	împo: 45
+	împr: 20
+	împă: 10
+	în: 2159
+	în : 1506
+	în a: 233
+	în b: 15
+	în c: 323
+	în d: 60
+	în e: 42
+	în f: 72
+	în g: 12
+	în i: 15
+	în l: 38
+	în m: 112
+	în n: 38
+	în o: 15
+	în p: 147
+	în r: 33
+	în s: 135
+	în t: 47
+	în u: 63
+	în v: 72
+	în z: 7
+	în ş: 7
+	îna: 22
+	înai: 12
+	înal: 8
+	înc: 177
+	înce: 57
+	înch: 15
+	încr: 13
+	încu: 17
+	încâ: 22
+	încă: 45
+	înd: 52
+	înde: 25
+	îndo: 13
+	îndr: 8
+	înf: 17
+	înfi: 10
+	înfr: 7
+	îng: 25
+	îngr: 25
+	înr: 12
+	înre: 12
+	îns: 65
+	înse: 15
+	însă: 43
+	înt: 227
+	înto: 10
+	într: 183
+	întâ: 23
+	întă: 10
+	înv: 17
+	învă: 12
+	înţ: 32
+	înţe: 32
+	îş: 32
+	îşi: 32
+	îşi : 32
+	ó: 5
+	óp: 5
+	ö: 2
+	ø: 2
+	ă: 5997
+	ă : 4054
+	ă a: 545
+	ă a : 123
+	ă ab: 10
+	ă ac: 143
+	ă ad: 23
+	ă ai: 18
+	ă al: 10
+	ă am: 23
+	ă an: 8
+	ă ap: 10
+	ă ar: 28
+	ă as: 47
+	ă at: 22
+	ă au: 15
+	ă av: 23
+	ă aş: 25
+	ă b: 18
+	ă ba: 7
+	ă c: 358
+	ă ca: 53
+	ă ce: 30
+	ă ch: 8
+	ă co: 108
+	ă cr: 15
+	ă cu: 87
+	ă câ: 17
+	ă că: 37
+	ă d: 388
+	ă da: 17
+	ă de: 260
+	ă di: 55
+	ă do: 18
+	ă dr: 18
+	ă du: 12
+	ă e: 190
+	ă ec: 13
+	ă el: 8
+	ă es: 78
+	ă eu: 32
+	ă ev: 10
+	ă ex: 32
+	ă f: 188
+	ă fa: 53
+	ă fi: 87
+	ă fo: 15
+	ă fu: 15
+	ă fă: 8
+	ă g: 38
+	ă gl: 8
+	ă gă: 10
+	ă i: 92
+	ă ia: 13
+	ă im: 13
+	ă in: 58
+	ă l: 143
+	ă l : 13
+	ă la: 50
+	ă le: 33
+	ă li: 12
+	ă lo: 10
+	ă lu: 22
+	ă m: 110
+	ă ma: 32
+	ă me: 18
+	ă mi: 12
+	ă mo: 10
+	ă mu: 25
+	ă mă: 13
+	ă n: 185
+	ă na: 7
+	ă ne: 57
+	ă ni: 20
+	ă nu: 97
+	ă o: 125
+	ă o : 75
+	ă ob: 18
+	ă oc: 7
+	ă of: 7
+	ă op: 8
+	ă p: 437
+	ă pa: 18
+	ă pe: 137
+	ă pi: 8
+	ă po: 50
+	ă pr: 177
+	ă pu: 23
+	ă pâ: 8
+	ă pă: 13
+	ă r: 140
+	ă ra: 8
+	ă re: 100
+	ă ro: 7
+	ă ră: 17
+	ă s: 317
+	ă s : 10
+	ă sa: 23
+	ă se: 78
+	ă si: 18
+	ă so: 8
+	ă sp: 28
+	ă st: 28
+	ă su: 67
+	ă să: 48
+	ă t: 72
+	ă te: 7
+	ă to: 12
+	ă tr: 48
+	ă u: 85
+	ă ue: 12
+	ă ui: 7
+	ă un: 50
+	ă ur: 10
+	ă v: 87
+	ă va: 15
+	ă ve: 12
+	ă vi: 8
+	ă vo: 27
+	ă vă: 23
+	ă î: 307
+	ă îi: 10
+	ă îm: 7
+	ă în: 280
+	ă ş: 208
+	ă şi: 188
+	ă şt: 12
+	ă ţ: 12
+	ă ţa: 8
+	ăc: 58
+	ăca: 7
+	ăcat: 7
+	ăce: 7
+	ăci: 15
+	ăcie: 10
+	ăcu: 23
+	ăcut: 23
+	ăd: 15
+	ăg: 8
+	ăi: 22
+	ăl: 38
+	ălc: 13
+	ălca: 8
+	ălă: 15
+	ălăt: 15
+	ăm: 247
+	ăm : 190
+	ăm a: 17
+	ăm c: 48
+	ăm d: 8
+	ăm m: 10
+	ăm o: 8
+	ăm p: 18
+	ăm s: 10
+	ăm u: 8
+	ăm î: 23
+	ăm ş: 7
+	ămâ: 50
+	ămân: 50
+	ăn: 35
+	ănc: 8
+	ănci: 8
+	ănă: 23
+	ănăt: 23
+	ăp: 27
+	ăpt: 22
+	ăptă: 22
+	ăr: 615
+	ăr : 27
+	ăr m: 7
+	ăra: 42
+	ărar: 7
+	ărat: 33
+	ărb: 13
+	ărba: 7
+	ărc: 7
+	ăre: 32
+	ărea: 7
+	ărei: 7
+	ărer: 15
+	ări: 350
+	ări : 97
+	ării: 137
+	ăril: 102
+	ăro: 8
+	ăror: 8
+	ărt: 8
+	ărtă: 7
+	ăru: 28
+	ărul: 17
+	ărut: 7
+	ărâ: 17
+	ărâr: 10
+	ără: 55
+	ără : 38
+	ărăc: 10
+	ărţ: 22
+	ărţi: 22
+	ăs: 150
+	ăsi: 10
+	ăsp: 38
+	ăspu: 38
+	ăst: 18
+	ăstr: 15
+	ăsu: 68
+	ăsur: 65
+	ăt: 282
+	ăta: 30
+	ătat: 27
+	ăti: 17
+	ătir: 8
+	ăto: 125
+	ătoa: 38
+	ător: 83
+	ătr: 53
+	ătre: 52
+	ătu: 15
+	ătur: 13
+	ătă: 40
+	ătăţ: 37
+	ău: 25
+	ău : 15
+	ău s: 7
+	ăz: 65
+	ăzb: 7
+	ăzbo: 7
+	ăzi: 38
+	ăzi : 38
+	ăzu: 17
+	ăzut: 17
+	ăş: 30
+	ăşi: 10
+	ăşo: 7
+	ăşoa: 7
+	ăşu: 8
+	ăşur: 8
+	ăţ: 302
+	ăţe: 62
+	ăţen: 55
+	ăţi: 228
+	ăţi : 55
+	ăţii: 100
+	ăţil: 55
+	ăţir: 12
+	ăţit: 7
+	ăţă: 7
+	ăț: 12
+	ăți: 10
+	ățil: 7
+	ć: 2
+	ć : 2
+	ş: 2064
+	ş : 80
+	ş d: 60
+	ş do: 60
+	ş f: 7
+	ş v: 8
+	ş vr: 7
+	şa: 53
+	şa : 25
+	şa c: 17
+	şad: 8
+	şada: 8
+	şan: 12
+	şans: 10
+	şc: 8
+	şco: 7
+	şe: 180
+	şec: 7
+	şecu: 7
+	şed: 155
+	şedi: 152
+	şel: 7
+	şi: 1425
+	şi : 1395
+	şi a: 232
+	şi b: 17
+	şi c: 145
+	şi d: 150
+	şi e: 55
+	şi f: 32
+	şi g: 8
+	şi i: 37
+	şi l: 32
+	şi m: 45
+	şi n: 48
+	şi o: 37
+	şi p: 132
+	şi r: 35
+	şi s: 138
+	şi t: 45
+	şi u: 27
+	şi v: 45
+	şi î: 120
+	şir: 8
+	şire: 7
+	şit: 15
+	şit : 8
+	şo: 28
+	şoa: 7
+	şoar: 7
+	şom: 8
+	şor: 7
+	şt: 265
+	şte: 158
+	şte : 83
+	ştea: 10
+	ştep: 22
+	şter: 40
+	şti: 82
+	şti : 12
+	ştie: 8
+	ştii: 15
+	ştil: 7
+	ştim: 10
+	ştin: 7
+	ştiu: 7
+	ştiţ: 7
+	ştr: 25
+	ştri: 25
+	şu: 18
+	şur: 8
+	şura: 8
+	ţ: 2713
+	ţ : 20
+	ţ a: 8
+	ţa: 233
+	ţa : 150
+	ţa a: 18
+	ţa c: 10
+	ţa d: 22
+	ţa e: 7
+	ţa f: 7
+	ţa m: 8
+	ţa p: 22
+	ţa s: 12
+	ţa u: 12
+	ţa ş: 8
+	ţar: 62
+	ţara: 10
+	ţare: 30
+	ţară: 22
+	ţat: 18
+	ţat : 8
+	ţate: 8
+	ţe: 273
+	ţe : 47
+	ţe c: 7
+	ţe e: 7
+	ţe ş: 7
+	ţea: 8
+	ţei: 73
+	ţei : 73
+	ţel: 87
+	ţele: 72
+	ţelo: 13
+	ţen: 55
+	ţeni: 55
+	ţi: 1826
+	ţi : 333
+	ţi a: 33
+	ţi c: 48
+	ţi d: 40
+	ţi e: 7
+	ţi f: 8
+	ţi i: 13
+	ţi l: 7
+	ţi m: 15
+	ţi n: 7
+	ţi p: 27
+	ţi s: 33
+	ţi î: 35
+	ţi ş: 17
+	ţia: 288
+	ţia : 207
+	ţial: 40
+	ţiat: 40
+	ţie: 263
+	ţie : 188
+	ţiei: 72
+	ţii: 395
+	ţii : 280
+	ţiil: 115
+	ţil: 93
+	ţile: 37
+	ţilo: 57
+	ţin: 152
+	ţin : 40
+	ţine: 72
+	ţinu: 15
+	ţinâ: 7
+	ţină: 12
+	ţio: 185
+	ţion: 177
+	ţir: 13
+	ţire: 12
+	ţit: 12
+	ţite: 8
+	ţiu: 80
+	ţiu : 8
+	ţiul: 7
+	ţiun: 65
+	ţu: 65
+	ţul: 15
+	ţul : 7
+	ţulu: 8
+	ţum: 32
+	ţume: 22
+	ţumi: 10
+	ţur: 15
+	ţuri: 15
+	ţă: 295
+	ţă : 197
+	ţă a: 18
+	ţă c: 10
+	ţă d: 42
+	ţă i: 12
+	ţă m: 12
+	ţă n: 7
+	ţă p: 20
+	ţă s: 12
+	ţă ş: 15
+	ţăm: 7
+	ţăr: 90
+	ţări: 87
+	ș: 63
+	șe: 12
+	șed: 12
+	ședi: 12
+	și: 35
+	și : 35
+	și a: 7
+	și c: 8
+	șt: 13
+	ște: 8
+	ț: 57
+	ți: 43
+	ția: 8
+	ția : 7
+	ție: 8
+	țil: 10

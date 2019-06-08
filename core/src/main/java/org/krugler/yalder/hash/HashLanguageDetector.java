@@ -28,6 +28,8 @@ public class HashLanguageDetector extends BaseLanguageDetector {
 
     private static final int EARLY_TERMINATION_INTERVAL = DEFAULT_RENORMALIZE_INTERVAL * 11;
 
+    private int _numLanguages;
+    
     // Map from language of model to index used for accessing arrays.
     private Map<LanguageLocale, Integer> _langToIndex;
     
@@ -60,6 +62,10 @@ public class HashLanguageDetector extends BaseLanguageDetector {
 
     boolean _hasEnoughText;
     
+    // For dev/testing, keep track (for each language) of how many ngrams
+    // are only used by that language.
+    int[] _singletonCounts;
+    
     // TODO support mixed language mode.
     // TODO support short text mode (renormalize more often)
     
@@ -72,8 +78,8 @@ public class HashLanguageDetector extends BaseLanguageDetector {
 
         // TODO verify that each model is a binary model
 
-        int numLanguages = makeLangToIndex(models);
-        _indexToLang = new LanguageLocale[numLanguages];
+        _numLanguages = makeLangToIndex(models);
+        _indexToLang = new LanguageLocale[_numLanguages];
 
         // Build a master map from ngram to per-language probabilities
         // Each model should contain a normalized count (not probability) of the ngram
@@ -101,12 +107,19 @@ public class HashLanguageDetector extends BaseLanguageDetector {
         
         // For singletons, remove from _ngramToIndex, and add to _ngramToOneLang, with
         // the language index.
+        List<Integer> keysToRemoveFromOneLanguageMap = new ArrayList<>();
         for (int key : _ngramToOneLanguage.keySet()) {
             if (_ngramToOneLanguage.get(key) == -1) {
-                _ngramToOneLanguage.remove(key);
+                // We have to record the removal, as we can't modify the map while
+                // we're iterating over it.
+                keysToRemoveFromOneLanguageMap.add(key);
             } else {
                 _ngramToIndex.remove(key);
             }
+        }
+        
+        for (int key : keysToRemoveFromOneLanguageMap) {
+            _ngramToOneLanguage.remove(key);
         }
         
         // Now we can set a unique index for each ngram.
@@ -130,7 +143,7 @@ public class HashLanguageDetector extends BaseLanguageDetector {
                     int index = _ngramToIndex.getIndex(ngramHash);
                     int[] counts = ngramCounts[index];
                     if (counts == null) {
-                        counts = new int[numLanguages];
+                        counts = new int[_numLanguages];
                         ngramCounts[index] = counts;
                     }
 
@@ -148,7 +161,7 @@ public class HashLanguageDetector extends BaseLanguageDetector {
             }
             
             
-            double[] probs = new double[numLanguages];
+            double[] probs = new double[_numLanguages];
             for (int j = 0; j < counts.length; j++) {
                 probs[j] = counts[j] / totalCount;
             }
@@ -156,6 +169,16 @@ public class HashLanguageDetector extends BaseLanguageDetector {
             _ngramProbabilities[i] = probs;
         }
         
+        // Calculate how many ngrams each language has, which are
+        // only used by that one language. This is for calculating
+        // distances between languages, since we remove those ngrams
+        // from our _ngramProbabilities table.
+        _singletonCounts = new int[_numLanguages];
+        for (int key : _ngramToOneLanguage.keySet()) {
+            int langIndex = _ngramToOneLanguage.get(key);
+            _singletonCounts[langIndex] += 1;
+        }
+
         _tokenizer = new HashTokenizer(maxNGramLength);
         
         reset();
@@ -364,6 +387,47 @@ public class HashLanguageDetector extends BaseLanguageDetector {
         for (int i = 0; i < _langProbabilities.length; i++) {
             _langProbabilities[i] *= scalar;
         }
+    }
+    
+    protected double calcDistance(LanguageLocale l1, LanguageLocale l2) {
+        int l1Index = langToIndex(l1);
+        int l2Index = langToIndex(l2);
+        
+        double l1LenSquared = 0.0;
+        double l2LenSquared = 0.0;
+        double dot = 0.0;
+        
+        for (int ngramIndex = 0; ngramIndex < _ngramProbabilities.length; ngramIndex++) {
+            // 
+            double d1 = _ngramProbabilities[ngramIndex][l1Index];
+            double d2 = _ngramProbabilities[ngramIndex][l2Index];
+            if (d1 == 0) {
+                if (d2 == 0) {
+                    // nothing to do
+                } else {
+                    l2LenSquared += (d2 * d2);
+                }
+            } else {
+                l1LenSquared += (d1 * d1);
+                if (d2 == 0) {
+                    // nothing more to do
+                } else {
+                    l2LenSquared += (d2 * d2);
+                    dot += (d1 * d2);
+                }
+            }
+        }
+        
+        // Now account for the singletons. Since the probability is implicitly
+        // 1.0 for an ngram that's only used for a single language, the square
+        // of that is also 1.0. And we know it doesn't change the dot product.
+        // (except, of course, if the two languages being compared are the same)
+        if (l1Index != l2Index) {
+            l1LenSquared += _singletonCounts[l1Index];
+            l2LenSquared += _singletonCounts[l2Index];
+        }
+        
+        return dot / Math.sqrt(l1LenSquared * l2LenSquared);
     }
 
 }
