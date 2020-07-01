@@ -64,7 +64,7 @@ public class BuildModelsWorkflow {
     	// Then for each lang, we sort ngrams by LLR (high to low), and output
     	// lang|ngram|normalized count pairs until we get to NGRAM_COVERAGE_PERCENT of all ngrams.
     	
-    	int totalCount = 0;
+    	long totalCount = 0;
     	Map<String, Integer> langCounts = new HashMap<>(langCountData.size());
     	for (Tuple2<String, Integer> lc : langCountData) {
     		langCounts.put(lc.f0, lc.f1);
@@ -87,7 +87,7 @@ public class BuildModelsWorkflow {
     	langNgramCounts.union(allNgramCounts)
     		.groupBy(1)
     		.sortGroup(0, Order.ASCENDING)
-    		.reduceGroup(new CalcLLRScores(langCounts, totalCount))
+    		.reduceGroup(new CalcLLRScores(langCounts, totalCount, options.getMinNGramRate()))
     		
     		.groupBy(0)
     		.sortGroup(3, Order.DESCENDING)
@@ -121,11 +121,13 @@ public class BuildModelsWorkflow {
 	protected static class CalcLLRScores implements GroupReduceFunction<Tuple3<String, String, Integer>, Tuple4<String, String, Integer, Float>> {
 
     	private Map<String, Integer> _langCounts;
-    	private int _totalCount;
+    	private long _totalCount;
+    	private float _minRate;
     	
-    	public CalcLLRScores(Map<String, Integer> langCounts, int totalCount) {
+    	public CalcLLRScores(Map<String, Integer> langCounts, long totalCount, float minRate) {
     		_langCounts = langCounts;
     		_totalCount = totalCount;
+    		_minRate = minRate;
     	}
     	
 		/**
@@ -160,6 +162,12 @@ public class BuildModelsWorkflow {
 			    // = value in tuple that we've calculated in workflow.
 			    long k11 = in.f2;
 
+			    // Before we continue, see what the ngram rate is.
+			    float ngramRate = (float)in.f2/(float)_langCounts.get(lang);
+			    if (ngramRate < _minRate) {
+			        continue;
+			    }
+			    
 			    // k12 = k(~AB) = count of ngrams other than A in language B
 			    // = count of all ngrams in language B - count of ngram A in language B
 			    long k12 = _langCounts.get(lang) - in.f2;
@@ -172,8 +180,14 @@ public class BuildModelsWorkflow {
 			    // = total ngrams - language B ngrams - (ngram A in languages other than B, aka k21)
 			    long k22 = _totalCount - _langCounts.get(lang) - k21;
 
-			    float llr = (float)LogLikelihood.logLikelihoodRatio(k11, k12, k21, k22);
-			    out.collect(new Tuple4<>(lang, in.f1, in.f2, llr));
+			    try {
+			        float llr = (float)LogLikelihood.logLikelihoodRatio(k11, k12, k21, k22);
+			        out.collect(new Tuple4<>(lang, in.f1, in.f2, llr));
+			    } catch (IllegalArgumentException e) {
+			        LOGGER.error("LLR for {} failed with k11={}, k12={}, k21={}, k22={} ({}/{})", 
+			                        in, k11, k12, k21, k22,
+			                        _totalCount, _langCounts.get(lang));
+			    }
 			}
 		}
     }
@@ -222,7 +236,7 @@ public class BuildModelsWorkflow {
 				
 				if (curCount < targetNGramCount) {
 					// Calculate the normalized count, which pretends like we have
-					// 10,000 total ngrams. But it's always at least 1.
+					// 1,000,000 total ngrams. But it's always at least 1.
 					int normalizedCount = Math.max(1, Math.round(((float)NORMALIZED_COUNT * in.f2)/langTotalCount));
 					out.collect(new Tuple3<>(lang, in.f1, normalizedCount));
 					numNgrams++;

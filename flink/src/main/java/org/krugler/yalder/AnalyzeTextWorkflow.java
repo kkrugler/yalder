@@ -3,7 +3,6 @@ package org.krugler.yalder;
 import java.io.IOException;
 import java.util.Random;
 
-import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.functions.RichFilterFunction;
 import org.apache.flink.api.common.functions.RichFlatMapFunction;
@@ -20,51 +19,74 @@ import org.krugler.yalder.text.TextTokenizer;
 public class AnalyzeTextWorkflow {
 
     public static void createWorkflow(ExecutionEnvironment env, AnalyzeTextOptions options) throws IOException {
-    	// We have a bunch of small files, named xxx_<ISO country code>.txt.
-    	// For example, Biltzheim_bug.txt
-    	
-    	// First we generate the lang|ngram|0 pairs, then sum.
-    	// We write these out, as well as the lang|all|count result
-    	
-    	DataSet<Tuple2<String, String>> inputData = null;
-    	
-    	if (options.getWikipediaDir() != null) {
-    		TextAndLangInputFormat inputFormat =  new TextAndLangInputFormat(new Path(options.getWikipediaDir()));
-    		inputData = env.createInput(inputFormat)
-    				.name("wikipedia data");
-    	}
-    	
-    	if (options.getTaggedFile() != null) {
-    	    CsvReader reader = env.readCsvFile(options.getTaggedFile())
-    	        .fieldDelimiter("\t");
-    	    reader.setCharset("UTF-8");
-    		DataSet<Tuple2<String, String>> taggedData = reader
-					.types(String.class, String.class)
-					.map(new ConvertLangCode())
-					.name("tagged data");
-    		
-    		if (inputData == null) {
-    			inputData = taggedData;
-    		} else {
-    			inputData = inputData.union(taggedData);
-    		}
-    	}
-    	
-    	DataSet<Tuple3<String, String, Integer>> langNgramData = inputData
-    	    .filter(new FilterLines(options.getSampleRate()))
-			.flatMap(new MakeNGrams(options.getMinNGramLength(), options.getMaxNGramLength()))
-			.groupBy(0, 1)
-			.sum(2)
-			.name("language|ngram|count data");
+
+        Configuration parameters = new Configuration();
+        parameters.setBoolean("recursive.file.enumeration", true);
+
+        DataSet<Tuple2<String, String>> inputData = null;
+
+        if (options.getWikipediaDir() != null) {
+            // We have a bunch of small files, named xxx_<ISO country code>.txt.
+            // For example, Biltzheim_bug.txt
+            TextAndLangInputFormat inputFormat =  new TextAndLangInputFormat(new Path(options.getWikipediaDir()));
+            inputData = env.createInput(inputFormat)
+                // descend recursively into subdirectories
+                .withParameters(parameters)
+                .name("wikipedia data");
+        }
+
+        if (options.getTaggedFile() != null) {
+            CsvReader reader = env.readCsvFile(options.getTaggedFile())
+                            .fieldDelimiter("\t");
+            reader.setCharset("UTF-8");
+            DataSet<Tuple2<String, String>> taggedData = reader
+                            .types(String.class, String.class)
+                            .map(new ConvertLangCode())
+                            .name("tagged data");
+
+            if (inputData == null) {
+                inputData = taggedData;
+            } else {
+                inputData = inputData.union(taggedData);
+            }
+        }
+
+        if (options.getLeipzigDir() != null) {
+            LeipzigCorpusInputFormat inputFormat = new LeipzigCorpusInputFormat(new Path(options.getLeipzigDir()));
+            DataSet<Tuple2<String, String>> leipzigData = env.createInput(inputFormat)
+                            // descend recursively into subdirectories
+                            .withParameters(parameters)
+                            .name("leipzig corpus data");
+
+            if (inputData == null) {
+                inputData = leipzigData;
+            } else {
+                inputData = inputData.union(leipzigData);
+            }
+        }
+        
+        // First we generate the lang|ngram|0 pairs, then sum.
+        // We write these out, as well as the lang|all|count result
+        DataSet<Tuple3<String, String, Integer>> langNgramData = inputData
+                        .filter(new FilterLines(options.getSampleRate()))
+                        // TODO support word edge only option, so text has to start or end with ' ', and
+                        // can't contain a space in the middle. Assumes min/max length is 4. But we'd only
+                        // want to do this if the 2nd and/or 3rd char was in a Unicode block that seems 
+                        // like it should have a space (e.g. Han chars are OK w/o spaces).
+                        .flatMap(new MakeNGrams(options.getMinNGramLength(), options.getMaxNGramLength()))
+                        .groupBy(0, 1)
+                        .sum(2)
+                        .filter(t -> t.f2 >= options.getMinNGramCount())
+                        .name("language|ngram|count data");
 
         langNgramData.writeAsCsv(options.getWorkingSubdir(WorkingDir.LANG_NGRAM_COUNT_DIRNAME));
-        
+
         langNgramData
-        		.groupBy(0)
-        		.sum(2)
-        		.project(0, 2)
-        		.name("languagge|count data")
-        		.writeAsCsv(options.getWorkingSubdir(WorkingDir.LANG_COUNT_DIRNAME));
+        .groupBy(0)
+        .sum(2)
+        .project(0, 2)
+        .name("languagge|count data")
+        .writeAsCsv(options.getWorkingSubdir(WorkingDir.LANG_COUNT_DIRNAME));
     }
     
     @SuppressWarnings("serial")

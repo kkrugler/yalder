@@ -143,26 +143,26 @@ public class TextLanguageModel extends BaseLanguageModel {
     public void readAsText(InputStreamReader isr) throws IOException {
         List<String> lines = IOUtils.readLines(isr);
         if (lines.size() < 6) {
-            throw new IllegalArgumentException("Model doesn't contain enough lines of text");
+            throw new IllegalArgumentException(_modelLanguage + ": Model doesn't contain enough lines of text");
         }
         
         int curLine = 0;
         // First line must be the version
         String versionLine = lines.get(curLine++);
         if (!versionLine.startsWith(VERSION_PREFIX)) {
-            throw new IllegalArgumentException("First line of model must be the version number");
+            throw new IllegalArgumentException(_modelLanguage + ": First line of model must be the version number");
         }
         
         versionLine = versionLine.substring(VERSION_PREFIX.length()).trim();
         int version = Integer.parseInt(versionLine);
         if (version != MODEL_VERSION) {
-            throw new IllegalArgumentException("Version doesn't match supported values, got " + version);
+            throw new IllegalArgumentException(_modelLanguage + ": Version doesn't match supported values, got " + version);
         }
         
         // Next line must be language info.
         String languageLine = lines.get(curLine++);
         if (!languageLine.startsWith(LANGUAGE_PREFIX)) {
-            throw new IllegalArgumentException("Second line of model must be the language info");
+            throw new IllegalArgumentException(_modelLanguage + ": Second line of model must be the language info");
         }
         
         languageLine = languageLine.substring(LANGUAGE_PREFIX.length()).trim();
@@ -171,7 +171,7 @@ public class TextLanguageModel extends BaseLanguageModel {
         // Next line is the ngram max length
         String ngramSizeLine = lines.get(curLine++);
         if (!ngramSizeLine.startsWith(NGRAM_SIZE_PREFIX)) {
-            throw new IllegalArgumentException("Third line of model must be the max ngram length");
+            throw new IllegalArgumentException(_modelLanguage + ": Third line of model must be the max ngram length");
         }
         
         ngramSizeLine = ngramSizeLine.substring(NGRAM_SIZE_PREFIX.length()).trim();
@@ -180,7 +180,7 @@ public class TextLanguageModel extends BaseLanguageModel {
         // Next line is the alpha count
         String alphaLine = lines.get(curLine++);
         if (!alphaLine.startsWith(ALPHA_PREFIX)) {
-            throw new IllegalArgumentException("Fourth line of model must be the alpha count");
+            throw new IllegalArgumentException(_modelLanguage + ": Fourth line of model must be the alpha count");
         }
         
         alphaLine = alphaLine.substring(ALPHA_PREFIX.length()).trim();
@@ -189,7 +189,7 @@ public class TextLanguageModel extends BaseLanguageModel {
         // Next line is the ngram header
         String ngramsLine = lines.get(curLine++);
         if (!ngramsLine.equals(NGRAM_DATA_PREFIX)) {
-            throw new IllegalArgumentException("Fifth line of model must be the ngram data header");
+            throw new IllegalArgumentException(_modelLanguage + ": Fifth line of model must be the ngram data header");
         }
         
         Pattern p = Pattern.compile("\t(.+?): (.+)");
@@ -200,7 +200,8 @@ public class TextLanguageModel extends BaseLanguageModel {
             String ngramLine = lines.get(i);
             m.reset(ngramLine);
             if (!m.matches()) {
-                throw new IllegalArgumentException(String.format("#%d ngram in model has invalid format", 1 + i - curLine));
+                throw new IllegalArgumentException(String.format("%s: #%d ngram in model has invalid format", 
+                                _modelLanguage, 1 + i - curLine));
             }
             
             String ngram = m.group(1);
