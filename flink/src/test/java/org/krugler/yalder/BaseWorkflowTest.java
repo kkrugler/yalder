@@ -11,8 +11,15 @@ public abstract class BaseWorkflowTest {
     public abstract File getClassDir();
     
     protected File getTestDir(String subdir) throws IOException {
+        return getTestDir(subdir, true);
+    }
+
+    protected File getTestDir(String subdir, boolean clean) throws IOException {
         File testDir = new File(getClassDir(), subdir);
-        FileUtils.deleteDirectory(testDir);
+        if (clean) {
+            FileUtils.deleteDirectory(testDir);
+        }
+        
         testDir.mkdirs();
         return testDir;
     }

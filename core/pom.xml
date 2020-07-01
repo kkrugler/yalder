@@ -36,6 +36,12 @@
             <version>1.7.7</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.clearspring.analytics</groupId>
+			<artifactId>stream</artifactId>
+			<version>2.9.5</version>
+		</dependency>
+
         <!-- Provided -->
         
 		<dependency>
