@@ -358,6 +358,9 @@ public class HashLanguageDetector extends BaseLanguageDetector {
             
             if (curProb >= MIN_LANG_PROBABILITY) {
                 DetectionResult dr = new DetectionResult(language, curProb);
+                // TODO convert probability to a confidence value. Want to use both
+                // probability and % delta from next best language.
+                dr.setConfidence(curProb);
                 result.add(dr);
             }
         }

@@ -1,5 +1,5 @@
 <!--
-Copyright (c) 2015 Ken Krugler
+Copyright (c) 2015-2020 Ken Krugler
 -->
 
 <project name="yalder" default="test">
@@ -29,7 +29,7 @@ Copyright (c) 2015 Ken Krugler
 	<!-- ================================================================== -->
 
 	<property name="maven-artifact-ant.bootstrap.jar"
-			  location="${build.dir}/maven-ant-tasks-2.1.3.jar"/>
+			  location="${parent.dir}/lib/maven-ant-tasks-2.1.3.jar"/>
 			  
     <target name="check-get-maven-artifact-ant">
         <available property="get-maven-artifact-ant-done"
@@ -45,7 +45,7 @@ Copyright (c) 2015 Ken Krugler
     </target>
 	
 	<target name="mvn-init" 
-	        unless="compile.classpath" 
+	        unless="compile.classpath"
 	        depends="get-maven-artifact-ant"
 	        xmlns:artifact="urn:maven-artifact-ant">
 		<path id="maven.ant.tasks.classpath" path="${maven-artifact-ant.bootstrap.jar}" />

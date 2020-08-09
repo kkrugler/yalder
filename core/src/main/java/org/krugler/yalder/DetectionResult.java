@@ -38,12 +38,12 @@ public class DetectionResult implements Comparable<DetectionResult> {
         _confidence = confidence;
     }
 
-    public void setDetails(String details) {
-        _details = details;
-    }
-    
     public String getDetails() {
         return _details;
+    }
+    
+    public void setDetails(String details) {
+        _details = details;
     }
     
     /* Do reverse sorting.
